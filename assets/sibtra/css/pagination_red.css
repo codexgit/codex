@@ -1,0 +1,9 @@
+/*Estilos para paginacion color rojo*/
+
+.pagination > li > a, .pagination > li > span{color:#e7505a;}
+
+.pagination > li > a:hover, .pagination > li > span:hover{color:#e7505a;}
+
+.pagination > li.active > a, .pagination > li.active > span{background-color:#e7505a; border-color:#e7505a}
+
+.pagination > li.active > a:hover, .pagination > li.active > span:hover{background-color:#ddd; border-color:#ccc; color: #fff;}
