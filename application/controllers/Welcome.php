@@ -21,6 +21,10 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('welcome_message');
+<<<<<<< HEAD
 		//pushi pushi
+=======
+		//NO SE Q WEA PONER ACA
+>>>>>>> 5ebe26c1ccf3c8bdcd6315c9baf81e28faaf83ae
 	}
 }
