@@ -139,11 +139,6 @@
                                                     </a>
                                                 </li>
                                                 <!-- NUEVO -->
-                                                <li aria-haspopup="true" class=" ">
-                                                    <a href="<?php echo site_url('filial/editar'); ?>" class="nav-link  ">
-                                                        <i class="icon-plus"></i> Editar 
-                                                    </a>
-                                                </li>
 
                                                 <!-- FIN -->
                                                 <li aria-haspopup="true" class=" ">
