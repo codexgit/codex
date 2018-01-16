@@ -14,5 +14,10 @@ class Beneficio_model extends CI_Model {
             $query = $this->db->get();
         	return $query->result_array();
         }
+		
+		
+		public function agregar_beneficio($beneficio){
+            return $this->db->insert('beneficio',$beneficio);
+        }
 
 }

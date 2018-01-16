@@ -41,7 +41,9 @@
         <link href="<?php echo base_url(); ?>/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="<?php echo base_url(); ?>/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <link rel="shortcut icon" href="favicon.ico" /> 
+		
+		</head>
     <!-- END HEAD -->
 
     <body class="page-container-bg-solid page-md">
@@ -266,3 +268,5 @@
             </div>
             <div class="page-wrapper-row full-height">
                 <div class="page-wrapper-middle">
+				
+				

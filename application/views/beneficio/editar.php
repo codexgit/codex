@@ -31,7 +31,7 @@
                                             <i class="fa fa-circle"></i>
                                         </li>
                                         <li>
-                                            <span>Editar Beneficio</span>
+                                            <span>Editar BeneficioD</span>
                                         </li>
                                     </ul>
                                     <!-- END PAGE BREADCRUMBS -->

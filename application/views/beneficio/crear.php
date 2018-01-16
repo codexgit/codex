@@ -1,3 +1,17 @@
+<?php
+
+    if (validation_errors() == ""){
+
+        $idcategoria = "";
+		$nbeneficio = "";
+    }
+    else{
+
+        $idcategoria = set_value('sel_categoria');
+		$nbeneficio = set_value('txt_nbeneficio');
+    }
+?>
+
                     <!-- BEGIN CONTAINER -->
                     <div class="page-container">
                         <!-- BEGIN CONTENT -->
@@ -41,6 +55,20 @@
 
 
                                             <div class="row">
+											
+											<?php 
+                                            if ($mensaje != NULL && $mensaje != ""){
+                                            ?>
+                                            <div class="col-md-12">
+                                                <div class="<?php echo $divtipo; ?>">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                                    <?php echo $mensaje; ?>
+                                                </div>                                                
+                                            </div>
+
+                                            <?php
+                                            }
+                                            ?>
                                                 <div class="col-md-12 col-sm-12">
 
                                                             <div class="portlet box red">
@@ -57,15 +85,32 @@
                                                                 </div>
                                                                 <div class="portlet-body form">
                                                                     <!-- BEGIN FORM-->
-                                                                    <form action="#" class="horizontal-form">
+																	
+																	<?php
+                                                                        $attributes = array('class' => 'horizontal-form');
+                                                                        echo form_open('beneficio/crear', $attributes);
+                                                                    ?>
                                                                         <div class="form-body">
                                                                             <h3 class="form-section">Datos Generales</h3>
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group ">
                                                                                         <label class="control-label">Categoría <span class="required" aria-required="true"> * </span></label>
-                                                                                        <select class="form-control">
-                                                                                            <option value="">Seleccione una opci&oacute;n</option>
+                                                                                        <select class="form-control" name="sel_categoria" id="sel_categoria">
+                                                                                            <option value="">Seleccione una opción</option>
+																							
+																							<?php 
+                                                                                                foreach ($lstcategorias as $categoria):
+                                                                                                    if ($categoria['cat_beneficio_id'] == $idcategoria){
+                                                                                                        echo "<option value='".$categoria['cat_beneficio_id']."' selected>".$cateogria['cat_benef_nombre']."</option>";
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        echo "<option value='".$categoria['cat_beneficio_id']."'>".$categoria['cat_benef_nombre']."</option>";                             
+                                                                                                    }
+                                                                                                endforeach;
+                                                                                            ?>  
+																							
+																							
                                                                                         </select>
                                                                                         <!--<span class="help-block"> Select your gender </span>-->
                                                                                     </div>
@@ -74,8 +119,20 @@
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="control-label">Subcategoría <span class="required" aria-required="true"> * </span></label>
-                                                                                        <select class="form-control">
-                                                                                            <option value="">Seleccione una opci&oacute;n</option>
+                                                                                        <select class="form-control" name="sel_subcategoria" id="sel_subcategoria">
+                                                                                        <option value="">Seleccione una opción</option>
+																							<?php
+                                                                                                foreach ($lstsubcategorias as $subcategoria):
+                                                                                                    if ($subcategoria['subcat_beneficio_id'] == $idsubcategoria){
+                                                                                                        echo "<option value='".$subcategoria['subcat_beneficio_id']."' selected>".$subcateogria['subcat_benef_nombre']."</option>";
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        echo "<option value='".$subcategoria['subcat_beneficio_id']."'>".$subcategoria['subcat_benef_nombre']."</option>";                             
+                                                                                                    }
+                                                                                                endforeach;
+                                                                                            ?>  
+																							
+																							
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -84,18 +141,38 @@
                                                                             <!--/row-->
                                                                             <div class="row">
                                                                                 <div class="col-md-9">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group <?php if (form_error('txt_nbeneficio') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Nombre <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" id="firstName" class="form-control" placeholder=" ">
+                                                                                        <input type="text" name="txt_nbeneficio"  id="txt_nbeneficio" class="form-control" placeholder="" value="<?php echo $nbeneficio; ?>">
+
                                                                                         <!--<span class="help-block"> This is inline help </span>-->
+																						<?php
+                                                                                        if (form_error('txt_nbeneficio') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_nbeneficio'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+																						
+																						
+																						
+																						
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                 <div class="col-md-3">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group <?php if (form_error('txt_anio') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">A&ntilde;o <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" id="lastName" class="form-control" placeholder=" ">
+                                                                                        <input type="text" name="txt_anio" id="txt_anio" class="form-control" placeholder=" ">
                                                                                         <!--<span class="help-block"> This field has error. </span>-->
+																						<?php
+                                                                                        if (form_error('txt_anio') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_anio'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+																						
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
@@ -105,13 +182,16 @@
                                                                                 <div class="col-md-6 ">
                                                                                     <div class="form-group">
                                                                                         <label>Inicio vigencia <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" id="lastName" class="form-control" placeholder="dd/mm/aaaa">
+                                                                                        <input type="text" name="txt_iniciov" id="txt_iniciov" class="form-control" placeholder="dd/mm/aaaa">
                                                                                     </div>
                                                                                 </div>
+																				<!--INICIO CALENDARIO-->
+																				
+																				<!--FIN-->
                                                                                 <div class="col-md-6 ">
                                                                                     <div class="form-group">
                                                                                         <label>Fin vigencia <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" id="lastName" class="form-control" placeholder="dd/mm/aaaa">
+                                                                                        <input type="text" name="txt_finv" id="txt_finv" class="form-control" placeholder="dd/mm/aaaa">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -120,13 +200,13 @@
                                                                                 <div class="col-md-6 ">
                                                                                     <div class="form-group">
                                                                                         <label>Inicio postulación</label>
-                                                                                        <input type="text" id="lastName" class="form-control" placeholder="dd/mm/aaaa">
+                                                                                        <input type="text" name="txt_inip" id="txt_inip" class="form-control" placeholder="dd/mm/aaaa">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 ">
                                                                                     <div class="form-group">
                                                                                         <label>Fin postulación</label>
-                                                                                        <input type="text" id="lastName" class="form-control" placeholder="dd/mm/aaaa">
+                                                                                        <input type="text" name="txt_finp" id="txt_finp" class="form-control" placeholder="dd/mm/aaaa">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -142,7 +222,8 @@
                                                                             <button type="submit" class="btn red">
                                                                                 <i class="fa fa-check"></i> Guardar</button>
                                                                         </div>
-                                                                    </form>
+																		<input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
+                                                                    <?php echo form_close(); ?>
                                                                     <!-- END FORM-->
                                                                 </div>
                                                             </div>													

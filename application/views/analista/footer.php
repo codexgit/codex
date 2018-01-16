@@ -152,29 +152,54 @@
         <script type="text/javascript">
 
             $(document).ready(function() {
+				
             // Region change
-            $('#sel_region').change(function(){
-              var region = $(this).val();
+				$('#sel_region').change(function(){
+					var region = $(this).val();
+					// AJAX request
+					$.ajax({
+						url:'<?php echo base_url(); ?>/filial/getComunas',
+						method: 'post',
+						data: {region: region},
+						dataType: 'json',
+						success: function(response){
 
-              // AJAX request
-              $.ajax({
-                url:'<?php echo base_url(); ?>/filial/getComunas',
-                method: 'post',
-                data: {region: region},
-                dataType: 'json',
-                success: function(response){
+							// Remove options 
+							$('#sel_comuna').find('option').not(':first').remove();
 
-                  // Remove options 
-                  $('#sel_comuna').find('option').not(':first').remove();
+							// Add options
+							$.each(response,function(index,data){
+							$('#sel_comuna').append('<option value="'+data['comuna_id']+'">'+data['nombre_comuna']+'</option>');
+							});
+						}
+					});
+				}); 
+				
+				
+				/* CAMBIAR CATEGORIA Y SUBCATEGORIA [V->BENEFICIO->CREAR]*/
+				$('#sel_categoria').change(function(){
+					var region = $(this).val();
+					// AJAX request
+					$.ajax({
+						url:'<?php echo base_url(); ?>/beneficio/getSubcategorias',
+						method: 'post',
+						data: {region: region},
+						dataType: 'json',
+						success: function(response){
 
-                  // Add options
-                  $.each(response,function(index,data){
-                     $('#sel_comuna').append('<option value="'+data['comuna_id']+'">'+data['nombre_comuna']+'</option>');
-                  });
-                }
-             });
-           });        
-            });
+							// Remove options 
+							$('#sel_subcategoria').find('option').not(':first').remove();
+
+							// Add options
+							$.each(response,function(index,data){
+							$('#sel_subcategoria').append('<option value="'+data['subcat_beneficio_id']+'">'+data['subcat_benef_nombre']+'</option>');
+							});
+						}
+					});
+				}); 
+
+				
+			});
         </script>
 
     </body>
