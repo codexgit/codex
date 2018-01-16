@@ -46,7 +46,7 @@ class Filial_model extends CI_Model {
             $this->db->where('filial_id',$idfilial);
             return $this->db->update('filial',$filial);
         }
-        public function get_filiales_empresa($idempresa){
+        public function get_filiales_empresa($idempresa){			//Muestra las filiales asociadas a una empresa
 
             $this->db->select('*');
             $this->db->from('filial_empresa');
@@ -58,18 +58,14 @@ class Filial_model extends CI_Model {
             //$query = $this->db->get('filial');
             return $query->result_array();
         } 
-        public function not_get_filiales_empresa($idempresa){
-
-            $this->db->select('*');
-            $this->db->from('filial_empresa');
-            
-            $this->db->join('empresa','empresa.empresa_id = filial_empresa.empresa_id','inner');
-            $this->db->join('filial','filial.filial_id = filial_empresa.filial_id','inner'); 
-				
-            $this->db->where('filial_empresa.empresa_id !=',$idempresa);
-            $query = $this->db->get();
-            //$query = $this->db->get('filial');
-            return $query->result_array();
+		
+        public function not_get_filiales_empresa($idempresa){ 		//Muestra las filiales que no están asociadas a la empresa
+			
+		
+			
+			$this->db->select('* from filial where filial_id not in (select filial_id from filial_empresa where empresa_id = '.$idempresa.')');
+			$query = $this->db->get();
+			return $query->result_array();
         } 
 		
 }

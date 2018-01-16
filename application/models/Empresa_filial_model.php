@@ -48,6 +48,17 @@ class Empresa_filial_model extends CI_Model {
             return $query->result_array();
         }
         
+		public function asignar_filial($empresa_id,$filial_id){
+			
+
+			$array = array (
+					'filial_id' =>$filial_id,
+					'empresa_id' =>$empresa_id,
+					);							
+
+			return $this->db->insert('filial_empresa',$array);
+			
+		}
     
 
 

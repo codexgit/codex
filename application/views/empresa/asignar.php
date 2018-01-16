@@ -91,7 +91,7 @@
                                                                 <div class="portlet-body form">
                                                                     <?php
                                                                         $attributes = array('class' => 'horizontal-form');
-                                                                        echo form_open('empresa/asignar', $attributes);
+                                                                        echo form_open('empresa/asignar/'.$id_empresa.'', $attributes);
                                                                     ?>                                                                    
                                                                     <!-- BEGIN FORM-->
                                                                     
@@ -160,8 +160,7 @@
                                                                 <tr>
 
                                                                     <th> RUT Filial</th>
-                                                                    <th> Nombre Filial </th>
-                                                                    
+                                                                    <th> Nombre Filial </th>                                                   
                                                                     
                                                                    
                                                                 </tr>
@@ -216,13 +215,14 @@
                                                                                         }
                                                                                         ?>
                                                                                     </div>
-                                                        <div class="actions">
-                                                            <a href="<?php echo site_url('empresa/crear'); ?>" >
-															    <button type="submit" class="btn blue">
-                                                                <i class="fa fa-check"></i> Asignar</button>
-                                                                
-                                                            </a>
-                                                        </div>																					
+																					
+																					<div class="actions">
+																						<a href="<?php echo site_url('empresa/asignar/'.$id_empresa.''); ?>" >
+																							<button type="submit" class="btn blue" >
+																							<i class="fa fa-check"></i> Asignar</button>
+																							
+																						</a> 
+																					</div>																					
                                                                                 </div>
                                                                                 <!--/span-->
 

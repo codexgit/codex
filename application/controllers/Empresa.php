@@ -323,11 +323,16 @@ class Empresa extends CI_Controller {
 		$this->load->model('filial_model');
 
 
+		
 		$data['lstfiliales'] = $this->filial_model->get_filiales_empresa($idempresa);
 		$data['lstnotfiliales'] = $this->filial_model->not_get_filiales_empresa($idempresa);
+		
 
+		
+		
 		$data['mensaje'] = "";
 		$data['divtipo'] = "alert alert-success alert-dismissable";
+		$data['id_empresa'] = $idempresa;
 
 		$this->load->view('analista/header',$data);
 		$this->load->view('empresa/asignar',$data);
@@ -335,6 +340,23 @@ class Empresa extends CI_Controller {
 
 
 	}
+	public function asignar_filial($idempresa){
+		
+		$data['sesionusuario'] = $this->session->userdata('usrsesion');
+		$this->load->library('form_validation');
+		$this->load->helper('form');
+		$this->load->model('param_model');	
+		$this->load->model('empresa_filial_model');
+		//$query->this->input->post('sel_filial');
+		$query=$_POST['sel_filial'];
+			
+		$data['datos_asignar'] = $this->empresa_filial_model->asignar_filial($idempresa,$query);
+		
+		$this->load->view('analista/header',$data);
+		$this->load->view('empresa/listado',$data);
+		$this->load->view('analista/footer',$data);
+	}
+	
 
 }
 
