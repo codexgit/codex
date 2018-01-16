@@ -49,7 +49,7 @@
                                             <i class="fa fa-circle"></i>
                                         </li>
                                         <li>
-                                            <span>Crear Empresa Colaboradora</span>
+                                            <span>Información Empresa Colaboradora</span>
                                         </li>
                                     </ul>
                                     <!-- END PAGE BREADCRUMBS -->
@@ -79,7 +79,7 @@
                                                             <div class="portlet box blue">
                                                                 <div class="portlet-title">
                                                                     <div class="caption">
-                                                                        <i class="fa fa-th-large"></i>Nueva Empresa Colaboradora 
+                                                                        <i class="fa fa-th-large"></i>Empresa Colaboradora 
                                                                     </div>
                                                                     <div class="tools">
                                                                         <!--<a href="javascript:;" class="collapse"> </a>
@@ -143,7 +143,54 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <!--/row-->                                                                            
+                                                                            <!--/row-->   
+																			
+																			
+                                                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                <div class="portlet box blue">
+                                                    <div class="portlet-title">
+                                                        <div class="caption">
+                                                            <i class="fa fa-th-large"></i>Filiales asociadas
+                                                    	</div>
+
+                                                    </div>
+                                                    <div class="portlet-body">
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_3">
+                                                            <thead>
+                                                                <tr>
+
+                                                                    <th> RUT Filial</th>
+                                                                    <th> Nombre Filial </th>
+                                                                    
+                                                                    
+                                                                   
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+
+                                                                <?php foreach ($lstfiliales as $filial): ?>
+
+                                                                <tr class="odd gradeX">
+																	<td> <?php echo $filial['fil_rut']; ?> </td>
+                                                                    <td> <?php echo $filial['fil_nombre']; ?> </td>
+                                                                    
+                                                                    
+   
+
+    
+                                                                    
+                                                        
+                                                                </tr>
+                                                                <?php endforeach; ?>
+                                                                <!--- FIN MOTOR -->
+                                                                
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <!-- END EXAMPLE TABLE PORTLET-->       
+																			
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group <?php if (form_error('sel_filial') != ""){echo "has-error";} ?>">
@@ -151,12 +198,12 @@
                                                                                         <select class="form-control" name="sel_filial" id="sel_filial">
                                                                                             <option value="">Seleccione una opci&oacute;n</option>
                                                                                             <?php 
-                                                                                                foreach ($lstfiliales as $filial):
+                                                                                                foreach ($lstnotfiliales as $filial):
                                                                                                     if ($filial['filial_id'] == $idfilial){
-                                                                                                        echo "<option value='".$filial['filial_id']."' selected>".$filial['fil_dv']." - ".$filial['fil_nombre']."</option>";
+                                                                                                        echo "<option value='".$filial['filial_id']."' selected>".$filial['fil_nombre']."</option>";
                                                                                                     }
                                                                                                     else{
-                                                                                                        echo "<option value='".$filial['filial_id']."'>".$filial['fil_dv']." - ".$filial['fil_nombre']."</option>";                             
+                                                                                                        echo "<option value='".$filial['filial_id']."'>".$filial['fil_nombre']."</option>";                             
                                                                                                     }
                                                                                                 endforeach;
                                                                                             ?>
@@ -169,6 +216,13 @@
                                                                                         }
                                                                                         ?>
                                                                                     </div>
+                                                        <div class="actions">
+                                                            <a href="<?php echo site_url('empresa/crear'); ?>" >
+															    <button type="submit" class="btn blue">
+                                                                <i class="fa fa-check"></i> Asignar</button>
+                                                                
+                                                            </a>
+                                                        </div>																					
                                                                                 </div>
                                                                                 <!--/span-->
 
@@ -178,8 +232,7 @@
                                                                         <div class="form-actions right">
                                                                             <!--<button type="button" class="btn default">Volver</button>-->
                                                                             <a href="<?php echo site_url('filial/listado'); ?>" class="btn default" role="button">Volver</a>
-                                                                            <button type="submit" class="btn blue">
-                                                                                <i class="fa fa-check"></i> Guardar</button>
+
                                                                         </div>
                                                                         <input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
                                                                     <?php echo form_close(); ?>

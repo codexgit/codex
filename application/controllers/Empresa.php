@@ -324,6 +324,7 @@ class Empresa extends CI_Controller {
 
 
 		$data['lstfiliales'] = $this->filial_model->get_filiales_empresa($idempresa);
+		$data['lstnotfiliales'] = $this->filial_model->not_get_filiales_empresa($idempresa);
 
 		$data['mensaje'] = "";
 		$data['divtipo'] = "alert alert-success alert-dismissable";
