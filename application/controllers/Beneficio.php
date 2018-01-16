@@ -8,6 +8,7 @@ class Beneficio extends CI_Controller {
 		$this->load->library('session');
 		$this->load->helper('url');
 		$this->load->helper('array');
+		$this->load->helper('date');
 
 		if ($this->session->userdata('usrsesion') == NULL){
 			redirect('/inicio/index','refresh');

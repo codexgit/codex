@@ -71,23 +71,39 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+																<!-- BENEFICIOSS -->
+																<?php foreach ($lstbeneficios as $beneficio): ?> 
                                                                 <tr class="odd gradeX">
-                                                                    <td> Beca Ind&iacute;gena </td>
-                                                                    <td> Educaci&oacute;n B&aacute;sica </td>
-                                                                    <td> 2017 </td>
-                                                                    <td> 01-07-2016 </td>
-                                                                    <td> 30-11-2016 </td>
+                                                                    <td> <!--Beca Ind&iacute;gena--> 			<?php echo $beneficio['benef_nombre'];?> </td>
+                                                                    <td> <!--Educaci&oacute;n B&aacute;sica-->  <?php echo $beneficio['subcat_benef_nombre'];?> </td>
+                                                                    <td> <!--2017-->							<?php echo $beneficio['benef_anio'];?> </td>
+                                                                    <td> <!--01-07-2016-->						<?php echo mdate('%d-%m-%Y ', $beneficio['benef_fec_iniciopos']);?> </td>
+                                                                    <td> <!--30-11-2016-->						<?php echo mdate('%d-%m-%Y ',$beneficio['benef_fec_finpos']);?> </td>
                                                                     <td>
-                                                                        <span class="label label-sm label-danger"> Bloqueado </span>
+                                                                        <?php 
+																			//CONTROL DEL ESTADO
+                                                                            if ($beneficio['benef_estado'] == 3){
+                                                                                echo '<span class="label label-sm label-danger"> Bloqueado </span>';
+                                                                            }
+																			elseif ($beneficio['benef_estado'] == 2){
+																				echo '<span class="label label-sm label-warning"> En procesamiento </span>';
+																			}
+                                                                            else{
+                                                                                echo '<span class="label label-sm label-success"> Activa </span>';                                          
+                                                                            }
+                                                                        ?>
                                                                     </td>
                                                                     <td>
                                                                         <div class="btn-group">
-                                                                        	&nbsp;&nbsp;&nbsp;
+                                                                        	
                                                                             <button class="btn btn-xs default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true"> 
                                                                             	Acciones
                                                                                 <i class="fa fa-angle-down"></i>
                                                                             </button>
                                                                             <ul class="dropdown-menu pull-left" role="menu">
+																				<?php 
+                                                                                    if ($beneficio['benef_estado'] == 3){
+                                                                                ?>
                                                                                 <li>
                                                                                     <a href="beneficios_detalle.html">
                                                                                         <i class="icon-book-open"></i> Detalle </a>
@@ -96,27 +112,28 @@
                                                                                     <a href="javascript:;">
                                                                                         <i class="icon-action-redo"></i> Activar </a>
                                                                                 </li>
-                                                                            </ul>                                                                            
-                                                                        </div>
-                                                                    </td>                                                                    
-                                                                </tr>
-                                                                <tr class="odd gradeX">
-                                                                    <td> Beca Ind&iacute;gena </td>
-                                                                    <td> Educaci&oacute;n Media </td>
-                                                                    <td> 2017 </td>
-                                                                    <td> 01-06-2016 </td>
-                                                                    <td> 30-10-2016 </td>
-                                                                    <td>
-                                                                        <span class="label label-sm label-success"> Activo </span>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="btn-group">
-                                                                        	&nbsp;
-                                                                            <button class="btn btn-xs default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true"> 
-                                                                            	Acciones
-                                                                                <i class="fa fa-angle-down"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu pull-left" role="menu">
+																				
+																				<?php
+                                                                                    }
+                                                                                    elseif ($beneficio['benef_estado'] == 2){
+                                                                                ?>
+																				
+																				<li>
+                                                                                    <a href="beneficios_detalle.html">
+                                                                                        <i class="icon-book-open"></i> Detalle </a>
+                                                                                </li>
+																				<li>
+                                                                                    <a href="javascript:;">
+                                                                                        <i class="icon-action-redo"></i> Activar </a>
+                                                                                </li>
+																				<li>
+                                                                                    <a href="javascript:;">
+                                                                                        <i class="icon-action-undo"></i> Bloquear </a>
+                                                                                </li>
+																				<?php
+                                                                                    }
+                                                                                    else{
+                                                                                ?>
                                                                                 <li>
                                                                                     <a href="beneficios_editar.html">
                                                                                         <i class="icon-pencil"></i> Editar datos </a>
@@ -129,12 +146,17 @@
                                                                                     <a href="javascript:;">
                                                                                         <i class="icon-action-undo"></i> Bloquear </a>
                                                                                 </li>
+																				<?php
+                                                                                    }
+                                                                                ?>
+																				
                                                                             </ul>
                                                                         </div>
-                                                                    </td>
+                                                                    </td>                                                                    
                                                                 </tr>
+																<?php endforeach; ?>
                                                                 <tr class="odd gradeX">
-                                                                    <td> Beca Presidente de la Rep&uacute;blica </td>
+                                                                    <td> #Beca Presidente de la Rep&uacute;blica </td>
                                                                     <td> Educaci&oacute;n Básica </td>
                                                                     <td> 2017 </td>
                                                                     <td> 10-08-2016 </td>
@@ -167,7 +189,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr class="odd gradeX">
-                                                                    <td> Beca JUNAEB para PSU </td>
+                                                                    <td> #Beca JUNAEB para PSU </td>
                                                                     <td> Educaci&oacute;n Media </td>
                                                                     <td> 2018 </td>
                                                                     <td> 08-06-2017  </td>
@@ -192,36 +214,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr class="odd gradeX">
-                                                                    <td> Beca Excelencia Académica </td>
-                                                                    <td> Educaci&oacute;n Media </td>
-                                                                    <td> 2017 </td>
-                                                                    <td> 01-11-2016 </td>
-                                                                    <td> 14-01-2017 </td>
-                                                                    <td>
-                                                                        <span class="label label-sm label-danger"> Bloqueado </span>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="btn-group">
-                                                                        	&nbsp;
-                                                                            <button class="btn btn-xs default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true"> 
-                                                                            	Acciones
-                                                                                <i class="fa fa-angle-down"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu pull-left" role="menu">
-                                                                                <li>
-                                                                                    <a href="beneficios_detalle.html">
-                                                                                        <i class="icon-book-open"></i> Detalle </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="javascript:;">
-                                                                                        <i class="icon-action-redo"></i> Activar </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr class="odd gradeX">
-                                                                    <td> Crédito con garantía estatal CAE </td>
+                                                                    <td> #Crédito con garantía estatal CAE </td>
                                                                     <td> Educaci&oacute;n Media </td>
                                                                     <td> 2018 </td>
                                                                     <td> 15-06-2017 </td>
@@ -246,7 +239,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr class="odd gradeX">
-                                                                    <td> Beca Juan Gómez Millas </td>
+                                                                    <td> #Beca Juan Gómez Millas </td>
                                                                     <td> Educaci&oacute;n Media </td>
                                                                     <td> 2017 </td>
                                                                     <td> 05-09-2016 </td>
@@ -279,7 +272,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr class="odd gradeX">
-                                                                    <td> Beca para hijos/as de profesionales de la educaci&oacute;n </td>
+                                                                    <td> #Beca para hijos/as de profesionales de la educaci&oacute;n </td>
                                                                     <td> Educaci&oacute;n Media </td>
                                                                     <td> 2018 </td>
                                                                     <td> 17-06-2017 </td>
@@ -312,7 +305,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr class="odd gradeX">
-                                                                    <td> Subsidio habitacional Sectores Medios </td>
+                                                                    <td> #Subsidio habitacional Sectores Medios </td>
                                                                     <td> Vivienda </td>
                                                                     <td> 2017 </td>
                                                                     <td> 01-01-2017  </td>
