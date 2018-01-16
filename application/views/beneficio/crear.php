@@ -3,11 +3,13 @@
     if (validation_errors() == ""){
 
         $idcategoria = "";
+		$idsubcategoria = "";
 		$nbeneficio = "";
     }
     else{
 
         $idcategoria = set_value('sel_categoria');
+		$idsubcategoria = set_value('sel_subcategoria');
 		$nbeneficio = set_value('txt_nbeneficio');
     }
 ?>

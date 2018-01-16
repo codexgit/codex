@@ -50,7 +50,6 @@ class Beneficio extends CI_Controller {
 		$this->load->model('beneficio_model');
 		
 		$data['lstcategorias'] = $this->param_model->get_categorias();
-		$data['lstsubcategorias'] = $this->param_model->get_subcategorias();
 		
 		$data['mensaje'] = "";
 		$data['divtipo'] = "alert alert-success alert-dismissable";
@@ -74,8 +73,8 @@ class Beneficio extends CI_Controller {
 			$this->form_validation->set_message('alpha-numeric','El campo {field} tiene caracteres');
 
 			if ($this->form_validation->run() == FALSE){
-				$data['lstcategorias'] = $this->param_model->get_categorias();
-				$data['lstsubcategorias'] = $this->param_model->get_subcategorias();
+				
+				$data['lstsubcategorias'] = $this->param_model->get_subcategorias_by_categoriaid();
 				$data['mensaje'] = "El formulario presenta errores de validación";
 				$data['divtipo'] = "alert alert-danger alert-dismissable";
 			}

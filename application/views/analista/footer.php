@@ -173,17 +173,17 @@
 							});
 						}
 					});
-				}); 
+				});
 				
 				
 				/* CAMBIAR CATEGORIA Y SUBCATEGORIA [V->BENEFICIO->CREAR]*/
 				$('#sel_categoria').change(function(){
-					var region = $(this).val();
+					var categoria = $(this).val();
 					// AJAX request
 					$.ajax({
 						url:'<?php echo base_url(); ?>/beneficio/getSubcategorias',
 						method: 'post',
-						data: {region: region},
+						data: {categoria: categoria},
 						dataType: 'json',
 						success: function(response){
 
@@ -196,7 +196,8 @@
 							});
 						}
 					});
-				}); 
+					//$('#sel_subcategoria').find('option').not(':first').remove();
+				});
 
 				
 			});

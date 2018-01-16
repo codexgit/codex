@@ -42,7 +42,7 @@ class Param_model extends CI_Model {
 		
 		public function get_subcategorias_by_categoria($postData){
             $this->db->select('subcat_beneficio_id,subcat_benef_nombre');
-            $this->db->where('cat_beneficio_id', $postData['cat_beneficio']);
+            $this->db->where('cat_beneficio_id', $postData['categoria']);
             $this->db->order_by('subcat_benef_nombre','asc');
             $q = $this->db->get('subcat_beneficio');
             $response = $q->result_array();
