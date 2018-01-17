@@ -31,7 +31,7 @@
                                             <i class="fa fa-circle"></i>
                                         </li>
                                         <li>
-                                            <span>Editar BeneficioD</span>
+                                            <span>Editar Beneficio</span>
                                         </li>
                                     </ul>
                                     <!-- END PAGE BREADCRUMBS -->
@@ -41,6 +41,19 @@
 
 
                                             <div class="row">
+											<?php 
+                                            if ($mensaje != NULL && $mensaje != ""){
+                                            ?>
+                                            <div class="col-md-12">
+                                                <div class="<?php echo $divtipo; ?>">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                                    <?php echo $mensaje; ?>
+                                                </div>                                                
+                                            </div>
+
+                                            <?php
+                                            }
+                                            ?>
                                                 <div class="col-md-12 col-sm-12">
 
                                                             <div class="portlet box red">
@@ -57,14 +70,40 @@
                                                                 </div>
                                                                 <div class="portlet-body form">
                                                                     <!-- BEGIN FORM-->
-                                                                    <form action="#" class="horizontal-form">
+                                                                    <?php
+                                                                        $attributes = array('class' => 'horizontal-form');
+                                                                        echo form_open('beneficio/editar', $attributes);
+                                                                    ?>
                                                                         <div class="form-body">
                                                                             <h3 class="form-section">Datos Generales</h3>
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label">Categoría </label>
-                                                                                        <span class="help-block"> Educación </span>
+                                                                                    <div class="form-group <?php if (form_error('sel_categoria') != ""){echo "has-error";} ?>">
+                                                                                        <label class="control-label">Categoría <span class="required" aria-required="true"> * </span></label>
+                                                                                        <select class="form-control" name="sel_categoria" id="sel_categoria">
+                                                                                            <option value="">Seleccione una opción</option>
+																							
+																							<?php 
+                                                                                                foreach ($lstcategorias as $categoria):
+                                                                                                    if ($categoria['cat_beneficio_id'] == $idcategoria){
+                                                                                                        echo "<option value='".$categoria['cat_beneficio_id']."' selected>".$categoria['cat_benef_nombre']."</option>";
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        echo "<option value='".$categoria['cat_beneficio_id']."'>".$categoria['cat_benef_nombre']."</option>";                             
+                                                                                                    }
+                                                                                                endforeach;
+                                                                                            ?>  
+																							
+																							
+                                                                                        </select>
+																						<?php
+                                                                                        if (form_error('sel_categoria') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('sel_categoria'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+                                                                                        <!--<span class="help-block"> Select your gender </span>-->
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->

@@ -42,6 +42,19 @@
 
 
                                     	<div class="row">
+											<?php 
+                                            if ($mensaje != null && $mensaje != ""){
+                                            ?>
+                                            <div class="col-md-12">
+                                                <div class="<?php echo $divtipo; ?>">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                                    <?php echo $mensaje; ?>
+                                                </div>                                                
+                                            </div>
+
+                                            <?php
+                                            }
+                                            ?>
                                         	<div class="col-md-12">
                                                 
                                                 
@@ -102,20 +115,25 @@
                                                                             </button>
                                                                             <ul class="dropdown-menu pull-left" role="menu">
 																				<?php 
-                                                                                    if ($beneficio['benef_estado'] == 3){
+                                                                                    if ($beneficio['benef_estado'] == 3){ //DESACTIVADO 
                                                                                 ?>
                                                                                 <li>
                                                                                     <a href="beneficios_detalle.html">
                                                                                         <i class="icon-book-open"></i> Detalle </a>
                                                                                 </li>
+																				<li>
+                                                                                    <a href="<?php echo site_url('beneficio/en_procesamiento/'.$beneficio['beneficio_id']); ?>">
+                                                                                        <i class="icon-refresh"></i> En procesamiento </a>
+                                                                                </li>
                                                                                 <li>
-                                                                                    <a href="javascript:;">
+                                                                                    <a href=" <?php echo site_url('beneficio/activar/'.$beneficio['beneficio_id']); ?> ">
+																					
                                                                                         <i class="icon-action-redo"></i> Activar </a>
                                                                                 </li>
 																				
 																				<?php
                                                                                     }
-                                                                                    elseif ($beneficio['benef_estado'] == 2){
+                                                                                    elseif ($beneficio['benef_estado'] == 2){ //EN PROCESAMIENTO
                                                                                 ?>
 																				
 																				<li>
@@ -123,27 +141,31 @@
                                                                                         <i class="icon-book-open"></i> Detalle </a>
                                                                                 </li>
 																				<li>
-                                                                                    <a href="javascript:;">
+                                                                                    <a href="<?php echo site_url('beneficio/activar/'.$beneficio['beneficio_id']); ?>">
                                                                                         <i class="icon-action-redo"></i> Activar </a>
                                                                                 </li>
 																				<li>
-                                                                                    <a href="javascript:;">
+                                                                                    <a href="<?php echo site_url('beneficio/desactivar/'.$beneficio['beneficio_id']); ?>">
                                                                                         <i class="icon-action-undo"></i> Bloquear </a>
                                                                                 </li>
 																				<?php
                                                                                     }
-                                                                                    else{
+                                                                                    else{	//ACTIVADO
                                                                                 ?>
                                                                                 <li>
-                                                                                    <a href="beneficios_editar.html">
+                                                                                    <a href="<?php echo site_url('beneficio/editar/'.$beneficio['beneficio_id']);?> ">
                                                                                         <i class="icon-pencil"></i> Editar datos </a>
                                                                                 </li>
                                                                                 <li>
-                                                                                    <a href="beneficios_restricciones.html">
+                                                                                    <a href="<?php echo site_url('beneficio/restricciones/'.$beneficio['beneficio_id']); ?>">
                                                                                         <i class="icon-list"></i> Editar restricciones </a>
                                                                                 </li>
+																				<li>
+                                                                                    <a href="<?php echo site_url('beneficio/en_procesamiento/'.$beneficio['beneficio_id']); ?>">
+                                                                                        <i class="icon-refresh"></i> En procesamiento </a>
+                                                                                </li>
                                                                                 <li>
-                                                                                    <a href="javascript:;">
+                                                                                    <a href="<?php echo site_url('beneficio/desactivar/'.$beneficio['beneficio_id']); ?>">
                                                                                         <i class="icon-action-undo"></i> Bloquear </a>
                                                                                 </li>
 																				<?php

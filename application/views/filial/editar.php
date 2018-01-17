@@ -176,7 +176,7 @@
                                                                                         <select class="form-control" name="sel_comuna" id="sel_comuna">
                                                                                             <option value="">Seleccione una opci&oacute;n</option>
                                                                                             <?php 
-																								if(isset(lstcomunas) ){
+																								if(isset($lstcomunas) ){
 																									foreach ($lstcomunas as $comuna):
 																										if ($comuna['comuna_id'] == $idcomuna){
 																											echo "<option value='".$comuna['comuna_id']."' selected>".$comuna['nombre_comuna']."</option>";
