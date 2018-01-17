@@ -174,14 +174,16 @@
                                                                                         <select class="form-control" name="sel_comuna" id="sel_comuna">
                                                                                             <option value="">Seleccione una opci&oacute;n</option>
                                                                                             <?php 
-                                                                                                foreach ($lstcomunas as $comuna):
-                                                                                                    if ($comuna['comuna_id'] == $idcomuna){
-                                                                                                        echo "<option value='".$comuna['comuna_id']."' selected>".$comuna['nombre_comuna']."</option>";
-                                                                                                    }
-                                                                                                    else{
-                                                                                                        echo "<option value='".$comuna['comuna_id']."'>".$comuna['nombre_comuna']."</option>";                             
-                                                                                                    }
-                                                                                                endforeach;
+																								if(isset(lstcomunas) ){
+																									foreach ($lstcomunas as $comuna):
+																										if ($comuna['comuna_id'] == $idcomuna){
+																											echo "<option value='".$comuna['comuna_id']."' selected>".$comuna['nombre_comuna']."</option>";
+																										}
+																										else{
+																											echo "<option value='".$comuna['comuna_id']."'>".$comuna['nombre_comuna']."</option>";                             
+																										}
+																									endforeach;
+																								}
                                                                                             ?>                                    
                                                                                         </select>
                                                                                         <?php
