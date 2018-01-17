@@ -321,17 +321,23 @@ class Empresa extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('param_model');
 		$this->load->model('filial_model');
-
-
+		$this->load->model('empresa_filial_model');
 		
+		if (isset($_POST) != "" && $this->input->post('sel_filial') > 0){
+			$query=$this->input->post('sel_filial');
+			$data['datos_asignar'] = $this->empresa_filial_model->asignar_filial($idempresa,$query);
+			$data['mensaje'] = "La empresa se ha asignado existosamente a la filial";
+			$data['divtipo'] = "alert alert-success alert-dismissable";
+		}
+		else{
+			$data['mensaje'] = "";
+			$data['divtipo'] = "alert alert-success alert-dismissable";
+		}
+			
+		
+		$data['id_empresa'] = $idempresa;
 		$data['lstfiliales'] = $this->filial_model->get_filiales_empresa($idempresa);
 		$data['lstnotfiliales'] = $this->filial_model->not_get_filiales_empresa($idempresa);
-		
-		
-		
-		$data['mensaje'] = "";
-		$data['divtipo'] = "alert alert-success alert-dismissable";
-		$data['id_empresa'] = $idempresa;
 
 		$this->load->view('analista/header',$data);
 		$this->load->view('empresa/asignar',$data);

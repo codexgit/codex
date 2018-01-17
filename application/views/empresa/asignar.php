@@ -91,7 +91,7 @@
                                                                 <div class="portlet-body form">
                                                                     <?php
                                                                         $attributes = array('class' => 'horizontal-form');
-                                                                        echo form_open('empresa/asignar_filial/'.$id_empresa.'', $attributes);
+                                                                        echo form_open('empresa/asignar/'.$id_empresa.'', $attributes);
                                                                     ?>                                                                    
                                                                     <!-- BEGIN FORM-->
                                                                     
@@ -171,7 +171,7 @@
                                                                 <?php foreach ($lstfiliales as $filial): ?>
 
                                                                 <tr class="odd gradeX">
-																	<td> <?php echo $filial['fil_rut']; ?> </td>
+																	<td> <?php echo $filial['fil_rut'].'-'.$filial['fil_dv']; ?> </td>
                                                                     <td> <?php echo $filial['fil_nombre']; ?> </td>
                                                                     
                                                                     
@@ -217,11 +217,11 @@
                                                                                     </div>
 																					
 																					<div class="actions">
-																						<a href="<?php echo site_url('empresa/asignar_filial/'.$id_empresa.''); ?>" >
+																						<!--<a href="<?php //echo site_url('empresa/asignar_filial/'.$id_empresa.''); ?>" >-->
 																							<button type="submit" class="btn blue" >
 																							<i class="fa fa-check"></i> Asignar</button>
 																							
-																						</a> 
+																						<!--</a>--> 
 																					</div>																					
                                                                                 </div>
                                                                                 <!--/span-->
