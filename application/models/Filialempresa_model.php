@@ -6,7 +6,7 @@ class Filialempresa_model extends CI_Model {
             $this->load->database();
         }
 
-        public function get_filialempresa_by_id($idfilempresa)
+        public function get_filialempresa_by_id($idfilempresa) //Obtiene todas las filiales asociadas a una empresa en particular
         {
             $this->db->select('*');
             $this->db->from('filial_empresa');

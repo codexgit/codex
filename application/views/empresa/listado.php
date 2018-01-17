@@ -27,7 +27,7 @@
                                     <!-- BEGIN PAGE BREADCRUMBS -->
                                     <ul class="page-breadcrumb breadcrumb">
                                         <li>
-                                            <a href="<?php echo site_url('filial/listado'); ?>">Filiales</a>
+                                            <a href="<?php echo site_url('empresa/listado'); ?>">Filiales</a>
                                             <i class="fa fa-circle"></i>
                                         </li>
                                         <li>
@@ -76,8 +76,8 @@
                                                                     <th> RUT Empresa </th>
                                                                     <th> Nombre Empresa </th>
                                                                     <th> Sucursal Empresa </th>
-                                                                    <th> RUT Filial</th>
-                                                                    <th> Nombre Filial </th>
+																	<th> Cantidad de filiales </th>
+
                                                                     
                                                                     
                                                                     <th> Estado </th>
@@ -93,8 +93,8 @@
                                                                     <td> <?php echo $empresa['emp_rut'].'-'.$empresa['emp_dv'];?> </td>
                                                                     <td> <?php echo $empresa['emp_nombre']; ?></td>
                                                                     <td> <?php echo $empresa['nombre_comuna']; ?> </td> 
-                                                                    <td> <?php echo $empresa['fil_rut']; ?> </td>
-                                                                    <td> <?php echo $empresa['fil_nombre']; ?> </td>
+																	<td> <?php echo $cant_filiales['filiales']; ?> </td> 
+
                                                                     
                                                                     
                                                                     <td>

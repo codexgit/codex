@@ -30,6 +30,7 @@ class Empresa extends CI_Controller {
 
 		$this->load->model('empresa_model');
 		$data['lstempresas'] = $this->empresa_model->get_empresas_filial();
+		$data['cant_filiales'] = $this->empresa_model->get_cant_filiales();
 
 		$data['mensaje'] = "";
 		$data['divtipo'] = "alert alert-success alert-dismissable";
@@ -86,7 +87,7 @@ class Empresa extends CI_Controller {
 			}
 			else{
 				$empresa = array(
-					'emp_nombre' => $razonsocial,
+					'emp_nombrenombre' => $razonsocial,
 					'emp_rut' => $rut_dv[0],
 					'emp_dv' => $rut_dv[1],
 					'emp_direccion' => $direccion,

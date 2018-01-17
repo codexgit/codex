@@ -6,7 +6,7 @@ class Empresa_model extends CI_Model {
             $this->load->database();
         }
 
-        public function get_filiales(){
+        public function get_filiales(){ //Devuelve un arreglo con todas las filiales 
             $this->db->select('*');
             $this->db->from('filial');
             $this->db->join('comuna','filial.comuna_id = comuna.comuna_id','left');
@@ -14,6 +14,7 @@ class Empresa_model extends CI_Model {
             //$query = $this->db->get('filial');
             return $query->result_array();
         }
+		
 
         public function activar_empresa($idempresa){
             $this->db->set('emp_estado',1,FALSE);
@@ -55,7 +56,7 @@ class Empresa_model extends CI_Model {
 
 			
 
-        public function get_empresas_filial(){
+        public function get_empresas_filial(){  //Devuelve un arreglo de las filiales asociadas a la empresa
 
             $this->db->select('*');
             $this->db->from('filial_empresa');
@@ -69,6 +70,17 @@ class Empresa_model extends CI_Model {
         }
  
 
+ 		public function get_cant_filiales(){  //Devuelve un entero que denota la cantidad de filiales a las cuales está asociada la empresaS
+
+			$this->db->select('empresa.empresa_id,empresa.emp_nombre,empresa.emp_rut,empresa.emp_dv,empresa.comuna_id,count(filial_empresa.filial_id) as filiales from empresa left join filial_empresa on empresa.empresa_id = filial_empresa.empresa_id GROUP by empresa.empresa_id,empresa.emp_nombre,empresa.emp_rut,empresa.emp_dv,empresa.comuna_id');
+			
+			
+			
+            $query = $this->db->get();
+            //$query = $this->db->get('filial');
+            return $query->result_array();			
+		}
+ 
         public function actualizar_empresa($empresa, $idempresa){
             $this->db->where('empresa_id',$idempresa);
             return $this->db->update('empresa',$empresa);
