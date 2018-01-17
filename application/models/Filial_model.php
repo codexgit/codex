@@ -48,12 +48,14 @@ class Filial_model extends CI_Model {
         }
         public function get_filiales_empresa($idempresa){			//Muestra las filiales asociadas a una empresa
 
-            $this->db->select('*');
+            /*$this->db->select('*');
             $this->db->from('filial_empresa');
             
             $this->db->join('empresa','empresa.empresa_id = filial_empresa.empresa_id','inner');
             $this->db->join('filial','filial.filial_id = filial_empresa.filial_id','inner');            
             $this->db->where('filial_empresa.empresa_id',$idempresa);
+			*/
+			$this->db->select('* from filial where filial_id in (select filial_id from filial_empresa where empresa_id = '.$idempresa.')');
             $query = $this->db->get();
             //$query = $this->db->get('filial');
             return $query->result_array();

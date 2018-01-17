@@ -327,7 +327,6 @@ class Empresa extends CI_Controller {
 		$data['lstfiliales'] = $this->filial_model->get_filiales_empresa($idempresa);
 		$data['lstnotfiliales'] = $this->filial_model->not_get_filiales_empresa($idempresa);
 		
-
 		
 		
 		$data['mensaje'] = "";
@@ -340,6 +339,8 @@ class Empresa extends CI_Controller {
 
 
 	}
+	
+	
 	public function asignar_filial($idempresa){
 		
 		$data['sesionusuario'] = $this->session->userdata('usrsesion');
@@ -353,7 +354,7 @@ class Empresa extends CI_Controller {
 		$data['datos_asignar'] = $this->empresa_filial_model->asignar_filial($idempresa,$query);
 		
 		$this->load->view('analista/header',$data);
-		$this->load->view('empresa/listado',$data);
+		$this->load->view('empresa/asignar',$data);
 		$this->load->view('analista/footer',$data);
 	}
 	

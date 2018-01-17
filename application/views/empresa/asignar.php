@@ -91,7 +91,7 @@
                                                                 <div class="portlet-body form">
                                                                     <?php
                                                                         $attributes = array('class' => 'horizontal-form');
-                                                                        echo form_open('empresa/asignar/'.$id_empresa.'', $attributes);
+                                                                        echo form_open('empresa/asignar_filial/'.$id_empresa.'', $attributes);
                                                                     ?>                                                                    
                                                                     <!-- BEGIN FORM-->
                                                                     
@@ -217,7 +217,7 @@
                                                                                     </div>
 																					
 																					<div class="actions">
-																						<a href="<?php echo site_url('empresa/asignar/'.$id_empresa.''); ?>" >
+																						<a href="<?php echo site_url('empresa/asignar_filial/'.$id_empresa.''); ?>" >
 																							<button type="submit" class="btn blue" >
 																							<i class="fa fa-check"></i> Asignar</button>
 																							
