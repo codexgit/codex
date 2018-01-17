@@ -30,7 +30,26 @@ class Param_model extends CI_Model {
             return $query->first_row();
         }
 
-        public function get_comunas_by_region($postData){
+        public function get_comunas_by_regionid($idregion){
+            $this->db->select('*');
+            $this->db->where('region_id', $idregion);
+            $this->db->order_by('nombre_comuna','asc');
+            $q = $this->db->get('comuna');
+            $response = $q->result_array();
+            return $response;
+        }
+
+		public function get_subcategorias_by_categoriaid($idcategoria){
+            $this->db->select('*');
+            $this->db->where('cat_beneficio_id', $idcategoria);
+            $this->db->order_by('subcat_benef_nombre','asc');
+            $q = $this->db->get('subcat_beneficio');
+            $response = $q->result_array();
+            return $response;
+        }
+		
+		//JSON
+		public function get_comunas_by_region($postData){
             $this->db->select('comuna_id,nombre_comuna');
             $this->db->where('region_id', $postData['region']);
             $this->db->order_by('nombre_comuna','asc');
@@ -49,16 +68,5 @@ class Param_model extends CI_Model {
 
             return $response;
         }
-		
-
-        public function get_comunas_by_regionid($idregion){
-            $this->db->select('*');
-            $this->db->where('region_id', $idregion);
-            $this->db->order_by('nombre_comuna','asc');
-            $q = $this->db->get('comuna');
-            $response = $q->result_array();
-            return $response;
-        }
-
-
+		//FIN JSON
 }

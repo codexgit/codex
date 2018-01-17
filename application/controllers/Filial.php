@@ -76,11 +76,13 @@ class Filial extends CI_Controller {
 			$this->form_validation->set_message('validar_rut','El campo {field} no presenta un valor correcto');
 
 			if ($this->form_validation->run() == FALSE){
+				
 				$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
 				$data['mensaje'] = "El formulario presenta errores de validación";
 				$data['divtipo'] = "alert alert-danger alert-dismissable";
 			}
 			else{
+				
 				$filial = array(
 					'fil_nombre' => $razonsocial,
 					'fil_rut' => $rut_dv[0],

@@ -2,15 +2,16 @@
 
     if (validation_errors() == ""){
 
-        $idcategoria = "";
+        $idcategoria 	= "";
 		$idsubcategoria = "";
-		$nbeneficio = "";
+		$nbeneficio		= "";
+
     }
     else{
 
-        $idcategoria = set_value('sel_categoria');
-		$idsubcategoria = set_value('sel_subcategoria');
-		$nbeneficio = set_value('txt_nbeneficio');
+        $idcategoria	 = set_value('sel_categoria');
+		$idsubcategoria  = set_value('sel_subcategoria');
+		$nbeneficio		 = set_value('txt_nbeneficio');
     }
 ?>
 
@@ -96,7 +97,7 @@
                                                                             <h3 class="form-section">Datos Generales</h3>
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <div class="form-group ">
+                                                                                    <div class="form-group <?php if (form_error('sel_categoria') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Categoría <span class="required" aria-required="true"> * </span></label>
                                                                                         <select class="form-control" name="sel_categoria" id="sel_categoria">
                                                                                             <option value="">Seleccione una opción</option>
@@ -114,28 +115,45 @@
 																							
 																							
                                                                                         </select>
+																						<?php
+                                                                                        if (form_error('sel_categoria') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('sel_categoria'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
                                                                                         <!--<span class="help-block"> Select your gender </span>-->
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                 <div class="col-md-6">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group <?php if (form_error('sel_subcategoria') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Subcategoría <span class="required" aria-required="true"> * </span></label>
                                                                                         <select class="form-control" name="sel_subcategoria" id="sel_subcategoria">
                                                                                         <option value="">Seleccione una opción</option>
 																							<?php
-                                                                                                foreach ($lstsubcategorias as $subcategoria):
-                                                                                                    if ($subcategoria['subcat_beneficio_id'] == $idsubcategoria){
-                                                                                                        echo "<option value='".$subcategoria['subcat_beneficio_id']."' selected>".$subcateogria['subcat_benef_nombre']."</option>";
-                                                                                                    }
-                                                                                                    else{
-                                                                                                        echo "<option value='".$subcategoria['subcat_beneficio_id']."'>".$subcategoria['subcat_benef_nombre']."</option>";                             
-                                                                                                    }
-                                                                                                endforeach;
+																								if(isset($lstsubcategorias)){
+																									foreach ($lstsubcategorias as $subcategoria):
+																										if ($subcategoria['subcat_beneficio_id'] == $idsubcategoria){
+																											echo "<option value='".$subcategoria['subcat_beneficio_id']."' selected>".$subcateogria['subcat_benef_nombre']."</option>";
+																										}
+																										else{
+																											echo "<option value='".$subcategoria['subcat_beneficio_id']."'>".$subcategoria['subcat_benef_nombre']."</option>";                             
+																										}
+																									endforeach;
+																								}
                                                                                             ?>  
 																							
 																							
                                                                                         </select>
+																						<?php
+                                                                                        if (form_error('sel_subcategoria') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('sel_subcategoria'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+																						
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->

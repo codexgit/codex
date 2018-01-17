@@ -64,6 +64,9 @@ class Beneficio extends CI_Controller {
 			$ben_fec_inip = $this->input->post('txt_inip');
 			$ben_fec_finp = $this->input->post('txt_finp');
 			
+			$categoria	  = $this->input->post('sel_categoria');
+			$subcategoria = $this->input->post('sel_subcategoria');
+			
 			//INICIO VALIDACIONES
 			$this->form_validation->set_rules('txt_nbeneficio','Nombre Beneficio','required|alpha');
 			$this->form_validation->set_rules('txt_anio','Año','required');
@@ -74,13 +77,12 @@ class Beneficio extends CI_Controller {
 
 			if ($this->form_validation->run() == FALSE){
 				
-				$data['lstsubcategorias'] = $this->param_model->get_subcategorias_by_categoriaid();
+				$data['lstsubcategorias'] = $this->param_model->get_subcategorias_by_categoriaid($categoria);
 				$data['mensaje'] = "El formulario presenta errores de validación";
 				$data['divtipo'] = "alert alert-danger alert-dismissable";
 			}
 			else{
 				
-			
 				$beneficio = array(
 					'benef_nombre' 			=> $ben_nom,
 					'benef_anio' 			=> $ben_anio,
