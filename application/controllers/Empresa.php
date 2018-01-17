@@ -177,8 +177,8 @@ class Empresa extends CI_Controller {
 		$this->load->model('empresa_model');
 
 
-		if ($this->input->post('hdn_idfilial') != "" && $this->input->post('hdn_idfilial') > 0){
-			$idfilial = $this->input->post('hdn_idfilial');
+		if ($this->input->post('hdn_idempresa') != "" && $this->input->post('hdn_idempresa') > 0){
+			$idempresa = $this->input->post('hdn_idempresa');
 			$razonsocial = $this->input->post('txt_rsocial');
 			$rut_dv = explode("-",$this->input->post('txt_rut'));
 
@@ -204,26 +204,26 @@ class Empresa extends CI_Controller {
 			if ($this->form_validation->run() == FALSE){
 				$data['lstregiones'] = $this->param_model->get_regiones();
 				$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
-				$data['lstfiliales'] = $this->filial_model->get_filiales();
+				$data['lstempresas'] = $this->empresa_model->get_empresas();
 				$data['mensaje'] = "El formulario presenta errores de validación";
 				$data['divtipo'] = "alert alert-danger alert-dismissable";
 
 				$this->load->view('analista/header',$data);
-				$this->load->view('filial/editar',$data);
+				$this->load->view('empresa/editar',$data);
 				$this->load->view('analista/footer',$data);
 
 			}
 			else{
-				$filial = array(
-					'fil_nombre' => $razonsocial,
-					'fil_rut' => $rut_dv[0],
-					'fil_dv' => $rut_dv[1],
-					'fil_direccion' => $direccion,
+				$empresa = array(
+					'emp_nombre' => $razonsocial,
+					'emp_rut' => $rut_dv[0],
+					'emp_dv' => $rut_dv[1],
+					'emp_direccion' => $direccion,
 					'comuna_id' => $comuna,
-					'fil_estado' => 1 
+					'emp_estado' => 1 
 				);
 
-				$res = $this->filial_model->actualizar_filial($filial,$idfilial);
+				$res = $this->empresa_model->actualizar_empresa($empresa,$idempresa);
 
 				if ($res == 1){
 					$data['mensaje'] = "La empresa ha sido editada exitosamente";
@@ -233,11 +233,12 @@ class Empresa extends CI_Controller {
 					$data['mensaje'] = "Ocurrió un error al editar el registro";
 					$data['divtipo'] = "alert alert-danger alert-dismissable";
 				}
-
-				$data['lstfiliales'] = $this->filial_model->get_filiales();
+				
+				
+				$data['lstempresas'] = $this->empresa_model->get_empresas();
 
 				$this->load->view('analista/header',$data);
-				$this->load->view('filial/listado',$data);
+				$this->load->view('empresa/listado',$data);
 				$this->load->view('analista/footer',$data);
 
 			}
@@ -245,14 +246,14 @@ class Empresa extends CI_Controller {
 		}
 		else{
 
-			$cantfilial = $this->filial_model->get_cant_filial_by_id($idfilial);
+			$cantempresas = $this->empresa_model->get_cant_empresa_by_id($idempresa);
 
-			if ($idfilial != NULL && $idfilial > 0 && $cantfilial == 1){
+			if ($idempresa != NULL && $idempresa > 0 && $cantempresas == 1){
 
 				$data['lstregiones'] = $this->param_model->get_regiones();
-				$regfilial = $this->filial_model->get_filial_by_id($idfilial);
-				$data['regfilial'] = $regfilial;
-				$regcomuna = $this->param_model->get_comuna_by_comunaid($regfilial->comuna_id);
+				$regempresa = $this->empresa_model->get_empresa_by_id($idempresa);
+				$data['regempresa'] = $regempresa;
+				$regcomuna = $this->param_model->get_comuna_by_comunaid($regempresa->comuna_id);
 				$data['regcomuna'] = $regcomuna;
 				$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($regcomuna->region_id);
 
@@ -260,7 +261,7 @@ class Empresa extends CI_Controller {
 				$data['divtipo'] = "alert alert-success alert-dismissable";
 
 				$this->load->view('analista/header',$data);
-				$this->load->view('filial/editar',$data);
+				$this->load->view('empresa/editar',$data);
 				$this->load->view('analista/footer',$data);
 
 			}
@@ -268,16 +269,18 @@ class Empresa extends CI_Controller {
 
 				$data['mensaje'] = "Ocurrió un error al procesar la solicitud";
 				$data['divtipo'] = "alert alert-danger alert-dismissable";
-
-				$data['lstfiliales'] = $this->filial_model->get_filiales();
+				
+				$data['lstempresas'] = $this->empresa_model->get_empresas();
 
 				$this->load->view('analista/header',$data);
-				$this->load->view('filial/listado',$data);
+				$this->load->view('empresa/listado',$data);
 				$this->load->view('analista/footer',$data);
 
 			}
+			
 
 		}
+		
 
 	}
 
@@ -345,27 +348,10 @@ class Empresa extends CI_Controller {
 
 
 	}
+}
 	
-	
-	public function asignar_filial($idempresa){
-		
-		$data['sesionusuario'] = $this->session->userdata('usrsesion');
-		$this->load->library('form_validation');
-		$this->load->helper('form');
-		$this->load->model('param_model');	
-		$this->load->model('empresa_filial_model');
-		//$query->this->input->post('sel_filial');
-		$query=$_POST['sel_filial'];
-			
-		$data['datos_asignar'] = $this->empresa_filial_model->asignar_filial($idempresa,$query);
-		
-		$this->load->view('analista/header',$data);
-		$this->load->view('empresa/asignar',$data);
-		$this->load->view('analista/footer',$data);
-	}
 	
 
-}
 
 
 

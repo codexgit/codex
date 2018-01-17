@@ -4,14 +4,14 @@
         $rsocial = "";
         $rut = "";
         $direccion = "";
-        $idfilial = "";
+        $idempresa = "";
  
     }
     else{
         $rsocial = set_value('txt_rsocial');
         $rut = set_value('txt_rut');
         $direccion = set_value('txt_direccion');
-        $idfilial = set_value('sel_filial');
+        $idempresa = set_value('sel_empresa');
 
     }
 ?>
@@ -91,7 +91,7 @@
                                                                 <div class="portlet-body form">
                                                                     <?php
                                                                         $attributes = array('class' => 'horizontal-form');
-                                                                        echo form_open('empresa/asignar/'.$id_empresa.'', $attributes);
+                                                                        echo form_open('empresa/editar/', $attributes);
                                                                     ?>                                                                    
                                                                     <!-- BEGIN FORM-->
                                                                     
@@ -146,97 +146,20 @@
                                                                             <!--/row-->   
 																			
 																			
-                                                <!-- BEGIN EXAMPLE TABLE PORTLET-->
-											<div class="col-md-6">	
-                                                <div class="portlet box blue">
-												
-                                                    <div class="portlet-title">
-                                                        <div class="caption">
-                                                            <i class="fa fa-th-large"></i>Filiales asociadas
-                                                    	</div>
+                                              
+     
 
-                                                    </div>
-                                            </div>        
-													<div class="portlet-body">
-                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_3">
-                                                            <thead>
-                                                                <tr>
-
-                                                                    <th> RUT Filial</th>
-                                                                    <th> Nombre Filial </th>                                                   
-                                                                    
-                                                                   
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-
-
-                                                                <?php foreach ($lstfiliales as $filial): ?>
-
-                                                                <tr class="odd gradeX">
-																	<td> <?php echo $filial['fil_rut'].'-'.$filial['fil_dv']; ?> </td>
-                                                                    <td> <?php echo $filial['fil_nombre']; ?> </td>
-                                                                    
-                                                                    
    
-
-    
-                                                                    
-                                                        
-                                                                </tr>
-                                                                <?php endforeach; ?>
-                                                                <!--- FIN MOTOR -->
-                                                                
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                                <!-- END EXAMPLE TABLE PORTLET-->       
 																			
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group <?php if (form_error('sel_filial') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Asignar filial <span class="required" aria-required="true"> * </span></label>
-                                                                                        <select class="form-control" name="sel_filial" id="sel_filial">
-                                                                                            <option value="">Seleccione una opci&oacute;n</option>
-                                                                                            <?php 
-                                                                                                foreach ($lstnotfiliales as $filial):
-                                                                                                    if ($filial['filial_id'] == $idfilial){
-                                                                                                        echo "<option value='".$filial['filial_id']."' selected>".$filial['fil_nombre']."</option>";
-                                                                                                    }
-                                                                                                    else{
-                                                                                                        echo "<option value='".$filial['filial_id']."'>".$filial['fil_nombre']."</option>";                             
-                                                                                                    }
-                                                                                                endforeach;
-                                                                                            ?>
-                                                                                        </select>
-                                                                                        <?php
-                                                                                        if (form_error('sel_filial') != NULL){
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('sel_filial'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
-																					
-																					<div class="actions">
-																						<!--<a href="<?php //echo site_url('empresa/asignar_filial/'.$id_empresa.''); ?>" >-->
-																							<button type="submit" class="btn blue" >
-																							<i class="fa fa-check"></i> Asignar</button>
-																							
-																						<!--</a>--> 
-																					</div>																					
-                                                                                </div>
-                                                                                <!--/span-->
 
-                                                                            </div>
-                                                                            <!--/row-->
-                                                                        </div>
+
                                                                         <div class="form-actions right">
                                                                             <!--<button type="button" class="btn default">Volver</button>-->
-                                                                            <a href="<?php echo site_url('filial/listado'); ?>" class="btn default" role="button">Volver</a>
-
+                                                                            <a href="<?php echo site_url('empresa/listado'); ?>" class="btn default" role="button">Volver</a>
+                                                                            <button type="submit" class="btn blue">
+                                                                                <i class="fa fa-check"></i> Guardar</button>
                                                                         </div>
+																		
                                                                         <input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
                                                                     <?php echo form_close(); ?>
                                                                     <!-- END FORM-->
@@ -265,3 +188,5 @@
                         <!-- END QUICK SIDEBAR -->
                     </div>
                     <!-- END CONTAINER -->
+					
+			

@@ -30,8 +30,8 @@ class Empresa_model extends CI_Model {
         public function agregar_empresa($empresa){
             return $this->db->insert('empresa',$empresa);
         }
-
-        
+		
+		        
         public function get_empresas(){
 
             $this->db->select('*');
@@ -40,7 +40,20 @@ class Empresa_model extends CI_Model {
             $query = $this->db->get();
             //$query = $this->db->get('filial');
             return $query->result_array();
-        }     
+        }   		
+
+        public function get_cant_empresa_by_id($idempresa){
+            $query = $this->db->get_where('empresa',array('empresa_id' => $idempresa, 'emp_estado' => 1));
+            return $query->num_rows();        
+		}
+
+        public function get_empresa_by_id($idempresa){
+            $query = $this->db->get_where('empresa',array('empresa_id' => $idempresa));
+            return $query->first_row();
+        }
+		
+
+			
 
         public function get_empresas_filial(){
 
@@ -54,7 +67,6 @@ class Empresa_model extends CI_Model {
             //$query = $this->db->get('filial');
             return $query->result_array();
         }
-
  
 
         public function actualizar_empresa($empresa, $idempresa){
