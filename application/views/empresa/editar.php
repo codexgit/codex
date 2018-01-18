@@ -5,14 +5,17 @@
         $rut = $regempresa->emp_rut."-".$regempresa->emp_dv;
         $direccion = $regempresa->emp_direccion;
         $idempresa = $regempresa->empresa_id;
- 
+        $idregion = $regcomuna->region_id;
+        $idcomuna = $regempresa->comuna_id;
+
     }
     else{
         $rsocial = set_value('txt_rsocial');
         $rut = set_value('txt_rut');
         $direccion = set_value('txt_direccion');
         $idempresa = set_value('sel_empresa');
-
+        $idregion = set_value('sel_region');
+        $idcomuna = set_value('sel_comuna');
     }
 ?>
 
@@ -94,13 +97,18 @@
                                                                         echo form_open('empresa/editar/', $attributes);
                                                                     ?>                                                                    
                                                                     <!-- BEGIN FORM-->
+																	                                                                    
+                                                                    <?php
+                                                                        $attributes = array('class' => 'horizontal-form');
+                                                                        echo form_open('empresa/editar', $attributes);
+                                                                    ?>
                                                                     
                                                                         <div class="form-body">
                                                                             <h3 class="form-section">Datos de la empresa</h3>
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group <?php if (form_error('txt_rsocial') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Nombre Empresa </label>
+                                                                                        <label class="control-label">Nombre Empresa <span class="required" aria-required="true"> * </span></label>
                                                                                         <input type="text" name="txt_rsocial" id="txt_rsocial" class="form-control" placeholder="" value="<?php echo $rsocial; ?>">
                                                                                         <?php
                                                                                         if (form_error('txt_rsocial') != NULL){
@@ -114,7 +122,7 @@
                                                                                 <!--/span-->
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group <?php if (form_error('txt_rut') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">RUT Empresa </label>
+                                                                                        <label class="control-label">RUT Empresa <span class="required" aria-required="true"> * </span> </label>
                                                                                         <input type="text" name="txt_rut" id="txt_rut" class="form-control" placeholder="Ej: 12345678-9" value="<?php echo $rut; ?>">
                                                                                         <?php
                                                                                         if (form_error('txt_rut') != NULL){
@@ -144,7 +152,63 @@
                                                                                 </div>
                                                                             </div>
                                                                             <!--/row-->   
-																			
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group <?php if (form_error('sel_region') != ""){echo "has-error";} ?>">
+                                                                                        <label class="control-label">Regi&oacute;n <span class="required" aria-required="true"> * </span></label>
+                                                                                        <select class="form-control" name="sel_region" id="sel_region">
+                                                                                            <option value="">Seleccione una opci&oacute;n</option>
+                                                                                            <?php 
+                                                                                                foreach ($lstregiones as $region):
+                                                                                                    if ($region['region_id'] == $idregion){
+                                                                                                        echo "<option value='".$region['region_id']."' selected>".$region['codigo_region']." - ".$region['nombre_region']."</option>";
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        echo "<option value='".$region['region_id']."'>".$region['codigo_region']." - ".$region['nombre_region']."</option>";                             
+                                                                                                    }
+                                                                                                endforeach;
+                                                                                            ?>
+                                                                                        </select>
+                                                                                        <?php
+                                                                                        if (form_error('sel_region') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('sel_region'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group <?php if (form_error('sel_comuna') != ""){echo "has-error";} ?>">
+                                                                                        <label class="control-label">Comuna <span class="required" aria-required="true"> * </span></label>
+                                                                                        <select class="form-control" name="sel_comuna" id="sel_comuna">
+                                                                                            <option value="">Seleccione una opci&oacute;n</option>
+                                                                                            <?php 
+																								if(isset($lstcomunas) ){
+																									foreach ($lstcomunas as $comuna):
+																										if ($comuna['comuna_id'] == $idcomuna){
+																											echo "<option value='".$comuna['comuna_id']."' selected>".$comuna['nombre_comuna']."</option>";
+																										}
+																										else{
+																											echo "<option value='".$comuna['comuna_id']."'>".$comuna['nombre_comuna']."</option>";                             
+																										}
+																									endforeach;
+																								}
+                                                                                            ?>                                    
+                                                                                        </select>
+                                                                                        <?php
+                                                                                        if (form_error('sel_comuna') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('sel_comuna'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!--/span-->
+                                                                            </div>
+                                                                            <!--/row-->																			
 																			
                                               
      
@@ -160,7 +224,7 @@
                                                                                 <i class="fa fa-check"></i> Guardar</button>
                                                                         </div>
 																		
-                                                                        <input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
+                                                                        <input type="hidden" name="hdn_idempresa" id="hdn_idempresa" value="<?php echo $idempresa; ?>">
                                                                     <?php echo form_close(); ?>
                                                                     <!-- END FORM-->
                                                                 </div>

@@ -62,9 +62,7 @@ class Filial_model extends CI_Model {
         } 
 		
         public function not_get_filiales_empresa($idempresa){ 		//Muestra las filiales que no están asociadas a la empresa
-			
-		
-			
+					
 			$this->db->select('* from filial where filial_id not in (select filial_id from filial_empresa where empresa_id = '.$idempresa.')');
 			$query = $this->db->get();
 			return $query->result_array();

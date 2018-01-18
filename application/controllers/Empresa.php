@@ -204,7 +204,7 @@ class Empresa extends CI_Controller {
 			if ($this->form_validation->run() == FALSE){
 				$data['lstregiones'] = $this->param_model->get_regiones();
 				$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
-				$data['lstempresas'] = $this->empresa_model->get_empresas();
+				$data['lstempresas'] = $this->empresa_model->get_cant_filiales();
 				$data['mensaje'] = "El formulario presenta errores de validación";
 				$data['divtipo'] = "alert alert-danger alert-dismissable";
 
@@ -221,6 +221,7 @@ class Empresa extends CI_Controller {
 					'emp_direccion' => $direccion,
 					'comuna_id' => $comuna,
 					'emp_estado' => 1 
+					
 				);
 
 				$res = $this->empresa_model->actualizar_empresa($empresa,$idempresa);

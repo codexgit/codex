@@ -89,6 +89,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="portlet-body form">
+																
                                                                     <!-- BEGIN FORM-->
                                                                     <?php
                                                                         $attributes = array('class' => 'horizontal-form');
@@ -127,6 +128,8 @@
                                                                                 <!--/span-->
                                                                             </div>
                                                                             <!--/row-->
+																			
+																			
                                                                             <div class="row">
                                                                                 <div class="col-md-12 ">
                                                                                     <div class="form-group <?php if (form_error('txt_direccion') != ""){echo "has-error";} ?>">
