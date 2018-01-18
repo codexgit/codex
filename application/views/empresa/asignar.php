@@ -1,17 +1,17 @@
 <?php
 
     if (validation_errors() == ""){
-        $rsocial = "";
-        $rut = "";
-        $direccion = "";
-        $idfilial = "";
+        $rsocial = $regempresa->emp_nombre;
+        $rut = $regempresa->emp_rut."-".$regempresa->emp_dv;
+        $direccion = $regempresa->emp_direccion;
+        $idempresa = $regempresa->empresa_id;
  
     }
     else{
         $rsocial = set_value('txt_rsocial');
         $rut = set_value('txt_rut');
         $direccion = set_value('txt_direccion');
-        $idfilial = set_value('sel_filial');
+        $idempresa = set_value('sel_empresa');
 
     }
 ?>
@@ -115,7 +115,7 @@
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group <?php if (form_error('txt_rut') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">RUT Empresa </label>
-                                                                                        <input type="text" name="txt_rut" id="txt_rut" class="form-control" placeholder="Ej: 12345678-9" value="<?php echo $rut; ?>">
+                                                                                        <input type="text" name="txt_rut" id="txt_rut" class="form-control" placeholder="" value="<?php echo $rut; ?>">
                                                                                         <?php
                                                                                         if (form_error('txt_rut') != NULL){
                                                                                         ?>

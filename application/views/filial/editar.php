@@ -130,8 +130,8 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-12 ">
                                                                                     <div class="form-group <?php if (form_error('txt_direccion') != ""){echo "has-error";} ?>">
-                                                                                        <label>Direcci&oacute;n</label>
-                                                                                        <input type="text" name="txt_direccion" id="txt_direccion" class="form-control" value="<?php echo $direccion; ?>"> 
+                                                                                        <label class="control-label">Direcci&oacute;n</label>
+                                                                                        <input type="text" name="txt_direccion" id="txt_direccion" class="form-control" placeholder="" value="<?php echo $direccion; ?>"> 
                                                                                         <?php
                                                                                         if (form_error('txt_direccion') != NULL){
                                                                                         ?>

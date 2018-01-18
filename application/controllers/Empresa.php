@@ -325,6 +325,11 @@ class Empresa extends CI_Controller {
 		$this->load->model('param_model');
 		$this->load->model('filial_model');
 		$this->load->model('empresa_filial_model');
+		$this->load->model('empresa_model');
+		
+		$regempresa = $this->empresa_model->get_empresa_by_id($idempresa);
+		$data['regempresa'] = $regempresa;
+		$regcomuna = $this->param_model->get_comuna_by_comunaid($regempresa->comuna_id);
 		
 		if (isset($_POST) != "" && $this->input->post('sel_filial') > 0){
 			$query=$this->input->post('sel_filial');

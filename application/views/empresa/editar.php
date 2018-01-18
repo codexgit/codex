@@ -1,10 +1,10 @@
 <?php
 
     if (validation_errors() == ""){
-        $rsocial = "";
-        $rut = "";
-        $direccion = "";
-        $idempresa = "";
+        $rsocial = $regempresa->emp_nombre;
+        $rut = $regempresa->emp_rut."-".$regempresa->emp_dv;
+        $direccion = $regempresa->emp_direccion;
+        $idempresa = $regempresa->empresa_id;
  
     }
     else{
