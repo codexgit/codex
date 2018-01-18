@@ -29,8 +29,7 @@ class Empresa extends CI_Controller {
 
 
 		$this->load->model('empresa_model');
-		$data['lstempresas'] = $this->empresa_model->get_empresas_filial();
-		$data['cant_filiales'] = $this->empresa_model->get_cant_filiales();
+		$data['lstempresas'] = $this->empresa_model->get_cant_filiales();
 
 		$data['mensaje'] = "";
 		$data['divtipo'] = "alert alert-success alert-dismissable";

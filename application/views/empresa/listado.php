@@ -93,10 +93,7 @@
                                                                     <td> <?php echo $empresa['emp_rut'].'-'.$empresa['emp_dv'];?> </td>
                                                                     <td> <?php echo $empresa['emp_nombre']; ?></td>
                                                                     <td> <?php echo $empresa['nombre_comuna']; ?> </td> 
-																	<td> <?php echo $cant_filiales['filiales']; ?> </td> 
-
-                                                                    
-                                                                    
+																	<td> <?php echo $empresa['filiales']; ?> </td>
                                                                     <td>
                                                                         <?php 
 

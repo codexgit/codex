@@ -234,7 +234,7 @@
                                                                         </div>
                                                                         <div class="form-actions right">
                                                                             <!--<button type="button" class="btn default">Volver</button>-->
-                                                                            <a href="<?php echo site_url('filial/listado'); ?>" class="btn default" role="button">Volver</a>
+                                                                            <a href="<?php echo site_url('empresa/listado'); ?>" class="btn default" role="button">Volver</a>
 
                                                                         </div>
                                                                         <input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
