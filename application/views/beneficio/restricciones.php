@@ -1,4 +1,31 @@
-                    <!-- BEGIN CONTAINER -->
+<?php
+
+    if (validation_errors() == ""){
+	
+		$idbeneficio	 	= $beneficio->beneficio_id;
+        $nom_categoria		= $beneficio->cat_benef_nombre;
+		$nom_subcategoria	= $beneficio->subcat_benef_nombre;
+		$nom_beneficio		= $beneficio->benef_nombre;
+		$anio				= $beneficio->benef_anio;
+		$f_ini_v			= $beneficio->benef_fec_inicio;
+		$f_fin_v			= $beneficio->benef_fec_fin;
+		$f_ini_p			= $beneficio->benef_fec_iniciopos;
+		$f_fin_p			= $beneficio->benef_fec_finpos;
+    }
+    else{
+		
+	    $nom_categoria		= set_value('txt_categoria');
+		$nom_subcategoria	= set_value('txt_subcategoria');
+		$nom_beneficio		= set_value('txt_nbeneficio');
+		$anio				= set_value('txt_anio');
+		$f_ini_v			= set_value('txt_iniv');
+		$f_fin_v			= set_value('txt_finv');
+		$f_ini_p			= set_value('txt_inip');
+		$f_fin_p			= set_value('txt_finp');
+    }
+?>                    
+					
+					<!-- BEGIN CONTAINER -->
                     <div class="page-container">
                         <!-- BEGIN CONTENT -->
                         <div class="page-content-wrapper">
@@ -41,6 +68,19 @@
 
 
                                             <div class="row">
+											<?php 
+                                            if ($mensaje != NULL && $mensaje != ""){
+                                            ?>
+                                            <div class="col-md-12">
+                                                <div class="<?php echo $divtipo; ?>">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                                    <?php echo $mensaje; ?>
+                                                </div>                                                
+                                            </div>
+
+                                            <?php
+                                            }
+                                            ?>
                                                 <div class="col-md-12 col-sm-12">
 
                                                             <div class="portlet box red">
@@ -63,14 +103,14 @@
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="control-label">Categoría</label>
-                                                                                        <span class="help-block"> Educación </span>
+                                                                                        <span class="help-block"> <?php echo $nom_categoria; ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="control-label">Subcategoría</label>
-                                                                                        <span class="help-block"> Educación Básica </span>
+                                                                                        <span class="help-block"> <?php echo $nom_subcategoria; ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
@@ -80,14 +120,14 @@
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="control-label">Nombre</label>
-                                                                                        <span class="help-block"> Beca Indígena </span>
+                                                                                        <span class="help-block"> <?php echo $nom_beneficio; ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="control-label">A&ntilde;o</label>
-                                                                                        <span class="help-block"> 2017 </span>
+                                                                                        <span class="help-block"> <?php echo $anio; ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
@@ -97,13 +137,13 @@
                                                                                 <div class="col-md-6 ">
                                                                                     <div class="form-group">
                                                                                         <label>Inicio vigencia</label>
-                                                                                        <span class="help-block"> 01-06-2016 </span>
+                                                                                        <span class="help-block"> <?php echo mdate('%d-%m-%Y ',$f_ini_v); ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 ">
                                                                                     <div class="form-group">
                                                                                         <label>Fin vigencia</label>
-                                                                                        <span class="help-block"> 31-01-2017 </span>
+                                                                                        <span class="help-block"> <?php echo mdate('%d-%m-%Y ',$f_fin_v); ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -112,13 +152,13 @@
                                                                                 <div class="col-md-6 ">
                                                                                     <div class="form-group">
                                                                                         <label>Inicio postulación</label>
-                                                                                        <span class="help-block"> 01-07-2016 </span>
+                                                                                        <span class="help-block"> <?php echo mdate('%d-%m-%Y ',$f_ini_p); ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 ">
                                                                                     <div class="form-group">
                                                                                         <label>Fin postulación</label>
-                                                                                        <span class="help-block"> 30-11-2016 </span>
+                                                                                        <span class="help-block"> <?php echo mdate('%d-%m-%Y ',$f_fin_p); ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -136,13 +176,15 @@
 																								<div class="mt-repeater-input">
 																									<label class="control-label">Tipo <span class="required" aria-required="true"> * </span></label>
 																									<br/>
-																									<select name="select-input" class="form-control">
-																										<option value="A">Igual a</option>
-																										<option value="B">Mayor a</option>
-																										<option value="C">Mayor o igual a</option>
-																										<option value="D">Menor a</option>
-																										<option value="E">Menor o igual a</option>
+																									<select name="sel_tipo" class="form-control">
+																										<option value="1">Igual a</option>
+																										<option value="2">Mayor a</option>
+																										<option value="3">Mayor o igual a</option>
+																										<option value="4">Menor a</option>
+																										<option value="5">Menor o igual a</option>
+																										<!-- NO APARECE EN EL MODELO -->
 																										<option value="F">Seleccionable</option>
+																										<!-- /NO APARECE EN EL MODELO -->
 																									</select>
 																								</div>
 																								<div class="mt-repeater-input">

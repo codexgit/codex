@@ -118,7 +118,7 @@
                                                                                     if ($beneficio['benef_estado'] == 3){ //DESACTIVADO 
                                                                                 ?>
                                                                                 <li>
-                                                                                    <a href="beneficios_detalle.html">
+                                                                                    <a href="<?php echo site_url('beneficio/detalle/'.$beneficio['beneficio_id']); ?>">
                                                                                         <i class="icon-book-open"></i> Detalle </a>
                                                                                 </li>
 																				<li>
@@ -137,7 +137,7 @@
                                                                                 ?>
 																				
 																				<li>
-                                                                                    <a href="beneficios_detalle.html">
+                                                                                    <a href=" <?php echo site_url('beneficio/detalle/'.$beneficio['beneficio_id']); ?> ">
                                                                                         <i class="icon-book-open"></i> Detalle </a>
                                                                                 </li>
 																				<li>

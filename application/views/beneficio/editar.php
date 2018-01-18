@@ -1,3 +1,31 @@
+<?php
+
+    if (validation_errors() == ""){
+
+		$idbeneficio	= $beneficio->beneficio_id;
+        $idcategoria 	= $beneficio->cat_beneficio_id;
+		$idsubcategoria = $beneficio->subcat_beneficio_id;
+		$nbeneficio		= $beneficio->benef_nombre;
+		$anio			= $beneficio->benef_anio;
+		$f_inicio_v		= $beneficio->benef_fec_inicio;
+		$f_fin_v		= $beneficio->benef_fec_fin;
+		$f_inicio_p		= $beneficio->benef_fec_iniciopos;
+		$f_fin_p		= $beneficio->benef_fec_finpos;
+    }
+    else{
+		
+	    $idcategoria	= set_value('sel_categoria');
+		$idsubcategoria = set_value('sel_subcategoria');
+		$nbeneficio		= set_value('txt_nbeneficio');
+		$anio			= set_value('txt_anio');
+		$f_inicio_v		= set_value('txt_iniciov');
+		$f_fin_v		= set_value('txt_finv');
+		$f_inicio_p		= set_value('txt_inip');
+		$f_fin_p		= set_value('txt_finp');
+    }
+?>   
+
+
                     <!-- BEGIN CONTAINER -->
                     <div class="page-container">
                         <!-- BEGIN CONTENT -->
@@ -72,7 +100,7 @@
                                                                     <!-- BEGIN FORM-->
                                                                     <?php
                                                                         $attributes = array('class' => 'horizontal-form');
-                                                                        echo form_open('beneficio/editar', $attributes);
+                                                                        echo form_open('beneficio/editar/'.$idbeneficio, $attributes);
                                                                     ?>
                                                                         <div class="form-body">
                                                                             <h3 class="form-section">Datos Generales</h3>
@@ -108,9 +136,33 @@
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                 <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label">Subcategoría </label>
-                                                                                        <span class="help-block"> Educación Básica </span>
+                                                                                    <div class="form-group <?php if (form_error('sel_subcategoria') != ""){echo "has-error";} ?>">
+                                                                                        <label class="control-label">Subcategoría <span class="required" aria-required="true"> * </span></label>
+                                                                                        <select class="form-control" name="sel_subcategoria" id="sel_subcategoria">
+                                                                                        <option value="">Seleccione una opción</option>
+																							<?php
+																								if(isset($lstsubcategorias)){
+																									foreach ($lstsubcategorias as $subcategoria):
+																										if ($subcategoria['subcat_beneficio_id'] == $idsubcategoria){
+																											echo "<option value='".$subcategoria['subcat_beneficio_id']."' selected>".$subcategoria['subcat_benef_nombre']."</option>";
+																										}
+																										else{
+																											echo "<option value='".$subcategoria['subcat_beneficio_id']."'>".$subcategoria['subcat_benef_nombre']."</option>";                             
+																										}
+																									endforeach;
+																								}
+                                                                                            ?>  
+																							
+																							
+                                                                                        </select>
+																						<?php
+                                                                                        if (form_error('sel_subcategoria') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('sel_subcategoria'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+																						
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
@@ -118,18 +170,38 @@
                                                                             <!--/row-->
                                                                             <div class="row">
                                                                                 <div class="col-md-9">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group <?php if (form_error('txt_nbeneficio') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Nombre <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" id="firstName" class="form-control" placeholder="" value="Beca Indígena">
+                                                                                        <input type="text" name="txt_nbeneficio"  id="txt_nbeneficio" class="form-control" placeholder="" value="<?php echo $nbeneficio; ?>">
+
                                                                                         <!--<span class="help-block"> This is inline help </span>-->
+																						<?php
+                                                                                        if (form_error('txt_nbeneficio') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_nbeneficio'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+																						
+																						
+																						
+																						
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                 <div class="col-md-3">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group <?php if (form_error('txt_anio') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">A&ntilde;o <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" id="lastName" class="form-control" placeholder="" value="2017">
+                                                                                        <input type="text" name="txt_anio" id="txt_anio" class="form-control" placeholder=" " value="<?php echo $anio; ?>">
                                                                                         <!--<span class="help-block"> This field has error. </span>-->
+																						<?php
+                                                                                        if (form_error('txt_anio') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_anio'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+																						
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
@@ -137,30 +209,58 @@
                                                                             <!--/row-->
                                                                             <div class="row">
                                                                                 <div class="col-md-6 ">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group <?php if (form_error('txt_iniciov') != ""){echo "has-error";} ?>">
                                                                                         <label>Inicio vigencia <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" id="lastName" class="form-control" placeholder="" value="01/06/2016">
+                                                                                        <input type="text" name="txt_iniciov" id="txt_iniciov" class="form-control" placeholder="dd-mm-aaaa" value="<?php echo mdate('%d-%m-%Y',$f_inicio_v); ?>">
+																						<?php
+                                                                                        if (form_error('txt_iniciov') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_iniciov'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 ">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group <?php if (form_error('txt_finv') != ""){echo "has-error";} ?>">
                                                                                         <label>Fin vigencia <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" id="lastName" class="form-control" placeholder="" value="31/01/2017">
+                                                                                        <input type="text" name="txt_finv" id="txt_finv" class="form-control" placeholder="dd-mm-aaaa" value="<?php echo mdate('%d-%m-%Y',$f_fin_v); ?>">
+																						<?php
+                                                                                        if (form_error('txt_finv') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_finv'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             <!--/row-->                                                                            
                                                                             <div class="row">
                                                                                 <div class="col-md-6 ">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group <?php if (form_error('txt_inip') != ""){echo "has-error";} ?>">
                                                                                         <label>Inicio postulación</label>
-                                                                                        <input type="text" id="lastName" class="form-control" placeholder="" value="01/07/2016">
+                                                                                        <input type="text" name="txt_inip" id="txt_inip" class="form-control" placeholder="dd-mm-aaaa" value="<?php echo mdate('%d-%m-%Y',$f_inicio_p); ?>">
+																						<?php
+                                                                                        if (form_error('txt_inip') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_inip'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 ">
-                                                                                    <div class="form-group">
+                                                                                    <div class="form-group <?php if (form_error('txt_finp') != ""){echo "has-error";} ?>">
                                                                                         <label>Fin postulación</label>
-                                                                                        <input type="text" id="lastName" class="form-control" placeholder="" value="30/11/2016">
+                                                                                        <input type="text" name="txt_finp" id="txt_finp" class="form-control" placeholder="dd-mm-aaaa" value="<?php echo mdate('%d-%m-%Y',$f_fin_p); ?>">
+																						<?php
+                                                                                        if (form_error('txt_finp') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_finp'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -176,7 +276,8 @@
                                                                             <button type="submit" class="btn red">
                                                                                 <i class="fa fa-check"></i> Guardar</button>
                                                                         </div>
-                                                                    </form>
+																		<input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
+                                                                    <?php echo form_close(); ?>
                                                                     <!-- END FORM-->
                                                                 </div>
                                                             </div>													
