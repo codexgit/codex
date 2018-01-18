@@ -33,7 +33,7 @@ class Empresa_model extends CI_Model {
         }
 		
 		        
-        public function get_empresas(){
+  /*      public function get_empresas(){
 
             $this->db->select('*');
             $this->db->from('empresa');
@@ -42,7 +42,7 @@ class Empresa_model extends CI_Model {
             //$query = $this->db->get('filial');
             return $query->result_array();
         }   		
-
+*/
         public function get_cant_empresa_by_id($idempresa){
             $query = $this->db->get_where('empresa',array('empresa_id' => $idempresa, 'emp_estado' => 1));
             return $query->num_rows();        
@@ -52,9 +52,7 @@ class Empresa_model extends CI_Model {
             $query = $this->db->get_where('empresa',array('empresa_id' => $idempresa));
             return $query->first_row();
         }
-		
-
-			
+				
 
         public function get_empresas_filial(){  //Devuelve un arreglo de las filiales asociadas a la empresa
 
@@ -70,7 +68,7 @@ class Empresa_model extends CI_Model {
         }
  
 
- 		public function get_cant_filiales(){  //Devuelve un entero que denota la cantidad de filiales a las cuales está asociada la empresaS
+ 		public function get_empresas(){  //Devuelve un arreglo con todos los datos de la empresa junto con la cantidad de filiales asociadas
 
 			$this->db->select('empresa.empresa_id,empresa.emp_nombre,empresa.emp_rut,empresa.emp_dv,empresa.emp_estado, comuna.nombre_comuna, count(filial_empresa.filial_id) as filiales from empresa left join filial_empresa on empresa.empresa_id = filial_empresa.empresa_id LEFT JOIN comuna ON empresa.comuna_id = comuna.comuna_id GROUP by empresa.empresa_id,empresa.emp_nombre,empresa.emp_rut,empresa.emp_dv,empresa.emp_estado, comuna.nombre_comuna');			
 			
