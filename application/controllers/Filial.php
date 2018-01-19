@@ -63,8 +63,11 @@ class Filial extends CI_Controller {
 			$comuna = $this->input->post('sel_comuna');
 
 			$this->form_validation->set_rules('txt_rsocial','Razón social','required');
-//			$this->form_validation->set_rules('txt_rut','RUT','required|regex_match[/^[0-9]+-[0-9kK]{1}|\s/]');
-			$this->form_validation->set_rules('txt_rut','RUT','required|callback_validar_rut');
+
+			
+			$this->form_validation->set_rules('txt_rut','RUT','required|regex_match[/^[0-9]+-[0-9kK]{1}|\s/]|callback_validar_rut');
+			//$this->form_validation->set_rules('txt_rut','RUT','required|callback_validar_rut');
+			
 			$this->form_validation->set_rules('txt_direccion','Dirección','min_length[5]|max_length[255]');
 			$this->form_validation->set_rules('sel_region','Región','required');
 			$this->form_validation->set_rules('sel_comuna','Comuna','required');
@@ -136,7 +139,7 @@ class Filial extends CI_Controller {
 
 			$this->form_validation->set_rules('txt_rsocial','Razón social','required');
 //			$this->form_validation->set_rules('txt_rut','RUT','required|regex_match[/^[0-9]+-[0-9kK]{1}|\s/]');
-			$this->form_validation->set_rules('txt_rut','RUT','required|callback_validar_rut');
+			$this->form_validation->set_rules('txt_rut','RUT','required|regex_match[/^[0-9]+-[0-9kK]{1}|\s/]|callback_validar_rut');
 			$this->form_validation->set_rules('txt_direccion','Dirección','min_length[5]|max_length[255]');
 			$this->form_validation->set_rules('sel_region','Región','required');
 			$this->form_validation->set_rules('sel_comuna','Comuna','required');
@@ -284,37 +287,72 @@ class Filial extends CI_Controller {
 
 	}
 
-	function validar_rut($rut){
+	function validar_rut($rut)
+{
+    $rut = preg_replace('/[^k0-9]/i', '', $rut);
+    $dv  = substr($rut, -1);
+    $numero = substr($rut, 0, strlen($rut)-1);
+    $i = 2;
+    $suma = 0;
+    foreach(array_reverse(str_split($numero)) as $v)
+    {
+        if($i==8)
+            $i = 2;
+        $suma += $v * $i;
+        ++$i;
+    }
+    $dvr = 11 - ($suma % 11);
+    
+    if($dvr == 11)
+        $dvr = 0;
+    if($dvr == 10)
+        $dvr = 'K';
+    if($dvr == strtoupper($dv))
+        return true;
+    else
+        return false;
+}
+	
+	
+	
+	
+	
+	/*function validar_rut($rut){
 
-	    if(strpos($rut,"-")==false){
-	        $RUT[0] = substr($rut, 0, -1);
-	        $RUT[1] = substr($rut, -1);
-	    }else{
-	        $RUT = explode("-", trim($rut));
-	    }
-	    $elRut = str_replace(".", "", trim($RUT[0]));
-	    $factor = 2;
-	    $suma = 0;
-	    for($i = strlen($elRut)-1; $i >= 0; $i--):
-	        $factor = $factor > 7 ? 2 : $factor;
-	        $suma += $elRut{$i}*$factor++;
-	    endfor;
-	    $resto = $suma % 11;
-	    $dv = 11 - $resto;
-	    if($dv == 11){
-	        $dv=0;
-	    }else if($dv == 10){
-	        $dv="k";
-	    }else{
-	        $dv=$dv;
-	    }
-	    if($dv == trim(strtolower($RUT[1]))){
-	       return true;
-	    }else{
-	       return false;
-	    }
+		//$this->form_validation->set_rules('txt_rut','RUT','required|regex_match[/^[0-9]+-[0-9kK]{1}|\s/]');
+			if(strpos($rut,"-")==false){
+				$RUT[0] = substr($rut, 0, -1);
+				$RUT[1] = substr($rut, -1);
+			}else{
+			
+				$RUT = explode("-", trim($rut));
+			
+			}
+			$elRut = str_replace(".", "", trim($RUT[0]));
+			$factor = 2;
+			$suma = 0;
+			for($i = strlen($elRut)-1; $i >= 0; $i--):
+				$factor = $factor > 7 ? 2 : $factor;
+				$suma += $elRut{$i}*$factor++;
+			endfor;
+			$resto = $suma % 11;
+			$dv = 11 - $resto;
+			if($dv == 11){
+				$dv=0;
+			}else if($dv == 10){
+				$dv="k";
+			}else{
+				$dv=$dv;
+			}
+			if($dv == trim(strtolower($RUT[1]))){
+			   return true;
+			}else{
+			   return false;
+			}
 
 	}
-
+		*/
+		
+	
 
 }

@@ -67,8 +67,8 @@ class Empresa extends CI_Controller {
 			$comuna = $this->input->post('sel_comuna');
 
 			$this->form_validation->set_rules('txt_rsocial','Razón social','required');
-//			$this->form_validation->set_rules('txt_rut','RUT','required|regex_match[/^[0-9]+-[0-9kK]{1}|\s/]');
-			$this->form_validation->set_rules('txt_rut','RUT','required|callback_validar_rut');
+			$this->form_validation->set_rules('txt_rut','RUT','required|regex_match[/^[0-9]+-[0-9kK]{1}|\s/]|callback_validar_rut');
+			//$this->form_validation->set_rules('txt_rut','RUT','required|callback_validar_rut');
 			$this->form_validation->set_rules('txt_direccion','Dirección','min_length[5]|max_length[255]');
 			$this->form_validation->set_rules('sel_region','Región','required');
 			$this->form_validation->set_rules('sel_comuna','Comuna','required');
@@ -190,7 +190,7 @@ class Empresa extends CI_Controller {
 
 			$this->form_validation->set_rules('txt_rsocial','Razón social','required');
 //			$this->form_validation->set_rules('txt_rut','RUT','required|regex_match[/^[0-9]+-[0-9kK]{1}|\s/]');
-			$this->form_validation->set_rules('txt_rut','RUT','required|callback_validar_rut');
+			$this->form_validation->set_rules('txt_rut','RUT','required|regex_match[/^[0-9]+-[0-9kK]{1}|\s/]|callback_validar_rut');
 			$this->form_validation->set_rules('txt_direccion','Dirección','min_length[5]|max_length[255]');
 			$this->form_validation->set_rules('sel_region','Región','required');
 			$this->form_validation->set_rules('sel_comuna','Comuna','required');
