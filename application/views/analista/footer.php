@@ -198,6 +198,29 @@
 					});
 					//$('#sel_subcategoria').find('option').not(':first').remove();
 				});
+				
+				
+				$('#sel_campo').change(function(){
+					var campo = $(this).val();
+					// AJAX request
+					$.ajax({
+						url:'<?php echo base_url(); ?>/beneficio/getOpciones',
+						method: 'post',
+						data: {campo: campo},
+						dataType: 'json',
+						success: function(response){
+
+							// Remove options 
+							$('#sel_opcion').find('option').not(':first').remove();
+
+							// Add options
+							$.each(response,function(index,data){
+							$('#sel_opcion').append('<option value="'+data['campo_valor_id']+'">'+data['camvalor_valor']+'</option>');
+							});
+						}
+					});
+					//$('#sel_subcategoria').find('option').not(':first').remove();
+				});
 
 				
 			});

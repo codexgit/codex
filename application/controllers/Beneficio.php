@@ -193,11 +193,17 @@ class Beneficio extends CI_Controller {
 
 	}
 	
-	
 	public function getSubcategorias(){
 		$postData = $this->input->post();
 		$this->load->model('param_model');
 		$result = $this->param_model->get_subcategorias_by_categoria($postData);
+		echo json_encode($result);
+	}
+	
+	public function getOpciones(){
+		$postData = $this->input->post();
+		$this->load->model('param_model');
+		$result = $this->param_model->get_opciones_by_campo($postData);
 		echo json_encode($result);
 	}
 	
@@ -330,11 +336,91 @@ class Beneficio extends CI_Controller {
 
 		$data['beneficio']	= $this->beneficio_model->get_beneficio_by_id($idbeneficio);
 
+		$data['lstcampos']	= $this->param_model->get_campos();
+
+
+		if($data['beneficio']!=FALSE){
+			
+			if ($this->input->post('hdn_valor') != "" && $this->input->post('hdn_valor') == 1){
+				//POST
+				$campo = $this->input->post('sel_campo');
+				//$opcion = $this->input->post('sel_opcion');
+				//$rest_tipo = $this->input->post('sel_tipo');
+				$rest_campo= $this->input->post('sel_campo');
+				//$rest_opcion= $this->input->post('sel_opcion');
+				//$rest_valor= $this->input->post('txt_valor');
+				//$rest_grupo= "";
+				// VALIDACIONES
+				$this->form_validation->set_rules('sel_campo','Campo','required');
+				//$this->form_validation->set_rules('sel_opcion','Opcion','required');
+				//$this->form_validation->set_rules('sel_tipo','Tipo','required');
+				//$this->form_validation->set_rules('sel_campo','Campo','required');
+				//$this->form_validation->set_rules('sel_opcion','Opcion','required');
+				//$this->form_validation->set_rules('txt_valor','Valor','required');
 				
+				// /VALIDACIONES
+				
+				// MENSAJES
+				$this->form_validation->set_message('required','El campo {field} es requerido');
+				// /MENSAJES 
+				
+				
+				if ($this->form_validation->run() == FALSE){
+					$data['lstopciones'] = $this->param_model->get_opciones_by_campoid($campo);
+					$data['mensaje'] = "El formulario presenta errores de validación";
+					$data['divtipo'] = "alert alert-danger alert-dismissable";
+				}
+				else{
+					echo "CTM";
+					$restriccion = array(
+						//'restbenef_tipo' 			=> $rest_tipo,
+						'campo_id' 			=> $rest_campo,
+						/*'campo_valor_id' 			=> $rest_opcion,
+						'restbenef_valor' 			=> $rest_valor,
+						'restbenef_grupo_campo' 			=> $rest_grupo,*/
+						'beneficio_id' => $idbeneficio
+					);
+					$res = $this->beneficio_model->agregar_restriccion($restriccion);
+					if ($res == 1){
+						$data['mensaje'] = "La restriccion ha sido agregado exitosamente";
+						$data['divtipo'] = "alert alert-success alert-dismissable";
+					}
+					else{
+						$data['mensaje'] = "Ocurrió un error al realizar la operación";
+						$data['divtipo'] = "alert alert-danger alert-dismissable";
+					}
+					
+					
+					$data['lstbeneficios'] = $this->beneficio_model->get_beneficios();
+
+					$this->load->view('analista/header',$data);
+					$this->load->view('beneficio/listado',$data);
+					$this->load->view('analista/footer',$data);
+					
+				}
+			
+			
+			}else{
+
+				
+
+				$data['mensaje'] = "";
+				$data['divtipo'] = "alert alert-success alert-dismissable";
+				
+				
+				$this->load->view('analista/header',$data);
+				$this->load->view('beneficio/restricciones',$data);
+				$this->load->view('analista/footer',$data);
+			}
+		
+		}else{
+			redirect('beneficio/listado');
+		}
+		/*
 		$this->load->view('analista/header',$data);
 		$this->load->view('beneficio/restricciones',$data);
 		$this->load->view('analista/footer',$data);
-
+		*/
 	}
 	
 	

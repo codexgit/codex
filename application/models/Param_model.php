@@ -23,6 +23,12 @@ class Param_model extends CI_Model {
         	$query = $this->db->get('subcat_beneficio');
         	return $query->result_array();
         }
+		
+		public function get_campos()
+        {
+        	$query = $this->db->get('campo');
+        	return $query->result_array();
+        }
 
         public function get_comuna_by_comunaid($idcomuna)
         {
@@ -48,6 +54,22 @@ class Param_model extends CI_Model {
             return $response;
         }
 		
+		
+		
+		
+		
+		public function get_opciones_by_campoid($idcampo){
+            $this->db->select('*');
+            $this->db->where('campo_id', $idcampo);
+            $this->db->order_by('camvalor_valor','asc');
+            $q = $this->db->get('campo_valor');
+            $response = $q->result_array();
+            return $response;
+        }
+		
+		
+		
+		
 		//JSON
 		public function get_comunas_by_region($postData){
             $this->db->select('comuna_id,nombre_comuna');
@@ -64,6 +86,16 @@ class Param_model extends CI_Model {
             $this->db->where('cat_beneficio_id', $postData['categoria']);
             $this->db->order_by('subcat_benef_nombre','asc');
             $q = $this->db->get('subcat_beneficio');
+            $response = $q->result_array();
+
+            return $response;
+        }
+		
+		public function get_opciones_by_campo($postData){
+            $this->db->select('campo_valor_id,camvalor_valor');
+            $this->db->where('campo_id', $postData['campo']);
+            $this->db->order_by('camvalor_valor','asc');
+            $q = $this->db->get('campo_valor');
             $response = $q->result_array();
 
             return $response;

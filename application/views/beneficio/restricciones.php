@@ -11,6 +11,12 @@
 		$f_fin_v			= $beneficio->benef_fec_fin;
 		$f_ini_p			= $beneficio->benef_fec_iniciopos;
 		$f_fin_p			= $beneficio->benef_fec_finpos;
+		
+		$idcampo	= "";
+		$idopcion	= "";
+		$sel_tipo	= "";
+		$txt_valor	= "";
+		
     }
     else{
 		
@@ -22,6 +28,13 @@
 		$f_fin_v			= set_value('txt_finv');
 		$f_ini_p			= set_value('txt_inip');
 		$f_fin_p			= set_value('txt_finp');
+		
+		$idcampo	= set_value('sel_campo');
+		$idopcion	= set_value('sel_opcion');
+		$sel_tipo	= set_value('sel_tipo');
+		$txt_valor	= set_value('txt_valor');
+		
+		
     }
 ?>                    
 					
@@ -167,54 +180,100 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-12 ">
                                                                                     <div class="form-group">
-                                                                                    
-								                                                        <form action="#" class="mt-repeater form-horizontal">
-                                                                                    	
+																						<?php echo $idbeneficio; ?>
+								                                                        <!--<form action="#" class="mt-repeater form-horizontal">-->
+                                                                                    	<?php
+																							$attributes = array('class' => 'horizontal');
+																							echo form_open('beneficio/restricciones/'.$idbeneficio, $attributes);
+																						?>
 																						<div data-repeater-list="group-a">
 																							<div data-repeater-item class="mt-repeater-item">
 																								<!-- jQuery Repeater Container -->
-																								<div class="mt-repeater-input">
+																								<div class="mt-repeater-input <?php if (form_error('sel_tipo') != ""){echo "has-error";} ?> ">
 																									<label class="control-label">Tipo <span class="required" aria-required="true"> * </span></label>
 																									<br/>
-																									<select name="sel_tipo" class="form-control">
+																									<select name="sel_tipo" id="sel_tipo" class="form-control">
 																										<option value="1">Igual a</option>
 																										<option value="2">Mayor a</option>
 																										<option value="3">Mayor o igual a</option>
 																										<option value="4">Menor a</option>
 																										<option value="5">Menor o igual a</option>
-																										<!-- NO APARECE EN EL MODELO -->
-																										<option value="F">Seleccionable</option>
-																										<!-- /NO APARECE EN EL MODELO -->
+																										<option value="6">Seleccionable</option>
 																									</select>
+																									
+																									<?php
+																									if (form_error('sel_tipo') != NULL){
+																									?>
+																									<span class="help-block"> <?php echo form_error('sel_tipo'); ?> </span>
+																									<?php
+																									}
+																									?>
 																								</div>
-																								<div class="mt-repeater-input">
+																								<div class="mt-repeater-input <?php if (form_error('sel_campo') != ""){echo "has-error";} ?>">
 																									<label class="control-label">Campo <span class="required" aria-required="true"> * </span></label>
 																									<br/>
-																									<select name="select-input" class="form-control">
-																										<option value="A">Estudiante</option>
-																										<option value="B">Último año aprobado</option>
-																										<option value="C">Ingreso per cápita</option>
-																										<option value="D">Cantidad integrantes</option>
-																										<option value="E">Tipo educación</option>
-																										<option value="F">Promedio</option>
-																										<option value="G">Hijo prof. de educ.</option>
-																										<option value="H">Jefe de hogar</option>
-																										<option value="H">Edad</option>
+																									<select name="sel_campo" class="form-control" id="sel_campo">
+																									
+																										<?php 
+																											foreach ($lstcampos as $campo):
+																												if ($campo['campo_id'] == $idcampo){
+																													echo "<option value='".$campo['campo_id']."' selected>".$campo['campo_nombre']."</option>";
+																												}
+																												else{
+																													echo "<option value='".$campo['campo_id']."'>".$campo['campo_nombre']."</option>";                             
+																												}
+																											endforeach;
+																										?>
+																										<option value="A">#Estudiante</option>
+																										<option value="B">#Último año aprobado</option>
+																										<option value="C">#Ingreso per cápita</option>
+																										<option value="H">#Jefe de hogar</option>
+																										<option value="D">#Cantidad integrantes</option>
+																										<option value="E">#Tipo educación</option>
+																										<option value="F">#Prom	edio</option>
+																										<option value="G">#Hijo prof. de educ.</option>
+																										<option value="H">#Edad</option>
 																									</select>
+																									
+																									<?php
+																									if (form_error('sel_campo') != NULL){
+																									?>
+																									<span class="help-block"> <?php echo form_error('sel_campo'); ?> </span>
+																									<?php
+																									}
+																									?>
 																								</div>
 																								<div class="mt-repeater-input">
 																									<label class="control-label">Valor</label>
 																									<br/>
-																									<input type="text" placeholder="" class="form-control" />
+																									<input type="txt_valor" id="txt_valor" placeholder="" class="form-control" />
 																								</div>
-																								<div class="mt-repeater-input">
+																								<div class="mt-repeater-input <?php if (form_error('sel_opcion') != ""){echo "has-error";} ?>">
 																									<label class="control-label">Opciones</label>
 																									<br/>
-																									<select name="select-input" class="form-control">
-																										<option value="A">Municipal</option>
-																										<option value="B">Subvencionada</option>
-																										<option value="C">Particular</option>
+																									<select name="sel_opcion" class="form-control" id="sel_opcion">
+																									<option value="">Seleccione una opción</option>
+																										<?php
+																											//if(isset($lstopciones)){
+																												foreach ($lstopciones as $opcion):
+																													if ($opcion['campo_valor_id'] == $idopcion){
+																														echo "<option value='".$opcion['campo_valor_id']."' selected>".$opcion['camvalor_valor']."</option>";
+																													}
+																													else{
+																														echo "<option value='".$opcion['campo_valor_id']."'>".$opcion['camvalor_valor']."</option>";                             
+																													}
+																												endforeach;
+																										//	}
+																										?>
 																									</select>
+																									
+																									<?php
+																									if (form_error('sel_opcion') != NULL){
+																									?>
+																									<span class="help-block"> <?php echo form_error('sel_opcion'); ?> </span>
+																									<?php
+																									}
+																									?>
 																								</div>
 																								<div class="mt-repeater-input">
 																									<label class="control-label">Grupo</label>
@@ -229,8 +288,14 @@
 																						</div>
 																						<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
 																							<i class="fa fa-plus"></i> Agregar</a>
-																							
-																						</form>	
+																							<div class="form-actions right">
+                                                                            <!--<button type="button" class="btn default">Volver</button>-->
+                                                                            <a href="<?php echo site_url('beneficio/listado'); ?>" class="btn default" role="button">Volver</a>
+                                                                            <button type="submit" class="btn red">
+                                                                                <i class="fa fa-check"></i> Guardar</button>
+                                                                        </div>
+																							<input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
+																						<?php echo form_close(); ?>
 																							
                                                                                     </div>
                                                                                 </div>
@@ -238,17 +303,7 @@
                                                                             <!--/row-->                                                                            
                                                                         </div>
                                                                         
-                                                                        
-                                                                        
-                                                                        <div class="form-actions right">
-		                                                                    <form action="#">
-                                                                        
-	                                                                            <!--<button type="button" class="btn default">Volver</button>-->
-	                                                                            <a href="<?php echo site_url('beneficio/listado'); ?>" class="btn default" role="button">Volver</a>
-	                                                                            <button type="submit" class="btn red">
-    	                                                                            <i class="fa fa-check"></i> Guardar</button>
-	                                                                		</form>
-                                                                        </div>
+                                                                     
                                                                     <!-- END FORM-->
                                                                 </div>
                                                             </div>													
