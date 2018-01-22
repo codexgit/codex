@@ -149,7 +149,7 @@
             })
         </script>-->
 
-        <!--<script type="text/javascript">
+        <script type="text/javascript">
 
             $(document).ready(function() {
             // Region change
@@ -158,7 +158,7 @@
 
               // AJAX request
               $.ajax({
-                url:'<?php echo base_url(); ?>/filial/getComunas',
+                url:'<?php echo base_url(); ?>/encuesta/getComunas',
                 method: 'post',
                 data: {region: region},
                 dataType: 'json',
@@ -175,7 +175,7 @@
              });
            });        
             });
-        </script>-->
+        </script>
 
     </body>
 

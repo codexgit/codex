@@ -41,6 +41,22 @@
 
 
                                         <div class="row">
+
+
+                                            <?php 
+                                            if ($mensaje != NULL && $mensaje != ""){
+                                            ?>
+                                            <div class="col-md-12">
+                                                <div class="<?php echo $divtipo; ?>">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                                    <?php echo $mensaje; ?>
+                                                </div>                                                
+                                            </div>
+
+                                            <?php
+                                            }
+                                            ?>
+                                            
                                             <div class="col-md-12 col-sm-12">
 
                                                         <div class="portlet box blue">
@@ -112,8 +128,8 @@
                                         </div>
 
 
-                                    	<div class="row">
-                                        	<div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-12">
                                                 
                                                 
                                                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -202,8 +218,8 @@
                                                 <!-- END EXAMPLE TABLE PORTLET-->                                                
                                                 
                                                 
-                                        	</div>
-                                    	</div>
+                                            </div>
+                                        </div>
                                             
                                     </div>
                                     <!-- END PAGE CONTENT INNER -->
