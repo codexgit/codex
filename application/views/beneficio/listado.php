@@ -174,7 +174,7 @@
 																				
                                                                             </ul>
                                                                         </div>
-                                                                    </td>                                                                    
+                                                                    </td>
                                                                 </tr>
 																<?php endforeach; ?>
                                                                 <tr class="odd gradeX">

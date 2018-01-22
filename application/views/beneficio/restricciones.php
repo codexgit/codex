@@ -170,212 +170,243 @@ if (validation_errors() == "") {
                                             $attributes = array('class' => 'horizontal');
                                             echo form_open('beneficio/restricciones/' . $idbeneficio, $attributes);
                                             ?>
+                                            <div class="panel panel-danger">
+                                                <div class="panel-heading">
+                                                    <h3 >Restricciones</h3></div>
+                                                <!-- EDITAR RESTRICCIONES -->
+                                                <div class="panel-body">
+                                                    <div class="portlet-body ">
+                                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_3_2">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th> # </th>
+                                                                    <th> Campo </th>
+                                                                    <th> Tipo </th>
+                                                                    <th> Valor </th>
+                                                                    <th> Grupo </th>
+                                                                    <th> Accion </th>
+                                                                </tr>
 
-                                            <h3 class="form-section">Restricciones</h3>
-                                            <!-- EDITAR RESTRICCIONES -->
-                                            <div class="portlet-body">
-                                                <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_3_2">
-                                                    <thead>
-                                                        <tr>
-                                                            <th> # </th>
-                                                            <th> Campo </th>
-                                                            <th> Tipo </th>
-                                                            <th> Valor </th>
-                                                            <th> Grupo </th>
-                                                            <th> Accion </th>
-                                                        </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php $count = 0; ?>
+                                                                <?php foreach ($lstrestricciones as $restriccion): ?> 
 
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php $count = 0; ?>
-                                                        <?php foreach ($lstrestricciones as $restriccion): ?> 
+                                                                    <tr>
+                                                                        <th> <?php echo $count; ?> </th>
+                                                                        <th> <?php echo $restriccion['campo_nombre']; ?> </th>
+                                                                        <th> <?php echo $restriccion['campo_tipo']; ?> </th>
+                                                                        <th> <?php echo $restriccion['restbenef_valor']; ?> </th>
+                                                                        <th> <?php echo $restriccion['restbenef_grupo_campo']; ?> </th>
 
-                                                            <tr>
-                                                                <th> <?php echo $count; ?> </th>
-                                                                <th> <?php echo $restriccion['campo_nombre']; ?> </th>
-                                                                <th> <?php echo $restriccion['campo_tipo']; ?> </th>
-                                                                <th> <?php echo $restriccion['restbenef_valor']; ?> </th>
-                                                                <th> <?php echo $restriccion['restbenef_grupo_campo']; ?> </th>
+                                                                        <td>
+                                                                            <div class="btn-group">
 
-                                                                <th>
-                                                                    <div class="btn-group">
+                                                                                <button class="btn btn-xs default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true"> 
+                                                                                    Acciones
+                                                                                    <i class="fa fa-angle-down"></i>
+                                                                                </button>
+                                                                                <ul class="dropdown-menu pull-left" role="menu">
 
-                                                                        <button class="btn btn-xs default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true"> 
-                                                                            Acciones
-                                                                            <i class="fa fa-angle-down"></i>
-                                                                        </button>
-                                                                        <ul class="dropdown-menu pull-left" role="menu">
+                                                                                    <li>
+                                                                                        <a href="<?php echo site_url('#'); ?>">
+                                                                                            <i class="icon-pencil"></i> Editar </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="<?php echo site_url('#'); ?>">
+                                                                                            <i class="icon-action-undo"></i> Bloquear </a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="<?php echo site_url('#'); ?>">
+                                                                                            <i class="icon-close"></i> Eliminar </a>
+                                                                                    </li
+                                                                                </ul>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php $count++; ?>
+                                                                <?php endforeach; ?>
+                                                            </tbody>
 
-                                                                            <li>
-                                                                                <a href="<?php echo site_url('#'); ?>">
-                                                                                    <i class="icon-close"></i> Eliminar </a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </th>
-                                                            </tr>
-                                                            <?php $count++; ?>
-                                                        <?php endforeach; ?>
-                                                    </tbody>
-
-                                                </table>
-
-                                                <!-- AGREGAR RESTRICCION -->
-                                                <h4 class="form-section">Agregar Restricción</h4>
-                                                <div class="row">
-                                                    <div class="col-md-12 ">
-                                                        <div class="form-group <?php
-                                                        if (form_error('sel_tipo') != "") {
-                                                            echo "has-error";
-                                                        }
-                                                        ?>">
-                                                            <label class="control-label">Tipo <span class="required" aria-required="true"> * </span></label>
-                                                            <br/>
-                                                            <select name="sel_tipo" id="sel_tipo" class="form-control">
-                                                                <option value="1">Igual a</option>
-                                                                <option value="2">Mayor a</option>
-                                                                <option value="3">Mayor o igual a</option>
-                                                                <option value="4">Menor a</option>
-                                                                <option value="5">Menor o igual a</option>
-                                                                <option value="6">Seleccionable</option>
-                                                            </select>
-
-                                                            <?php
-                                                            if (form_error('sel_tipo') != NULL) {
-                                                                ?>
-                                                                <span class="help-block"> <?php echo form_error('sel_tipo'); ?> </span>
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </div>
+                                                        </table>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group <?php
-                                                        if (form_error('sel_campo') != "") {
-                                                            echo "has-error";
-                                                        }
-                                                        ?>">
-                                                            <label class="control-label">Campo <span class="required" aria-required="true"> * </span></label>
-                                                            <br/>
-                                                            <select name="sel_campo" class="form-control" id="sel_campo">
-
-                                                                <?php
-                                                                foreach ($lstcampos as $campo):
-                                                                    if ($campo['campo_id'] == $idcampo) {
-                                                                        echo "<option value='" . $campo['campo_id'] . "' selected>" . $campo['campo_nombre'] . "</option>";
-                                                                    } else {
-                                                                        echo "<option value='" . $campo['campo_id'] . "'>" . $campo['campo_nombre'] . "</option>";
-                                                                    }
-                                                                endforeach;
-                                                                ?>
-                                                                <option value="A">#Estudiante</option>
-                                                                <option value="B">#Último año aprobado</option>
-                                                                <option value="C">#Ingreso per cápita</option>
-                                                                <option value="H">#Jefe de hogar</option>
-                                                                <option value="D">#Cantidad integrantes</option>
-                                                                <option value="E">#Tipo educación</option>
-                                                                <option value="F">#Prom	edio</option>
-                                                                <option value="G">#Hijo prof. de educ.</option>
-                                                                <option value="H">#Edad</option>
-                                                            </select>
-
-                                                            <?php
-                                                            if (form_error('sel_campo') != NULL) {
-                                                                ?>
-                                                                <span class="help-block"> <?php echo form_error('sel_campo'); ?> </span>
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group <?php
-                                                        if (form_error('txt_valor') != "") {
-                                                            echo "has-error";
-                                                        }
-                                                        ?>">
-                                                            <label class="control-label">Valor</label>
-                                                            <br/>
-                                                            <input type="text" name="txt_valor" id="txt_valor" placeholder="" class="form-control" />
-                                                            <?php
-                                                            if (form_error('txt_valor') != NULL) {
-                                                                ?>
-                                                                <span class="help-block"> <?php echo form_error('txt_valor'); ?> </span>
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group <?php
-                                                        if (form_error('sel_opcion') != "") {
-                                                            echo "has-error";
-                                                        }
-                                                        ?>">
-                                                            <label class="control-label">Opciones</label>
-                                                            <br/>
-                                                            <select name="sel_opcion" class="form-control" id="sel_opcion">
-                                                                <option value="">Seleccione una opción</option>
-                                                                <?php
-                                                                //if(isset($lstopciones)){
-                                                                foreach ($lstopciones as $opcion):
-                                                                    if ($opcion['campo_valor_id'] == $idopcion) {
-                                                                        echo "<option value='" . $opcion['campo_valor_id'] . "' selected>" . $opcion['camvalor_valor'] . "</option>";
-                                                                    } else {
-                                                                        echo "<option value='" . $opcion['campo_valor_id'] . "'>" . $opcion['camvalor_valor'] . "</option>";
-                                                                    }
-                                                                endforeach;
-                                                                //	}
-                                                                ?>
-                                                            </select>
-                                                            <?php
-                                                            if (form_error('sel_opcion') != NULL) {
-                                                                ?>
-                                                                <span class="help-block"> <?php echo form_error('sel_opcion'); ?> </span>
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group <?php
-                                                        if (form_error('txt_grupo') != "") {
-                                                            echo "has-error";
-                                                        }
-                                                        ?>">
-                                                            <label class="control-label">Grupo</label>
-                                                            <br/>
-                                                            <input type="text" name="txt_grupo" id="txt_grupo" placeholder="" class="form-control" />
-                                                            <?php
-                                                            if (form_error('txt_grupo') != NULL) {
-                                                                ?>
-                                                                <span class="help-block"> <?php echo form_error('txt_grupo'); ?> </span>
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-actions right">
-                                                        <a href="<?php echo site_url('beneficio/listado'); ?>" class="btn default" role="button">Volver</a>
-                                                        <button type="submit" class="btn red">
-                                                            <i class="fa fa-check"></i> Guardar</button>
-                                                    </div>
-                                                    <input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
-                                                    <?php echo form_close(); ?>
 
                                                 </div>
                                             </div>
-                                        </div><!--/row-->                                                                            
-                                    </div><!-- END FORM-->
-                                </div>
-                            </div>													
+                                            <!-- AGREGAR RESTRICCION -->
+                                            <div class="panel panel-danger">
+                                                <div class="panel-heading">
+                                                    <h3 >Agregar Restricción</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12 ">
+                                                            <div class="form-group <?php
+                                                            if (form_error('sel_tipo') != "") {
+                                                                echo "has-error";
+                                                            }
+                                                            ?>">
+                                                                <label class="control-label">Tipo <span class="required" aria-required="true"> * </span></label>
+                                                                <br/>
+                                                                <select name="sel_tipo" id="sel_tipo" class="form-control">
+                                                                    <option value="1">Igual a</option>
+                                                                    <option value="2">Mayor a</option>
+                                                                    <option value="3">Mayor o igual a</option>
+                                                                    <option value="4">Menor a</option>
+                                                                    <option value="5">Menor o igual a</option>
+                                                                    <option value="6">Seleccionable</option>
+                                                                </select>
+
+                                                                <?php
+                                                                if (form_error('sel_tipo') != NULL) {
+                                                                    ?>
+                                                                    <span class="help-block"> <?php echo form_error('sel_tipo'); ?> </span>
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group <?php
+                                                            if (form_error('sel_campo') != "") {
+                                                                echo "has-error";
+                                                            }
+                                                            ?>">
+                                                                <label class="control-label">Campo <span class="required" aria-required="true"> * </span></label>
+                                                                <br/>
+                                                                <select name="sel_campo" class="form-control" id="sel_campo">
+
+                                                                    <?php
+                                                                    foreach ($lstcampos as $campo):
+                                                                        if ($campo['campo_id'] == $idcampo) {
+                                                                            echo "<option value='" . $campo['campo_id'] . "' selected>" . $campo['campo_nombre'] . "</option>";
+                                                                        } else {
+                                                                            echo "<option value='" . $campo['campo_id'] . "'>" . $campo['campo_nombre'] . "</option>";
+                                                                        }
+                                                                    endforeach;
+                                                                    ?>
+                                                                    <option value="A">#Estudiante</option>
+                                                                    <option value="B">#Último año aprobado</option>
+                                                                    <option value="C">#Ingreso per cápita</option>
+                                                                    <option value="H">#Jefe de hogar</option>
+                                                                    <option value="D">#Cantidad integrantes</option>
+                                                                    <option value="E">#Tipo educación</option>
+                                                                    <option value="F">#Prom	edio</option>
+                                                                    <option value="G">#Hijo prof. de educ.</option>
+                                                                    <option value="H">#Edad</option>
+                                                                </select>
+
+                                                                <?php
+                                                                if (form_error('sel_campo') != NULL) {
+                                                                    ?>
+                                                                    <span class="help-block"> <?php echo form_error('sel_campo'); ?> </span>
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group <?php
+                                                            if (form_error('txt_valor') != "") {
+                                                                echo "has-error";
+                                                            }
+                                                            ?>">
+                                                                <label class="control-label">Valor</label>
+                                                                <br/>
+                                                                <input type="text" name="txt_valor" id="txt_valor" placeholder="" class="form-control" />
+                                                                <?php
+                                                                if (form_error('txt_valor') != NULL) {
+                                                                    ?>
+                                                                    <span class="help-block"> <?php echo form_error('txt_valor'); ?> </span>
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- OPCIONES Y GRUPO -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group <?php
+                                                            if (form_error('sel_opcion') != "") {
+                                                                echo "has-error";
+                                                            }
+                                                            ?>">
+                                                                <label class="control-label">Opciones</label>
+                                                                <br/>
+                                                                <select name="sel_opcion" class="form-control" id="sel_opcion">
+                                                                    <option value="">Seleccione una opción</option>
+                                                                    <?php
+                                                                    //if(isset($lstopciones)){
+                                                                    foreach ($lstopciones as $opcion):
+                                                                        if ($opcion['campo_valor_id'] == $idopcion) {
+                                                                            echo "<option value='" . $opcion['campo_valor_id'] . "' selected>" . $opcion['camvalor_valor'] . "</option>";
+                                                                        } else {
+                                                                            echo "<option value='" . $opcion['campo_valor_id'] . "'>" . $opcion['camvalor_valor'] . "</option>";
+                                                                        }
+                                                                    endforeach;
+                                                                    //	}
+                                                                    ?>
+                                                                </select>
+                                                                <?php
+                                                                if (form_error('sel_opcion') != NULL) {
+                                                                    ?>
+                                                                    <span class="help-block"> <?php echo form_error('sel_opcion'); ?> </span>
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group <?php
+                                                            if (form_error('txt_grupo') != "") {
+                                                                echo "has-error";
+                                                            }
+                                                            ?>">
+                                                                <label class="control-label">Grupo</label>
+                                                                <br/>
+                                                                <input type="text" name="txt_grupo" id="txt_grupo" placeholder="" class="form-control" />
+                                                                <?php
+                                                                if (form_error('txt_grupo') != NULL) {
+                                                                    ?>
+                                                                    <span class="help-block"> <?php echo form_error('txt_grupo'); ?> </span>
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- FIN OPCIONES Y GRUPO -->
+                                                </div>
+                                                <!-- FOOTER -->
+                                                <div class="panel-footer">
+                                                    <div class="row">
+                                                        <div class="form-actions right">
+                                                            <a href="<?php echo site_url('beneficio/listado'); ?>" class="btn default" role="button">Volver</a>
+                                                            <button type="submit" class="btn red">
+                                                                <i class="fa fa-check"></i> Guardar</button>
+                                                        </div>
+                                                        <input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
+                                                        <?php echo form_close(); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--/row-->                                                                            
+                            </div><!-- END FORM-->
                         </div>
-                    </div> 
+                    </div>													
                 </div>
-            </div><!-- END PAGE CONTENT INNER -->
+            </div> 
         </div>
-    </div>
-    <!-- END PAGE CONTENT BODY -->
-    <!-- END CONTENT BODY -->
+    </div><!-- END PAGE CONTENT INNER -->
+</div>
+
+<!-- END PAGE CONTENT BODY -->
+<!-- END CONTENT BODY -->
 
 
