@@ -51,6 +51,27 @@ class Beneficio_model extends CI_Model {
 			}
         }
 		
+		public function get_restricciones($idbeneficio)
+        {
+            $this->db->select('*');
+            $this->db->from('beneficio_restriccion');
+			$this->db->join('campo','beneficio_restriccion.campo_id = campo.campo_id','left');
+			$this->db->where('beneficio_id',$idbeneficio);
+            $query = $this->db->get();
+			return $query->result_array();
+			/*if($query->num_rows()==1){
+				
+				return $query->row();
+				
+				
+			}else{
+				return false;
+			}
+			*/
+        }
+		
+		
+		
 		
 		public function actualizar_beneficio($beneficio, $idbeneficio){
             $this->db->where('beneficio_id',$idbeneficio);

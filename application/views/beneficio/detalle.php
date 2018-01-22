@@ -186,6 +186,18 @@
 																										</tr>
 																									</thead>
 																									<tbody>
+																										<?php $count=0; ?>
+																										<?php foreach ($lstrestricciones as $restriccion): ?>
+																										<tr>
+																											<td> [#] <?php echo $count;?> </td>
+																											<td> <?php echo $restriccion['campo_nombre']; ?></td> 
+																											<td> <?php echo $restriccion['restbenef_tipo']; ?> </td>
+																											<td> <?php echo $restriccion['restbenef_valor']; ?> </td>
+																											<td> <?php echo $restriccion['restbenef_grupo_campo']; ?> </td>
+																										</tr>
+																										<?php $count++; ?>
+																										<?php endforeach; ?>
+																										
 																										<tr>
 																											<td> 1 </td>
 																											<td> Estudiante </td>

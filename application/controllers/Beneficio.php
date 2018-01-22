@@ -91,8 +91,8 @@ class Beneficio extends CI_Controller {
 				$beneficio = array(
 					'benef_nombre' 			=> $ben_nom,
 					'benef_anio' 			=> $ben_anio,
-					'benef_fec_inicio' 		=> $ben_fec_ini,
-					'benef_fec_fin' 		=> $ben_fec_fin,
+					'benef_fec_inicio' 		=> $this->fecha_a_unix($ben_fec_ini),
+					'benef_fec_fin' 		=> $this->fecha_a_unix($ben_fec_fin),
 					'benef_fec_iniciopos' 	=> $this->fecha_a_unix($ben_fec_inip),
 					'benef_fec_finpos' 		=> $this->fecha_a_unix($ben_fec_finp),
 					'subcat_beneficio_id'	=> $subcategoria,
@@ -207,7 +207,6 @@ class Beneficio extends CI_Controller {
 		echo json_encode($result);
 	}
 	
-	
 	public function detalle($idbeneficio){
 
 		$data['sesionusuario'] = $this->session->userdata('usrsesion');
@@ -221,7 +220,11 @@ class Beneficio extends CI_Controller {
 		$data['divtipo'] = "alert alert-success alert-dismissable";
 
 		$data['beneficio']	= $this->beneficio_model->get_beneficio_by_id($idbeneficio);
-
+		$data['lstrestricciones'] = $this->beneficio_model->get_restricciones($idbeneficio);
+		
+		
+		
+		
 		$this->load->view('analista/header',$data);
 		$this->load->view('beneficio/detalle',$data);
 		$this->load->view('analista/footer',$data);
@@ -278,8 +281,8 @@ class Beneficio extends CI_Controller {
 					$beneficio = array(
 						'benef_nombre' 			=> $ben_nom,
 						'benef_anio' 			=> $ben_anio,
-						'benef_fec_inicio' 		=> $ben_fec_ini,
-						'benef_fec_fin' 		=> $ben_fec_fin,
+						'benef_fec_inicio' 		=> $this->fecha_a_unix($ben_fec_ini) ,
+						'benef_fec_fin' 		=> $this->fecha_a_unix($ben_fec_fin) ,
 						'benef_fec_iniciopos' 	=> $this->fecha_a_unix($ben_fec_inip),
 						'benef_fec_finpos' 		=> $this->fecha_a_unix($ben_fec_finp),
 						'subcat_beneficio_id'	=> $subcategoria,
@@ -331,8 +334,8 @@ class Beneficio extends CI_Controller {
 		$this->load->model('param_model');
 		$this->load->model('beneficio_model');
 		
-		$data['mensaje'] = "";
-		$data['divtipo'] = "alert alert-success alert-dismissable";
+		$data['mensaje'] 	= "";
+		$data['divtipo'] 	= "alert alert-success alert-dismissable";
 
 		$data['beneficio']	= $this->beneficio_model->get_beneficio_by_id($idbeneficio);
 
@@ -343,21 +346,18 @@ class Beneficio extends CI_Controller {
 			
 			if ($this->input->post('hdn_valor') != "" && $this->input->post('hdn_valor') == 1){
 				//POST
-				$campo = $this->input->post('sel_campo');
-				//$opcion = $this->input->post('sel_opcion');
-				//$rest_tipo = $this->input->post('sel_tipo');
-				$rest_campo= $this->input->post('sel_campo');
-				//$rest_opcion= $this->input->post('sel_opcion');
-				//$rest_valor= $this->input->post('txt_valor');
-				//$rest_grupo= "";
+
+				$rest_tipo	 = $this->input->post('sel_tipo');
+				$rest_campo	 = $this->input->post('sel_campo');
+				$rest_opcion = $this->input->post('sel_opcion');
+				$rest_valor	 = $this->input->post('txt_valor');
+				$rest_grupo	 = $this->input->post('txt_grupo');
 				// VALIDACIONES
 				$this->form_validation->set_rules('sel_campo','Campo','required');
-				//$this->form_validation->set_rules('sel_opcion','Opcion','required');
-				//$this->form_validation->set_rules('sel_tipo','Tipo','required');
-				//$this->form_validation->set_rules('sel_campo','Campo','required');
-				//$this->form_validation->set_rules('sel_opcion','Opcion','required');
-				//$this->form_validation->set_rules('txt_valor','Valor','required');
-				
+				$this->form_validation->set_rules('sel_tipo','Tipo','required');
+				$this->form_validation->set_rules('sel_opcion','Opcion','required');
+				$this->form_validation->set_rules('txt_valor','Valor','required');
+				$this->form_validation->set_rules('txt_grupo','grupo');
 				// /VALIDACIONES
 				
 				// MENSAJES
@@ -366,19 +366,18 @@ class Beneficio extends CI_Controller {
 				
 				
 				if ($this->form_validation->run() == FALSE){
-					$data['lstopciones'] = $this->param_model->get_opciones_by_campoid($campo);
+					$data['lstopciones'] = $this->param_model->get_opciones_by_campoid($rest_campo);
 					$data['mensaje'] = "El formulario presenta errores de validación";
 					$data['divtipo'] = "alert alert-danger alert-dismissable";
 				}
 				else{
-					echo "CTM";
 					$restriccion = array(
-						//'restbenef_tipo' 			=> $rest_tipo,
-						'campo_id' 			=> $rest_campo,
-						/*'campo_valor_id' 			=> $rest_opcion,
-						'restbenef_valor' 			=> $rest_valor,
-						'restbenef_grupo_campo' 			=> $rest_grupo,*/
-						'beneficio_id' => $idbeneficio
+						'restbenef_tipo'		=> $rest_tipo,
+						'campo_id'				=> $rest_campo,
+						'campo_valor_id'		=> $rest_opcion,
+						'restbenef_valor'		=> $rest_valor,
+						'restbenef_grupo_campo'	=> $rest_grupo,
+						'beneficio_id'			=> $idbeneficio
 					);
 					$res = $this->beneficio_model->agregar_restriccion($restriccion);
 					if ($res == 1){
@@ -426,6 +425,7 @@ class Beneficio extends CI_Controller {
 	
 	//FECHAS
 	public function fecha_a_unix($fecha){
+		$fecha= trim($fecha, " ");
 		$fecha_convertida= DateTime::createFromFormat('d-m-Y',$fecha);
 		return $fecha_convertida->format('U');
 		
