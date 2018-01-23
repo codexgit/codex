@@ -158,7 +158,7 @@ class Beneficio extends CI_Controller {
         $this->load->view('analista/footer', $data);
         //redirect('/beneficio/listado');
     }
-
+    /*
     public function en_procesamiento($idbeneficio) {
 
         $data['sesionusuario'] = $this->session->userdata('usrsesion');
@@ -182,6 +182,7 @@ class Beneficio extends CI_Controller {
         $this->load->view('analista/footer', $data);
     }
 
+        */
     public function getSubcategorias() {
         $postData = $this->input->post();
         $this->load->model('param_model');

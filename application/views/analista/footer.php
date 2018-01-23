@@ -212,7 +212,7 @@
             $.ajax({
                 url: '<?php echo base_url(); ?>/beneficio/getOpciones',
                 method: 'post',
-                data: {campo: campo},
+                data: {campox: campo},
                 dataType: 'json',
                 success: function (response) {
 

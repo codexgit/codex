@@ -119,10 +119,7 @@
                                                                             <a href="<?php echo site_url('beneficio/detalle/' . $beneficio['beneficio_id']); ?>">
                                                                                 <i class="icon-book-open"></i> Detalle </a>
                                                                         </li>
-                                                                        <li>
-                                                                            <a href="<?php echo site_url('beneficio/en_procesamiento/' . $beneficio['beneficio_id']); ?>">
-                                                                                <i class="icon-refresh"></i> En procesamiento </a>
-                                                                        </li>
+                                                                        
                                                                         <li>
                                                                             <a href=" <?php echo site_url('beneficio/activar/' . $beneficio['beneficio_id']); ?> ">
 
@@ -137,14 +134,7 @@
                                                                             <a href=" <?php echo site_url('beneficio/detalle/' . $beneficio['beneficio_id']); ?> ">
                                                                                 <i class="icon-book-open"></i> Detalle </a>
                                                                         </li>
-                                                                        <li>
-                                                                            <a href="<?php echo site_url('beneficio/activar/' . $beneficio['beneficio_id']); ?>">
-                                                                                <i class="icon-action-redo"></i> Activar </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="<?php echo site_url('beneficio/desactivar/' . $beneficio['beneficio_id']); ?>">
-                                                                                <i class="icon-action-undo"></i> Bloquear </a>
-                                                                        </li>
+                                                                        
                                                                         <?php
                                                                     } else { //ACTIVADO
                                                                         ?>
@@ -156,10 +146,10 @@
                                                                             <a href="<?php echo site_url('beneficio/restricciones/' . $beneficio['beneficio_id']); ?>">
                                                                                 <i class="icon-list"></i> Editar restricciones </a>
                                                                         </li>
-                                                                        <li>
+                                                                        <!--<li>
                                                                             <a href="<?php echo site_url('beneficio/en_procesamiento/' . $beneficio['beneficio_id']); ?>">
                                                                                 <i class="icon-refresh"></i> En procesamiento </a>
-                                                                        </li>
+                                                                        </li>-->
                                                                         <li>
                                                                             <a href="<?php echo site_url('beneficio/desactivar/' . $beneficio['beneficio_id']); ?>">
                                                                                 <i class="icon-action-undo"></i> Bloquear </a>
