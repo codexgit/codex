@@ -99,67 +99,73 @@ if (validation_errors() == "") {
                                     <div class="portlet-body form">
                                         <!-- BEGIN FORM-->
                                         <div class="form-body">
-                                            <h3 class="form-section">Datos Generales</h3>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Categoría</label>
-                                                        <span class="help-block"> <?php echo $nom_categoria; ?> </span>
+                                            <div class="panel panel-danger">
+                                                <div class="panel-heading">
+                                                    <h3 class="form-section">Datos Generales</h3></div>
+
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Categoría</label>
+                                                                <span class="help-block"> <?php echo $nom_categoria; ?> </span>
+                                                            </div>
+                                                        </div>
+                                                        <!--/span-->
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Subcategoría</label>
+                                                                <span class="help-block"> <?php echo $nom_subcategoria; ?> </span>
+                                                            </div>
+                                                        </div>
+                                                        <!--/span-->
                                                     </div>
-                                                </div>
-                                                <!--/span-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Subcategoría</label>
-                                                        <span class="help-block"> <?php echo $nom_subcategoria; ?> </span>
+                                                    <!--/row-->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Nombre</label>
+                                                                <span class="help-block"> <?php echo $nom_beneficio; ?> </span>
+                                                            </div>
+                                                        </div>
+                                                        <!--/span-->
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">A&ntilde;o</label>
+                                                                <span class="help-block"> <?php echo $anio; ?> </span>
+                                                            </div>
+                                                        </div>
+                                                        <!--/span-->
                                                     </div>
-                                                </div>
-                                                <!--/span-->
-                                            </div>
-                                            <!--/row-->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Nombre</label>
-                                                        <span class="help-block"> <?php echo $nom_beneficio; ?> </span>
+                                                    <!--/row-->
+                                                    <div class="row">
+                                                        <div class="col-md-6 ">
+                                                            <div class="form-group">
+                                                                <label>Inicio vigencia</label>
+                                                                <span class="help-block"> <?php echo mdate('%d-%m-%Y ', $f_ini_v); ?> </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            <div class="form-group">
+                                                                <label>Fin vigencia</label>
+                                                                <span class="help-block"> <?php echo mdate('%d-%m-%Y ', $f_fin_v); ?> </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <!--/span-->
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="control-label">A&ntilde;o</label>
-                                                        <span class="help-block"> <?php echo $anio; ?> </span>
-                                                    </div>
-                                                </div>
-                                                <!--/span-->
-                                            </div>
-                                            <!--/row-->
-                                            <div class="row">
-                                                <div class="col-md-6 ">
-                                                    <div class="form-group">
-                                                        <label>Inicio vigencia</label>
-                                                        <span class="help-block"> <?php echo mdate('%d-%m-%Y ', $f_ini_v); ?> </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 ">
-                                                    <div class="form-group">
-                                                        <label>Fin vigencia</label>
-                                                        <span class="help-block"> <?php echo mdate('%d-%m-%Y ', $f_fin_v); ?> </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/row-->                                                                            
-                                            <div class="row">
-                                                <div class="col-md-6 ">
-                                                    <div class="form-group">
-                                                        <label>Inicio postulación</label>
-                                                        <span class="help-block"> <?php echo mdate('%d-%m-%Y ', $f_ini_p); ?> </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 ">
-                                                    <div class="form-group">
-                                                        <label>Fin postulación</label>
-                                                        <span class="help-block"> <?php echo mdate('%d-%m-%Y ', $f_fin_p); ?> </span>
+                                                    <!--/row-->                                                                            
+                                                    <div class="row">
+                                                        <div class="col-md-6 ">
+                                                            <div class="form-group">
+                                                                <label>Inicio postulación</label>
+                                                                <span class="help-block"> <?php echo mdate('%d-%m-%Y ', $f_ini_p); ?> </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            <div class="form-group">
+                                                                <label>Fin postulación</label>
+                                                                <span class="help-block"> <?php echo mdate('%d-%m-%Y ', $f_fin_p); ?> </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -278,7 +284,7 @@ if (validation_errors() == "") {
                                                                 <label class="control-label">Campo <span class="required" aria-required="true"> * </span></label>
                                                                 <br/>
                                                                 <select name="sel_campo" class="form-control" id="sel_campo">
-
+                                                                    <option value="">Seleccione una opci&oacute;n</option>
                                                                     <?php
                                                                     foreach ($lstcampos as $campo):
                                                                         if ($campo['campo_id'] == $idcampo) {
@@ -286,8 +292,11 @@ if (validation_errors() == "") {
                                                                         } else {
                                                                             echo "<option value='" . $campo['campo_id'] . "'>" . $campo['campo_nombre'] . "</option>";
                                                                         }
+                                                                        
                                                                     endforeach;
+                                                                    
                                                                     ?>
+
                                                                     <option value="A">#Estudiante</option>
                                                                     <option value="B">#Último año aprobado</option>
                                                                     <option value="C">#Ingreso per cápita</option>
@@ -298,7 +307,7 @@ if (validation_errors() == "") {
                                                                     <option value="G">#Hijo prof. de educ.</option>
                                                                     <option value="H">#Edad</option>
                                                                 </select>
-
+                                                                
                                                                 <?php
                                                                 if (form_error('sel_campo') != NULL) {
                                                                     ?>
@@ -362,10 +371,10 @@ if (validation_errors() == "") {
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group <?php
-                                                            if (form_error('txt_grupo') != "") {
-                                                                echo "has-error";
-                                                            }
-                                                            ?>">
+                                                                if (form_error('txt_grupo') != "") {
+                                                                    echo "has-error";
+                                                                }
+                                                                ?>">
                                                                 <label class="control-label">Grupo</label>
                                                                 <br/>
                                                                 <input type="text" name="txt_grupo" id="txt_grupo" placeholder="" class="form-control" />

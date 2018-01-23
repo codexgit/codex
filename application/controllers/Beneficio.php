@@ -57,26 +57,27 @@ class Beneficio extends CI_Controller {
         if ($this->input->post('hdn_valor') != "" && $this->input->post('hdn_valor') == 1) {
             $ben_nom = $this->input->post('txt_nbeneficio');
             $ben_anio = $this->input->post('txt_anio');
-            $ben_fec_ini = $this->input->post('txt_iniciov');
-            $ben_fec_fin = $this->input->post('txt_finv');
-            $ben_fec_inip = $this->input->post('txt_inip');
-            $ben_fec_finp = $this->input->post('txt_finp');
+            $ben_fec_ini = $this->input->post('txt_f_ini_v');
+            $ben_fec_fin = $this->input->post('txt_f_fin_v');
+            $ben_fec_inip = $this->input->post('txt_f_ini_p');
+            $ben_fec_finp = $this->input->post('txt_f_fin_p');
 
             $categoria = $this->input->post('sel_categoria');
             $subcategoria = $this->input->post('sel_subcategoria');
 
             //INICIO VALIDACIONES
             $this->form_validation->set_rules('txt_nbeneficio', 'Nombre Beneficio', 'required');
-            $this->form_validation->set_rules('txt_anio', 'Año', 'required');
+            $this->form_validation->set_rules('txt_anio', 'Anioo', 'required|numeric');
             $this->form_validation->set_rules('sel_categoria', 'Categoria', 'required');
             $this->form_validation->set_rules('sel_subcategoria', 'Subcategoria', 'required');
-
-            $this->form_validation->set_rules('txt_inip', 'Inicio de postulación', 'required');
-            $this->form_validation->set_rules('txt_finp', 'Fin de postulación', 'required');
+            $this->form_validation->set_rules('txt_f_ini_v', 'Inicio de postulación', 'required');
+            $this->form_validation->set_rules('txt_f_fin_v', 'Fin de postulación', 'required');
+            $this->form_validation->set_rules('txt_f_ini_p', 'Inicio de postulación');
+            $this->form_validation->set_rules('txt_f_fin_p', 'Fin de postulación');
             //MENSAJES	
             $this->form_validation->set_message('required', 'El campo {field} es requerido');
             $this->form_validation->set_message('alpha', 'El campo {field} tiene numeros');
-            $this->form_validation->set_message('alpha-numeric', 'El campo {field} tiene caracteres');
+            $this->form_validation->set_message('numeric', 'El campo {field} es numerico');
 
             if ($this->form_validation->run() == FALSE) {
 
@@ -236,10 +237,10 @@ class Beneficio extends CI_Controller {
             if ($this->input->post('hdn_valor') != "" && $this->input->post('hdn_valor') == 1) {
                 $ben_nom = $this->input->post('txt_nbeneficio');
                 $ben_anio = $this->input->post('txt_anio');
-                $ben_fec_ini = $this->input->post('txt_iniciov');
-                $ben_fec_fin = $this->input->post('txt_finv');
-                $ben_fec_inip = $this->input->post('txt_inip');
-                $ben_fec_finp = $this->input->post('txt_finp');
+                $ben_fec_ini = $this->input->post('txt_f_ini_v');
+                $ben_fec_fin = $this->input->post('txt_f_fin_v');
+                $ben_fec_inip = $this->input->post('txt_f_ini_p');
+                $ben_fec_finp = $this->input->post('txt_f_fin_p');
 
                 $categoria = $this->input->post('sel_categoria');
                 $subcategoria = $this->input->post('sel_subcategoria');
@@ -250,8 +251,8 @@ class Beneficio extends CI_Controller {
                 $this->form_validation->set_rules('sel_categoria', 'Categoria', 'required');
                 $this->form_validation->set_rules('sel_subcategoria', 'Subcategoria', 'required');
 
-                $this->form_validation->set_rules('txt_inip', 'Inicio de postulación', 'required');
-                $this->form_validation->set_rules('txt_finp', 'Fin de postulación', 'required');
+                $this->form_validation->set_rules('txt_f_ini_v', 'Inicio de vigencia', 'required');
+                $this->form_validation->set_rules('txt_f_fin_v', 'Fin de vigencia', 'required');
                 //MENSAJES	
                 $this->form_validation->set_message('required', 'El campo {field} es requerido');
                 $this->form_validation->set_message('alpha', 'El campo {field} tiene numeros');
@@ -399,9 +400,13 @@ class Beneficio extends CI_Controller {
 
     //FECHAS
     public function fecha_a_unix($fecha) {
-        $fecha = trim($fecha, " ");
-        $fecha_convertida = DateTime::createFromFormat('d-m-Y', $fecha);
-        return $fecha_convertida->format('U');
+        if($fecha!=0){
+            $fecha_convertida = DateTime::createFromFormat('d-m-Y', $fecha);
+            return $fecha_convertida->format('U');
+        }else{
+            return 0;
+        }
+        
     }
 
 }

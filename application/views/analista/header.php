@@ -30,7 +30,7 @@
         <link href="<?php echo base_url(); ?>/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
 
         <link href="<?php echo base_url(); ?>/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
-        
+
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="<?php echo base_url(); ?>/assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -42,8 +42,8 @@
         <link href="<?php echo base_url(); ?>/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> 
-		
-		</head>
+
+    </head>
     <!-- END HEAD -->
 
     <body class="page-container-bg-solid page-md">
@@ -73,7 +73,7 @@
                                         <li class="dropdown dropdown-user dropdown-dark">
                                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                                 <img alt="" class="img-circle" src="<?php echo base_url(); ?>/assets/layouts/layout3/img/avatar.png">
-                                                <span class="username username-hide-mobile"><?php echo element('usrnombre',$sesionusuario)." ".element('usrapellido',$sesionusuario); ?> </span>
+                                                <span class="username username-hide-mobile"><?php echo element('usrnombre', $sesionusuario) . " " . element('usrapellido', $sesionusuario); ?> </span>
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-default">
                                                 <li>
@@ -120,13 +120,13 @@
                                     <ul class="nav navbar-nav">
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown active">
                                             <a href="<?php echo site_url('analista/index'); ?>"> 
-                                            	<i class="icon-home"></i> Inicio
+                                                <i class="icon-home"></i> Inicio
                                                 <span class="arrow"></span>
                                             </a>
                                         </li>
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown">
                                             <a href="#"> 
-                                            	<i class="icon-globe"></i> Filiales
+                                                <i class="icon-globe"></i> Filiales
                                                 <span class="arrow"></span>
                                             </a>
                                             <ul class="dropdown-menu pull-left">
@@ -150,7 +150,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        
+
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown">
                                             <a href="#"> 
                                                 <i class="icon-heart"></i> Beneficios
@@ -172,23 +172,42 @@
 
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                             <a href="#"> 
-                                            	<i class="icon-note"></i> Encuestas
+                                                <i class="icon-note"></i> Encuestas
                                                 <span class="arrow"></span>
                                             </a>
                                             <ul class="dropdown-menu pull-left">
                                                 <li aria-haspopup="true" class=" ">
                                                     <a href="#" class="nav-link  "> 
-                                                    	<i class="icon-link"></i> Asociar Recopilador 
+                                                        <i class="icon-link"></i> Asociar Recopilador 
                                                     </a>
                                                 </li>
                                                 <li aria-haspopup="true" class=" ">
                                                     <a href="#" class="nav-link  "> 
-														<i class="icon-magnifier"></i> Validar Encuestas                                                   
+                                                        <i class="icon-magnifier"></i> Validar Encuestas                                                   
                                                     </a>
                                                 </li>
                                                 <li aria-haspopup="true" class=" ">
                                                     <a href="#" class="nav-link  "> 
-														<i class="icon-cloud-upload"></i> Carga Masiva                                                   
+                                                        <i class="icon-cloud-upload"></i> Carga Masiva                                                   
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!--
+                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
+                                            <a href="#"> 
+                                                <i class="icon-settings"></i> Procesamiento
+                                                <span class="arrow"></span>
+                                            </a>
+                                            <ul class="dropdown-menu pull-left">
+                                                <li aria-haspopup="true" class=" ">
+                                                    <a href="#" class="nav-link  "> 
+                                                        <i class="icon-target"></i> Unitario 
+                                                    </a>
+                                                </li>
+                                                <li aria-haspopup="true" class=" ">
+                                                    <a href="#" class="nav-link  "> 
+                                                        <i class="icon-layers"></i> Grupal                                                    
                                                     </a>
                                                 </li>
                                             </ul>
@@ -196,18 +215,23 @@
 
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                             <a href="#"> 
-                                            	<i class="icon-settings"></i> Procesamiento
+                                                <i class="icon-calculator"></i> Reportes
                                                 <span class="arrow"></span>
                                             </a>
                                             <ul class="dropdown-menu pull-left">
                                                 <li aria-haspopup="true" class=" ">
                                                     <a href="#" class="nav-link  "> 
-                                                    	<i class="icon-target"></i> Unitario 
+                                                        <i class="icon-graph"></i> Gráficos 
                                                     </a>
                                                 </li>
                                                 <li aria-haspopup="true" class=" ">
                                                     <a href="#" class="nav-link  "> 
-														<i class="icon-layers"></i> Grupal                                                    
+                                                        <i class="icon-docs"></i> Descargables                                                    
+                                                    </a>
+                                                </li>
+                                                <li aria-haspopup="true" class=" ">
+                                                    <a href="#" class="nav-link  "> 
+                                                        <i class="icon-equalizer"></i> Predefinidos                                                    
                                                     </a>
                                                 </li>
                                             </ul>
@@ -215,47 +239,23 @@
 
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                             <a href="#"> 
-                                            	<i class="icon-calculator"></i> Reportes
+                                                <i class="icon-feed"></i> Noticias
                                                 <span class="arrow"></span>
                                             </a>
                                             <ul class="dropdown-menu pull-left">
                                                 <li aria-haspopup="true" class=" ">
                                                     <a href="#" class="nav-link  "> 
-                                                    	<i class="icon-graph"></i> Gráficos 
+                                                        <i class="icon-list"></i> Listado 
                                                     </a>
                                                 </li>
                                                 <li aria-haspopup="true" class=" ">
                                                     <a href="#" class="nav-link  "> 
-														<i class="icon-docs"></i> Descargables                                                    
-                                                    </a>
-                                                </li>
-                                                <li aria-haspopup="true" class=" ">
-                                                    <a href="#" class="nav-link  "> 
-														<i class="icon-equalizer"></i> Predefinidos                                                    
+                                                        <i class="icon-plus"></i> Crear                                                    
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li>-->
 
-                                        <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
-                                            <a href="#"> 
-                                            	<i class="icon-feed"></i> Noticias
-                                                <span class="arrow"></span>
-                                            </a>
-                                            <ul class="dropdown-menu pull-left">
-                                                <li aria-haspopup="true" class=" ">
-                                                    <a href="#" class="nav-link  "> 
-                                                    	<i class="icon-list"></i> Listado 
-                                                    </a>
-                                                </li>
-                                                <li aria-haspopup="true" class=" ">
-                                                    <a href="#" class="nav-link  "> 
-														<i class="icon-plus"></i> Crear                                                    
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->
@@ -268,5 +268,4 @@
             </div>
             <div class="page-wrapper-row full-height">
                 <div class="page-wrapper-middle">
-				
-				
+

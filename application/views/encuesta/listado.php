@@ -170,10 +170,13 @@
                                                                         <?php 
 
                                                                             if ($encuesta['enc_estado'] == 1){
-                                                                                echo '<span class="label label-sm label-warning"> Almacenada </span>';
+                                                                                echo '<span class="label label-sm label-warning"> Ingresada </span>';
                                                                             }
                                                                             else if ($encuesta['enc_estado'] == 2){
-                                                                                echo '<span class="label label-sm label-success"> Enviada </span>';                                          
+                                                                                echo '<span class="label label-sm label-success"> Revisada </span>';
+                                                                            }
+                                                                            else{
+                                                                                echo '<span class="label label-sm label-success"> Procesada </span>';
                                                                             }
                                                                         ?>
                                                                     </td>
