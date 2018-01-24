@@ -172,10 +172,7 @@ if (validation_errors() == "") {
                                             <!--/row-->
 
                                             <!-- RESTRICCIONES -->
-                                            <?php
-                                            $attributes = array('class' => 'horizontal');
-                                            echo form_open('beneficio/restricciones/' . $idbeneficio, $attributes);
-                                            ?>
+
                                             <div class="panel panel-danger">
                                                 <div class="panel-heading">
                                                     <h3 >Restricciones</h3></div>
@@ -239,6 +236,12 @@ if (validation_errors() == "") {
 
                                                 </div>
                                             </div>
+                                            <!-- FIN EDITAR RESTRICCION -->
+
+                                            <?php
+                                            $attributes = array('class' => 'horizontal');
+                                            echo form_open('beneficio/restricciones/' . $idbeneficio, $attributes);
+                                            ?>
                                             <!-- AGREGAR RESTRICCION -->
                                             <div class="panel panel-danger">
                                                 <div class="panel-heading">
@@ -292,9 +295,8 @@ if (validation_errors() == "") {
                                                                         } else {
                                                                             echo "<option value='" . $campo['campo_id'] . "'>" . $campo['campo_nombre'] . "</option>";
                                                                         }
-                                                                        
+
                                                                     endforeach;
-                                                                    
                                                                     ?>
 
                                                                     <option value="A">#Estudiante</option>
@@ -307,7 +309,7 @@ if (validation_errors() == "") {
                                                                     <option value="G">#Hijo prof. de educ.</option>
                                                                     <option value="H">#Edad</option>
                                                                 </select>
-                                                                
+
                                                                 <?php
                                                                 if (form_error('sel_campo') != NULL) {
                                                                     ?>
@@ -317,7 +319,10 @@ if (validation_errors() == "") {
                                                                 ?>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+
+
+                                                        <!-- VALOR -->
+                                                        <div class="col-md-6" id="in_valor" style="display:none">
                                                             <div class="form-group <?php
                                                             if (form_error('txt_valor') != "") {
                                                                 echo "has-error";
@@ -335,10 +340,9 @@ if (validation_errors() == "") {
                                                                 ?>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <!-- OPCIONES Y GRUPO -->
-                                                    <div class="row">
-                                                        <div class="col-md-6">
+                                                        <!-- FIN OPCIONES -->
+                                                        <!-- OPCIONES -->
+                                                        <div class="col-md-6 d-none" id="in_opciones" style="display:none">
                                                             <div class="form-group <?php
                                                             if (form_error('sel_opcion') != "") {
                                                                 echo "has-error";
@@ -349,7 +353,7 @@ if (validation_errors() == "") {
                                                                 <select name="sel_opcion" class="form-control" id="sel_opcion">
                                                                     <option value="">Seleccione una opción</option>
                                                                     <?php
-                                                                    //if(isset($lstopciones)){
+//if(isset($lstopciones)){
                                                                     foreach ($lstopciones as $opcion):
                                                                         if ($opcion['campo_valor_id'] == $idopcion) {
                                                                             echo "<option value='" . $opcion['campo_valor_id'] . "' selected>" . $opcion['camvalor_valor'] . "</option>";
@@ -357,7 +361,7 @@ if (validation_errors() == "") {
                                                                             echo "<option value='" . $opcion['campo_valor_id'] . "'>" . $opcion['camvalor_valor'] . "</option>";
                                                                         }
                                                                     endforeach;
-                                                                    //	}
+//	}
                                                                     ?>
                                                                 </select>
                                                                 <?php
@@ -369,12 +373,17 @@ if (validation_errors() == "") {
                                                                 ?>
                                                             </div>
                                                         </div>
+                                                        <!-- FIN OPCION-->
+                                                    </div>
+                                                    <!-- OPCIONES Y GRUPO -->
+                                                    <div class="row">
+
                                                         <div class="col-md-6">
                                                             <div class="form-group <?php
-                                                                if (form_error('txt_grupo') != "") {
-                                                                    echo "has-error";
-                                                                }
-                                                                ?>">
+                                                            if (form_error('txt_grupo') != "") {
+                                                                echo "has-error";
+                                                            }
+                                                            ?>">
                                                                 <label class="control-label">Grupo</label>
                                                                 <br/>
                                                                 <input type="text" name="txt_grupo" id="txt_grupo" placeholder="" class="form-control" />

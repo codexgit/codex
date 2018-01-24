@@ -228,17 +228,40 @@
             //$('#sel_subcategoria').find('option').not(':first').remove();
         });
 
-        $("#sel_campo").change(function () {
-            $("#camp_tip").change(function () {
-                if ($("#camp_tip").val() === "1") {
-                    $("#txt_valor").prop("disabled", true);
-                } else {
-                    $("#txt_valor").prop("disabled", false);
+        $('#sel_campo').change(function () {
+            
+            var ctipo = $(this).val();
+            // AJAX request
+            $.ajax({
+                url: '<?php echo base_url(); ?>/beneficio/getCampoTipo',
+                method: 'post',
+                data: {ctipo: ctipo},
+                dataType: 'json',
+                success: function (response) {
+                    $('#in_valor').hide();
+                    $('#in_opciones').hide();
+                    $.each(response, function (index, data) {
+                        if(data['campo_tipo']==='1'){
+                            $('#in_valor').show('slow');
+                            $('#in_opciones').hide('slow');}
+                        else if (data['campo_tipo']==='2'){
+                            $('#in_valor').hide('slow');
+                            $('#in_opciones').show('slow');
+                        }
+                        
+                    });
+                    
+                    
                 }
             });
+            //$('#sel_subcategoria').find('option').not(':first').remove();
         });
 
+
+
+
     });
+
 </script>
 
 </body>

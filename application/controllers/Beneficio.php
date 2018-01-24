@@ -158,31 +158,33 @@ class Beneficio extends CI_Controller {
         $this->load->view('analista/footer', $data);
         //redirect('/beneficio/listado');
     }
+
     /*
-    public function en_procesamiento($idbeneficio) {
+      public function en_procesamiento($idbeneficio) {
 
-        $data['sesionusuario'] = $this->session->userdata('usrsesion');
-        $this->load->model('beneficio_model');
+      $data['sesionusuario'] = $this->session->userdata('usrsesion');
+      $this->load->model('beneficio_model');
 
-        if (isset($idbeneficio) && $idbeneficio > 0) {
+      if (isset($idbeneficio) && $idbeneficio > 0) {
 
-            $res = $this->beneficio_model->en_procesamiento($idbeneficio);
+      $res = $this->beneficio_model->en_procesamiento($idbeneficio);
 
-            $data['mensaje'] = "El beneficio fue puesto en procesamiento";
-            $data['divtipo'] = "alert alert-success alert-dismissable";
-        } else {
-            $data['mensaje'] = "Ocurrió un error al procesar la solicitud";
-            $data['divtipo'] = "alert alert-danger alert-dismissable";
-        }
+      $data['mensaje'] = "El beneficio fue puesto en procesamiento";
+      $data['divtipo'] = "alert alert-success alert-dismissable";
+      } else {
+      $data['mensaje'] = "Ocurrió un error al procesar la solicitud";
+      $data['divtipo'] = "alert alert-danger alert-dismissable";
+      }
 
-        $data['lstbeneficios'] = $this->beneficio_model->get_beneficios();
+      $data['lstbeneficios'] = $this->beneficio_model->get_beneficios();
 
-        $this->load->view('analista/header', $data);
-        $this->load->view('beneficio/listado', $data);
-        $this->load->view('analista/footer', $data);
-    }
+      $this->load->view('analista/header', $data);
+      $this->load->view('beneficio/listado', $data);
+      $this->load->view('analista/footer', $data);
+      }
 
-        */
+     */
+
     public function getSubcategorias() {
         $postData = $this->input->post();
         $this->load->model('param_model');
@@ -195,6 +197,13 @@ class Beneficio extends CI_Controller {
         $this->load->model('param_model');
         $result = $this->param_model->get_opciones_by_campo($postData);
         echo json_encode($result);
+    }
+
+    public function getCampoTipo() {
+        $postData = $this->input->post();
+        $this->load->model('param_model');
+        $resultt = $this->param_model->get_ctipo($postData);
+        echo json_encode($resultt);
     }
 
     public function detalle($idbeneficio) {
@@ -320,7 +329,7 @@ class Beneficio extends CI_Controller {
         $data['divtipo'] = "alert alert-success alert-dismissable";
 
         $data['lstrestricciones'] = $this->beneficio_model->get_restricciones($idbeneficio);
-        
+
         $data['beneficio'] = $this->beneficio_model->get_beneficio_by_id($idbeneficio);
 
         $data['lstcampos'] = $this->param_model->get_campos();
@@ -340,8 +349,6 @@ class Beneficio extends CI_Controller {
                 $this->form_validation->set_rules('sel_campo', 'Campo', 'required');
                 $this->form_validation->set_rules('sel_tipo', 'Tipo', 'required');
                 $this->form_validation->set_rules('sel_opcion', 'Opcion', 'required');
-                $this->form_validation->set_rules('txt_valor', 'Valor', 'required');
-                $this->form_validation->set_rules('txt_grupo', 'grupo');
                 // /VALIDACIONES
                 // MENSAJES
                 $this->form_validation->set_message('required', 'El campo {field} es requerido');
@@ -352,6 +359,15 @@ class Beneficio extends CI_Controller {
                     $data['lstopciones'] = $this->param_model->get_opciones_by_campoid($rest_campo);
                     $data['mensaje'] = "El formulario presenta errores de validación";
                     $data['divtipo'] = "alert alert-danger alert-dismissable";
+
+                    $data['lstrestricciones'] = $this->beneficio_model->get_restricciones($idbeneficio);
+                    $data['beneficio'] = $this->beneficio_model->get_beneficio_by_id($idbeneficio);
+                    $data['lstcampos'] = $this->param_model->get_campos();
+                    
+                    
+                    $this->load->view('analista/header', $data);
+                    $this->load->view('beneficios/restricciones', $data);
+                    $this->load->view('analista/footer', $data);
                 } else {
                     $restriccion = array(
                         'restbenef_tipo' => $rest_tipo,
@@ -401,13 +417,12 @@ class Beneficio extends CI_Controller {
 
     //FECHAS
     public function fecha_a_unix($fecha) {
-        if($fecha!=0){
+        if ($fecha != 0) {
             $fecha_convertida = DateTime::createFromFormat('d-m-Y', $fecha);
             return $fecha_convertida->format('U');
-        }else{
+        } else {
             return 0;
         }
-        
     }
 
 }
