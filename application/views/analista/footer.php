@@ -243,10 +243,13 @@
                     $.each(response, function (index, data) {
                         if(data['campo_tipo']==='1'){
                             $('#in_valor').show('slow');
-                            $('#in_opciones').hide('slow');}
+                            $('#in_opciones').hide('slow');
+                            $('#hdn_campo_tipo').val(data['campo_tipo']);
+                        }
                         else if (data['campo_tipo']==='2'){
                             $('#in_valor').hide('slow');
                             $('#in_opciones').show('slow');
+                            $('#hdn_campo_tipo').val(data['campo_tipo']);
                         }
                         
                     });

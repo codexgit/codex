@@ -16,15 +16,15 @@ if (validation_errors() == "") {
     $sel_tipo = "";
     $txt_valor = "";
 } else {
-
-    $nom_categoria = set_value('txt_categoria');
-    $nom_subcategoria = set_value('txt_subcategoria');
-    $nom_beneficio = set_value('txt_nbeneficio');
-    $anio = set_value('txt_anio');
-    $f_ini_v = set_value('txt_iniv');
-    $f_fin_v = set_value('txt_finv');
-    $f_ini_p = set_value('txt_inip');
-    $f_fin_p = set_value('txt_finp');
+    $idbeneficio = $beneficio->beneficio_id;
+    $nom_categoria = $beneficio->cat_benef_nombre;
+    $nom_subcategoria = $beneficio->subcat_benef_nombre;
+    $nom_beneficio = $beneficio->benef_nombre;
+    $anio = $beneficio->benef_anio;
+    $f_ini_v = $beneficio->benef_fec_inicio;
+    $f_fin_v = $beneficio->benef_fec_fin;
+    $f_ini_p = $beneficio->benef_fec_iniciopos;
+    $f_fin_p = $beneficio->benef_fec_finpos;
 
     $idcampo = set_value('sel_campo');
     $idopcion = set_value('sel_opcion');
@@ -258,12 +258,13 @@ if (validation_errors() == "") {
                                                                 <label class="control-label">Tipo <span class="required" aria-required="true"> * </span></label>
                                                                 <br/>
                                                                 <select name="sel_tipo" id="sel_tipo" class="form-control">
-                                                                    <option value="1">Igual a</option>
-                                                                    <option value="2">Mayor a</option>
-                                                                    <option value="3">Mayor o igual a</option>
-                                                                    <option value="4">Menor a</option>
-                                                                    <option value="5">Menor o igual a</option>
-                                                                    <option value="6">Seleccionable</option>
+                                                                    <option value=" ">Seleccionar opcion</option>
+                                                                    <option value="1" <?php echo ($sel_tipo == 1) ? "selected" : "" ?> >Igual a</option>
+                                                                    <option value="2" <?php echo ($sel_tipo == 2) ? "selected" : "" ?> >Mayor a</option>
+                                                                    <option value="3" <?php echo ($sel_tipo == 3) ? "selected" : "" ?> >Mayor o igual a</option>
+                                                                    <option value="4" <?php echo ($sel_tipo == 4) ? "selected" : "" ?> >Menor a</option>
+                                                                    <option value="5" <?php echo ($sel_tipo == 5) ? "selected" : "" ?> >Menor o igual a</option>
+                                                                    
                                                                 </select>
 
                                                                 <?php
@@ -287,7 +288,7 @@ if (validation_errors() == "") {
                                                                 <label class="control-label">Campo <span class="required" aria-required="true"> * </span></label>
                                                                 <br/>
                                                                 <select name="sel_campo" class="form-control" id="sel_campo">
-                                                                    <option value="">Seleccione una opci&oacute;n</option>
+                                                                    <option value=" ">Seleccione una opci&oacute;n</option>
                                                                     <?php
                                                                     foreach ($lstcampos as $campo):
                                                                         if ($campo['campo_id'] == $idcampo) {
@@ -408,6 +409,7 @@ if (validation_errors() == "") {
                                                                 <i class="fa fa-check"></i> Guardar</button>
                                                         </div>
                                                         <input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
+                                                        <input type="hidden" name="hdn_campo_tipo" id="hdn_campo_tipo" value="">
                                                         <?php echo form_close(); ?>
                                                     </div>
                                                 </div>

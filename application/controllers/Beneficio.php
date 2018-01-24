@@ -329,9 +329,7 @@ class Beneficio extends CI_Controller {
         $data['divtipo'] = "alert alert-success alert-dismissable";
 
         $data['lstrestricciones'] = $this->beneficio_model->get_restricciones($idbeneficio);
-
         $data['beneficio'] = $this->beneficio_model->get_beneficio_by_id($idbeneficio);
-
         $data['lstcampos'] = $this->param_model->get_campos();
 
 
@@ -339,16 +337,25 @@ class Beneficio extends CI_Controller {
 
             if ($this->input->post('hdn_valor') != "" && $this->input->post('hdn_valor') == 1) {
                 //POST
-
                 $rest_tipo = $this->input->post('sel_tipo');
                 $rest_campo = $this->input->post('sel_campo');
                 $rest_opcion = $this->input->post('sel_opcion');
                 $rest_valor = $this->input->post('txt_valor');
                 $rest_grupo = $this->input->post('txt_grupo');
+                $campo_tipo = $this->input->post('hdn_campo_tipo');
                 // VALIDACIONES
                 $this->form_validation->set_rules('sel_campo', 'Campo', 'required');
                 $this->form_validation->set_rules('sel_tipo', 'Tipo', 'required');
+                if($campo_tipo==1){
+                    $this->form_validation->set_rules('txt_valor', 'Campo', 'required');
+                }else if($campo_tipo==2){
+                    
+                }
+                /*
                 $this->form_validation->set_rules('sel_opcion', 'Opcion', 'required');
+                $this->form_validation->set_rules('txt_valor', 'Valor', 'required');
+                */
+                 
                 // /VALIDACIONES
                 // MENSAJES
                 $this->form_validation->set_message('required', 'El campo {field} es requerido');
@@ -360,13 +367,9 @@ class Beneficio extends CI_Controller {
                     $data['mensaje'] = "El formulario presenta errores de validación";
                     $data['divtipo'] = "alert alert-danger alert-dismissable";
 
-                    $data['lstrestricciones'] = $this->beneficio_model->get_restricciones($idbeneficio);
-                    $data['beneficio'] = $this->beneficio_model->get_beneficio_by_id($idbeneficio);
-                    $data['lstcampos'] = $this->param_model->get_campos();
-                    
-                    
+                    echo $idbeneficio;
                     $this->load->view('analista/header', $data);
-                    $this->load->view('beneficios/restricciones', $data);
+                    $this->load->view('beneficio/restricciones', $data);
                     $this->load->view('analista/footer', $data);
                 } else {
                     $restriccion = array(

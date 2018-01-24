@@ -125,7 +125,7 @@ class Empresa extends CI_Controller {
 
         //$data['lstempresas'] = $this->empresa_model->get_empresas_filial();
         $data['lstempresas'] = $this->empresa_model->get_empresas();
-        
+
         $this->load->view('analista/header', $data);
         $this->load->view('empresa/listado', $data);
         $this->load->view('analista/footer', $data);
@@ -148,7 +148,7 @@ class Empresa extends CI_Controller {
         }
 
         //$data['lstempresas'] = $this->empresa_model->get_empresas_filial();
-$data['lstempresas'] = $this->empresa_model->get_empresas();
+        $data['lstempresas'] = $this->empresa_model->get_empresas();
         $this->load->view('analista/header', $data);
         $this->load->view('empresa/listado', $data);
         $this->load->view('analista/footer', $data);
