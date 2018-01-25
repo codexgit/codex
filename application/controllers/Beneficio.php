@@ -62,6 +62,7 @@ class Beneficio extends CI_Controller {
             $ben_fec_inip = $this->input->post('txt_f_ini_p');
             $ben_fec_finp = $this->input->post('txt_f_fin_p');
 
+
             $categoria = $this->input->post('sel_categoria');
             $subcategoria = $this->input->post('sel_subcategoria');
 
@@ -70,11 +71,12 @@ class Beneficio extends CI_Controller {
             $this->form_validation->set_rules('txt_anio', 'Anioo', 'required|numeric');
             $this->form_validation->set_rules('sel_categoria', 'Categoria', 'required');
             $this->form_validation->set_rules('sel_subcategoria', 'Subcategoria', 'required');
-            $this->form_validation->set_rules('txt_f_ini_v', 'Inicio de postulación', 'required');
-            $this->form_validation->set_rules('txt_f_fin_v', 'Fin de postulación', 'required');
+            $this->form_validation->set_rules('txt_f_ini_v', 'Inicio de vigencia', 'required');
+            $this->form_validation->set_rules('txt_f_fin_v', 'Fin vigencia', 'required|callback_validar_fecha[' . $ben_fec_ini . ']');
             $this->form_validation->set_rules('txt_f_ini_p', 'Inicio de postulación');
-            $this->form_validation->set_rules('txt_f_fin_p', 'Fin de postulación');
+            $this->form_validation->set_rules('txt_f_fin_p', 'Fin de postulación', 'callback_validar_fecha[' . $ben_fec_inip . ']');
             //MENSAJES	
+            $this->form_validation->set_message('validar_fecha', 'La fecha en {field} es menor que la de inicio ');
             $this->form_validation->set_message('required', 'El campo {field} es requerido');
             $this->form_validation->set_message('alpha', 'El campo {field} tiene numeros');
             $this->form_validation->set_message('numeric', 'El campo {field} es numerico');
@@ -262,17 +264,25 @@ class Beneficio extends CI_Controller {
                 $this->form_validation->set_rules('sel_subcategoria', 'Subcategoria', 'required');
 
                 $this->form_validation->set_rules('txt_f_ini_v', 'Inicio de vigencia', 'required');
-                $this->form_validation->set_rules('txt_f_fin_v', 'Fin de vigencia', 'required');
+                $this->form_validation->set_rules('txt_f_fin_v', 'Fin de vigencia', 'required|callback_validar_fecha[' . $ben_fec_ini . ']');
+                $this->form_validation->set_rules('txt_f_ini_p', 'Inicio de postulación');
+                $this->form_validation->set_rules('txt_f_fin_p', 'Fin de postulación', 'callback_validar_fecha[' . $ben_fec_inip . ']');
                 //MENSAJES	
+                
+                $this->form_validation->set_message('validar_fecha', 'La fecha en {field} es menor que la de inicio ');
                 $this->form_validation->set_message('required', 'El campo {field} es requerido');
                 $this->form_validation->set_message('alpha', 'El campo {field} tiene numeros');
                 $this->form_validation->set_message('alpha-numeric', 'El campo {field} tiene caracteres');
 
                 if ($this->form_validation->run() == FALSE) {
-
+                    echo "HEY YOU";
                     $data['lstsubcategorias'] = $this->param_model->get_subcategorias_by_categoriaid($categoria);
                     $data['mensaje'] = "El formulario presenta errores de validación";
                     $data['divtipo'] = "alert alert-danger alert-dismissable";
+                    
+                    $this->load->view('analista/header', $data);
+        $this->load->view('beneficio/editar', $data);
+        $this->load->view('analista/footer', $data);
                 } else {
 
                     $beneficio = array(
@@ -315,9 +325,16 @@ class Beneficio extends CI_Controller {
         } else {
             redirect('beneficio/listado');
         }
+        
     }
 
-    
+    public function validar_fecha($fecha1, $fecha2) {
+        if ($fecha1 >= $fecha2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     //FECHAS
     public function fecha_a_unix($fecha) {

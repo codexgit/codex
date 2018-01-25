@@ -77,8 +77,8 @@
                                                     <th> Nombre</th>
                                                     <th> Subcategor&iacute;a </th>
                                                     <th> A&ntilde;o </th>
-                                                    <th> Inicio Postulación </th>
-                                                    <th> Fin Postulación </th>
+                                                    <th> Inicio Vigencia </th>
+                                                    <th> Fin Vigencia </th>
                                                     <th> Estado </th>
                                                     <th> Acciones </th>                                                                    
                                                 </tr>
@@ -87,11 +87,11 @@
                                                 <!-- BENEFICIOSS -->
                                                 <?php foreach ($lstbeneficios as $beneficio): ?> 
                                                     <tr class="odd gradeX">
-                                                        <td> <!--Beca Ind&iacute;gena--> 			<?php echo $beneficio['benef_nombre']; ?> </td>
+                                                        <td> <!--Beca Ind&iacute;gena-->            <?php echo $beneficio['benef_nombre']; ?> </td>
                                                         <td> <!--Educaci&oacute;n B&aacute;sica-->  <?php echo $beneficio['subcat_benef_nombre']; ?> </td>
-                                                        <td> <!--2017-->							<?php echo $beneficio['benef_anio']; ?> </td>
-                                                        <td> <!--01-07-2016-->						<?php echo mdate('%d-%m-%Y ', $beneficio['benef_fec_iniciopos']); ?> </td>
-                                                        <td> <!--30-11-2016-->						<?php echo mdate('%d-%m-%Y ', $beneficio['benef_fec_finpos']); ?> </td>
+                                                        <td> <!--2017-->                            <?php echo $beneficio['benef_anio']; ?> </td>
+                                                        <td> <!--01-07-2016-->                      <?php echo ($beneficio['benef_fec_inicio'] != 0) ? mdate('%d-%m-%Y', $beneficio['benef_fec_inicio']) : "-"; ?> </td>
+                                                        <td> <!--30-11-2016-->                      <?php echo ($beneficio['benef_fec_fin'] != 0) ? mdate('%d-%m-%Y', $beneficio['benef_fec_fin']) : "-"; ?> </td>
                                                         <td>
                                                             <?php
                                                             //CONTROL DEL ESTADO
@@ -119,7 +119,7 @@
                                                                             <a href="<?php echo site_url('beneficio/detalle/' . $beneficio['beneficio_id']); ?>">
                                                                                 <i class="icon-book-open"></i> Detalle </a>
                                                                         </li>
-                                                                        
+
                                                                         <li>
                                                                             <a href=" <?php echo site_url('beneficio/activar/' . $beneficio['beneficio_id']); ?> ">
 
@@ -134,7 +134,7 @@
                                                                             <a href=" <?php echo site_url('beneficio/detalle/' . $beneficio['beneficio_id']); ?> ">
                                                                                 <i class="icon-book-open"></i> Detalle </a>
                                                                         </li>
-                                                                        
+
                                                                         <?php
                                                                     } else { //ACTIVADO
                                                                         ?>

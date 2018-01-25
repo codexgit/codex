@@ -116,10 +116,10 @@ class Restriccion extends CI_Controller {
             //POST
             $rest_tipo = $this->input->post('sel_tipo');
             $rest_campo = $this->input->post('sel_campo');
-            $rest_opcion = $this->input->post('sel_opcion');
-            $rest_opcion = trim($rest_opcion) != "" ? $rest_opcion : NULL;
-            $rest_valor = $this->input->post('txt_valor');
-            $rest_valor = trim($rest_valor) != "" ? $rest_valor : NULL;
+            //$rest_opcion = $this->input->post('sel_opcion');
+            $rest_opcion = trim($this->input->post('sel_opcion')) != "" ? $rest_opcion : NULL;
+            //$rest_valor = $this->input->post('txt_valor');
+            $rest_valor = trim($this->input->post('txt_valor')) != "" ? $rest_valor : NULL;
             $rest_grupo = $this->input->post('txt_grupo');
             $campo_tipo = $this->input->post('hdn_campo_tipo');
             // FIN POSTS
@@ -181,5 +181,6 @@ class Restriccion extends CI_Controller {
             }
         }
     }
+    
 
 }

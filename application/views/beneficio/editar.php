@@ -6,13 +6,13 @@ if (validation_errors() == "") {
     $idsubcategoria = $beneficio->subcat_beneficio_id;
     $nbeneficio = $beneficio->benef_nombre;
     $anio = $beneficio->benef_anio;
-    $f_ini_v = $beneficio->benef_fec_inicio;
-    $f_fin_v = $beneficio->benef_fec_fin;
-    $f_ini_p = $beneficio->benef_fec_iniciopos;
-    $f_fin_p = $beneficio->benef_fec_finpos;
-
+    //$f_ini_v = $beneficio->benef_fec_inicio;
+    $f_ini_v = mdate('%d-%m-%Y', $beneficio->benef_fec_inicio);
+    $f_fin_v = mdate('%d-%m-%Y', $beneficio->benef_fec_fin);
+    $f_ini_p = ($beneficio->benef_fec_iniciopos != 0) ? mdate('%d-%m-%Y', $beneficio->benef_fec_iniciopos) : ""; 
+    $f_fin_p = ($beneficio->benef_fec_finpos != 0) ? mdate('%d-%m-%Y', $beneficio->benef_fec_finpos) : "";
 } else {
-
+    $idbeneficio = $beneficio->beneficio_id;
     $idcategoria = set_value('sel_categoria');
     $idsubcategoria = set_value('sel_subcategoria');
     $nbeneficio = set_value('txt_nbeneficio');
@@ -106,10 +106,10 @@ if (validation_errors() == "") {
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group <?php
-                                                    if (form_error('sel_categoria') != "") {
-                                                        echo "has-error";
-                                                    }
-                                                    ?>">
+                                        if (form_error('sel_categoria') != "") {
+                                            echo "has-error";
+                                        }
+                                        ?>">
                                                         <label class="control-label">Categoría <span class="required" aria-required="true"> * </span></label>
                                                         <select class="form-control" name="sel_categoria" id="sel_categoria">
                                                             <option value="">Seleccione una opción</option>
@@ -133,16 +133,16 @@ if (validation_errors() == "") {
                                                             <?php
                                                         }
                                                         ?>
-                                <!--<span class="help-block"> Select your gender </span>-->
+                            <!--<span class="help-block"> Select your gender </span>-->
                                                     </div>
                                                 </div>
                                                 <!--/span-->
                                                 <div class="col-md-6">
                                                     <div class="form-group <?php
-                                                    if (form_error('sel_subcategoria') != "") {
-                                                        echo "has-error";
-                                                    }
-                                                    ?>">
+                                                        if (form_error('sel_subcategoria') != "") {
+                                                            echo "has-error";
+                                                        }
+                                                        ?>">
                                                         <label class="control-label">Subcategoría <span class="required" aria-required="true"> * </span></label>
                                                         <select class="form-control" name="sel_subcategoria" id="sel_subcategoria">
                                                             <option value="">Seleccione una opción</option>
@@ -176,10 +176,10 @@ if (validation_errors() == "") {
                                             <div class="row">
                                                 <div class="col-md-9">
                                                     <div class="form-group <?php
-                                                    if (form_error('txt_nbeneficio') != "") {
-                                                        echo "has-error";
-                                                    }
-                                                    ?>">
+                                                        if (form_error('txt_nbeneficio') != "") {
+                                                            echo "has-error";
+                                                        }
+                                                        ?>">
                                                         <label class="control-label">Nombre <span class="required" aria-required="true"> * </span></label>
                                                         <input type="text" name="txt_nbeneficio"  id="txt_nbeneficio" class="form-control" placeholder="" value="<?php echo $nbeneficio; ?>">
 
@@ -196,10 +196,10 @@ if (validation_errors() == "") {
                                                 <!--/span-->
                                                 <div class="col-md-3">
                                                     <div class="form-group <?php
-                                                    if (form_error('txt_anio') != "") {
-                                                        echo "has-error";
-                                                    }
-                                                    ?>">
+                                                        if (form_error('txt_anio') != "") {
+                                                            echo "has-error";
+                                                        }
+                                                        ?>">
                                                         <label class="control-label">A&ntilde;o <span class="required" aria-required="true"> * </span></label>
                                                         <input type="text" name="txt_anio" id="txt_anio" class="form-control" placeholder=" " value="<?php echo $anio; ?>">
                                                         <!--<span class="help-block"> This field has error. </span>-->
@@ -218,18 +218,19 @@ if (validation_errors() == "") {
                                             <!--/row-->
                                             <div class="row">
                                                 <div class="col-md-6 ">
+                                                    
                                                     <div class="form-group  <?php
-                                                    if (form_error('txt_f_ini_v') != "") {
-                                                        echo "has-error";
-                                                    }
-                                                    ?>">
+                                                        if (form_error('txt_f_ini_v') != "") {
+                                                            echo "has-error";
+                                                        }
+                                                        ?>">
                                                         <label>Inicio vigencia <span class="required" aria-required="true"> * </span></label>
                                                         <!--<input type="text" name="txt_iniciov" id="txt_iniciov" class="form-control" placeholder="dd-mm-aaaa" value="<?php echo mdate('%d-%m-%Y', $f_ini_v); ?>">-->
                                                         <!--<input  type="text" class="form-control" id="datetime" readonly>-->
 
                                                         <!-- INICIO DEL CALENDARIO -->
                                                         <div class='input-group date datepicker' >
-                                                            <input type='text' name="txt_f_ini_v" id="txt_f_ini_v" class="form-control" value="<?php echo mdate('%d-%m-%Y', $f_ini_v); ?>" readonly/>
+                                                            <input type='text' name="txt_f_ini_v" id="txt_f_ini_v" class="form-control" value="<?php echo $f_ini_v; ?>" readonly/>
                                                             <span class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                             </span>
@@ -248,15 +249,15 @@ if (validation_errors() == "") {
                                                 </div>
                                                 <div class="col-md-6 ">
                                                     <div class="form-group <?php
-                                                    if (form_error('txt_f_fin_v') != "") {
-                                                        echo "has-error";
-                                                    }
-                                                    ?>">
+                                                        if (form_error('txt_f_fin_v') != "") {
+                                                            echo "has-error";
+                                                        }
+                                                        ?>">
                                                         <label>Fin vigencia <span class="required" aria-required="true"> * </span></label>
                                                         <!--<input type="text" name="txt_finv" id="txt_finv" class="form-control" placeholder="dd-mm-aaaa" value="<?php echo mdate('%d-%m-%Y', $f_fin_v); ?>">-->
                                                         <!-- INICIO DEL CALENDARIO -->
                                                         <div class='input-group date datepicker' >
-                                                            <input type='text' name="txt_f_fin_v" id="txt_f_fin_v" class="form-control" value="<?php echo mdate('%d-%m-%Y', $f_fin_v); ?>" readonly/>
+                                                            <input type='text' name="txt_f_fin_v" id="txt_f_fin_v" class="form-control" value="<?php echo $f_fin_v; ?>" readonly/>
                                                             <span class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                             </span>
@@ -277,15 +278,15 @@ if (validation_errors() == "") {
                                             <div class="row">
                                                 <div class="col-md-6 ">
                                                     <div class="form-group <?php
-                                                    if (form_error('txt_f_ini_p') != "") {
-                                                        echo "has-error";
-                                                    }
-                                                    ?>">
+                                                        if (form_error('txt_f_ini_p') != "") {
+                                                            echo "has-error";
+                                                        }
+                                                        ?>">
                                                         <label>Inicio postulación</label>
                                                         <!--<input type="text" name="txt_inip" id="txt_inip" class="form-control" placeholder="dd-mm-aaaa" value="<?php echo mdate('%d-%m-%Y', $f_inicio_p); ?>">-->
                                                         <!-- INICIO DEL CALENDARIO -->
                                                         <div class='input-group date datepicker' >
-                                                            <input type='text' name="txt_f_ini_p" id="txt_f_ini_p" class="form-control" value="<?php echo $f_ini_p = ($f_ini_p != 0) ? mdate('%d-%m-%Y', $f_ini_p) : ""; ?>" readonly/>
+                                                            <input type='text' name="txt_f_ini_p" id="txt_f_ini_p" class="form-control" value="<?php echo $f_ini_p; ?>" readonly/>
                                                             <span class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                             </span>
@@ -303,15 +304,15 @@ if (validation_errors() == "") {
                                                 </div>
                                                 <div class="col-md-6 ">
                                                     <div class="form-group <?php
-                                                    if (form_error('txt_f_fin_p') != "") {
-                                                        echo "has-error";
-                                                    }
-                                                    ?>">
+                                                        if (form_error('txt_f_fin_p') != "") {
+                                                            echo "has-error";
+                                                        }
+                                                        ?>">
                                                         <label>Fin postulación</label>
                                                         <!--<input type="text" name="txt_finp" id="txt_finp" class="form-control" placeholder="dd-mm-aaaa" value="<?php echo mdate('%d-%m-%Y', $f_fin_p); ?>">-->
                                                         <!-- INICIO DEL CALENDARIO -->
                                                         <div class='input-group date datepicker' >
-                                                            <input type='text' name="txt_f_fin_p" id="txt_f_fin_p" class="form-control" value="<?php echo $f_fin_p = ($f_fin_p != 0) ? mdate('%d-%m-%Y', $f_fin_p) : ""; ?>" readonly/>
+                                                            <input type='text' name="txt_f_fin_p" id="txt_f_fin_p" class="form-control" value="<?php echo $f_fin_p; ?>" readonly/>
                                                             <span class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                             </span>
