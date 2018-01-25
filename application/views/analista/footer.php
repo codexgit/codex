@@ -229,38 +229,70 @@
         });
 
         $('#sel_campo').change(function () {
-            
+
             var ctipo = $(this).val();
             // AJAX request
+
             $.ajax({
                 url: '<?php echo base_url(); ?>/beneficio/getCampoTipo',
                 method: 'post',
                 data: {ctipo: ctipo},
                 dataType: 'json',
                 success: function (response) {
-                    $('#in_valor').hide();
-                    $('#in_opciones').hide();
+
                     $.each(response, function (index, data) {
-                        if(data['campo_tipo']==='1'){
+                        if (data['campo_tipo'] === '1') {
                             $('#in_valor').show('slow');
                             $('#in_opciones').hide('slow');
                             $('#hdn_campo_tipo').val(data['campo_tipo']);
-                        }
-                        else if (data['campo_tipo']==='2'){
+                        } else if (data['campo_tipo'] === '2') {
                             $('#in_valor').hide('slow');
                             $('#in_opciones').show('slow');
                             $('#hdn_campo_tipo').val(data['campo_tipo']);
                         }
-                        
+
                     });
-                    
-                    
+
+
                 }
             });
             //$('#sel_subcategoria').find('option').not(':first').remove();
         });
 
+        //$('#sel_campo').ready(function () {
 
+
+
+        $('#sel_campo').ready(function () {
+            var ctipo = $('#sel_campo').val();
+            $.ajax({
+                url: '<?php echo base_url(); ?>/beneficio/getCampoTipo',
+                method: 'post',
+                data: {ctipo: ctipo},
+                dataType: 'json',
+                success: function (response) {
+                    $.each(response, function (index, data) {
+                        if (data['campo_tipo'] !== "") {
+                            if (data['campo_tipo'] === '1') {
+                                $('#in_valor').show('slow');
+
+                            } else if (data['campo_tipo'] === '2') {
+                                $('#in_opciones').show('slow');
+
+                            }
+                        }
+                    });
+                }
+            });
+
+            //$('#sel_subcategoria').find('option').not(':first').remove();
+            // });
+            
+        });
+
+
+$('#in_opciones').hide();
+            $('#in_valor').hide();  
 
 
     });

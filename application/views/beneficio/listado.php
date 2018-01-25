@@ -143,7 +143,7 @@
                                                                                 <i class="icon-pencil"></i> Editar datos </a>
                                                                         </li>
                                                                         <li>
-                                                                            <a href="<?php echo site_url('beneficio/restricciones/' . $beneficio['beneficio_id']); ?>">
+                                                                            <a href="<?php echo site_url('restriccion/index/' . $beneficio['beneficio_id']); ?>">
                                                                                 <i class="icon-list"></i> Editar restricciones </a>
                                                                         </li>
                                                                         <!--<li>

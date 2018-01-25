@@ -186,6 +186,7 @@ if (validation_errors() == "") {
                                                                     <th> Campo </th>
                                                                     <th> Tipo </th>
                                                                     <th> Valor </th>
+                                                                    <th> Opcion </th>
                                                                     <th> Grupo </th>
                                                                     <th> Accion </th>
                                                                 </tr>
@@ -198,8 +199,9 @@ if (validation_errors() == "") {
                                                                     <tr>
                                                                         <th> <?php echo $count; ?> </th>
                                                                         <th> <?php echo $restriccion['campo_nombre']; ?> </th>
-                                                                        <th> <?php echo $restriccion['campo_tipo']; ?> </th>
+                                                                        <th> <?php echo $restriccion['campo_nombre']; ?> </th>
                                                                         <th> <?php echo $restriccion['restbenef_valor']; ?> </th>
+                                                                        <th> <?php echo $restriccion['camvalor_valor']; ?> </th>
                                                                         <th> <?php echo $restriccion['restbenef_grupo_campo']; ?> </th>
 
                                                                         <td>
@@ -212,15 +214,15 @@ if (validation_errors() == "") {
                                                                                 <ul class="dropdown-menu pull-left" role="menu">
 
                                                                                     <li>
-                                                                                        <a href="<?php echo site_url('#'); ?>">
+                                                                                        <a href="<?php echo site_url('restriccion/editar'); ?>">
                                                                                             <i class="icon-pencil"></i> Editar </a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a href="<?php echo site_url('#'); ?>">
+                                                                                        <a href="<?php echo site_url('restriccion/desactivar/'); ?>">
                                                                                             <i class="icon-action-undo"></i> Bloquear </a>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a href="<?php echo site_url('#'); ?>">
+                                                                                        <a href="<?php echo site_url('restriccion/eliminar_restriccion/' . $restriccion['beneficio_id'] . '/' . $restriccion['beneficio_restriccion_id']); ?>">
                                                                                             <i class="icon-close"></i> Eliminar </a>
                                                                                     </li
                                                                                 </ul>
@@ -240,7 +242,7 @@ if (validation_errors() == "") {
 
                                             <?php
                                             $attributes = array('class' => 'horizontal');
-                                            echo form_open('beneficio/restricciones/' . $idbeneficio, $attributes);
+                                            echo form_open('restriccion/set_restriccion/' . $idbeneficio, $attributes);
                                             ?>
                                             <!-- AGREGAR RESTRICCION -->
                                             <div class="panel panel-danger">
@@ -249,7 +251,7 @@ if (validation_errors() == "") {
                                                 </div>
                                                 <div class="panel-body">
                                                     <div class="row">
-                                                        <div class="col-md-12 ">
+                                                        <div class="col-md-6 ">
                                                             <div class="form-group <?php
                                                             if (form_error('sel_tipo') != "") {
                                                                 echo "has-error";
@@ -264,7 +266,7 @@ if (validation_errors() == "") {
                                                                     <option value="3" <?php echo ($sel_tipo == 3) ? "selected" : "" ?> >Mayor o igual a</option>
                                                                     <option value="4" <?php echo ($sel_tipo == 4) ? "selected" : "" ?> >Menor a</option>
                                                                     <option value="5" <?php echo ($sel_tipo == 5) ? "selected" : "" ?> >Menor o igual a</option>
-                                                                    
+
                                                                 </select>
 
                                                                 <?php
@@ -323,13 +325,13 @@ if (validation_errors() == "") {
 
 
                                                         <!-- VALOR -->
-                                                        <div class="col-md-6" id="in_valor" style="display:none">
+                                                        <div class="col-md-6" id="in_valor" >
                                                             <div class="form-group <?php
                                                             if (form_error('txt_valor') != "") {
                                                                 echo "has-error";
                                                             }
                                                             ?>">
-                                                                <label class="control-label">Valor</label>
+                                                                <label class="control-label">Valor <span class="required" aria-required="true"> * </span></label>
                                                                 <br/>
                                                                 <input type="text" name="txt_valor" id="txt_valor" placeholder="" class="form-control" />
                                                                 <?php
@@ -343,13 +345,13 @@ if (validation_errors() == "") {
                                                         </div>
                                                         <!-- FIN OPCIONES -->
                                                         <!-- OPCIONES -->
-                                                        <div class="col-md-6 d-none" id="in_opciones" style="display:none">
+                                                        <div class="col-md-6 d-none" id="in_opciones" >
                                                             <div class="form-group <?php
                                                             if (form_error('sel_opcion') != "") {
                                                                 echo "has-error";
                                                             }
                                                             ?>">
-                                                                <label class="control-label">Opciones</label>
+                                                                <label class="control-label">Opciones <span class="required" aria-required="true"> * </span></label>
                                                                 <br/>
                                                                 <select name="sel_opcion" class="form-control" id="sel_opcion">
                                                                     <option value="">Seleccione una opción</option>
