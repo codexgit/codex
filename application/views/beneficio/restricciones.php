@@ -302,15 +302,6 @@ if (validation_errors() == "") {
                                                                     endforeach;
                                                                     ?>
 
-                                                                    <option value="A">#Estudiante</option>
-                                                                    <option value="B">#Último año aprobado</option>
-                                                                    <option value="C">#Ingreso per cápita</option>
-                                                                    <option value="H">#Jefe de hogar</option>
-                                                                    <option value="D">#Cantidad integrantes</option>
-                                                                    <option value="E">#Tipo educación</option>
-                                                                    <option value="F">#Prom	edio</option>
-                                                                    <option value="G">#Hijo prof. de educ.</option>
-                                                                    <option value="H">#Edad</option>
                                                                 </select>
 
                                                                 <?php
