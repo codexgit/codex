@@ -113,7 +113,7 @@ class Encuesta extends CI_Controller {
 				$this->form_validation->set_rules('txt_run','RUN','required|callback_validar_run');
 				$this->form_validation->set_rules('txt_nombres','Nombres','required');
 				$this->form_validation->set_rules('txt_apellidop','Apellido Paterno','required|min_length[2]|max_length[50]');
-				$this->form_validation->set_rules('txt_apellidom','Apellido Paterno','min_length[2]|max_length[50]');
+				$this->form_validation->set_rules('txt_apellidom','Apellido Materno','min_length[2]|max_length[50]');
 				$this->form_validation->set_rules('sel_region','Región','required');
 				$this->form_validation->set_rules('sel_comuna','Comuna','required');
 
@@ -128,7 +128,7 @@ class Encuesta extends CI_Controller {
 					$data['mensaje'] = "El formulario presenta errores de validación";
 					$data['divtipo'] = "alert alert-danger alert-dismissable";
 					$this->load->view('recopilador/header',$data);
-					$this->load->view('encuesta/nueva',$data);
+					$this->load->view('encuesta/editar',$data);
 					$this->load->view('recopilador/footer',$data);
 				}
 				else{
@@ -161,7 +161,7 @@ class Encuesta extends CI_Controller {
 				$data['mensaje'] = "";
 				$data['divtipo'] = "alert alert-success alert-dismissable";				
 				$this->load->view('recopilador/header',$data);
-				$this->load->view('encuesta/nueva',$data);
+				$this->load->view('encuesta/editar',$data);
 				$this->load->view('recopilador/footer',$data);
 			}
 		}
@@ -181,14 +181,15 @@ class Encuesta extends CI_Controller {
 	}
 
 
+	
 	public function editar($idencuesta = NULL){
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->model('param_model');
-		//$this->load->model('usuario_model');
+		$this->load->model('usuario_model');
 		$this->load->model('encuesta_model');
-		//$this->load->helper('date');
+		$this->load->helper('date');
 
 		$sesionusuario = $this->session->userdata('usrsesion');
 		$data['sesionusuario'] = $sesionusuario;
@@ -220,8 +221,9 @@ class Encuesta extends CI_Controller {
 
 		}
 
-	}
+	}	
 
+	
 	public function getComunas(){
 		$postData = $this->input->post();
 		$this->load->model('param_model');
@@ -229,8 +231,139 @@ class Encuesta extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	function validar_run($rut){
+	public function datos_trabajador($idencuesta){
+		
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->load->model('param_model');
+		$this->load->model('usuario_model');
+		$this->load->model('encuesta_model');
+		$this->load->helper('date');
 
+		$sesionusuario = $this->session->userdata('usrsesion');		
+
+		$data['sesionusuario'] = $sesionusuario;
+		$data['lstregiones'] = $this->param_model->get_regiones();
+
+		if (isset($idencuesta) && $idencuesta > 0){
+			
+			$data['idencuesta'] = $idencuesta;
+			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+			$data['mensaje'] = "";
+			$data['divtipo'] = "alert alert-success alert-dismissable";
+		
+
+
+			if ($this->input->post('hdn_encuestaid') != "" && $this->input->post('hdn_encuestaid') > 0){
+				
+				$dir_trab = $this->input->post('txt_direccion');					
+				$num = $this->input->post('txt_numero');
+				$poblacion = $this->input->post('txt_sector');
+				$telef = $this->input->post('txt_tfijo');
+				$celular = $this->input->post('txt_tmovil');
+				$region = $this->input->post('sel_region');
+				$f_nac = $this->input->post('txt_fecnacimiento');
+				$genero = $this->input->post('rbt_genero');
+				$jefe_fam = $this->input->post('rbt_jefefamilia');
+				$f_indigena = $this->input->post('rbt_antind');
+				$est_civil = $this->input->post('rbt_estcivil');
+				$nacionalidad = $this->input->post('rbt_nacionalidad');
+				$prev_salud = $this->input->post('sel_prevsalud');
+				$tramo_salud = $this->input->post('txt_tramo');
+				$prev_soc = $this->input->post('txt_prevsocial');
+				
+				
+				//$this->form_validation->set_rules('txt_tmovil','Celular');				
+				
+				$this->form_validation->set_rules('txt_direccion', 'Dirección', 'min_length[5]|max_length[255]|required');
+				$this->form_validation->set_rules('txt_numero','Numero Domicilio','required');				
+				$this->form_validation->set_rules('txt_tmovil','Celular','required');	
+				$this->form_validation->set_rules('txt_fecnacimiento','Fecha de nacimiento','required');		
+				$this->form_validation->set_rules('rbt_genero','Genero','required');
+				$this->form_validation->set_rules('rbt_jefefamilia','Jefe familiar','required');
+				$this->form_validation->set_rules('rbt_antind','Ascendencia indigena','required');
+				$this->form_validation->set_rules('rbt_estcivil','Estado civil','required');
+				$this->form_validation->set_rules('rbt_nacionalidad','Nacionalidad','required');
+				$this->form_validation->set_rules('sel_prevsalud','Prevision de salud','required');
+				$this->form_validation->set_rules('txt_tramo','Isapre/Tramo','required');
+				$this->form_validation->set_rules('txt_prevsocial','Prevision social','required');
+				
+				
+				$this->form_validation->set_message('required','El campo {field} es requerido');
+				$this->form_validation->set_message('min_length','El campo {field} debe tener al menos {param} caracteres');
+				$this->form_validation->set_message('max_length','El campo {field} debe tener a lo más {param} caracteres');
+				//$this->form_validation->set_message('regex_match','El campo {field} no tiene el formato solicitado');
+		
+
+				if ($this->form_validation->run() == FALSE){
+					
+					$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
+					$data['mensaje'] = "El formulario presenta errores de validación ";
+					$data['divtipo'] = "alert alert-danger alert-dismissable";
+					$this->load->view('recopilador/header',$data);
+					$this->load->view('encuesta/editar',$data);
+					$this->load->view('recopilador/footer',$data);
+				}
+				else{
+
+					$encuesta_trabajador = array(
+					
+						//'encuesta_id' => $idencuesta,
+						
+						'trab_dir_calle' => $dir_trab,
+						'trab_dir_numero' => $num,
+						'trab_dir_sector' => $poblacion,
+						'trab_tel_fijo' => $telef,
+						'trab_tel_movil' => $celular,						
+						'trab_fec_nacimiento' => $f_nac,
+						'trab_genero' => $genero,
+						'trab_jefe_familia' => $jefe_fam,
+						'trab_ant_indigenas' => $f_indigena,
+						'trab_est_civil' => $est_civil,
+						'trab_nacionalidad' => $nacionalidad,
+						'trab_prev_salud' => $prev_salud,
+						'trab_prev_salud_d' => $tramo_salud,
+						'trab_prev_social' => $prev_soc			
+
+					);
+
+					$this->encuesta_model->actualizar_encuesta_trabajador($encuesta_trabajador,$idencuesta);
+					$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idfilempresa);
+
+					$data['mensaje'] = "La encuesta ha sido creada exitosamente";
+					$data['divtipo'] = "alert alert-success alert-dismissable";
+
+					$this->load->view('recopilador/header',$data);
+					$this->load->view('encuesta/listado',$data);
+					$this->load->view('recopilador/footer',$data);
+				}
+			}
+			else{
+				$data['mensaje'] = "";
+				$data['divtipo'] = "alert alert-success alert-dismissable";				
+				$this->load->view('recopilador/header',$data);
+				$this->load->view('encuesta/empresas',$data);
+				$this->load->view('recopilador/footer',$data);
+			}
+		}
+		else{
+
+			$data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
+
+			$data['mensaje'] = "Ocurrió un error al procesar la solicitud";
+			$data['divtipo'] = "alert alert-danger alert-dismissable";
+
+			$this->load->view('recopilador/header',$data);
+			$this->load->view('encuesta/editar',$data);
+			$this->load->view('recopilador/footer',$data);
+			
+			
+		}	
+	}
+	
+	
+	function validar_run($rut){
+		
 		if (preg_match("/^[0-9]+-[0-9kK]{1}|\s/", $rut)){
 
 		    if(strpos($rut,"-")==false){
@@ -268,5 +401,6 @@ class Encuesta extends CI_Controller {
 
 
 	}	
+	
 
 }

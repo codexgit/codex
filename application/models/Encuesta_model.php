@@ -29,7 +29,12 @@ class Encuesta_model extends CI_Model {
 
         public function agregar_encuesta($encuesta){
             return $this->db->insert('encuesta',$encuesta);
-        }
+        }	
 
+		public function actualizar_encuesta_trabajador($encuesta_trabajador,$idencuesta){
+			//$this->db->where('encuesta_id',$idencuesta);
+			return $this->db->insert('encuesta_trabajador',$encuesta_trabajador);
+		}
+	
 
 }

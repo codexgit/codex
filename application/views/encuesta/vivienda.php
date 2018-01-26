@@ -1,37 +1,42 @@
 <?php
 
     if (validation_errors() == ""){
-        $direccion = "";
-        $numero = "";
-        $sector = "";
-        $tfijo = "";
-        $tmovil = "";
-        $fecnacimiento = "";
-        $genero = "";
-        $jfamilia = "";
-        $antind = "";
-        $estcivil = "";
-        $nacionalidad = "";
-        $prevsalud = "";
-        $tramo = "";
-        $prevsocial = "";
-		
+        $tenencia = "";
+        $sitio = "";
+        $post_sub = "";
+        $libreta = "";
+        $libreta_anio = "";
+        $ahorro_monto = "";
+        $fam_ocupante = "";        
+        $num_personas = "";
+        $num_dormitorios = "";
+        $prov_agua = "";
+        $sub_agua = "";
+        $ener_electrica = "";
+        $elim_excretas = "";
+		$reg_hogares = "";
+		$tramo_grupo = "";
+		$ben_subsidio = "";
+		$otro_subsidio = "";
     }
     else{
-        $direccion = set_value('txt_direccion');
-        $numero = set_value('txt_numero');
-        $sector = set_value('txt_sector');
-        $tfijo = set_value('txt_tfijo');
-        $tmovil = set_value('txt_tmovil');
-        $fecnacimiento = set_value('txt_fecnacimiento');
-        $genero = set_value('rbt_genero');
-        $jfamilia = set_value('rbt_jefefamilia');
-        $antind = set_value('rbt_antind');
-        $estcivil = set_value('rbt_estcivil');
-        $nacionalidad = set_value('rbt_nacionalidad');
-        $prevsalud = set_value('sel_prevsalud');
-        $tramo = set_value('txt_tramo');
-        $prevsocial = set_value('txt_prevsocial');
+        $tenencia = set_value('txt_tenencia');
+        $sitio = set_value('txt_sitio');
+        $post_sub = set_value('txt_post_sub');
+        $libreta = set_value('txt_libreta');
+        $libreta_anio = set_value('txt_anio_libreta');
+        $ahorro_monto = set_value('txt_monto');
+        $fam_ocupante = set_value('txt_ocupante');
+        $num_personas = set_value('txt_num_personas');
+        $num_dormitorios = set_value('txt_dormitorios');
+        $prov_agua = set_value('txt_prov_agua');
+        $sub_agua = set_value('txt_sub_agua');
+        $ener_electrica = set_value('txt_ener_elec');
+        $elim_excretas = set_value('txt_elim_excretas');
+        $reg_hogares = set_value('txt_reg_hogares');
+		$tramo_grupo = set_value('txt_tramo_grupo');
+		$ben_subsidio = set_value('txt_sub');
+		$otro_subsidio = set_value('txt_otro_sub');
     }
 ?>
 
@@ -139,34 +144,34 @@
                                                                     <!-- BEGIN FORM-->
                                                                     <?php
                                                                         $attributes = array('class' => 'horizontal-form');
-                                                                        echo form_open('encuesta/datos_trabajador/'.$idencuesta, $attributes);
+                                                                        echo form_open('encuesta/vivienda/', $attributes);
                                                                     ?>
                                                                         <div class="form-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-4">
                                                                                     <div class="form-group ">
-                                                                                        <label class="control-label">RUN </label>
+                                                                                        <label class="control-label">Tenencia </label>
                                                                                         <span class="help-block"> <?php echo $detencuesta->enc_run.'-'.$detencuesta->enc_dv; ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                 <div class="col-md-4">
                                                                                     <div class="form-group ">
-                                                                                        <label class="control-label">Nombres </label>
+                                                                                        <label class="control-label">Sitio </label>
                                                                                         <span class="help-block"> <?php echo $detencuesta->enc_nombres; ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                 <div class="col-md-4">
                                                                                     <div class="form-group ">
-                                                                                        <label class="control-label">Apellidos </label>
+                                                                                        <label class="control-label">Postulacion Subsidio </label>
                                                                                         <span class="help-block"> <?php echo $detencuesta->enc_apellido_p.' '.$detencuesta->enc_apellido_m; ?> </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
                                                                             </div>
                                                                             <!--/row-->
-                                                                            <h4 class="form-section">1.1.- Antecedentes Personales</h4>
+                                                                            <h4 class="form-section">2.1.- Antecedentes Personales</h4>
                                                                             <!--/row-->
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
@@ -343,7 +348,7 @@
 
                                                                                         if (form_error('rbt_antind') != NULL){
                                                                                         ?>
-                                                                                        <span class="help-block"> <?php echo form_error('rbt_antind'); ?> </span>
+                                                                                        <span class="help-block"> <?php echo form_error('rbt_genero'); ?> </span>
                                                                                         <?php
                                                                                         }
                                                                                         ?>
@@ -372,7 +377,7 @@
 
                                                                                         if (form_error('rbt_estcivil') != NULL){
                                                                                         ?>
-                                                                                        <span class="help-block"> <?php echo form_error('rbt_estcivil'); ?> </span>
+                                                                                        <span class="help-block"> <?php echo form_error('rbt_genero'); ?> </span>
                                                                                         <?php
                                                                                         }
                                                                                         ?>
