@@ -201,30 +201,21 @@ if (validation_errors() == "") {
                                                                         <th> <?php echo $restriccion['campo_nombre']; ?> </th>
                                                                         <th> <?php echo $restriccion['campo_nombre']; ?> </th>
                                                                         <th> <?php echo $restriccion['restbenef_valor']; ?> </th>
-                                                                        <th> <?php echo $restriccion['camvalor_valor']; ?> </th>
+                                                                        <th> <?php echo $restriccion['camvalor_detalle']; ?> </th>
                                                                         <th> <?php echo $restriccion['restbenef_grupo_campo']; ?> </th>
 
                                                                         <td>
-                                                                            <div class="btn-group">
+                                                                            <div class="btn-group-vertical ">
 
                                                                                 <button class="btn btn-xs default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true"> 
                                                                                     Acciones
                                                                                     <i class="fa fa-angle-down"></i>
                                                                                 </button>
                                                                                 <ul class="dropdown-menu pull-left" role="menu">
-
-                                                                                    <li>
-                                                                                        <a href="<?php echo site_url('restriccion/editar'); ?>">
-                                                                                            <i class="icon-pencil"></i> Editar </a>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <a href="<?php echo site_url('restriccion/desactivar/'); ?>">
-                                                                                            <i class="icon-action-undo"></i> Bloquear </a>
-                                                                                    </li>
                                                                                     <li>
                                                                                         <a href="<?php echo site_url('restriccion/eliminar_restriccion/' . $restriccion['beneficio_id'] . '/' . $restriccion['beneficio_restriccion_id']); ?>">
-                                                                                            <i class="icon-close"></i> Eliminar </a>
-                                                                                    </li
+                                                                                            <i class="fa fa-close"></i> Eliminar </a>
+                                                                                    </li>
                                                                                 </ul>
                                                                             </div>
                                                                         </td>
@@ -290,7 +281,7 @@ if (validation_errors() == "") {
                                                                 <label class="control-label">Campo <span class="required" aria-required="true"> * </span></label>
                                                                 <br/>
                                                                 <select name="sel_campo" class="form-control" id="sel_campo">
-                                                                    <option value=" ">Seleccione una opci&oacute;n</option>
+                                                                    <option value="">Seleccione una opci&oacute;n</option>
                                                                     <?php
                                                                     foreach ($lstcampos as $campo):
                                                                         if ($campo['campo_id'] == $idcampo) {
@@ -350,9 +341,9 @@ if (validation_errors() == "") {
 //if(isset($lstopciones)){
                                                                     foreach ($lstopciones as $opcion):
                                                                         if ($opcion['campo_valor_id'] == $idopcion) {
-                                                                            echo "<option value='" . $opcion['campo_valor_id'] . "' selected>" . $opcion['camvalor_valor'] . "</option>";
+                                                                            echo "<option value='" . $opcion['campo_valor_id'] . "' selected>" . $opcion['camvalor_detalle'] . "</option>";
                                                                         } else {
-                                                                            echo "<option value='" . $opcion['campo_valor_id'] . "'>" . $opcion['camvalor_valor'] . "</option>";
+                                                                            echo "<option value='" . $opcion['campo_valor_id'] . "'>" . $opcion['camvalor_detalle'] . "</option>";
                                                                         }
                                                                     endforeach;
 //	}

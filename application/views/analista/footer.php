@@ -221,7 +221,7 @@
 
                     // Add options
                     $.each(response, function (index, data) {
-                        $('#sel_opcion').append('<option value="' + data['campo_valor_id'] + '">' + data['camvalor_valor'] + '</option>');
+                        $('#sel_opcion').append('<option value="' + data['campo_valor_id'] + '">' + data['camvalor_detalle'] + '</option>');
                     });
                 }
             });
@@ -265,6 +265,7 @@
 
         $('#sel_campo').ready(function () {
             var ctipo = $('#sel_campo').val();
+            
             $.ajax({
                 url: '<?php echo base_url(); ?>/beneficio/getCampoTipo',
                 method: 'post',
@@ -272,12 +273,16 @@
                 dataType: 'json',
                 success: function (response) {
                     $.each(response, function (index, data) {
+                        alert(data['campo_tipo']);
                         if (data['campo_tipo'] !== "") {
+                            
                             if (data['campo_tipo'] === '1') {
                                 $('#in_valor').show('slow');
+                                
 
                             } else if (data['campo_tipo'] === '2') {
                                 $('#in_opciones').show('slow');
+                                
 
                             }
                         }

@@ -259,7 +259,7 @@ class Beneficio extends CI_Controller {
 
                 //INICIO VALIDACIONES
                 $this->form_validation->set_rules('txt_nbeneficio', 'Nombre Beneficio', 'required');
-                $this->form_validation->set_rules('txt_anio', 'Año', 'required');
+                $this->form_validation->set_rules('txt_anio', 'Año', 'required|numeric');
                 $this->form_validation->set_rules('sel_categoria', 'Categoria', 'required');
                 $this->form_validation->set_rules('sel_subcategoria', 'Subcategoria', 'required');
 
@@ -272,10 +272,9 @@ class Beneficio extends CI_Controller {
                 $this->form_validation->set_message('validar_fecha', 'La fecha en {field} es menor que la de inicio ');
                 $this->form_validation->set_message('required', 'El campo {field} es requerido');
                 $this->form_validation->set_message('alpha', 'El campo {field} tiene numeros');
-                $this->form_validation->set_message('alpha-numeric', 'El campo {field} tiene caracteres');
+                $this->form_validation->set_message('numeric', 'El campo {field} debe ser numerico');
 
                 if ($this->form_validation->run() == FALSE) {
-                    echo "HEY YOU";
                     $data['lstsubcategorias'] = $this->param_model->get_subcategorias_by_categoriaid($categoria);
                     $data['mensaje'] = "El formulario presenta errores de validación";
                     $data['divtipo'] = "alert alert-danger alert-dismissable";

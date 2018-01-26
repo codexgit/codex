@@ -105,7 +105,7 @@
                                                             ?>
                                                         </td>
                                                         <td>
-                                                            <div class="btn-group">
+                                                            <div class="btn-group-vertical">
 
                                                                 <button class="btn btn-xs default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true"> 
                                                                     Acciones

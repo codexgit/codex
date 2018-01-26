@@ -80,7 +80,7 @@ class Param_model extends CI_Model {
     }
 
     public function get_opciones_by_campo($postData) {
-        $this->db->select('campo_valor_id,camvalor_valor');
+        $this->db->select('campo_valor_id,camvalor_valor,camvalor_detalle');
         $this->db->where('campo_valor.campo_id', $postData['campox']);
         $this->db->order_by('camvalor_valor', 'asc');
         $q = $this->db->get('campo_valor');
