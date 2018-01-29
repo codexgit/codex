@@ -80,7 +80,7 @@ class Encuesta extends CI_Controller {
 
 	}
 
-	public function nueva($idfilempresa = NULL){
+	public function nueva($idfilempresa){
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -161,7 +161,7 @@ class Encuesta extends CI_Controller {
 				$data['mensaje'] = "";
 				$data['divtipo'] = "alert alert-success alert-dismissable";				
 				$this->load->view('recopilador/header',$data);
-				$this->load->view('encuesta/editar',$data);
+				$this->load->view('encuesta/nueva',$data);
 				$this->load->view('recopilador/footer',$data);
 			}
 		}
@@ -173,7 +173,7 @@ class Encuesta extends CI_Controller {
 			$data['divtipo'] = "alert alert-danger alert-dismissable";
 
 			$this->load->view('recopilador/header',$data);
-			$this->load->view('encuesta/empresas',$data);
+			$this->load->view('encuesta/nueva',$data);
 			$this->load->view('recopilador/footer',$data);
 
 		}
@@ -182,7 +182,7 @@ class Encuesta extends CI_Controller {
 
 
 	
-	public function editar($idencuesta = NULL){
+	public function editar($idencuesta){
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -193,9 +193,7 @@ class Encuesta extends CI_Controller {
 
 		$sesionusuario = $this->session->userdata('usrsesion');
 		$data['sesionusuario'] = $sesionusuario;
-
-		$data['sesionusuario'] = $sesionusuario;
-		$data['lstregiones'] = $this->param_model->get_regiones();
+		//$data['lstregiones'] = $this->param_model->get_regiones();
 
 		if (isset($idencuesta) && $idencuesta > 0){
 			$data['idencuesta'] = $idencuesta;
@@ -308,7 +306,7 @@ class Encuesta extends CI_Controller {
 
 					$encuesta_trabajador = array(
 					
-						//'encuesta_id' => $idencuesta,
+						'encuesta_id' => $idencuesta,
 						
 						'trab_dir_calle' => $dir_trab,
 						'trab_dir_numero' => $num,
