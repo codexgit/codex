@@ -159,6 +159,7 @@
                                                                                 <div class="col-md-4"> <!-- Nivel -->
                                                                                     <div class="form-group <?php if (form_error('rbt_niv_educacion') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Nivel <span class="required" aria-required="true"> * </span></label>
+
                                                                                         <br/><br/>
                                                                                         <?php
 																						echo form_radio(array('name' => 'rbt_niv_educacion', 'value' => '1', 'checked' => ('1' == $niv_escuela) ? TRUE : FALSE, 'id' => 'ne1'))." Analfabeto <br/>";
@@ -178,8 +179,7 @@
 																						echo form_radio(array('name' => 'rbt_niv_educacion', 'value' => '15', 'checked' => ('15' == $niv_escuela) ? TRUE : FALSE, 'id' => 'ne15'))." Post Grado Incompleto <br/>";
 																						echo form_radio(array('name' => 'rbt_niv_educacion', 'value' => '16', 'checked' => ('16' == $niv_escuela) ? TRUE : FALSE, 'id' => 'ne16'))." Post Grado Completo <br/>";
 																						echo form_radio(array('name' => 'rbt_niv_educacion', 'value' => '17', 'checked' => ('17' == $niv_escuela) ? TRUE : FALSE, 'id' => 'ne17'))." Especialidades Fuerzas Armadas <br/>";
-																						
-                                                                                        
+																						        
                                                                                         ?>
 																						
 
@@ -340,26 +340,26 @@
                                                                                         <label class="control-label">De estar estudiando, ¿tiene alguna de estas becas? <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>
                                                                                         <?php
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '1', 'checked' => ('1' == $tipo_est) ? TRUE : FALSE, 'id' => 'b1'))." Beca indígena <br/>";
-                                                                                        echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '2', 'checked' => ('2' == $tipo_est) ? TRUE : FALSE, 'id' => 'b2'))." Programa de Residencia Familiar <br/>";
-                                                                                        echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '3', 'checked' => ('3' == $tipo_est) ? TRUE : FALSE, 'id' => 'b3'))." Beca Mejores Puntajes PSU <br/>";
-                                                                                        echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '4', 'checked' => ('4' == $tipo_est) ? TRUE : FALSE, 'id' => 'b4'))." Beca excelencia académica <br/>";
-                                                                                        echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '5', 'checked' => ('5' == $tipo_est) ? TRUE : FALSE, 'id' => 'b5'))." Beca Nuevo Milenio <br/>";
-                                                                                        echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '6', 'checked' => ('6' == $tipo_est) ? TRUE : FALSE, 'id' => 'b6'))." Beca Nuevo Milenio cursos superiores <br/>";																						
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '7', 'checked' => ('7' == $tipo_est) ? TRUE : FALSE, 'id' => 'b7'))." Beca Juan Gómez Millas <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '8', 'checked' => ('8' == $tipo_est) ? TRUE : FALSE, 'id' => 'b8'))." Beca Juan Gómez Millas cursos superiores <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '9', 'checked' => ('9' == $tipo_est) ? TRUE : FALSE, 'id' => 'b9'))." Beca para Hijos Profesionales de la Educación <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '10', 'checked' => ('10' == $tipo_est) ? TRUE : FALSE, 'id' => 'b10'))." Beca de excelencia técnica <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '11', 'checked' => ('11' == $tipo_est) ? TRUE : FALSE, 'id' => 'b11'))." Beca de Articulación <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '12', 'checked' => ('12' == $tipo_est) ? TRUE : FALSE, 'id' => 'b12'))." Crédito con garantía estatal <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '13', 'checked' => ('13' == $tipo_est) ? TRUE : FALSE, 'id' => 'b13'))." Beca Mantención Educación Superior <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '14', 'checked' => ('14' == $tipo_est) ? TRUE : FALSE, 'id' => 'b14'))." Beca Indígena Educación Superior <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '15', 'checked' => ('15' == $tipo_est) ? TRUE : FALSE, 'id' => 'b15'))." Beca de Residencia Familiar Estudiantil <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '16', 'checked' => ('16' == $tipo_est) ? TRUE : FALSE, 'id' => 'b16'))." Beca Bicentenario <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '17', 'checked' => ('17' == $tipo_est) ? TRUE : FALSE, 'id' => 'b17'))." Beca Bicentenario cursos superiores <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '18', 'checked' => ('18' == $tipo_est) ? TRUE : FALSE, 'id' => 'b18'))." Fondo Solidario de Crédito Universitario <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '19', 'checked' => ('19' == $tipo_est) ? TRUE : FALSE, 'id' => 'b19'))." Beca Interna de la Institución <br/>";
-																						echo form_radio(array('name' => 'rbt_tipo_est', 'value' => '20', 'checked' => ('20' == $tipo_est) ? TRUE : FALSE, 'id' => 'b20'))." Gratuidad en la Educación <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '1', 'checked' => ('1' == $tipo_est) ? TRUE : FALSE, 'id' => 'b1'))." Beca indígena <br/>";
+                                                                                        echo form_radio(array('name' => 'rbt_becas', 'value' => '2', 'checked' => ('2' == $tipo_est) ? TRUE : FALSE, 'id' => 'b2'))." Programa de Residencia Familiar <br/>";
+                                                                                        echo form_radio(array('name' => 'rbt_becas', 'value' => '3', 'checked' => ('3' == $tipo_est) ? TRUE : FALSE, 'id' => 'b3'))." Beca Mejores Puntajes PSU <br/>";
+                                                                                        echo form_radio(array('name' => 'rbt_becas', 'value' => '4', 'checked' => ('4' == $tipo_est) ? TRUE : FALSE, 'id' => 'b4'))." Beca excelencia académica <br/>";
+                                                                                        echo form_radio(array('name' => 'rbt_becas', 'value' => '5', 'checked' => ('5' == $tipo_est) ? TRUE : FALSE, 'id' => 'b5'))." Beca Nuevo Milenio <br/>";
+                                                                                        echo form_radio(array('name' => 'rbt_becas', 'value' => '6', 'checked' => ('6' == $tipo_est) ? TRUE : FALSE, 'id' => 'b6'))." Beca Nuevo Milenio cursos superiores <br/>";																						
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '7', 'checked' => ('7' == $tipo_est) ? TRUE : FALSE, 'id' => 'b7'))." Beca Juan Gómez Millas <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '8', 'checked' => ('8' == $tipo_est) ? TRUE : FALSE, 'id' => 'b8'))." Beca Juan Gómez Millas cursos superiores <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '9', 'checked' => ('9' == $tipo_est) ? TRUE : FALSE, 'id' => 'b9'))." Beca para Hijos Profesionales de la Educación <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '10', 'checked' => ('10' == $tipo_est) ? TRUE : FALSE, 'id' => 'b10'))." Beca de excelencia técnica <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '11', 'checked' => ('11' == $tipo_est) ? TRUE : FALSE, 'id' => 'b11'))." Beca de Articulación <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '12', 'checked' => ('12' == $tipo_est) ? TRUE : FALSE, 'id' => 'b12'))." Crédito con garantía estatal <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '13', 'checked' => ('13' == $tipo_est) ? TRUE : FALSE, 'id' => 'b13'))." Beca Mantención Educación Superior <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '14', 'checked' => ('14' == $tipo_est) ? TRUE : FALSE, 'id' => 'b14'))." Beca Indígena Educación Superior <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '15', 'checked' => ('15' == $tipo_est) ? TRUE : FALSE, 'id' => 'b15'))." Beca de Residencia Familiar Estudiantil <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '16', 'checked' => ('16' == $tipo_est) ? TRUE : FALSE, 'id' => 'b16'))." Beca Bicentenario <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '17', 'checked' => ('17' == $tipo_est) ? TRUE : FALSE, 'id' => 'b17'))." Beca Bicentenario cursos superiores <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '18', 'checked' => ('18' == $tipo_est) ? TRUE : FALSE, 'id' => 'b18'))." Fondo Solidario de Crédito Universitario <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '19', 'checked' => ('19' == $tipo_est) ? TRUE : FALSE, 'id' => 'b19'))." Beca Interna de la Institución <br/>";
+																						echo form_radio(array('name' => 'rbt_becas', 'value' => '20', 'checked' => ('20' == $tipo_est) ? TRUE : FALSE, 'id' => 'b20'))." Gratuidad en la Educación <br/>";
 																	
 
                                                                                         ?>                                                                 
@@ -380,15 +380,14 @@
                                                                                     
                                                                                 </div>
                                                                                 
-                                                                            </div>
-                                                                                         
+                                                                            </div>                                                                            
                                                         
 
                                                                                                                                                         
                                                                         
                                                                         <div class="form-actions right">
                                                                             <!--<button type="button" class="btn default">Volver</button>-->
-                                                                            <a href="<?php echo site_url('encuesta/datos_trabajador/'.$idencuesta); ?>" class="btn default" role="button">Volver</a>
+                                                                            <a href="<?php echo site_url('encuesta/trabajador/'.$idencuesta); ?>" class="btn default" role="button">Volver</a>
                                                                             <button type="submit" class="btn blue">
                                                                                 <i class="fa fa-check"></i> Siguiente</button>
                                                                         </div>

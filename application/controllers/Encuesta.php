@@ -228,7 +228,7 @@ class Encuesta extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function datos_trabajador($idencuesta){
+	public function trabajador($idencuesta){
 		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -358,7 +358,7 @@ class Encuesta extends CI_Controller {
 		}	
 	}
 	
-	public function datos_educacion($idencuesta){
+	public function educacion($idencuesta){
 		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -412,7 +412,7 @@ class Encuesta extends CI_Controller {
 				if ($this->form_validation->run() == FALSE){
 					
 					$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
-					$data['mensaje'] = "El formulario presenta errores de validación ";
+					$data['mensaje'] = "El formulario presenta errores de validación oli ";
 					$data['divtipo'] = "alert alert-danger alert-dismissable";
 					$this->load->view('recopilador/header',$data);
 					$this->load->view('encuesta/educacion',$data);
@@ -429,8 +429,7 @@ class Encuesta extends CI_Controller {
 						'edu_ult_curso' => $ult_curso,
 						'edu_anio_egreso' => $anio_egreso,
 						'edu_estudiando' => $estudiando,						
-						'edu_becas' => $becas,
-								
+						'edu_becas' => $becas								
 
 					);
 
@@ -461,7 +460,7 @@ class Encuesta extends CI_Controller {
 			$data['divtipo'] = "alert alert-danger alert-dismissable";
 
 			$this->load->view('recopilador/header',$data);
-			$this->load->view('encuesta/salud',$data);
+			$this->load->view('encuesta/educacion',$data);
 			$this->load->view('recopilador/footer',$data);
 			
 			
