@@ -1,37 +1,24 @@
 <?php
 
     if (validation_errors() == ""){
-        $direccion = "";
-        $numero = "";
-        $sector = "";
-        $tfijo = "";
-        $tmovil = "";
-        $fecnacimiento = "";
-        $genero = "";
-        $jfamilia = "";
-        $antind = "";
-        $estcivil = "";
-        $nacionalidad = "";
-        $prevsalud = "";
-        $tramo = "";
-        $prevsocial = "";
+	
+        $niv_escuela = "";
+        $tipo_est = "";
+        $ult_curso = "";
+        $anio_egreso = "";
+        $estudiando = "";
+        $becas = "";
+
 		
     }
     else{
-        $direccion = set_value('txt_direccion');
-        $numero = set_value('txt_numero');
-        $sector = set_value('txt_sector');
-        $tfijo = set_value('txt_tfijo');
-        $tmovil = set_value('txt_tmovil');
-        $fecnacimiento = set_value('txt_fecnacimiento');
-        $genero = set_value('rbt_genero');
-        $jfamilia = set_value('rbt_jefefamilia');
-        $antind = set_value('rbt_antind');
-        $estcivil = set_value('rbt_estcivil');
-        $nacionalidad = set_value('rbt_nacionalidad');
-        $prevsalud = set_value('sel_prevsalud');
-        $tramo = set_value('txt_tramo');
-        $prevsocial = set_value('txt_prevsocial');
+        $niv_escuela = set_value('txt_direccion');
+        $tipo_est = set_value('txt_numero');
+        $ult_curso = set_value('txt_sector');
+        $anio_egreso = set_value('txt_tfijo');
+        $estudiando = set_value('txt_tmovil');
+        $becas = set_value('txt_fecnacimiento');
+ 
     }
 ?>
 
@@ -458,7 +445,7 @@
                                                                         </div>
                                                                         <div class="form-actions right">
                                                                             <!--<button type="button" class="btn default">Volver</button>-->
-                                                                            <a href="<?php echo site_url('encuesta/editar/'); ?>" class="btn default" role="button">Volver</a>
+                                                                            <a href="<?php echo site_url('encuesta/educacion/'); ?>" class="btn default" role="button">Volver</a>
                                                                             <button type="submit" class="btn blue">
                                                                                 <i class="fa fa-check"></i> Siguiente</button>
                                                                         </div>

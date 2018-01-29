@@ -180,7 +180,6 @@ class Encuesta extends CI_Controller {
 
 	}
 
-
 	
 	public function editar($idencuesta = NULL){
 
@@ -308,7 +307,7 @@ class Encuesta extends CI_Controller {
 
 					$encuesta_trabajador = array(
 					
-						//'encuesta_id' => $idencuesta,
+						'encuesta_id' => $idencuesta,
 						
 						'trab_dir_calle' => $dir_trab,
 						'trab_dir_numero' => $num,
@@ -328,13 +327,13 @@ class Encuesta extends CI_Controller {
 					);
 
 					$this->encuesta_model->actualizar_encuesta_trabajador($encuesta_trabajador,$idencuesta);
-					$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idfilempresa);
+					//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
 
-					$data['mensaje'] = "La encuesta ha sido creada exitosamente";
+					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
 					$data['divtipo'] = "alert alert-success alert-dismissable";
 
 					$this->load->view('recopilador/header',$data);
-					$this->load->view('encuesta/listado',$data);
+					$this->load->view('encuesta/educacion',$data);
 					$this->load->view('recopilador/footer',$data);
 				}
 			}
@@ -361,6 +360,115 @@ class Encuesta extends CI_Controller {
 		}	
 	}
 	
+	public function datos_educacion($idencuesta){
+		
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->load->model('param_model');
+		$this->load->model('usuario_model');
+		$this->load->model('encuesta_model');
+		$this->load->helper('date');
+
+		$sesionusuario = $this->session->userdata('usrsesion');		
+
+		$data['sesionusuario'] = $sesionusuario;
+		$data['lstregiones'] = $this->param_model->get_regiones();
+
+		if (isset($idencuesta) && $idencuesta > 0){
+			
+			$data['idencuesta'] = $idencuesta;
+			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+			$data['mensaje'] = "";
+			$data['divtipo'] = "alert alert-success alert-dismissable";
+		
+
+
+			if ($this->input->post('hdn_encuestaid') != "" && $this->input->post('hdn_encuestaid') > 0){
+				
+				$niv_escuela = $this->input->post('rbt_niv_educacion');					
+				$tipo_est = $this->input->post('rbt_tipo_est');
+				$ult_curso = $this->input->post('rbt_ult_curso');
+				$anio_egreso = $this->input->post('rbt_anio_egreso');
+				$estudiando = $this->input->post('rbt_estudiando');
+				$becas = $this->input->post('rbt_becas');
+			
+				
+				
+				//$this->form_validation->set_rules('txt_tmovil','Celular');				
+				
+				$this->form_validation->set_rules('rbt_niv_educacion', 'Nivel de Educación', 'required');
+				$this->form_validation->set_rules('rbt_tipo_est','Tipo de estudios','required');				
+				$this->form_validation->set_rules('rbt_ult_curso','Último curso','required');	
+				$this->form_validation->set_rules('rbt_anio_egreso','Año de egreso','required');		
+				$this->form_validation->set_rules('rbt_estudiando','Estudiando','required');
+				$this->form_validation->set_rules('rbt_becas','Becas','required');
+				
+				
+				
+				$this->form_validation->set_message('required','El campo {field} es requerido');
+				//$this->form_validation->set_message('min_length','El campo {field} debe tener al menos {param} caracteres');
+				//$this->form_validation->set_message('max_length','El campo {field} debe tener a lo más {param} caracteres');
+				//$this->form_validation->set_message('regex_match','El campo {field} no tiene el formato solicitado');
+		
+
+				if ($this->form_validation->run() == FALSE){
+					
+					$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
+					$data['mensaje'] = "El formulario presenta errores de validación ";
+					$data['divtipo'] = "alert alert-danger alert-dismissable";
+					$this->load->view('recopilador/header',$data);
+					$this->load->view('encuesta/educacion',$data);
+					$this->load->view('recopilador/footer',$data);
+				}
+				else{
+
+					$encuesta_educacion = array(
+					
+						'encuesta_id' => $idencuesta,
+						
+						'edu_nivel_esc' => $niv_escuela,
+						'edu_tipo_est' => $tipo_est,
+						'edu_ult_curso' => $ult_curso,
+						'edu_anio_egreso' => $anio_egreso,
+						'edu_estudiando' => $estudiando,						
+						'edu_becas' => $becas,
+								
+
+					);
+
+					$this->encuesta_model->actualizar_encuesta_educacion($encuesta_educacion,$idencuesta);
+					//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
+
+					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+					$data['divtipo'] = "alert alert-success alert-dismissable";
+
+					$this->load->view('recopilador/header',$data);
+					$this->load->view('encuesta/salud',$data);
+					$this->load->view('recopilador/footer',$data);
+				}
+			}
+			else{
+				$data['mensaje'] = "";
+				$data['divtipo'] = "alert alert-success alert-dismissable";				
+				$this->load->view('recopilador/header',$data);
+				$this->load->view('encuesta/empresas',$data);
+				$this->load->view('recopilador/footer',$data);
+			}
+		}
+		else{
+
+			$data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
+
+			$data['mensaje'] = "Ocurrió un error al procesar la solicitud";
+			$data['divtipo'] = "alert alert-danger alert-dismissable";
+
+			$this->load->view('recopilador/header',$data);
+			$this->load->view('encuesta/salud',$data);
+			$this->load->view('recopilador/footer',$data);
+			
+			
+		}	
+	}
 	
 	function validar_run($rut){
 		
