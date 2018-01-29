@@ -2,14 +2,18 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Analista extends CI_Controller {
+class Noticia extends CI_Controller {
 
+    private $perfil;
+    
+    
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('url');
         $this->load->helper('array');
         $this->load->helper('date');
+
 
         if ($this->session->userdata('usrsesion') == NULL) {
             redirect('/inicio/index', 'refresh');
@@ -21,21 +25,32 @@ class Analista extends CI_Controller {
                 redirect('/recopilador/index', 'refresh');
             }
         }
-    }
-
-    public function index() {
-
-        $data['sesionusuario'] = $this->session->userdata('usrsesion');
-        $this->load->model('noticia_model');
-        $data['lstnoticias'] = $this->noticia_model->get_noticias();
-
-        $this->load->view('analista/header', $data);
-        $this->load->view('analista/inicio', $data);
-        $this->load->view('analista/footer', $data);
-    }
-
-    public function mostrar_noticias() {
+        
         
     }
-
+    
+    public function index(){
+        
+        
+        $this->listado();
+    }
+    
+    
+    public function listado(){
+        $sesionusuario = $this->session->userdata('usrsesion');
+        
+        $this->load->model('noticia_model');
+        $this->load->library('form_validation');
+        
+        $data['sesionusuario'] = $this->session->userdata('usrsesion');
+        $data['mensaje'] = "";
+        $data['divtipo'] = "alert alert-success alert-dismissable";
+        
+        $data['lstnoticias'] = $this->noticia_model->get_noticias_by_perfilid(element('usrid', $sesionusuario));
+        $this->load->view('analista/header', $data);
+        $this->load->view('noticia/listado', $data);
+        $this->load->view('analista/footer', $data);
+    }
+    
+    
 }

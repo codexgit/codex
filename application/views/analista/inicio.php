@@ -619,18 +619,23 @@
                                     <div class="portlet-body">
                                         <div class="scroller" style="height: 338px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
                                             <div class="general-item-list">
+                                                <?php foreach ($lstnoticias as $noticia): ?> 
+                                                
                                                 <div class="item">
                                                     <div class="item-head">
                                                         <div class="item-details">
                                                             <img class="item-pic rounded" src="<?php echo base_url(); ?>/assets/pages/media/users/avatar4.jpg">
-                                                            <a href="" class="item-name primary-link">Pedro Jaramillo</a>
-                                                            <span class="item-label">Hace 3 horas</span>
+                                                            <a href="" class="item-name primary-link"><?php echo $noticia['usr_nombre']; ?></a>
+                                                            <span class="item-label">Hace # horas <?php echo ($noticia['not_fec_publicacion'] != 0) ? mdate('%d-%m-%Y %H:%i', $noticia['not_fec_publicacion']) : "-"; ?></span>
                                                         </div>
                                                         <span class="item-status">
                                                             <span class="badge badge-empty badge-success"></span> Informaciones</span>
                                                     </div>
-                                                    <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </div>
+                                                    <div class="item-body"> <?php echo $noticia['not_encabezado'];?></div>
                                                 </div>
+                                                
+                                                <?php endforeach; ?>
+                                                
                                                 <div class="item">
                                                     <div class="item-head">
                                                         <div class="item-details">
@@ -642,66 +647,6 @@
                                                             <span class="badge badge-empty badge-warning"></span> Tareas</span>
                                                     </div>
                                                     <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat tincidunt ut laoreet. </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-head">
-                                                        <div class="item-details">
-                                                            <img class="item-pic rounded" src="<?php echo base_url(); ?>/assets/pages/media/users/avatar6.jpg">
-                                                            <a href="" class="item-name primary-link">Julieta Saavedra</a>
-                                                            <span class="item-label">Hace 8 horas</span>
-                                                        </div>
-                                                        <span class="item-status">
-                                                            <span class="badge badge-empty badge-primary"></span> Art&iacute;culos</span>
-                                                    </div>
-                                                    <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh. </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-head">
-                                                        <div class="item-details">
-                                                            <img class="item-pic rounded" src="<?php echo base_url(); ?>/assets/pages/media/users/avatar7.jpg">
-                                                            <a href="" class="item-name primary-link">Alonso Miranda</a>
-                                                            <span class="item-label">Hace 12 horas</span>
-                                                        </div>
-                                                        <span class="item-status">
-                                                            <span class="badge badge-empty badge-danger"></span> Incidentes</span>
-                                                    </div>
-                                                    <div class="item-body"> Consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-head">
-                                                        <div class="item-details">
-                                                            <img class="item-pic rounded" src="<?php echo base_url(); ?>/assets/pages/media/users/avatar9.jpg">
-                                                            <a href="" class="item-name primary-link">Ricardo Araya</a>
-                                                            <span class="item-label">Hace 2 d&iacute;as</span>
-                                                        </div>
-                                                        <span class="item-status">
-                                                            <span class="badge badge-empty badge-danger"></span> Incidentes</span>
-                                                    </div>
-                                                    <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, ut laoreet dolore magna aliquam erat volutpat. </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-head">
-                                                        <div class="item-details">
-                                                            <img class="item-pic rounded" src="<?php echo base_url(); ?>/assets/pages/media/users/avatar8.jpg">
-                                                            <a href="" class="item-name primary-link">Daniela Barroso</a>
-                                                            <span class="item-label">Hace 3 d&iacute;as</span>
-                                                        </div>
-                                                        <span class="item-status">
-                                                            <span class="badge badge-empty badge-warning"></span> Tareas</span>
-                                                    </div>
-                                                    <div class="item-body"> Lorem ipsum dolor sit amet, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-head">
-                                                        <div class="item-details">
-                                                            <img class="item-pic rounded" src="<?php echo base_url(); ?>/assets/pages/media/users/avatar2.jpg">
-                                                            <a href="" class="item-name primary-link">Laura Zapata</a>
-                                                            <span class="item-label">Hace 4 horas</span>
-                                                        </div>
-                                                        <span class="item-status">
-                                                            <span class="badge badge-empty badge-success"></span> Informaciones</span>
-                                                    </div>
-                                                    <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </div>
                                                 </div>
                                             </div>
                                         </div>

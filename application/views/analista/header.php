@@ -236,7 +236,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-
+                                        -->
                                         <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                             <a href="#"> 
                                                 <i class="icon-feed"></i> Noticias
@@ -244,7 +244,7 @@
                                             </a>
                                             <ul class="dropdown-menu pull-left">
                                                 <li aria-haspopup="true" class=" ">
-                                                    <a href="#" class="nav-link  "> 
+                                                    <a href="<?php echo site_url('noticia/index'); ?>" class="nav-link  "> 
                                                         <i class="icon-list"></i> Listado 
                                                     </a>
                                                 </li>
@@ -254,7 +254,7 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </li>-->
+                                        </li>
 
                                     </ul>
                                 </div>
