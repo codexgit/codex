@@ -383,24 +383,22 @@ class Encuesta extends CI_Controller {
 
 			if ($this->input->post('hdn_encuestaid') != "" && $this->input->post('hdn_encuestaid') > 0){
 				
-				$niv_escuela = $this->input->post('rbt_niv_educacion');					
-				$tipo_est = $this->input->post('rbt_tipo_est');
-				$ult_curso = $this->input->post('rbt_ult_curso');
-				$anio_egreso = $this->input->post('rbt_anio_egreso');
-				$estudiando = $this->input->post('rbt_estudiando');
-				$becas = $this->input->post('rbt_becas');
-			
+				$niv_escuela = $this->input->post('sel_niv_educacion');					
+				$tipo_est = $this->input->post('sel_tipo_est');
+				$ult_curso = $this->input->post('sel_ult_curso');
+				$anio_egreso = $this->input->post('txt_anio_egreso');
+				$estudiando = $this->input->post('sel_estudiando');
+				$becas = $this->input->post('sel_becas');		
 				
+					
 				
-				//$this->form_validation->set_rules('txt_tmovil','Celular');				
-				
-				$this->form_validation->set_rules('rbt_niv_educacion', 'Nivel de Educación', 'required');
-				$this->form_validation->set_rules('rbt_tipo_est','Tipo de estudios','required');				
-				$this->form_validation->set_rules('rbt_ult_curso','Último curso','required');	
-				$this->form_validation->set_rules('rbt_anio_egreso','Año de egreso','required');		
-				$this->form_validation->set_rules('rbt_estudiando','Estudiando','required');
-				$this->form_validation->set_rules('rbt_becas','Becas','required');
-				
+				$this->form_validation->set_rules('sel_niv_educacion', 'Nivel de Educación', 'required');
+				$this->form_validation->set_rules('txt_anio_egreso', 'Año de egreso', 'required');
+				$this->form_validation->set_rules('sel_tipo_est','Tipo de estudios','required');				
+				$this->form_validation->set_rules('sel_ult_curso','Último curso','required');	
+				$this->form_validation->set_rules('txt_anio_egreso','Año de egreso','required');		
+				$this->form_validation->set_rules('sel_estudiando','Estudiando','required');
+				$this->form_validation->set_rules('sel_becas','Becas','required');				
 				
 				
 				$this->form_validation->set_message('required','El campo {field} es requerido');
@@ -411,7 +409,8 @@ class Encuesta extends CI_Controller {
 
 				if ($this->form_validation->run() == FALSE){
 					
-					$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
+					
+					//$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
 					$data['mensaje'] = "El formulario presenta errores de validación oli ";
 					$data['divtipo'] = "alert alert-danger alert-dismissable";
 					$this->load->view('recopilador/header',$data);
@@ -430,7 +429,6 @@ class Encuesta extends CI_Controller {
 						'edu_anio_egreso' => $anio_egreso,
 						'edu_estudiando' => $estudiando,						
 						'edu_becas' => $becas								
-
 					);
 
 					$this->encuesta_model->actualizar_encuesta_educacion($encuesta_educacion,$idencuesta);
@@ -461,8 +459,7 @@ class Encuesta extends CI_Controller {
 
 			$this->load->view('recopilador/header',$data);
 			$this->load->view('encuesta/educacion',$data);
-			$this->load->view('recopilador/footer',$data);
-			
+			$this->load->view('recopilador/footer',$data);		
 			
 		}	
 	}
