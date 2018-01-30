@@ -34,8 +34,13 @@ class Analista extends CI_Controller {
         $this->load->view('analista/footer', $data);
     }
 
-    public function mostrar_noticias() {
-        
+    public function perfil(){
+        $data['sesionusuario'] = $this->session->userdata('usrsesion');
+        $data['mensaje'] = "";
+        $this->load->helper('form');
+        $this->load->view('analista/header', $data);
+        $this->load->view('analista/perfil', $data);
+        $this->load->view('analista/footer', $data);
     }
 
 }

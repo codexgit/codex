@@ -9,7 +9,7 @@
             <div class="container">
                 <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
-                    <h1>Beneficios
+                    <h1>Noticias
                         <!--<small>Indicadores & estadísticas</small>-->
                     </h1>
                 </div>
@@ -28,7 +28,7 @@
                 <!-- BEGIN PAGE BREADCRUMBS -->
                 <ul class="page-breadcrumb breadcrumb">
                     <li>
-                        <a href="<?php echo site_url('beneficio/listado'); ?>">Beneficios</a>
+                        <a href="<?php echo site_url('noticia/listado'); ?>">Noticias</a>
                         <i class="fa fa-circle"></i>
                     </li>
                     <li>
@@ -65,7 +65,7 @@
                                             <i class="fa fa-heart"></i>Listado de Noticias
                                         </div>
                                         <div class="actions">
-                                            <a href="<?php echo site_url('beneficio/crear'); ?>" class="btn btn-default btn-sm">
+                                            <a href="<?php echo site_url('noticia/crear'); ?>" class="btn btn-default btn-sm">
                                                 <i class="fa fa-plus"></i> Agregar 
                                             </a>
                                         </div>
@@ -83,7 +83,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <!-- BENEFICIOSS -->
+                                                <!-- NOTICIAS -->
                                                 <?php if (isset($lstnoticias)) { ?>
                                                     <?php foreach ($lstnoticias as $noticia): ?> 
                                                         <tr class="odd gradeX">
@@ -115,7 +115,7 @@
                                                                         if ($noticia['not_estado'] == 3) { //BLOQUEADO 
                                                                             ?>
                                                                             <li>
-                                                                                <a href=" <?php echo site_url('beneficio/activar/'); ?> ">
+                                                                                <a href=" <?php echo site_url('noticia/activar/'.$noticia['noticia_id']); ?> ">
 
                                                                                     <i class="glyphicon glyphicon-ok"></i> Publicar </a>
                                                                             </li>
@@ -146,7 +146,7 @@
                                                                                     <i class="glyphicon glyphicon-folder-open"></i> Guardar </a>
                                                                             </li>
                                                                             <li>
-                                                                                <a href="<?php echo site_url('restriccion/index/'); ?>">
+                                                                                <a href="<?php echo site_url('noticia/desactivar/'.$noticia['noticia_id']); ?>">
                                                                                     <i class="glyphicon glyphicon-ban-circle"></i> Bloquear </a>
                                                                             </li>
                                                                             <?php

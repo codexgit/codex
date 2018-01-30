@@ -265,7 +265,7 @@
 
         $('#sel_campo').ready(function () {
             var ctipo = $('#sel_campo').val();
-            
+
             $.ajax({
                 url: '<?php echo base_url(); ?>/beneficio/getCampoTipo',
                 method: 'post',
@@ -275,14 +275,14 @@
                     $.each(response, function (index, data) {
                         alert(data['campo_tipo']);
                         if (data['campo_tipo'] !== "") {
-                            
+
                             if (data['campo_tipo'] === '1') {
                                 $('#in_valor').show('slow');
-                                
+
 
                             } else if (data['campo_tipo'] === '2') {
                                 $('#in_opciones').show('slow');
-                                
+
 
                             }
                         }
@@ -292,12 +292,39 @@
 
             //$('#sel_subcategoria').find('option').not(':first').remove();
             // });
-            
+
         });
-
-
-$('#in_opciones').hide();
-            $('#in_valor').hide();  
+        
+        /*CONTADOR DE CHARS*/
+        
+        var max_chars_tit = 100;
+        $('#max').html(max_chars_tit);
+        $('#txt_not_til').keyup(function () {
+            var chars = $(this).val().length;
+            var diff = max_chars_tit - chars;
+            $('#cont_tit').html(diff);
+        });
+        
+        var max_chars_enc = 250;
+        $('#max').html(max_chars_enc);
+        $('#txt_not_enc').keyup(function () {
+            var chars = $(this).val().length;
+            var diff = max_chars_enc - chars;
+            $('#cont_enc').html(diff);
+        });
+        
+        
+        var max_chars_cuerpo = 1000;
+        $('#max').html(max_chars_cuerpo);
+        $('#txt_not_cuerpo').keyup(function () {
+            var chars = $(this).val().length;
+            var diff = max_chars_cuerpo - chars;
+            $('#cont_cuerpo').html(diff);
+        });
+        /*FIN CONTADOR DE CHARS*/
+        
+        $('#in_opciones').hide();
+        $('#in_valor').hide();
 
 
     });

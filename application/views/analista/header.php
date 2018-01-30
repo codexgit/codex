@@ -58,7 +58,8 @@
                                 <!-- BEGIN LOGO -->
                                 <div class="page-logo">
                                     <a href="#">
-                                        <img src="<?php echo base_url(); ?>/assets/pages/img/logo_sibtra.png" alt="logo" class="logo-default">
+                                        <!--<img src="<?php echo base_url(); ?>/assets/pages/img/logo_sibtra.png" alt="logo" class="logo-default">-->
+                                        <img src="<?php echo base_url(); ?>/assets/pages/img/logo_sibtra3.png" alt="logo" class="logo-default">
                                     </a>
                                 </div>
                                 <!-- END LOGO -->
@@ -77,7 +78,7 @@
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-default">
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="<?php echo site_url('analista/perfil'); ?>">
                                                         <i class="icon-user"></i> Mi Perfil </a>
                                                 </li>
                                                 <li>
@@ -249,7 +250,7 @@
                                                     </a>
                                                 </li>
                                                 <li aria-haspopup="true" class=" ">
-                                                    <a href="#" class="nav-link  "> 
+                                                    <a href="<?php echo site_url('noticia/crear'); ?>" class="nav-link  "> 
                                                         <i class="icon-plus"></i> Crear                                                    
                                                     </a>
                                                 </li>

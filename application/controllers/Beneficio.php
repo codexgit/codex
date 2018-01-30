@@ -98,6 +98,7 @@ class Beneficio extends CI_Controller {
                     'subcat_beneficio_id' => $subcategoria,
                     'benef_estado' => '3'
                 );
+                
                 $res = $this->beneficio_model->agregar_beneficio($beneficio);
                 if ($res == 1) {
                     $data['mensaje'] = "El beneficio ha sido agregado exitosamente";
