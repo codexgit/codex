@@ -38,7 +38,9 @@ class Encuesta_model extends CI_Model {
 		public function actualizar_encuesta_salud($encuesta_salud,$idencuesta){
 			return $this->db->insert('encuesta_salud',$encuesta_salud);
 		}
-	
+		public function actualizar_encuesta_vivienda($encuesta_vivienda,$idencuesta){
+			return $this->db->insert('encuesta_vivienda',$encuesta_vivienda);
+		}
 	
 
 }

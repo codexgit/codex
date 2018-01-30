@@ -570,6 +570,143 @@ class Encuesta extends CI_Controller {
 		}	
 	}
 	
+	public function vivienda($idencuesta){
+		
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->load->model('param_model');
+		$this->load->model('usuario_model');
+		$this->load->model('encuesta_model');
+		$this->load->helper('date');
+
+		$sesionusuario = $this->session->userdata('usrsesion');		
+
+		$data['sesionusuario'] = $sesionusuario;
+		$data['lstregiones'] = $this->param_model->get_regiones();
+
+		if (isset($idencuesta) && $idencuesta > 0){
+			
+			$data['idencuesta'] = $idencuesta;
+			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+			$data['mensaje'] = "";
+			$data['divtipo'] = "alert alert-success alert-dismissable";
+		
+
+
+			if ($this->input->post('hdn_encuestaid') != "" && $this->input->post('hdn_encuestaid') > 0){
+				
+				$tenencia = $this->input->post('sel_tenencia');					
+				$sitio = $this->input->post('sel_sitio');
+				$post_subsidio = $this->input->post('sel_post_subsidio');
+				$libreta = $this->input->post('sel_libreta');
+				$libreta_anio = $this->input->post('txt_libreta_anio');
+				$monto_ahorro = $this->input->post('txt_monto_ahorro');		
+				$fam_ocupante = $this->input->post('sel_ocupante');        
+				$num_personas = $this->input->post('txt_num_personas');
+				$num_dormitorios = $this->input->post('txt_dormitorios');
+				$prov_agua = $this->input->post('sel_prov_agua');
+				$sub_agua = $this->input->post('sel_sub_agua');
+				$ener_electrica = $this->input->post('sel_ener_electrica');
+				$elim_excretas = $this->input->post('sel_elim_excretas');
+				$reg_hogares = $this->input->post('sel_reg_hogares');
+				$tramo_grupo = $this->input->post('sel_tramo_grupo');
+				$ben_subsidio = $this->input->post('sel_ben_subsidio');
+				$otro_subsidio = $this->input->post('sel_otro_subsidio');
+					
+				
+				$this->form_validation->set_rules('sel_tenencia', 'Tenencia de Vivienda', 'required');
+				$this->form_validation->set_rules('sel_sitio', 'Tenencia de Sitio', 'required');
+				$this->form_validation->set_rules('sel_post_subsidio','Postulación Subsidio','required');				
+				$this->form_validation->set_rules('sel_libreta','Libreta','required');						
+				$this->form_validation->set_rules('txt_libreta_anio','Año libreta','required');
+				$this->form_validation->set_rules('txt_monto_ahorro','Monto ahorro','required');
+				$this->form_validation->set_rules('sel_ocupante','Principal Ocupante','required');	
+				$this->form_validation->set_rules('txt_num_personas','Numero de personas','required');	
+				$this->form_validation->set_rules('txt_dormitorios','Cantidad de dormitorios','required');	
+				$this->form_validation->set_rules('sel_prov_agua','Procedencia del agua','required');	
+				$this->form_validation->set_rules('sel_sub_agua','Subsidio agua','required');	
+				$this->form_validation->set_rules('sel_ener_electrica','Sistema de energía eléctrica','required');	
+				$this->form_validation->set_rules('sel_elim_excretas','Eliminación de excretas','required');	
+				$this->form_validation->set_rules('sel_reg_hogares','Registro social de hogares','required');	
+				$this->form_validation->set_rules('sel_tramo_grupo','Tramo grupo familiar','required');	
+				$this->form_validation->set_rules('sel_ben_subsidio','Subsidio familiar','required');	
+				$this->form_validation->set_rules('sel_otro_subsidio','Otro subsidio','required');	
+				
+				$this->form_validation->set_message('required','El campo {field} es requerido');
+				//$this->form_validation->set_message('min_length','El campo {field} debe tener al menos {param} caracteres');
+				//$this->form_validation->set_message('max_length','El campo {field} debe tener a lo más {param} caracteres');
+				//$this->form_validation->set_message('regex_match','El campo {field} no tiene el formato solicitado');
+		
+
+				if ($this->form_validation->run() == FALSE){
+					
+					
+					//$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
+					$data['mensaje'] = "El formulario presenta errores de validación oli ";
+					$data['divtipo'] = "alert alert-danger alert-dismissable";
+					$this->load->view('recopilador/header',$data);
+					$this->load->view('encuesta/vivienda',$data);
+					$this->load->view('recopilador/footer',$data);
+				}
+				else{
+
+					$encuesta_vivienda = array(
+					
+						'encuesta_id' => $idencuesta,
+						
+						'viv_tenencia' => $tenencia,
+						'viv_sitio' => $sitio,
+						'viv_post_subsidio' => $post_subsidio,
+						'viv_libreta' => $libreta,
+						'viv_libreta_anio' => $libreta_anio,						
+						'viv_monto_ahorro' => $monto_ahorro,
+						'viv_fam_ocupante' => $fam_ocupante,
+						'viv_num_personas' => $num_personas,
+						'viv_num_dormitorios' => $num_dormitorios,
+						'viv_prov_agua' => $prov_agua, 
+						'viv_sub_agua' 	=> $sub_agua, 
+						'viv_ener_electrica' =>	$ener_electrica, 
+						'viv_elim_excretas' =>	$elim_excretas, 
+						'viv_reg_hogares' => $reg_hogares, 
+						'viv_tramo_grupo'	=>	$tramo_grupo, 
+						'viv_ben_subsidio'	=>	$ben_subsidio, 
+						'viv_otro_subsidio' =>	$otro_subsidio 
+					);
+
+					$this->encuesta_model->actualizar_encuesta_vivienda($encuesta_vivienda,$idencuesta);
+					
+					//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
+
+					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+					$data['divtipo'] = "alert alert-success alert-dismissable";
+
+					$this->load->view('recopilador/header',$data);
+					$this->load->view('encuesta/servicios',$data);
+					$this->load->view('recopilador/footer',$data);
+				}
+			}
+			else{
+				$data['mensaje'] = "";
+				$data['divtipo'] = "alert alert-success alert-dismissable";				
+				$this->load->view('recopilador/header',$data);
+				$this->load->view('encuesta/empresas',$data);
+				$this->load->view('recopilador/footer',$data);
+			}
+		}
+		else{
+
+			$data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
+
+			$data['mensaje'] = "Ocurrió un error al procesar la solicitud";
+			$data['divtipo'] = "alert alert-danger alert-dismissable";
+
+			$this->load->view('recopilador/header',$data);
+			$this->load->view('encuesta/vivienda',$data);
+			$this->load->view('recopilador/footer',$data);		
+			
+		}	
+	}
+	
 	function validar_run($rut){
 		
 		if (preg_match("/^[0-9]+-[0-9kK]{1}|\s/", $rut)){
