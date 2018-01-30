@@ -2,7 +2,7 @@
 
     if (validation_errors() == ""){
 	
-        $niv_esc = "";
+        $nivel_esc = "";
         $tipo_est = "";
         $ult_curso = "";
         $anio_egreso = "";
@@ -12,7 +12,7 @@
 		
     }
     else{
-        $niv_esc = set_value('sel_niv_esc');
+        $nivel_esc = set_value('sel_nivel_esc');
         $tipo_est = set_value('sel_tipo_est');
         $ult_curso = set_value('sel_ult_curso');
         $anio_egreso = set_value('txt_anio_egreso');
@@ -157,28 +157,28 @@
                                                                             <!--/row-->
                                                                             <div class="row">
                                                                                 <div class="col-md-4"> <!-- Nivel -->
-                                                                                    <div class="form-group <?php if (form_error('sel_niv_esc') != ""){echo "has-error";} ?>">
+                                                                                    <div class="form-group <?php if (form_error('sel_nivel_esc') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Nivel <span class="required" aria-required="true"> * </span></label>
 
                                                                                         <br/><br/>
                                                                                         <?php
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '1', 'checked' => ('1' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc1'))." Analfabeto <br/>";
-                                                                                        echo form_radio(array('name' => 'sel_niv_esc', 'value' => '2', 'checked' => ('2' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc2'))." Alfabetismo informal <br/>";
-                                                                                        echo form_radio(array('name' => 'sel_niv_esc', 'value' => '3', 'checked' => ('3' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc3'))." Básica Incompleta <br/>";
-                                                                                        echo form_radio(array('name' => 'sel_niv_esc', 'value' => '4', 'checked' => ('4' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc4'))." Básica Completa <br/>";
-                                                                                        echo form_radio(array('name' => 'sel_niv_esc', 'value' => '5', 'checked' => ('5' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc5'))." Media Incompleta (Científico Humanista) <br/>";
-                                                                                        echo form_radio(array('name' => 'sel_niv_esc', 'value' => '6', 'checked' => ('6' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc6'))." Media Completa (Científico Humanista) <br/>";																						
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '7', 'checked' => ('7' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc7'))." Liceo Técnico Incompleto <br/>";
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '8', 'checked' => ('8' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc8'))." Liceo Técnico Completo <br/>";
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '9', 'checked' => ('9' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc9'))." Centro de formación Técnica Incompleto <br/>";
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '10', 'checked' => ('10' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc10'))." Centro de formación Técnica Completo <br/>";
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '11', 'checked' => ('11' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc11'))." Instituto Profesional Incompleto <br/>";
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '12', 'checked' => ('12' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc12'))." Instituto Profesional Completo <br/>";
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '13', 'checked' => ('13' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc13'))." Universidad Incompleta <br/>";
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '14', 'checked' => ('14' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc14'))." Universidad Completa <br/>";
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '15', 'checked' => ('15' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc15'))." Post Grado Incompleto <br/>";
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '16', 'checked' => ('16' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc16'))." Post Grado Completo <br/>";
-																						echo form_radio(array('name' => 'sel_niv_esc', 'value' => '17', 'checked' => ('17' == $niv_esc) ? TRUE : FALSE, 'id' => 'niv_esc17'))." Especialidades Fuerzas Armadas <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '1', 'checked' => ('1' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc1'))." Analfabeto <br/>";
+                                                                                        echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '2', 'checked' => ('2' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc2'))." Alfabetismo informal <br/>";
+                                                                                        echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '3', 'checked' => ('3' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc3'))." Básica Incompleta <br/>";
+                                                                                        echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '4', 'checked' => ('4' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc4'))." Básica Completa <br/>";
+                                                                                        echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '5', 'checked' => ('5' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc5'))." Media Incompleta (Científico Humanista) <br/>";
+                                                                                        echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '6', 'checked' => ('6' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc6'))." Media Completa (Científico Humanista) <br/>";																						
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '7', 'checked' => ('7' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc7'))." Liceo Técnico Incompleto <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '8', 'checked' => ('8' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc8'))." Liceo Técnico Completo <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '9', 'checked' => ('9' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc9'))." Centro de formación Técnica Incompleto <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '10', 'checked' => ('10' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc10'))." Centro de formación Técnica Completo <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '11', 'checked' => ('11' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc11'))." Instituto Profesional Incompleto <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '12', 'checked' => ('12' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc12'))." Instituto Profesional Completo <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '13', 'checked' => ('13' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc13'))." Universidad Incompleta <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '14', 'checked' => ('14' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc14'))." Universidad Completa <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '15', 'checked' => ('15' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc15'))." Post Grado Incompleto <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '16', 'checked' => ('16' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc16'))." Post Grado Completo <br/>";
+																						echo form_radio(array('name' => 'sel_nivel_esc', 'value' => '17', 'checked' => ('17' == $nivel_esc) ? TRUE : FALSE, 'id' => 'nivel_esc17'))." Especialidades Fuerzas Armadas <br/>";
 																						        
                                                                                         ?>
 																						
@@ -186,9 +186,9 @@
                                                                                         <?php
 
 
-                                                                                        if (form_error('sel_niv_esc') != NULL){
+                                                                                        if (form_error('sel_nivel_esc') != NULL){
                                                                                         ?>
-                                                                                        <span class="help-block"> <?php echo form_error('sel_niv_esc'); ?> </span>
+                                                                                        <span class="help-block"> <?php echo form_error('sel_nivel_esc'); ?> </span>
                                                                                         <?php
                                                                                         }
                                                                                         ?>

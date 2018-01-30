@@ -383,7 +383,7 @@ class Encuesta extends CI_Controller {
 
 			if ($this->input->post('hdn_encuestaid') != "" && $this->input->post('hdn_encuestaid') > 0){
 				
-				$niv_escuela = $this->input->post('sel_niv_educacion');					
+				$nivel_esc = $this->input->post('sel_nivel_esc');					
 				$tipo_est = $this->input->post('sel_tipo_est');
 				$ult_curso = $this->input->post('sel_ult_curso');
 				$anio_egreso = $this->input->post('txt_anio_egreso');
@@ -392,7 +392,7 @@ class Encuesta extends CI_Controller {
 				
 					
 				
-				$this->form_validation->set_rules('sel_niv_educacion', 'Nivel de Educación', 'required');
+				$this->form_validation->set_rules('sel_nivel_esc', 'Nivel de Educación', 'required');
 				$this->form_validation->set_rules('txt_anio_egreso', 'Año de egreso', 'required');
 				$this->form_validation->set_rules('sel_tipo_est','Tipo de estudios','required');				
 				$this->form_validation->set_rules('sel_ult_curso','Último curso','required');	
@@ -423,7 +423,7 @@ class Encuesta extends CI_Controller {
 					
 						'encuesta_id' => $idencuesta,
 						
-						'edu_nivel_esc' => $niv_escuela,
+						'edu_nivel_esc' => $nivel_esc,
 						'edu_tipo_est' => $tipo_est,
 						'edu_ult_curso' => $ult_curso,
 						'edu_anio_egreso' => $anio_egreso,
@@ -459,6 +459,112 @@ class Encuesta extends CI_Controller {
 
 			$this->load->view('recopilador/header',$data);
 			$this->load->view('encuesta/educacion',$data);
+			$this->load->view('recopilador/footer',$data);		
+			
+		}	
+	}
+	
+	public function salud($idencuesta){
+		
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->load->model('param_model');
+		$this->load->model('usuario_model');
+		$this->load->model('encuesta_model');
+		$this->load->helper('date');
+
+		$sesionusuario = $this->session->userdata('usrsesion');		
+
+		$data['sesionusuario'] = $sesionusuario;
+		$data['lstregiones'] = $this->param_model->get_regiones();
+
+		if (isset($idencuesta) && $idencuesta > 0){
+			
+			$data['idencuesta'] = $idencuesta;
+			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+			$data['mensaje'] = "";
+			$data['divtipo'] = "alert alert-success alert-dismissable";
+		
+
+
+			if ($this->input->post('hdn_encuestaid') != "" && $this->input->post('hdn_encuestaid') > 0){
+				
+				$cont_menores = $this->input->post('sel_cont_menores');					
+				$cons_drogas = $this->input->post('sel_cons_drogas');
+				$cons_drogas_d = $this->input->post('txt_cons_drogas_d');
+				$pat_ges = $this->input->post('txt_pat_ges');
+				$usa_prevision = $this->input->post('sel_usa_prevision');
+				$cond_permanente = $this->input->post('txt_cond_permanente');		
+				
+					
+				
+				$this->form_validation->set_rules('sel_cont_menores', 'Cantidad de Menores', 'required');
+				$this->form_validation->set_rules('sel_cons_drogas', 'Problemas de Alcohol/Drogas', 'required');
+				$this->form_validation->set_rules('txt_cons_drogas_d','Edad','required');				
+				$this->form_validation->set_rules('txt_pat_ges','Patologia GES','required');						
+				$this->form_validation->set_rules('sel_usa_prevision','Previsión','required');
+				$this->form_validation->set_rules('txt_cond_permanente','Condicion Permanente','required');				
+				
+				
+				$this->form_validation->set_message('required','El campo {field} es requerido');
+				//$this->form_validation->set_message('min_length','El campo {field} debe tener al menos {param} caracteres');
+				//$this->form_validation->set_message('max_length','El campo {field} debe tener a lo más {param} caracteres');
+				//$this->form_validation->set_message('regex_match','El campo {field} no tiene el formato solicitado');
+		
+
+				if ($this->form_validation->run() == FALSE){
+					
+					
+					//$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
+					$data['mensaje'] = "El formulario presenta errores de validación oli ";
+					$data['divtipo'] = "alert alert-danger alert-dismissable";
+					$this->load->view('recopilador/header',$data);
+					$this->load->view('encuesta/salud',$data);
+					$this->load->view('recopilador/footer',$data);
+				}
+				else{
+
+					$encuesta_salud = array(
+					
+						'encuesta_id' => $idencuesta,
+						
+						'sad_cont_menores' => $cont_menores,
+						'sad_cons_drogas' => $cons_drogas,
+						'sad_cons_drogas_d' => $cons_drogas_d,
+						'sad_pat_ges' => $pat_ges,
+						'sad_usa_prevision' => $usa_prevision,						
+						'sad_cond_permanente' => $cond_permanente								
+					);
+
+					$this->encuesta_model->actualizar_encuesta_salud($encuesta_salud,$idencuesta);
+					
+					//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
+
+					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+					$data['divtipo'] = "alert alert-success alert-dismissable";
+
+					$this->load->view('recopilador/header',$data);
+					$this->load->view('encuesta/vivienda',$data);
+					$this->load->view('recopilador/footer',$data);
+				}
+			}
+			else{
+				$data['mensaje'] = "";
+				$data['divtipo'] = "alert alert-success alert-dismissable";				
+				$this->load->view('recopilador/header',$data);
+				$this->load->view('encuesta/empresas',$data);
+				$this->load->view('recopilador/footer',$data);
+			}
+		}
+		else{
+
+			$data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
+
+			$data['mensaje'] = "Ocurrió un error al procesar la solicitud";
+			$data['divtipo'] = "alert alert-danger alert-dismissable";
+
+			$this->load->view('recopilador/header',$data);
+			$this->load->view('encuesta/salud',$data);
 			$this->load->view('recopilador/footer',$data);		
 			
 		}	

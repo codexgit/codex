@@ -2,22 +2,22 @@
 
     if (validation_errors() == ""){
 	
-        $niv_escuela = "";
-        $tipo_est = "";
-        $ult_curso = "";
-        $anio_egreso = "";
-        $estudiando = "";
-        $becas = "";
+        $cont_menores = "";
+        $cons_drogas = "";
+        $cons_drogas_d = "";
+        $pat_ges = "";
+        $usa_prevision = "";
+        $cond_permanente = "";
 
 		
     }
     else{
-        $niv_escuela = set_value('txt_direccion');
-        $tipo_est = set_value('txt_numero');
-        $ult_curso = set_value('txt_sector');
-        $anio_egreso = set_value('txt_tfijo');
-        $estudiando = set_value('txt_tmovil');
-        $becas = set_value('txt_fecnacimiento');
+        $cont_menores = set_value('sel_cont_menores');
+        $cons_drogas = set_value('sel_cons_drogas');
+        $cons_drogas_d = set_value('txt_cons_drogas_d');
+        $pat_ges = set_value('txt_pat_ges');
+        $usa_prevision = set_value('sel_usa_prevision');
+        $cond_permanente = set_value('txt_cond_permanente');
  
     }
 ?>
@@ -88,7 +88,7 @@
                                                                 <div class="col-md-4 bg-grey mt-step-col active">
                                                                     <div class="mt-step-number bg-white font-grey">1</div>
                                                                     <div class="mt-step-title uppercase font-grey-cascade">Trabajador</div>
-                                                                    <div class="mt-step-content font-grey-cascade">Antecedentes personales</div>
+                                                                    <div class="mt-step-content font-grey-cascade">Salud</div>
                                                                 </div>
                                                                 <div class="col-md-4 bg-grey mt-step-col">
                                                                     <div class="mt-step-number bg-white font-grey">2</div>
@@ -126,7 +126,7 @@
                                                                     <!-- BEGIN FORM-->
                                                                     <?php
                                                                         $attributes = array('class' => 'horizontal-form');
-                                                                        echo form_open('encuesta/datos_trabajador/'.$idencuesta, $attributes);
+                                                                        echo form_open('encuesta/salud/'.$idencuesta, $attributes);
                                                                     ?>
                                                                         <div class="form-body">
                                                                             <div class="row">
@@ -153,302 +153,157 @@
                                                                                 <!--/span-->
                                                                             </div>
                                                                             <!--/row-->
-                                                                            <h4 class="form-section">1.1.- Antecedentes Personales</h4>
+                                                                            <h4 class="form-section">1.3.- Salud</h4>
                                                                             <!--/row-->
                                                                             <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group <?php if (form_error('txt_direccion') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Dirección, calle <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" name="txt_direccion" id="txt_direccion" class="form-control" placeholder="" value="<?php echo $direccion; ?>">
-                                                                                        <?php
-                                                                                        if (form_error('txt_direccion') != NULL){
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('txt_direccion'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group <?php if (form_error('txt_numero') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Número/Block/Depto. <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" name="txt_numero" id="txt_numero" class="form-control" placeholder="" value="<?php echo $numero; ?>">
-                                                                                        <?php
-                                                                                        if (form_error('txt_numero') != NULL){
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('txt_numero'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!--/row-->
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group <?php if (form_error('txt_sector') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Población/Sector </label>
-                                                                                        <input type="text" name="txt_sector" id="txt_sector" class="form-control" placeholder="" value="<?php echo $sector; ?>">
-                                                                                        <?php
-                                                                                        if (form_error('txt_sector') != NULL){
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('txt_sector'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group <?php if (form_error('txt_tfijo') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Teléfono fijo </label>
-                                                                                        <input type="text" name="txt_tfijo" id="txt_tfijo" class="form-control" placeholder="" value="<?php echo $tfijo; ?>">
-                                                                                        <?php
-                                                                                        if (form_error('txt_tfijo') != NULL){
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('txt_tfijo'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group <?php if (form_error('txt_tmovil') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Teléfono móvil <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" name="txt_tmovil" id="txt_tmovil" class="form-control" placeholder="" value="<?php echo $tmovil; ?>">
-                                                                                        <?php
-                                                                                        if (form_error('txt_tmovil') != NULL){
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('txt_tmovil'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
+                                                                                <div class="col-md-4"> <!-- Control Niño sano -->
+                                                                                    <div class="form-group <?php if (form_error('sel_cont_menores') != ""){echo "has-error";} ?>">
+                                                                                        <label class="control-label">Si existen niños menores de 6 años en tu familia, ¿Los están llevando al control niño sano en el centro de salud?<span class="required" aria-required="true"> * </span></label>
 
-                                                                            </div>
-                                                                            <!--/row-->                                                       
-                                                                            <div class="row">
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group <?php if (form_error('txt_fecnacimiento') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Fecha de Nacimiento <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" name="txt_fecnacimiento" id="txt_fecnacimiento" class="form-control" placeholder="" value="<?php echo $fecnacimiento; ?>">
-                                                                                        <?php
-                                                                                        if (form_error('txt_fecnacimiento') != NULL){
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('txt_fecnacimiento'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group <?php if (form_error('rbt_genero') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Género <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>
                                                                                         <?php
-                                                                                        echo form_radio(array('name' => 'rbt_genero', 'value' => '1', 'checked' => ('1' == $genero) ? TRUE : FALSE, 'id' => 'm'));
-
+																						echo form_radio(array('name' => 'sel_cont_menores', 'value' => '1', 'checked' => ('1' == $cont_menores) ? TRUE : FALSE, 'id' => 'cont_menores1'))." Si<br/>";
+                                                                                        echo form_radio(array('name' => 'sel_cont_menores', 'value' => '2', 'checked' => ('2' == $cont_menores) ? TRUE : FALSE, 'id' => 'cont_menores2'))." No <br/>";
+                                                                                        echo form_radio(array('name' => 'sel_cont_menores', 'value' => '3', 'checked' => ('3' == $cont_menores) ? TRUE : FALSE, 'id' => 'cont_menores3'))." No corresponde <br/>";
+																						        
                                                                                         ?>
-
-                                                                                        Masculino &nbsp;
-
-                                                                                        <?php
-                                                                                        echo form_radio(array('name' => 'rbt_genero', 'value' => '2', 'checked' => ('2' == $genero) ? TRUE : FALSE, 'id' => 'f'));
-
-                                                                                        ?>
-
-                                                                                        Femenino 
+																						
 
                                                                                         <?php
 
 
-                                                                                        if (form_error('rbt_genero') != NULL){
+                                                                                        if (form_error('sel_cont_menores') != NULL){
                                                                                         ?>
-                                                                                        <span class="help-block"> <?php echo form_error('rbt_genero'); ?> </span>
+                                                                                        <span class="help-block"> <?php echo form_error('sel_cont_menores'); ?> </span>
                                                                                         <?php
                                                                                         }
                                                                                         ?>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group <?php if (form_error('rbt_jefefamilia') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">¿Es usted jefe de familia? <span class="required" aria-required="true"> * </span></label>
+																				
+                                                                                <div class="col-md-4"> <!-- Problemas de drogas/alcohol -->
+                                                                                    <div class="form-group <?php if (form_error('sel_cons_drogas') != ""){echo "has-error";} ?>">
+                                                                                        <label class="control-label">¿Algún integrante de sus grupo familiar tiene problemas en la escuela, el trabajo, con los vecinos o dentro de la familia a causa del consumo de alcohol o drogas? <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>
                                                                                         <?php
-                                                                                        echo form_radio(array('name' => 'rbt_jefefamilia', 'value' => '1', 'checked' => ('1' == $jfamilia) ? TRUE : FALSE, 'id' => 's'));
-
-                                                                                        ?>
-
-                                                                                        Sí  &nbsp;
-
-                                                                                        <?php
-                                                                                        echo form_radio(array('name' => 'rbt_jefefamilia', 'value' => '2', 'checked' => ('F' == $jfamilia) ? TRUE : FALSE, 'id' => 'n'));
-
-                                                                                        ?>
-
-                                                                                        No 
-
+																						echo form_radio(array('name' => 'sel_cons_drogas', 'value' => '1', 'checked' => ('1' == $cons_drogas) ? TRUE : FALSE, 'id' => 'cons_drogas1'))." Si<br/>";
+                                                                                        echo form_radio(array('name' => 'sel_cons_drogas', 'value' => '2', 'checked' => ('2' == $cons_drogas) ? TRUE : FALSE, 'id' => 'cons_drogas2'))." No <br/>";
+																						        
+                                                                                        ?>                                                                                        
+																						
                                                                                         <?php
 
-
-                                                                                        if (form_error('rbt_jefefamilia') != NULL){
+                                                                                        if (form_error('sel_cons_drogas') != NULL){
                                                                                         ?>
-                                                                                        <span class="help-block"> <?php echo form_error('rbt_jefefamilia'); ?> </span>
+                                                                                        <span class="help-block"> <?php echo form_error('sel_cons_drogas'); ?> </span>
                                                                                         <?php
                                                                                         }
                                                                                         ?>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
-                                                                            </div>
-                                                                            <!--/row-->                    
-                                                                            <div class="row">
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group <?php if (form_error('rbt_antind') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">¿Usted o sus ascendientes tiene origen indígena? <span class="required" aria-required="true"> * </span></label>
+																				
+																				<!--/span-->
+                                                                                <div class="col-md-4"> <!-- Edad de dicha persona -->
+                                                                                    <div class="form-group <?php if (form_error('txt_cons_drogas_d') != ""){echo "has-error";} ?>">
+                                                                                        <label class="control-label">¿Qué edad tiene?<span class="required" aria-required="true"> * </span></label>
+                                                                                        <input type="text" name="txt_cons_drogas_d" id="txt_cons_drogas_d" class="form-control" placeholder="" value="<?php echo $cons_drogas_d; ?>">
+                                                                                        <?php
+                                                                                        if (form_error('txt_cons_drogas_d') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_cons_drogas_d'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>                                                                                
+																				
+																				
+                                                                                <div class="col-md-4"> <!-- Patologia GES -->
+                                                                                    <div class="form-group <?php if (form_error('txt_pat_ges') != ""){echo "has-error";} ?>">
+                                                                                        <label class="control-label">¿Usted posee alguna patología GES? Orientar con anexo<span class="required" aria-required="true"> * </span></label>
+                                                                                        <input type="text" name="txt_pat_ges" id="txt_pat_ges" class="form-control" placeholder="" value="<?php echo $pat_ges; ?>">
+                                                                                        <?php
+                                                                                        if (form_error('txt_pat_ges') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_pat_ges'); ?> </span>
+                                                                                        <?php
+                                                                                        }
+                                                                                        ?>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                
+                                                                                <div class="col-md-4"> <!-- Previsión -->
+                                                                                    <div class="form-group <?php if (form_error('sel_usa_prevision') != ""){echo "has-error";} ?>">
+                                                                                        <label class="control-label">Hace uso de las garantías de atención que ofrece su sistema previsional de salud [FONASA/ISAPRE]?<span class="required" aria-required="true"> * </span></label>
+
                                                                                         <br/><br/>
                                                                                         <?php
-                                                                                        echo form_radio(array('name' => 'rbt_antind', 'value' => '1', 'checked' => ('1' == $antind) ? TRUE : FALSE, 'id' => 'antind1'))." No <br/>";
-
-                                                                                        echo form_radio(array('name' => 'rbt_antind', 'value' => '2', 'checked' => ('2' == $antind) ? TRUE : FALSE, 'id' => 'antind2'))." Sí, yo <br/>";
-
-                                                                                        echo form_radio(array('name' => 'rbt_antind', 'value' => '3', 'checked' => ('3' == $antind) ? TRUE : FALSE, 'id' => 'antind3'))." Sí, uno de mis padres <br/>";
-
-                                                                                        echo form_radio(array('name' => 'rbt_antind', 'value' => '4', 'checked' => ('4' == $antind) ? TRUE : FALSE, 'id' => 'antind4'))." Sí, uno de mis abuelos <br/>";
-
-                                                                                        echo form_radio(array('name' => 'rbt_antind', 'value' => '5', 'checked' => ('5' == $antind) ? TRUE : FALSE, 'id' => 'antind5'))." Sí, uno de mis bisabuelos <br/>";
-
-                                                                                        echo form_radio(array('name' => 'rbt_antind', 'value' => '6', 'checked' => ('6' == $antind) ? TRUE : FALSE, 'id' => 'antind6'))." No se <br/>";
-
-
-                                                                                        if (form_error('rbt_antind') != NULL){
+																						echo form_radio(array('name' => 'sel_usa_prevision', 'value' => '1', 'checked' => ('1' == $usa_prevision) ? TRUE : FALSE, 'id' => 'usa_prevision1'))." Si<br/>";
+                                                                                        echo form_radio(array('name' => 'sel_usa_prevision', 'value' => '2', 'checked' => ('2' == $usa_prevision) ? TRUE : FALSE, 'id' => 'usa_prevision2'))." No <br/>";
+																						        
                                                                                         ?>
-                                                                                        <span class="help-block"> <?php echo form_error('rbt_antind'); ?> </span>
+																						
+
+                                                                                        <?php
+                                                                                        if (form_error('sel_usa_prevision') != NULL){
+                                                                                        ?>
+                                                                                        <span class="help-block"> <?php echo form_error('sel_usa_prevision'); ?> </span>
                                                                                         <?php
                                                                                         }
                                                                                         ?>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group <?php if (form_error('rbt_estcivil') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">¿Cuál es su estado civil o conyugal actual? <span class="required" aria-required="true"> * </span></label>
+																																																												
+																				<!--/span-->
+                                                                                <div class="col-md-4"> <!-- Condición permanente -->
+                                                                                    <div class="form-group <?php if (form_error('txt_cond_permanente') != ""){echo "has-error";} ?>">
+                                                                                        <label class="control-label">¿Posee usted alguna de estas condiciones en forma permanente? <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>
                                                                                         <?php
+																						echo form_radio(array('name' => 'txt_cond_permanente', 'value' => '1', 'checked' => ('1' == $cond_permanente) ? TRUE : FALSE, 'id' => 'cond_permanente1'))." Ceguera <br/>";
+                                                                                        echo form_radio(array('name' => 'txt_cond_permanente', 'value' => '2', 'checked' => ('2' == $cond_permanente) ? TRUE : FALSE, 'id' => 'cond_permanente2'))." Dificultad Visual <br/>";
+                                                                                        echo form_radio(array('name' => 'txt_cond_permanente', 'value' => '3', 'checked' => ('3' == $cond_permanente) ? TRUE : FALSE, 'id' => 'cond_permanente3'))." Mudez <br/>";
+                                                                                        echo form_radio(array('name' => 'txt_cond_permanente', 'value' => '4', 'checked' => ('4' == $cond_permanente) ? TRUE : FALSE, 'id' => 'cond_permanente4'))." Sordera <br/>";
+                                                                                        echo form_radio(array('name' => 'txt_cond_permanente', 'value' => '5', 'checked' => ('5' == $cond_permanente) ? TRUE : FALSE, 'id' => 'cond_permanente5'))." Dificultad Auditiva <br/>";
+                                                                                        echo form_radio(array('name' => 'txt_cond_permanente', 'value' => '6', 'checked' => ('6' == $cond_permanente) ? TRUE : FALSE, 'id' => 'cond_permanente6'))." Dificultad en  el habla <br/>";																						
+																						echo form_radio(array('name' => 'txt_cond_permanente', 'value' => '7', 'checked' => ('7' == $cond_permanente) ? TRUE : FALSE, 'id' => 'cond_permanente7'))." Enfermedades psiquiátricas <br/>";
+																						echo form_radio(array('name' => 'txt_cond_permanente', 'value' => '8', 'checked' => ('8' == $cond_permanente) ? TRUE : FALSE, 'id' => 'cond_permanente8'))." Dificultad física (requiere ayuda para su desplazamiento) <br/>";
+																						echo form_radio(array('name' => 'txt_cond_permanente', 'value' => '9', 'checked' => ('9' == $cond_permanente) ? TRUE : FALSE, 'id' => 'cond_permanente9'))." No tiene <br/>";														
 
-                                                                                        echo form_radio(array('name' => 'rbt_estcivil', 'value' => '1', 'checked' => ('1' == $estcivil) ? TRUE : FALSE, 'id' => 'estciv1'))." Soltero <br/>";
+                                                                                        ?>                                                                 
+                                                 
 
-                                                                                        echo form_radio(array('name' => 'rbt_estcivil', 'value' => '2', 'checked' => ('2' == $estcivil) ? TRUE : FALSE, 'id' => 'estciv2'))." Viudo <br/>";
+                                                                                        <?php
 
-                                                                                        echo form_radio(array('name' => 'rbt_estcivil', 'value' => '3', 'checked' => ('3' == $estcivil) ? TRUE : FALSE, 'id' => 'estciv3'))." Casado <br/>";
 
-                                                                                        echo form_radio(array('name' => 'rbt_estcivil', 'value' => '4', 'checked' => ('4' == $estcivil) ? TRUE : FALSE, 'id' => 'estciv4'))." Conviviente civil <br/>";
-
-                                                                                        echo form_radio(array('name' => 'rbt_estcivil', 'value' => '5', 'checked' => ('5' == $estcivil) ? TRUE : FALSE, 'id' => 'estciv5'))." Conviviente <br/>";
-
-                                                                                        echo form_radio(array('name' => 'rbt_estcivil', 'value' => '6', 'checked' => ('6' == $estcivil) ? TRUE : FALSE, 'id' => 'estciv6'))." Divorciado <br/>";
-
-                                                                                        echo form_radio(array('name' => 'rbt_estcivil', 'value' => '7', 'checked' => ('7' == $estcivil) ? TRUE : FALSE, 'id' => 'estciv7'))." Separado de hecho <br/>";
-
-                                                                                        if (form_error('rbt_estcivil') != NULL){
+                                                                                        if (form_error('txt_cond_permanente') != NULL){
                                                                                         ?>
-                                                                                        <span class="help-block"> <?php echo form_error('rbt_estcivil'); ?> </span>
+                                                                                        <span class="help-block"> <?php echo form_error('txt_cond_permanente'); ?> </span>
                                                                                         <?php
                                                                                         }
                                                                                         ?>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group <?php if (form_error('rbt_nacionalidad') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">¿Su nacionalidad es chilena? <span class="required" aria-required="true"> * </span></label>
-                                                                                        <br/><br/>
-
-                                                                                        <?php
-
-                                                                                        echo form_radio(array('name' => 'rbt_nacionalidad', 'value' => '1', 'checked' => ('1' == $nacionalidad) ? TRUE : FALSE, 'id' => 'nacionalidad1'))." Sí <br/>";
-
-                                                                                        echo form_radio(array('name' => 'rbt_nacionalidad', 'value' => '2', 'checked' => ('2' == $nacionalidad) ? TRUE : FALSE, 'id' => 'nacionalidad2'))." No <br/>";
-
-                                                                                        echo form_radio(array('name' => 'rbt_nacionalidad', 'value' => '3', 'checked' => ('3' == $nacionalidad) ? TRUE : FALSE, 'id' => 'nacionalidad3'))." Casado <br/>";
-
-                                                                                        if (form_error('rbt_nacionalidad') != NULL){
-
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('rbt_nacionalidad'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
+                                                                                    
                                                                                 </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!--/row-->
-
-                                                                            <div class="row">
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group <?php if (form_error('sel_prevsalud') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Previsión de salud <span class="required" aria-required="true"> * </span></label>
-                                                                                        <select name="sel_prevsalud" id="sel_prevsalud" class="form-control">
-                                                                                            <option value="">Seleccione una opción</option>
-                                                                                            <option value="1">FONASA</option>
-                                                                                            <option value="2">Isapre</option>
-                                                                                        </select>
-                                                                                        <?php
-                                                                                        if (form_error('sel_prevsalud') != NULL){
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('sel_prevsalud'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group <?php if (form_error('txt_tramo') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Tramo / Isapre <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" name="txt_tramo" id="txt_tramo" class="form-control" placeholder="" value="<?php echo $tramo; ?>">
-                                                                                        <?php
-                                                                                        if (form_error('txt_tramo') != NULL){
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('txt_tramo'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group <?php if (form_error('txt_prevsocial') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Previsión social <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" name="txt_prevsocial" id="txt_prevsocial" class="form-control" placeholder="" value="<?php echo $prevsocial; ?>">
-                                                                                        <?php
-                                                                                        if (form_error('txt_prevsocial') != NULL){
-                                                                                        ?>
-                                                                                        <span class="help-block"> <?php echo form_error('txt_prevsocial'); ?> </span>
-                                                                                        <?php
-                                                                                        }
-                                                                                        ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-
-                                                                            </div>
-                                                                            <!--/row-->                                                                                      
-                                                                        </div>
+                                                                                
+                                                                            </div>                                                                        
+                                                                                                                                 
+                                                                        
                                                                         <div class="form-actions right">
                                                                             <!--<button type="button" class="btn default">Volver</button>-->
-                                                                            <a href="<?php echo site_url('encuesta/educacion/'); ?>" class="btn default" role="button">Volver</a>
+                                                                            <a href="<?php echo site_url('encuesta/educacion/'.$idencuesta); ?>" class="btn default" role="button">Volver</a>
                                                                             <button type="submit" class="btn blue">
                                                                                 <i class="fa fa-check"></i> Siguiente</button>
                                                                         </div>
+																		
                                                                         <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
                                                                     <?php echo form_close(); ?>
                                                                     <!-- END FORM-->
