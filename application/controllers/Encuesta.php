@@ -679,16 +679,17 @@ class Encuesta extends CI_Controller {
 
 					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
 					$data['divtipo'] = "alert alert-success alert-dismissable";
-
-					$this->load->view('recopilador/header',$data);
-					$this->load->view('encuesta/listado',$data);
-					$this->load->view('recopilador/footer',$data);
+					redirect('encuesta/empresas');
+					/*$this->load->view('recopilador/header',$data);
+					$this->load->view('encuesta/empresas',$data);
+					$this->load->view('recopilador/footer',$data); */
 				}
 			}
 			else{
 				$data['mensaje'] = "";
 				$data['divtipo'] = "alert alert-success alert-dismissable";				
 				$this->load->view('recopilador/header',$data);
+
 				$this->load->view('encuesta/empresas',$data);
 				$this->load->view('recopilador/footer',$data);
 			}
