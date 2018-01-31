@@ -1,18 +1,18 @@
 <?php
 if (validation_errors() == "") {
-    $rsocial = "";
-    $rut = "";
-    $direccion = "";
-    $idregion = "";
-    $idcomuna = "";
+
+
+    $idregion = $region_id->region_id;
+    $idcomuna = $usuario->comuna_id;
 } else {
-    $rsocial = set_value('txt_rsocial');
-    $rut = set_value('txt_rut');
-    $direccion = set_value('txt_direccion');
+
     $idregion = set_value('sel_region');
     $idcomuna = set_value('sel_comuna');
 }
 ?>
+
+
+
 
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
@@ -24,7 +24,7 @@ if (validation_errors() == "") {
             <div class="container">
                 <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
-                    <h1>Empresas Colaboradoras
+                    <h1>Mi Perfil
                         <!--<small>Indicadores & estadísticas</small>-->
                     </h1>
                 </div>
@@ -43,11 +43,15 @@ if (validation_errors() == "") {
                 <!-- BEGIN PAGE BREADCRUMBS -->
                 <ul class="page-breadcrumb breadcrumb">
                     <li>
-                        <a href="<?php echo site_url('empresa/listado'); ?>">Empresas Colaboradoras</a>
+                        <a href="<?php echo site_url('analista/index'); ?>">Inicio</a>
                         <i class="fa fa-circle"></i>
                     </li>
                     <li>
-                        <span>Crear Empresa Colaboradora</span>
+                        <a href="<?php echo site_url('analista/perfil'); ?>">Mi Perfil</a>
+                        <i class="fa fa-circle"></i>
+                    </li>
+                    <li>
+                        <span>Cambiar Información</span>
                     </li>
                 </ul>
                 <!-- END PAGE BREADCRUMBS -->
@@ -58,7 +62,7 @@ if (validation_errors() == "") {
 
                         <div class="row">
                             <?php
-                            if ($mensaje != NULL && $mensaje != "") {
+                            if ($mensaje != null && $mensaje != "") {
                                 ?>
                                 <div class="col-md-12">
                                     <div class="<?php echo $divtipo; ?>">
@@ -71,89 +75,67 @@ if (validation_errors() == "") {
                             }
                             ?>
 
-
+                            <!-- CA -->
                             <div class="col-md-12 col-sm-12">
-
-                                <div class="portlet box blue">
+                                <!-- IN -->
+                                <div class="portlet box green-meadow">
                                     <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-th-large"></i>Nueva Empresa Colaboradora 
-                                        </div>
-                                        <div class="tools">
-                                            <!--<a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" class="reload"> </a>
-                                            <a href="javascript:;" class="remove"> </a>-->
+                                        <div class="caption"><i class="fa fa-user" aria-hidden="true"></i>
+                                            Información Personal
                                         </div>
                                     </div>
                                     <div class="portlet-body form">
                                         <?php
                                         $attributes = array('class' => 'horizontal-form');
-                                        echo form_open('empresa/crear', $attributes);
-                                        ?>                                                                    
-                                        <!-- BEGIN FORM-->
-
+                                        echo form_open('analista/editar_informacion', $attributes);
+                                        ?>
                                         <div class="form-body">
-                                            <h3 class="form-section">Datos de la empresa</h3>
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 col-sm-6">
                                                     <div class="form-group <?php
-                                                    if (form_error('txt_rsocial') != "") {
+                                                    if (form_error('usr_nombre') != "") {
                                                         echo "has-error";
                                                     }
                                                     ?>">
-                                                        <label class="control-label">Razón Social <span class="required" aria-required="true"> * </span></label>
-                                                        <input type="text" name="txt_rsocial" id="txt_rsocial" class="form-control" placeholder="" value="<?php echo $rsocial; ?>">
+                                                        <label class="control-label">Nombre <span class="required" aria-required="true"> * </span></label>
+
+                                                        <input type="text" name="usr_nombre" id="usr_nombre" class="form-control" value="<?php echo element('usrnombre', $sesionusuario); ?>" >
+
                                                         <?php
-                                                        if (form_error('txt_rsocial') != NULL) {
+                                                        if (form_error('usr_nombre') != NULL) {
                                                             ?>
-                                                            <span class="help-block"> <?php echo form_error('txt_rsocial'); ?> </span>
+                                                            <span class="help-block"> <?php echo form_error('usr_nombre'); ?> </span>
                                                             <?php
                                                         }
                                                         ?>
+
                                                     </div>
                                                 </div>
-                                                <!--/span-->
+
+
+                                                <!-- ROW -->
+
+
                                                 <div class="col-md-6">
                                                     <div class="form-group <?php
-                                                    if (form_error('txt_rut') != "") {
+                                                    if (form_error('usr_apellido') != "") {
                                                         echo "has-error";
                                                     }
                                                     ?>">
-                                                        <label class="control-label">RUT Empresa <span class="required" aria-required="true"> * </span></label>
-                                                        <input type="text" name="txt_rut" id="txt_rut" class="form-control" placeholder="Ej: 12345678-9" value="<?php echo $rut; ?>">
+                                                        <label class="control-label">Apellido <span class="required" aria-required="true"> * </span></label>
+                                                        <input type="text" name="usr_apellido" id="pass_last" class="form-control" value="<?php echo element('usrapellido', $sesionusuario); ?>">
                                                         <?php
-                                                        if (form_error('txt_rut') != NULL) {
+                                                        if (form_error('usr_apellido') != NULL) {
                                                             ?>
-                                                            <span class="help-block"> <?php echo form_error('txt_rut'); ?> </span>
+                                                            <span class="help-block"> <?php echo form_error('usr_apellido'); ?> </span>
                                                             <?php
                                                         }
                                                         ?>
-                                                    </div>
-                                                </div>
-                                                <!--/span-->
-                                            </div>
-                                            <!--/row-->
-                                            <div class="row">
-                                                <div class="col-md-12 ">
-                                                    <div class="form-group <?php
-                                                    if (form_error('txt_direccion') != "") {
-                                                        echo "has-error";
-                                                    }
-                                                    ?>">
-                                                        <label>Direcci&oacute;n</label>
-                                                        <input type="text" name="txt_direccion" id="txt_direccion" class="form-control" value="<?php echo $direccion; ?>"> 
-                                                        <?php
-                                                        if (form_error('txt_direccion') != NULL) {
-                                                            ?>
-                                                            <span class="help-block"> <?php echo form_error('txt_direccion'); ?> </span>
-                                                            <?php
-                                                        }
-                                                        ?>
+
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--/row-->                                                                            
+                                            <!-- ROW -->
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group <?php
@@ -174,6 +156,7 @@ if (validation_errors() == "") {
                                                             endforeach;
                                                             ?>
                                                         </select>
+
                                                         <?php
                                                         if (form_error('sel_region') != NULL) {
                                                             ?>
@@ -217,20 +200,27 @@ if (validation_errors() == "") {
                                                 <!--/span-->
                                             </div>
                                             <!--/row-->
+
+
                                         </div>
                                         <div class="form-actions right">
                                             <!--<button type="button" class="btn default">Volver</button>-->
-                                            <a href="<?php echo site_url('filial/listado'); ?>" class="btn default" role="button">Volver</a>
-                                            <button type="submit" class="btn blue">
-                                                <i class="fa fa-check"></i> Guardar</button>
+                                            <a href="<?php echo site_url('analista/perfil'); ?>" class="btn default" role="button">Volver</a>
+                                            <button type="submit" class="btn red">
+                                                <i class="fa fa-check"></i> Modificar</button>
                                         </div>
                                         <input type="hidden" name="hdn_valor" id="hdn_valor" value="1">
                                         <?php echo form_close(); ?>
-                                        <!-- END FORM-->
                                     </div>
                                 </div>
+
+
+
+                                <!-- FIN IN -->
+
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <!-- END PAGE CONTENT INNER -->
@@ -241,9 +231,6 @@ if (validation_errors() == "") {
     </div>
     <!-- END CONTENT -->
     <!-- BEGIN QUICK SIDEBAR -->
-
-
-
     <!-- END QUICK SIDEBAR -->
 </div>
 <!-- END CONTAINER -->

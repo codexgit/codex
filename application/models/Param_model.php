@@ -48,6 +48,17 @@ class Param_model extends CI_Model {
         $response = $q->result_array();
         return $response;
     }
+    
+    public function get_region_comuna_by_comunaid($idcomuna) {
+        $this->db->select('region.region_id');
+        $this->db->from('region');
+        $this->db->join('comuna','region.region_id = comuna.region_id','inner');
+        $this->db->where('comuna.comuna_id', $idcomuna);
+        $response = $this->db->get();
+        return $response->row();
+    }
+    
+    
 
     public function get_opciones_by_campoid($idcampo) {
         $this->db->select('*');

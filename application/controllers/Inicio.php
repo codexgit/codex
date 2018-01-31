@@ -49,7 +49,7 @@ class Inicio extends CI_Controller {
                     $data['mensaje'] = "La clave ingresada es incorrecta";
                 } else {
 
-                    $sesionusuario = array('usrlogin' => $row->usr_login, 'usrnombre' => $row->usr_nombre, 'usrapellido' => $row->usr_apellido, 'usrperfil' => $row->perfil_id, 'usrid' => $row->usuario_id);
+                    $sesionusuario = array('usrlogin' => $row->usr_login, 'usrnombre' => $row->usr_nombre, 'usrapellido' => $row->usr_apellido, 'usrperfil' => $row->perfil_id, 'usrid' => $row->usuario_id, 'usrcomuna' => $row->comuna_id);
 
                     if ($this->session->userdata('usrsesion') != NULL) {
                         $this->session->unset_userdata('usrsesion');
