@@ -145,7 +145,7 @@
                                                                     <!-- BEGIN FORM-->
                                                                     <?php
                                                                         $attributes = array('class' => 'horizontal-form');
-                                                                        echo form_open('encuesta/vivienda/', $attributes);
+                                                                        echo form_open('encuesta/vivienda/'.$idencuesta, $attributes);
                                                                     ?>
                                                                         <div class="form-body">
                                                                             <div class="row">
@@ -554,7 +554,7 @@
 																				<!--/span-->
                                                                                 <div class="col-md-4"> <!-- Subsidio Vivienda -->
                                                                                     <div class="form-group <?php if (form_error('sel_ben_subsidio') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Tenencia del Sitio <span class="required" aria-required="true"> * </span></label>
+                                                                                        <label class="control-label">Subsidio Vivienda <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>
                                                                                         <?php
 																						echo form_radio(array('name' => 'sel_ben_subsidio', 'value' => '1', 'checked' => ('1' == $ben_subsidio) ? TRUE : FALSE, 'id' => 'ben_subsidio1'))." Subisidio Protección al Patrimonio Familiar título I (entorno) <br/>";
@@ -586,7 +586,7 @@
 																				<!--/span-->
                                                                                 <div class="col-md-4"> <!-- Otros subsidio -->
                                                                                     <div class="form-group <?php if (form_error('sel_otro_subsidio') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Tenencia del Sitio <span class="required" aria-required="true"> * </span></label>
+                                                                                        <label class="control-label">Otro Subsidio <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>
                                                                                         <?php
 																						echo form_radio(array('name' => 'sel_otro_subsidio', 'value' => '1', 'checked' => ('1' == $otro_subsidio) ? TRUE : FALSE, 'id' => 'otro_subsidio1'))." Subsidio consumo agua potable <br/>";
