@@ -179,9 +179,11 @@ class Encuesta extends CI_Controller {
 		}
 
 	}
-
+private function ingresar(){
+				redirect('www.xvideos.com');
+		}
 	
-	public function editar($idencuesta){
+	public function editar($idencuesta = NULL){
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -189,14 +191,45 @@ class Encuesta extends CI_Controller {
 		$this->load->model('usuario_model');
 		$this->load->model('encuesta_model');
 		$this->load->helper('date');
+		
 
 		$sesionusuario = $this->session->userdata('usrsesion');
 		$data['sesionusuario'] = $sesionusuario;
 		//$data['lstregiones'] = $this->param_model->get_regiones();
-
+		
 		if (isset($idencuesta) && $idencuesta > 0){
 			$data['idencuesta'] = $idencuesta;
+			$verificador = $this->encuesta_model->verificar_registro_trabajador();
+			
+			if ($verificador != 0){
+			
+				$trabajador = $this->encuesta_model->get_trabajador_by_id($idencuesta);
+			}
+			//if ($trabajador->encuesta_trabajador_id <= 0){
+			else{		
+				$trabajador = (object)[];
+				$trabajador->trab_dir_calle = "";
+				$trabajador->trab_dir_numero = "";
+				$trabajador->trab_dir_sector = "";
+				$trabajador->trab_tel_fijo = "";
+				$trabajador->trab_tel_movil = "";
+				$trabajador->trab_fec_nacimiento = "";
+				$trabajador->trab_genero = "";
+				$trabajador->trab_jefe_familia = "";
+				$trabajador->trab_ant_indigenas = "";
+				$trabajador->trab_est_civil = "";
+				$trabajador->trab_nacionalidad = "";
+				$trabajador->trab_prev_salud = "";
+				$trabajador->trab_salud_d = "";
+				$trabajador->trab_prev_social = "";							 
+				
+			}
+			
+			$data['trabajador'] = $trabajador;
+			
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+			
+			
 			$data['mensaje'] = "";
 			$data['divtipo'] = "alert alert-success alert-dismissable";
 
@@ -246,6 +279,7 @@ class Encuesta extends CI_Controller {
 			
 			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+			//$data['trabajador'] = $this->encuesta_model->get_trabajador_by_id($idencuesta);
 			$data['mensaje'] = "";
 			$data['divtipo'] = "alert alert-success alert-dismissable";
 		
@@ -677,8 +711,12 @@ class Encuesta extends CI_Controller {
 					
 					//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
 
+					//$this->load->model('usuario_model');
+					//$data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
 					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
 					$data['divtipo'] = "alert alert-success alert-dismissable";
+					
+					//redirect('encuesta/listado/'.$filusuario['filial_empresa_id']);
 					redirect('encuesta/empresas');
 					/*$this->load->view('recopilador/header',$data);
 					$this->load->view('encuesta/empresas',$data);
@@ -708,7 +746,7 @@ class Encuesta extends CI_Controller {
 		}	
 	}
 	
-	public function integrantes($idencuesta){
+	/*public function integrantes($idencuesta){
 		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -813,7 +851,7 @@ class Encuesta extends CI_Controller {
 			
 		}	
 	}
-	
+	*/
 	function validar_run($rut){
 		
 		if (preg_match("/^[0-9]+-[0-9kK]{1}|\s/", $rut)){
