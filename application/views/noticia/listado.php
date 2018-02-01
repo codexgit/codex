@@ -62,7 +62,7 @@
                                 <div class="portlet box purple">
                                     <div class="portlet-title">
                                         <div class="caption">
-                                            <i class="fa fa-heart"></i>Listado de Noticias
+                                            <i class="fa fa-newspaper-o"></i>Listado de Noticias
                                         </div>
                                         <div class="actions">
                                             <a href="<?php echo site_url('noticia/crear'); ?>" class="btn btn-default btn-sm">

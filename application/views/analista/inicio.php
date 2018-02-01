@@ -624,7 +624,7 @@
                                                 <div class="item">
                                                     <div class="item-head">
                                                         <div class="item-details">
-                                                            <img class="item-pic rounded" src="<?php echo base_url(); ?>/assets/pages/media/users/avatar4.jpg">
+                                                            <img class="item-pic rounded" src="<?php echo base_url(); ?>/assets/sibtra/users/<?php echo element('usrlogin', $sesionusuario);?>/avatar.png">
                                                             <a href="" class="item-name primary-link"><?php echo $noticia['usr_nombre']; ?></a>
                                                             <span class="item-label">Hace # horas <?php echo ($noticia['not_fec_publicacion'] != 0) ? mdate('%d-%m-%Y %H:%i', $noticia['not_fec_publicacion']) : "-"; ?></span>
                                                         </div>
@@ -636,18 +636,7 @@
                                                 
                                                 <?php endforeach; ?>
                                                 
-                                                <div class="item">
-                                                    <div class="item-head">
-                                                        <div class="item-details">
-                                                            <img class="item-pic rounded" src="<?php echo base_url(); ?>/assets/pages/media/users/avatar3.jpg">
-                                                            <a href="" class="item-name primary-link">Marcos Robles</a>
-                                                            <span class="item-label">Hace 5 horas</span>
-                                                        </div>
-                                                        <span class="item-status">
-                                                            <span class="badge badge-empty badge-warning"></span> Tareas</span>
-                                                    </div>
-                                                    <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat tincidunt ut laoreet. </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

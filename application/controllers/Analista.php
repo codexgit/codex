@@ -131,7 +131,12 @@ class Analista extends CI_Controller {
     }
 
     public function cambiar_password() {
-
+        $sesionusuario = $this->session->userdata('usrsesion');
+        //$data['mensaje'] = "";
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->load->model('usuario_model');
+        $this->load->model('param_model');
         if ($this->input->post('hdn_valor') != "" && $this->input->post('hdn_valor') > 0) {
             /*  POSTS  */
             $pass_last = $this->input->post('pass_last');
@@ -139,36 +144,69 @@ class Analista extends CI_Controller {
             $pass_new_repeat = $this->input->post('pass_new_repeat');
 
             /* FORM VALIDATION */
-            $this->form_validation->set_rules('pass_last', 'Contraseña Antigua', 'required');
-            $this->form_validation->set_rules('pass_new', 'Contraseña Nueva', 'required');
-            $this->form_validation->set_rules('pass_new_repeat', 'Repetir Contraseña', 'required');
+            $this->form_validation->set_rules('pass_last', 'Contraseña Antigua', 'callback_check_pass|required');
+            $this->form_validation->set_rules('pass_new', 'Contraseña Nueva','required');
+            $this->form_validation->set_rules('pass_new_repeat', 'Repetir Contraseña','required|callback_check_new_pass['.$pass_new.']');
 
             /* FORM MENSAJES */
             $this->form_validation->set_message('required', 'El campo {field} es requerido');
+            $this->form_validation->set_message('check_pass', ' {field} no corresponde');
+            $this->form_validation->set_message('check_new_pass', ' {field} no es igual');
 
 
             if ($this->form_validation->run() == FALSE) {
                 $this->data['mensaje'] = "El formulario presenta errores de validación";
                 $this->data['divtipo'] = "alert alert-danger alert-dismissable";
-            } else if(strcmp($pass_new,$pass_new_repeat)!=0 ) {
-                $this->data['mensaje'] = "Contraseñas distintas";
-                $this->data['divtipo'] = "alert alert-danger alert-dismissable";
-            } else {
 
+                $this->data['comuna'] = $this->param_model->get_comuna_by_comunaid(element('usrcomuna', $sesionusuario));
+
+                $this->load->view('analista/header', $this->data);
+                $this->load->view('analista/perfil', $this->data);
+                $this->load->view('analista/footer', $this->data);
+            } else {
                 $pass_combo = array(
-                    'pass_last' => $pass_last,
-                    'pass_new' => $pass_new
+                    'usr_clave' => md5($pass_new_repeat)
                 );
-                $res = $this->usuario_model->pass_change($this->data['usuario']->usuario_id, $pass_combo);
+                $res = $this->usuario_model->set_pass(element('usrid', $sesionusuario), $pass_combo);
                 if ($res == 1) {
-                    $this->data['mensaje'] = "Sus datos han sido actualizado exitosamente";
+                    $this->data['mensaje'] = "La contraseña han sido actualizado exitosamente";
                     $this->data['divtipo'] = "alert alert-success alert-dismissable";
                 } else {
                     $this->data['mensaje'] = "Ocurrió un error al realizar la operación";
                     $this->data['divtipo'] = "alert alert-danger alert-dismissable";
                 }
+
+                $this->session->set_flashdata('mensaje', $this->data['mensaje']);
                 redirect('analista/perfil');
             }
+        }
+    }
+
+    
+    /* CALLBACKS */
+    public function check_pass($pass) {
+        if (!empty($pass)) {
+            $this->load->model('usuario_model');
+            $current_pass = $this->usuario_model->get_pass(element('usrid', $this->session->userdata('usrsesion')));
+            if ($current_pass->usr_clave === md5($pass)) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return TRUE;
+        }
+    }
+    
+    public function check_new_pass($pass,$pass_repeat) {
+        if (!empty($pass) && !empty($pass_repeat)) {
+            if (strcmp($pass,$pass_repeat=== '0')) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return TRUE;
         }
     }
 

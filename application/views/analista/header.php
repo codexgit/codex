@@ -73,7 +73,7 @@
                                         <!-- BEGIN USER LOGIN DROPDOWN -->
                                         <li class="dropdown dropdown-user dropdown-dark">
                                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                                <img alt="" class="img-circle" src="<?php echo base_url(); ?>/assets/layouts/layout3/img/avatar.png">
+                                                <img alt="" class="img-circle" src="<?php echo base_url(); ?>/assets/sibtra/users/<?php echo element('usrlogin', $sesionusuario);?>/avatar.png">
                                                 <span class="username username-hide-mobile"><?php echo element('usrnombre', $sesionusuario) . " " . element('usrapellido', $sesionusuario); ?> </span>
                                             </a>
                                             <ul class="dropdown-menu dropdown-menu-default">

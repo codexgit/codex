@@ -28,9 +28,21 @@ class Usuario_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function update_usuario($usr_id,$usuario) {
+    public function update_usuario($usr_id, $usuario) {
         $this->db->where('usuario_id', $usr_id);
         return $this->db->update('usuario', $usuario);
+    }
+
+    public function set_pass($usr_id,$pass_new){
+        $this->db->where('usuario_id', $usr_id);
+        return $this->db->update('usuario', $pass_new);
+    }
+    public function get_pass($usr_id) {
+        $this->db->select('usr_clave');
+        $this->db->from('usuario');
+        $this->db->where('usuario_id',$usr_id);
+        $query = $this->db->get();
+        return $query->first_row();
     }
 
 }

@@ -24,7 +24,7 @@ if (validation_errors() == "") {
             <div class="container">
                 <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
-                    <h1>Beneficios
+                    <h1>Crear Noticia
                         <!--<small>Indicadores & estadísticas</small>-->
                     </h1>
                 </div>
@@ -47,7 +47,11 @@ if (validation_errors() == "") {
                         <i class="fa fa-circle"></i>
                     </li>
                     <li>
-                        <span>Crear Beneficio</span>
+                        <a href="<?php echo site_url('noticia/listado'); ?>">Listado</a>
+                        <i class="fa fa-circle"></i>
+                    </li>
+                    <li>
+                        <span>Crear Noticia</span>
                     </li>
                 </ul>
                 <!-- END PAGE BREADCRUMBS -->
@@ -76,7 +80,7 @@ if (validation_errors() == "") {
                                 <div class="portlet box purple">
                                     <div class="portlet-title">
                                         <div class="caption">
-                                            <i class="fa fa-heart"></i>Nueva Noticia 
+                                            <i class="fa fa-newspaper-o"></i>Nueva Noticia 
                                         </div>
                                         <div class="tools">
                                             <!--<a href="javascript:;" class="collapse"> </a>
@@ -105,7 +109,7 @@ if (validation_errors() == "") {
                                                         ?>">
                                                             <label for="txt_not_til" class="control-label">Título de la noticia <span class="required" aria-required="true"> * </span></label>
                                                             <input type="text" name="txt_not_til"  id="txt_not_til" class="form-control input-circle" placeholder="Titulo de la noticia" maxlength="100" value="<?php echo $txt_not_til; ?>">
-                                                            <button type="button" class="btn purple btn-info btn-xs">Caracteres <span class="badge" id="cont_tit"></span></button>
+                                                            <button type="button" class="btn purple btn-info btn-xs pull-right">Caracteres <span class="badge" id="cont_tit"></span></button>
                                                                                         <!--<span class="help-block"> This is inline help </span>-->
                                                             <?php
                                                             if (form_error('txt_not_til') != NULL) {
@@ -132,7 +136,7 @@ if (validation_errors() == "") {
                                                         ?>">
                                                             <label for="txt_not_enc" class="control-label">Encabezado de la noticia <span class="required" aria-required="true"> * </span></label>
                                                             <textarea class="form-control input-circle" rows="2" id="txt_not_enc" name="txt_not_enc" value="" maxlength="250"><?php echo $txt_not_enc; ?></textarea>
-                                                            <button type="button" class="btn purple btn-info btn-xs">Caracteres <span class="badge" id="cont_enc"></span></button>
+                                                            <button type="button" class="btn purple btn-info btn-xs pull-right">Caracteres <span class="badge" id="cont_enc"></span></button>
                                                                                         <!--<span class="help-block"> This is inline help </span>-->
                                                             <?php
                                                             if (form_error('txt_not_enc') != NULL) {
@@ -154,7 +158,7 @@ if (validation_errors() == "") {
                                                         ?>">
                                                             <label for="txt_not_cuerpo" class="control-label">Cuerpo de la noticia <span class="required" aria-required="true"> * </span></label>
                                                             <textarea class="form-control" rows="5" id="txt_not_cuerpo" name="txt_not_cuerpo" value="" maxlength="1000"><?php echo $txt_not_cuerpo; ?></textarea>
-                                                            <button type="button" class="btn purple btn-info btn-xs">Caracteres <span class="badge" id="cont_cuerpo"></span></button>
+                                                            <button type="button" class="btn purple btn-info btn-xs pull-right">Caracteres <span class="badge" id="cont_cuerpo"></span></button>
                                                                                         <!--<span class="help-block"> This is inline help </span>-->
                                                             <?php
                                                             if (form_error('txt_not_cuerpo') != NULL) {
