@@ -2,14 +2,13 @@
 
     if (validation_errors() == ""){
 	
-        $cont_menores = "";
-        $cons_drogas = "";
-        $cons_drogas_d = "";
-        $pat_ges = "";
-        $usa_prevision = "";
-        $cond_permanente = "";
+        $cont_menores = 		$salud['sad_cont_menores'];
+        $cons_drogas = 			$salud['sad_cons_drogas'];
+        $cons_drogas_d = 		$salud['sad_cons_drogas_d'];
+        $pat_ges = 				$salud['sad_pat_ges'];
+        $usa_prevision = 		$salud['sad_usa_prevision'];
+        $cond_permanente = 		$salud['sad_cond_permanente'];
 
-		
     }
     else{
         $cont_menores = set_value('sel_cont_menores');

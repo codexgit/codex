@@ -191,7 +191,7 @@
                                                                                     if ($encuesta['enc_estado'] == 1){
                                                                                 ?>
                                                                                 <li>
-                                                                                    <a href="<?php echo site_url('encuesta/editar/'.$encuesta['encuesta_id']); ?>">
+                                                                                    <a href="<?php echo site_url('encuesta/trabajador/'.$encuesta['encuesta_id']); ?>">
                                                                                         <i class="icon-note"></i> Continuar </a>
                                                                                 </li>
                                                                                 <?php 

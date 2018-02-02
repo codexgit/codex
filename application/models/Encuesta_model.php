@@ -33,9 +33,17 @@ class Encuesta_model extends CI_Model {
 			return $this->db->count_all_results('encuesta_trabajador');
 		}
 		public function get_trabajador_by_id($idencuesta){
+			 $this->db->select('*');
+			$this->db->from('encuesta_trabajador');
+			$this->db->where('encuesta_id',$idencuesta);
+			$query = $this->db->get();
+			return $query->row_array();
 			
+			
+			/*
 			$query = $this->db->get_where('encuesta_trabajador',array('encuesta_id' => $idencuesta));
-			return $query->first_row();
+			//return $query->first_row();
+			return $query->result_array();*/
 			
 		}
 		public function actualizar_encuesta_trabajador($encuesta_trabajador,$idencuesta){
@@ -51,7 +59,7 @@ class Encuesta_model extends CI_Model {
 		public function get_educacion_by_id($idencuesta){
 			
 			$query = $this->db->get_where('encuesta_educacion',array('encuesta_id' => $idencuesta));
-			return $query->first_row();
+			return $query->row_array();
 			
 		}
 		public function actualizar_encuesta_educacion($encuesta_educacion,$idencuesta){
@@ -66,7 +74,7 @@ class Encuesta_model extends CI_Model {
 		public function get_salud_by_id($idencuesta){
 			
 			$query = $this->db->get_where('encuesta_salud',array('encuesta_id' => $idencuesta));
-			return $query->first_row();
+			return $query->row_array();
 			
 		}
 		public function actualizar_encuesta_salud($encuesta_salud,$idencuesta){
@@ -81,7 +89,7 @@ class Encuesta_model extends CI_Model {
 		public function get_vivienda_by_id($idencuesta){
 			
 			$query = $this->db->get_where('encuesta_vivienda',array('encuesta_id' => $idencuesta));
-			return $query->first_row();
+			return $query->row_array();
 			
 		}
 		public function actualizar_encuesta_vivienda($encuesta_vivienda,$idencuesta){

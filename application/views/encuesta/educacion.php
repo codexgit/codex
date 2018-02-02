@@ -2,14 +2,13 @@
 
     if (validation_errors() == ""){
 	
-        $nivel_esc = "";
-        $tipo_est = "";
-        $ult_curso = "";
-        $anio_egreso = "";
-        $estudiando = "";
-        $becas = "";
-
-		
+        $nivel_esc = 	$educacion['edu_nivel_esc'];
+        $tipo_est = 	$educacion['edu_tipo_est'];
+        $ult_curso = 	$educacion['edu_ult_curso'];
+        $anio_egreso =	$educacion['edu_anio_egreso'];
+        $estudiando = 	$educacion['edu_estudiando'];
+        $becas = 		$educacion['edu_becas'];				
+	
     }
     else{
         $nivel_esc = set_value('sel_nivel_esc');

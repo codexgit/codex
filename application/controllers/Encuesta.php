@@ -183,7 +183,7 @@ private function ingresar(){
 				redirect('www.xvideos.com');
 		}
 	
-	public function editar($idencuesta = NULL){
+	/*public function editar($idencuesta = NULL){
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -253,7 +253,7 @@ private function ingresar(){
 
 	}	
 
-	
+	*/
 	public function getComunas(){
 		$postData = $this->input->post();
 		$this->load->model('param_model');
@@ -279,11 +279,46 @@ private function ingresar(){
 			
 			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
-			//$data['trabajador'] = $this->encuesta_model->get_trabajador_by_id($idencuesta);
+			
+			$verificador = $this->encuesta_model->verificar_registro_trabajador();
+			
+			if ($verificador > 0){
+				
+				$trabajador = $this->encuesta_model->get_trabajador_by_id($idencuesta);		
+				
+			}
+			
+			else{
+				
+				//$trabajador = (object)[];
+			    $trabajador = array(
+				
+				//$trabajador = new stdClass();
+				'trab_dir_calle'  => "",
+				'trab_dir_numero' => "",
+				'trab_dir_sector' => "",
+				'trab_tel_fijo' => "",
+				'trab_tel_movil' => "",
+				'trab_fec_nacimiento' => "",
+				'trab_genero' => "",
+				'trab_jefe_familia' => "",
+				'trab_ant_indigenas' => "",
+				'trab_est_civil' => "",
+				'trab_nacionalidad' => "",
+				'trab_prev_salud' => "",
+				'trab_prev_salud_d' => "",
+				'trab_prev_social' => ""					
+				);
+				
+					
+				
+			}
+			$data['trabajador']= $trabajador;
+			
 			$data['mensaje'] = "";
 			$data['divtipo'] = "alert alert-success alert-dismissable";
 		
-
+			 
 
 			if ($this->input->post('hdn_encuestaid') != "" && $this->input->post('hdn_encuestaid') > 0){
 				
@@ -301,10 +336,9 @@ private function ingresar(){
 				$nacionalidad = $this->input->post('rbt_nacionalidad');
 				$prev_salud = $this->input->post('sel_prevsalud');
 				$tramo_salud = $this->input->post('txt_tramo');
-				$prev_soc = $this->input->post('txt_prevsocial');
+				$prev_soc = $this->input->post('txt_prevsocial');		
 				
-				
-				//$this->form_validation->set_rules('txt_tmovil','Celular');				
+					
 				
 				$this->form_validation->set_rules('txt_direccion', 'Dirección', 'min_length[5]|max_length[255]|required');
 				$this->form_validation->set_rules('txt_numero','Numero Domicilio','required');				
@@ -332,7 +366,7 @@ private function ingresar(){
 					$data['mensaje'] = "El formulario presenta errores de validación ";
 					$data['divtipo'] = "alert alert-danger alert-dismissable";
 					$this->load->view('recopilador/header',$data);
-					$this->load->view('encuesta/editar',$data);
+					$this->load->view('encuesta/trabajador',$data);
 					$this->load->view('recopilador/footer',$data);
 				}
 				else{
@@ -364,28 +398,32 @@ private function ingresar(){
 					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
 					$data['divtipo'] = "alert alert-success alert-dismissable";
 
-					$this->load->view('recopilador/header',$data);
+					/*$this->load->view('recopilador/header',$data);
 					$this->load->view('encuesta/educacion',$data);
-					$this->load->view('recopilador/footer',$data);
+					$this->load->view('recopilador/footer',$data);*/
+					
+					redirect('encuesta/educacion/'.$idencuesta,'refresh');
+					
 				}
 			}
 			else{
 				$data['mensaje'] = "";
-				$data['divtipo'] = "alert alert-success alert-dismissable";				
+				$data['divtipo'] = "alert alert-success alert-dismissable";	
+					
 				$this->load->view('recopilador/header',$data);
-				$this->load->view('encuesta/empresas',$data);
+				$this->load->view('encuesta/trabajador',$data);
 				$this->load->view('recopilador/footer',$data);
 			}
 		}
 		else{
-
+			
 			$data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
 
 			$data['mensaje'] = "Ocurrió un error al procesar la solicitud";
 			$data['divtipo'] = "alert alert-danger alert-dismissable";
-
+			$data['trabajador'] = "";
 			$this->load->view('recopilador/header',$data);
-			$this->load->view('encuesta/editar',$data);
+			$this->load->view('encuesta/empresas',$data);
 			$this->load->view('recopilador/footer',$data);
 			
 			
@@ -410,6 +448,31 @@ private function ingresar(){
 			
 			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+			
+			$verificador = $this->encuesta_model->verificar_registro_educacion();
+			
+			if ($verificador > 0){
+			
+				$educacion = $this->encuesta_model->get_educacion_by_id($idencuesta);
+			}
+			
+			else{		
+			
+				//$educacion = (object)[];
+				$educacion = array(
+				'edu_nivel_esc' => "",
+				'edu_tipo_est' => "",
+				'edu_ult_curso' => "",
+				'edu_anio_egreso' => "",
+				'edu_estudiando' => "",						
+				'edu_becas' => ""	
+				);
+				
+									 
+				
+			}
+			
+			$data['educacion'] = $educacion;
 			$data['mensaje'] = "";
 			$data['divtipo'] = "alert alert-success alert-dismissable";
 		
@@ -445,7 +508,7 @@ private function ingresar(){
 					
 					
 					//$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
-					$data['mensaje'] = "El formulario presenta errores de validación oli ";
+					$data['mensaje'] = "El formulario presenta errores de validación ";
 					$data['divtipo'] = "alert alert-danger alert-dismissable";
 					$this->load->view('recopilador/header',$data);
 					$this->load->view('encuesta/educacion',$data);
@@ -471,28 +534,30 @@ private function ingresar(){
 					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
 					$data['divtipo'] = "alert alert-success alert-dismissable";
 
-					$this->load->view('recopilador/header',$data);
+					/*$this->load->view('recopilador/header',$data);
 					$this->load->view('encuesta/salud',$data);
-					$this->load->view('recopilador/footer',$data);
+					$this->load->view('recopilador/footer',$data); */
+					redirect('encuesta/salud/'.$idencuesta,'refresh');
 				}
 			}
 			else{
 				$data['mensaje'] = "";
+				
 				$data['divtipo'] = "alert alert-success alert-dismissable";				
 				$this->load->view('recopilador/header',$data);
-				$this->load->view('encuesta/empresas',$data);
+				$this->load->view('encuesta/educacion',$data);
 				$this->load->view('recopilador/footer',$data);
 			}
 		}
 		else{
 
 			$data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
-
+			$data['educacion'] = "";
 			$data['mensaje'] = "Ocurrió un error al procesar la solicitud";
 			$data['divtipo'] = "alert alert-danger alert-dismissable";
 
 			$this->load->view('recopilador/header',$data);
-			$this->load->view('encuesta/educacion',$data);
+			$this->load->view('encuesta/empresas',$data);
 			$this->load->view('recopilador/footer',$data);		
 			
 		}	
@@ -516,6 +581,28 @@ private function ingresar(){
 			
 			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+			//$data['salud'] = $this->encuesta_model->get_salud_by_id($idencuesta);
+			$verificador = $this->encuesta_model->verificar_registro_salud();
+			
+			if ($verificador > 0){
+			
+				$salud = $this->encuesta_model->get_salud_by_id($idencuesta);
+			}
+			
+			else{		
+				$salud = array(
+				'sad_cont_menores' => "",
+				'sad_cons_drogas' => "",
+				'sad_cons_drogas_d' => "",
+				'sad_pat_ges' => "",
+				'sad_usa_prevision' => "",
+				'sad_cond_permanente' => ""
+				);
+									 
+				
+			}
+			
+			$data['salud'] = $salud;
 			$data['mensaje'] = "";
 			$data['divtipo'] = "alert alert-success alert-dismissable";
 		
@@ -573,32 +660,34 @@ private function ingresar(){
 					$this->encuesta_model->actualizar_encuesta_salud($encuesta_salud,$idencuesta);
 					
 					//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
-
+					
 					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
 					$data['divtipo'] = "alert alert-success alert-dismissable";
 
-					$this->load->view('recopilador/header',$data);
+					/*$this->load->view('recopilador/header',$data);
 					$this->load->view('encuesta/vivienda',$data);
-					$this->load->view('recopilador/footer',$data);
+					$this->load->view('recopilador/footer',$data);*/
+					redirect('encuesta/vivienda/'.$idencuesta,'refresh');
 				}
 			}
 			else{
 				$data['mensaje'] = "";
-				$data['divtipo'] = "alert alert-success alert-dismissable";				
+				$data['divtipo'] = "alert alert-success alert-dismissable";	
+				
 				$this->load->view('recopilador/header',$data);
-				$this->load->view('encuesta/empresas',$data);
+				$this->load->view('encuesta/salud',$data);
 				$this->load->view('recopilador/footer',$data);
 			}
 		}
 		else{
 
 			$data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
-
+			$data['salud'] = "";
 			$data['mensaje'] = "Ocurrió un error al procesar la solicitud";
 			$data['divtipo'] = "alert alert-danger alert-dismissable";
 
 			$this->load->view('recopilador/header',$data);
-			$this->load->view('encuesta/salud',$data);
+			$this->load->view('encuesta/empresas',$data);
 			$this->load->view('recopilador/footer',$data);		
 			
 		}	
@@ -622,6 +711,39 @@ private function ingresar(){
 			
 			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+			$verificador = $this->encuesta_model->verificar_registro_vivienda();
+			
+			if ($verificador > 0){
+			
+				$vivienda = $this->encuesta_model->get_vivienda_by_id($idencuesta);
+			}
+			
+			else{		
+				$vivienda = array(
+				'viv_tenencia' => "",
+				'viv_sitio' => "",
+				'viv_post_subsidio' => "",
+				'viv_libreta' => "",
+				'viv_libreta_anio' => "",
+				'viv_monto_ahorro' => "",	
+				'viv_fam_ocupante' => "",
+				'viv_num_personas' => "",
+				'viv_num_dormitorios' => "",
+				'viv_prov_agua' => "",
+				'viv_sub_agua' => "",
+				'viv_ener_electrica' => "",
+				'viv_elim_excretas' => "",
+				'viv_reg_hogares' => "",
+				'viv_tramo_grupo' => "",
+				'viv_ben_subsidio' => "",
+				'viv_otro_subsidio' => ""
+				);
+				
+				
+				
+			}
+			
+			$data['vivienda'] = $vivienda;
 			$data['mensaje'] = "";
 			$data['divtipo'] = "alert alert-success alert-dismissable";
 		
@@ -724,23 +846,24 @@ private function ingresar(){
 				}
 			}
 			else{
+				
 				$data['mensaje'] = "";
 				$data['divtipo'] = "alert alert-success alert-dismissable";				
 				$this->load->view('recopilador/header',$data);
 
-				$this->load->view('encuesta/empresas',$data);
+				$this->load->view('encuesta/vivienda',$data);
 				$this->load->view('recopilador/footer',$data);
 			}
 		}
 		else{
 
 			$data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
-
+			$data['vivienda'] = "";
 			$data['mensaje'] = "Ocurrió un error al procesar la solicitud";
 			$data['divtipo'] = "alert alert-danger alert-dismissable";
 
 			$this->load->view('recopilador/header',$data);
-			$this->load->view('encuesta/vivienda',$data);
+			$this->load->view('encuesta/empresas',$data);
 			$this->load->view('recopilador/footer',$data);		
 			
 		}	

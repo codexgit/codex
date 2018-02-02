@@ -1,23 +1,24 @@
 <?php
 
     if (validation_errors() == ""){
-        $tenencia = "";
-        $sitio = "";
-        $post_subsidio = "";
-        $libreta = "";
-        $libreta_anio = "";
-        $monto_ahorro = "";
-        $fam_ocupante = "";        
-        $num_personas = "";
-        $num_dormitorios = "";
-        $prov_agua = "";
-        $sub_agua = "";
-        $ener_electrica = "";
-        $elim_excretas = "";
-		$reg_hogares = "";
-		$tramo_grupo = "";
-		$ben_subsidio = "";
-		$otro_subsidio = ""; 
+        $tenencia	 = 					$vivienda['viv_tenencia'];
+        $sitio = 						$vivienda['viv_sitio'];
+        $post_subsidio = 				$vivienda['viv_post_subsidio'];
+        $libreta = 						$vivienda['viv_libreta'];
+        $libreta_anio = 				$vivienda['viv_libreta_anio'];
+        $monto_ahorro = 				$vivienda['viv_monto_ahorro'];
+        $fam_ocupante = 				$vivienda['viv_fam_ocupante'];        
+        $num_personas = 				$vivienda['viv_num_personas'];
+        $num_dormitorios = 				$vivienda['viv_num_dormitorios'];
+        $prov_agua = 					$vivienda['viv_prov_agua'];
+        $sub_agua = 					$vivienda['viv_sub_agua'];
+        $ener_electrica = 				$vivienda['viv_ener_electrica'];
+        $elim_excretas = 				$vivienda['viv_elim_excretas'];
+		$reg_hogares = 					$vivienda['viv_reg_hogares'];
+		$tramo_grupo = 					$vivienda['viv_tramo_grupo'];
+		$ben_subsidio = 				$vivienda['viv_ben_subsidio'];
+		$otro_subsidio = 				$vivienda['viv_otro_subsidio']; 	
+		
     }
     else{
         $tenencia = set_value('sel_tenencia');

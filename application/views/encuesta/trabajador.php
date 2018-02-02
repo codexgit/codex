@@ -1,20 +1,20 @@
 <?php
 
     if (validation_errors() == ""){
-        $direccion = $trabajador->trab_dir_calle;
-        $numero = $trabajador->trab_dir_numero;
-        $sector = $trabajador->trab_dir_sector;
-        $tfijo = $trabajador->trab_tel_fijo;
-        $tmovil = $trabajador->trab_tel_movil;
-        $fecnacimiento = $trabajador->trab_fec_nacimiento;
-        $genero = $trabajador->trab_genero;
-        $jfamilia = $trabajador->trab_jefe_familia;
-        $antind = $trabajador->trab_ant_indigenas;
-        $estcivil = $trabajador->trab_est_civil;
-        $nacionalidad = $trabajador->trab_nacionalidad;
-        $prevsalud = $trabajador->trab_prev_salud;
-        $tramo = $trabajador->trab_salud_d;
-        $prevsocial = $trabajador->trab_prev_social;
+        $direccion = $trabajador['trab_dir_calle'];
+		$numero = $trabajador['trab_dir_numero'];
+        $sector = $trabajador['trab_dir_sector'];
+        $tfijo = $trabajador['trab_tel_fijo'];
+        $tmovil = $trabajador['trab_tel_movil'];
+        $fecnacimiento = $trabajador['trab_fec_nacimiento'];
+        $genero = $trabajador['trab_genero'];
+        $jfamilia = $trabajador['trab_jefe_familia'];
+        $antind = $trabajador['trab_ant_indigenas'];
+        $estcivil = $trabajador['trab_est_civil'];
+        $nacionalidad = $trabajador['trab_nacionalidad'];
+        $prevsalud = $trabajador['trab_prev_salud'];
+        $tramo = $trabajador['trab_prev_salud_d'];
+        $prevsocial = $trabajador['trab_prev_social'];
     }
     else{
         $direccion = set_value('txt_direccion');
@@ -44,7 +44,7 @@
                                 <div class="container">
                                     <!-- BEGIN PAGE TITLE -->
                                     <div class="page-title">
-                                        <h1>Encuestas
+                                        <h1>Encuestas </h1>
                                             <!--<small>Indicadores & estadísticas</small>-->
                                         </h1>
                                     </div>
@@ -458,7 +458,7 @@
                                                                         </div>
                                                                         <div class="form-actions right">
                                                                             <!--<button type="button" class="btn default">Volver</button>-->
-                                                                            <a href="<?php echo site_url('encuesta/editar/'); ?>" class="btn default" role="button">Volver</a>
+                                                                            <a href="<?php echo site_url('encuesta/listado/'); ?>" class="btn default" role="button">Volver</a>
                                                                             <button type="submit" class="btn blue">
                                                                                 <i class="fa fa-check"></i> Siguiente</button>
                                                                         </div>
