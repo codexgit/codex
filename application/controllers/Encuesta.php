@@ -341,8 +341,10 @@ private function ingresar(){
 					
 				
 				$this->form_validation->set_rules('txt_direccion', 'Dirección', 'min_length[5]|max_length[255]|required');
-				$this->form_validation->set_rules('txt_numero','Numero Domicilio','required');				
-				$this->form_validation->set_rules('txt_tmovil','Celular','required');	
+				$this->form_validation->set_rules('txt_sector', 'Dirección', 'min_length[5]|max_length[255]|required');
+				$this->form_validation->set_rules('txt_numero','Numero Domicilio','required|numeric');				
+				$this->form_validation->set_rules('txt_tmovil','Celular','required|numeric');	
+				$this->form_validation->set_rules('txt_tfijo','Número de Teléfono','numeric');
 				$this->form_validation->set_rules('txt_fecnacimiento','Fecha de nacimiento','required');		
 				$this->form_validation->set_rules('rbt_genero','Genero','required');
 				$this->form_validation->set_rules('rbt_jefefamilia','Jefe familiar','required');
@@ -457,8 +459,7 @@ private function ingresar(){
 			}
 			
 			else{		
-			
-				//$educacion = (object)[];
+							
 				$educacion = array(
 				'edu_nivel_esc' => "",
 				'edu_tipo_est' => "",
@@ -490,10 +491,9 @@ private function ingresar(){
 					
 				
 				$this->form_validation->set_rules('sel_nivel_esc', 'Nivel de Educación', 'required');
-				$this->form_validation->set_rules('txt_anio_egreso', 'Año de egreso', 'required');
+				$this->form_validation->set_rules('txt_anio_egreso', 'Año de egreso|numeric', 'required');
 				$this->form_validation->set_rules('sel_tipo_est','Tipo de estudios','required');				
-				$this->form_validation->set_rules('sel_ult_curso','Último curso','required');	
-				$this->form_validation->set_rules('txt_anio_egreso','Año de egreso','required');		
+				$this->form_validation->set_rules('sel_ult_curso','Último curso','required');						
 				$this->form_validation->set_rules('sel_estudiando','Estudiando','required');
 				$this->form_validation->set_rules('sel_becas','Becas','required');				
 				
@@ -619,9 +619,9 @@ private function ingresar(){
 				
 					
 				
-				$this->form_validation->set_rules('sel_cont_menores', 'Cantidad de Menores', 'required');
+				$this->form_validation->set_rules('sel_cont_menores', 'Cantidad de Menores|numeric', 'required');
 				$this->form_validation->set_rules('sel_cons_drogas', 'Problemas de Alcohol/Drogas', 'required');
-				$this->form_validation->set_rules('txt_cons_drogas_d','Edad','required');				
+				$this->form_validation->set_rules('txt_cons_drogas_d','Edad|numeric','required');				
 				$this->form_validation->set_rules('txt_pat_ges','Patologia GES','required');						
 				$this->form_validation->set_rules('sel_usa_prevision','Previsión','required');
 				$this->form_validation->set_rules('txt_cond_permanente','Condicion Permanente','required');				
@@ -774,11 +774,11 @@ private function ingresar(){
 				$this->form_validation->set_rules('sel_sitio', 'Tenencia de Sitio', 'required');
 				$this->form_validation->set_rules('sel_post_subsidio','Postulación Subsidio','required');				
 				$this->form_validation->set_rules('sel_libreta','Libreta','required');						
-				$this->form_validation->set_rules('txt_libreta_anio','Año libreta','required');
-				$this->form_validation->set_rules('txt_monto_ahorro','Monto ahorro','required');
+				$this->form_validation->set_rules('txt_libreta_anio','Año libreta','required|numeric');
+				$this->form_validation->set_rules('txt_monto_ahorro','Monto ahorro','required|numeric');
 				$this->form_validation->set_rules('sel_fam_ocupante','Principal Ocupante','required');	
-				$this->form_validation->set_rules('txt_num_personas','Numero de personas','required');	
-				$this->form_validation->set_rules('txt_dormitorios','Cantidad de dormitorios','required');	
+				$this->form_validation->set_rules('txt_num_personas','Numero de personas','required|numeric');	
+				$this->form_validation->set_rules('txt_dormitorios','Cantidad de dormitorios','required|numeric');	
 				$this->form_validation->set_rules('sel_prov_agua','Procedencia del agua','required');	
 				$this->form_validation->set_rules('sel_sub_agua','Subsidio agua','required');	
 				$this->form_validation->set_rules('sel_ener_electrica','Sistema de energía eléctrica','required');	
@@ -789,8 +789,8 @@ private function ingresar(){
 				$this->form_validation->set_rules('sel_otro_subsidio','Otro subsidio','required');	
 				
 				$this->form_validation->set_message('required','El campo {field} es requerido');
-				//$this->form_validation->set_message('min_length','El campo {field} debe tener al menos {param} caracteres');
-				//$this->form_validation->set_message('max_length','El campo {field} debe tener a lo más {param} caracteres');
+				$this->form_validation->set_message('min_length','El campo {field} debe tener al menos {param} caracteres');
+				$this->form_validation->set_message('max_length','El campo {field} debe tener a lo más {param} caracteres');
 				//$this->form_validation->set_message('regex_match','El campo {field} no tiene el formato solicitado');
 		
 
@@ -1015,5 +1015,14 @@ private function ingresar(){
 
 	}	
 	
+	//FECHAS
+    public function fecha_a_unix($fecha) {
+        if ($fecha != 0) {
+            $fecha_convertida = DateTime::createFromFormat('d-m-Y', $fecha);
+            return $fecha_convertida->format('U');
+        } else {
+            return 0;
+        }
+    }
 
 }

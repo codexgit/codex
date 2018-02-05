@@ -249,7 +249,14 @@
                                                                                 <div class="col-md-4">
                                                                                     <div class="form-group <?php if (form_error('txt_fecnacimiento') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Fecha de Nacimiento <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" name="txt_fecnacimiento" id="txt_fecnacimiento" class="form-control" placeholder="" value="<?php echo $fecnacimiento; ?>">
+																						<div class='input-group date datepicker' >
+																							<input type='text' name="txt_fecnacimiento" id="txt_fecnacimiento" class="form-control" value="<?php echo $fecnacimiento; ?>" readonly/>
+																								<span class="input-group-addon">
+																							<span class="glyphicon glyphicon-calendar"></span>
+																						</span>
+																						</div>
+                                                       
+                                                                                       <!-- <input type="text" name="txt_fecnacimiento" id="txt_fecnacimiento" class="form-control" placeholder="" value=" -->
                                                                                         <?php
                                                                                         if (form_error('txt_fecnacimiento') != NULL){
                                                                                         ?>

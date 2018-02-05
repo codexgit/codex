@@ -150,7 +150,10 @@
         </script>-->
 
         <script type="text/javascript">
-
+			$(".datepicker").datepicker({
+					format: 'dd-mm-yyyy',
+					language: 'es'
+				});
             $(document).ready(function() {
             // Region change
             $('#sel_region').change(function(){
