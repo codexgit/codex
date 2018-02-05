@@ -280,8 +280,8 @@ private function ingresar(){
 			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
 			
-			$verificador = $this->encuesta_model->verificar_registro_trabajador();
-			
+			$verificador = $this->encuesta_model->verificar_registro_trabajador($idencuesta);
+			echo $verificador."acaaaaaaaaaa";
 			if ($verificador > 0){
 				
 				$trabajador = $this->encuesta_model->get_trabajador_by_id($idencuesta);		
@@ -290,10 +290,9 @@ private function ingresar(){
 			
 			else{
 				
-				//$trabajador = (object)[];
-			    $trabajador = array(
+				$trabajador = array(
 				
-				//$trabajador = new stdClass();
+				
 				'trab_dir_calle'  => "",
 				'trab_dir_numero' => "",
 				'trab_dir_sector' => "",
@@ -336,8 +335,7 @@ private function ingresar(){
 				$nacionalidad = $this->input->post('rbt_nacionalidad');
 				$prev_salud = $this->input->post('sel_prevsalud');
 				$tramo_salud = $this->input->post('txt_tramo');
-				$prev_soc = $this->input->post('txt_prevsocial');		
-				
+				$prev_soc = $this->input->post('txt_prevsocial');				
 					
 				
 				$this->form_validation->set_rules('txt_direccion', 'Dirección', 'min_length[5]|max_length[255]|required');
@@ -390,21 +388,27 @@ private function ingresar(){
 						'trab_nacionalidad' => $nacionalidad,
 						'trab_prev_salud' => $prev_salud,
 						'trab_prev_salud_d' => $tramo_salud,
-						'trab_prev_social' => $prev_soc			
-
-					);
-
-					$this->encuesta_model->actualizar_encuesta_trabajador($encuesta_trabajador,$idencuesta);
-					//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
-
-					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
-					$data['divtipo'] = "alert alert-success alert-dismissable";
-
-					/*$this->load->view('recopilador/header',$data);
-					$this->load->view('encuesta/educacion',$data);
-					$this->load->view('recopilador/footer',$data);*/
+						'trab_prev_social' => $prev_soc		
+						);
 					
-					redirect('encuesta/educacion/'.$idencuesta,'refresh');
+					if($verificador!=0){
+						$this->encuesta_model->actualizar_encuesta_trabajador($encuesta_trabajador);
+						//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
+
+						$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+						$data['divtipo'] = "alert alert-success alert-dismissable";						
+						
+						redirect('encuesta/educacion/'.$idencuesta,'refresh');
+					}
+					else{
+						$this->encuesta_model->crear_encuesta_trabajador($encuesta_trabajador);
+						//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
+
+						$data['mensaje'] = "La encuesta ha sido creada exitosamente";
+						$data['divtipo'] = "alert alert-success alert-dismissable";			
+						
+						redirect('encuesta/educacion/'.$idencuesta,'refresh');
+					}
 					
 				}
 			}
@@ -451,7 +455,7 @@ private function ingresar(){
 			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
 			
-			$verificador = $this->encuesta_model->verificar_registro_educacion();
+			$verificador = $this->encuesta_model->verificar_registro_educacion($idencuesta);
 			
 			if ($verificador > 0){
 			
@@ -527,17 +531,25 @@ private function ingresar(){
 						'edu_estudiando' => $estudiando,						
 						'edu_becas' => $becas								
 					);
+					
+					if($verificador!=0){
+						$this->encuesta_model->actualizar_encuesta_educacion($encuesta_educacion);						
 
-					$this->encuesta_model->actualizar_encuesta_educacion($encuesta_educacion,$idencuesta);
-					//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
+						$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+						$data['divtipo'] = "alert alert-success alert-dismissable";						
+						
+						redirect('encuesta/salud/'.$idencuesta,'refresh');
+					}
+					else{
+						$this->encuesta_model->crear_encuesta_educacion($encuesta_educacion);	
+						
 
-					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
-					$data['divtipo'] = "alert alert-success alert-dismissable";
-
-					/*$this->load->view('recopilador/header',$data);
-					$this->load->view('encuesta/salud',$data);
-					$this->load->view('recopilador/footer',$data); */
-					redirect('encuesta/salud/'.$idencuesta,'refresh');
+						$data['mensaje'] = "La encuesta ha sido creada exitosamente";
+						$data['divtipo'] = "alert alert-success alert-dismissable";			
+						
+						redirect('encuesta/salud/'.$idencuesta,'refresh');
+					}
+					
 				}
 			}
 			else{
@@ -582,7 +594,7 @@ private function ingresar(){
 			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
 			//$data['salud'] = $this->encuesta_model->get_salud_by_id($idencuesta);
-			$verificador = $this->encuesta_model->verificar_registro_salud();
+			$verificador = $this->encuesta_model->verificar_registro_salud($idencuesta);
 			
 			if ($verificador > 0){
 			
@@ -637,7 +649,7 @@ private function ingresar(){
 					
 					
 					//$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
-					$data['mensaje'] = "El formulario presenta errores de validación oli ";
+					$data['mensaje'] = "El formulario presenta errores de validación ";
 					$data['divtipo'] = "alert alert-danger alert-dismissable";
 					$this->load->view('recopilador/header',$data);
 					$this->load->view('encuesta/salud',$data);
@@ -656,18 +668,24 @@ private function ingresar(){
 						'sad_usa_prevision' => $usa_prevision,						
 						'sad_cond_permanente' => $cond_permanente								
 					);
-
-					$this->encuesta_model->actualizar_encuesta_salud($encuesta_salud,$idencuesta);
 					
-					//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
-					
-					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
-					$data['divtipo'] = "alert alert-success alert-dismissable";
+					if($verificador!=0){
+						$this->encuesta_model->actualizar_encuesta_salud($encuesta_salud);					
 
-					/*$this->load->view('recopilador/header',$data);
-					$this->load->view('encuesta/vivienda',$data);
-					$this->load->view('recopilador/footer',$data);*/
-					redirect('encuesta/vivienda/'.$idencuesta,'refresh');
+						$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+						$data['divtipo'] = "alert alert-success alert-dismissable";						
+						
+						redirect('encuesta/vivienda/'.$idencuesta,'refresh');
+					}
+					else{
+						$this->encuesta_model->crear_encuesta_salud($encuesta_salud);			
+						
+
+						$data['mensaje'] = "La encuesta ha sido creada exitosamente";
+						$data['divtipo'] = "alert alert-success alert-dismissable";			
+						
+						redirect('encuesta/vivienda/'.$idencuesta,'refresh');
+					}					
 				}
 			}
 			else{
@@ -711,7 +729,7 @@ private function ingresar(){
 			
 			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
-			$verificador = $this->encuesta_model->verificar_registro_vivienda();
+			$verificador = $this->encuesta_model->verificar_registro_vivienda($idencuesta);
 			
 			if ($verificador > 0){
 			
@@ -798,7 +816,7 @@ private function ingresar(){
 					
 					
 					//$data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
-					$data['mensaje'] = "El formulario presenta errores de validación oli ";
+					$data['mensaje'] = "El formulario presenta errores de validación";
 					$data['divtipo'] = "alert alert-danger alert-dismissable";
 					$this->load->view('recopilador/header',$data);
 					$this->load->view('encuesta/vivienda',$data);
@@ -828,21 +846,24 @@ private function ingresar(){
 						'viv_ben_subsidio'	=>	$ben_subsidio, 
 						'viv_otro_subsidio' =>	$otro_subsidio 
 					);
-
-					$this->encuesta_model->actualizar_encuesta_vivienda($encuesta_vivienda,$idencuesta);
 					
-					//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
+					if($verificador!=0){
+						
+						$this->encuesta_model->actualizar_encuesta_vivienda($encuesta_vivienda);	
+						$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+						$data['divtipo'] = "alert alert-success alert-dismissable";						
+						
+						redirect('encuesta/empresas');
+					}
+					else{
+						$this->encuesta_model->crear_encuesta_vivienda($encuesta_vivienda);			
+						
 
-					//$this->load->model('usuario_model');
-					//$data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
-					$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
-					$data['divtipo'] = "alert alert-success alert-dismissable";
-					
-					//redirect('encuesta/listado/'.$filusuario['filial_empresa_id']);
-					redirect('encuesta/empresas');
-					/*$this->load->view('recopilador/header',$data);
-					$this->load->view('encuesta/empresas',$data);
-					$this->load->view('recopilador/footer',$data); */
+						$data['mensaje'] = "La encuesta ha sido creada exitosamente";
+						$data['divtipo'] = "alert alert-success alert-dismissable";			
+						
+						redirect('encuesta/empresas');
+					}		
 				}
 			}
 			else{
