@@ -16,5 +16,18 @@ class Filialempresa_model extends CI_Model {
             $query = $this->db->get();
             return $query->first_row();
         }
+		
+		public function get_id_encuesta_by_filialempresa_id($idfilempresa){
+			$this->db->select('encuesta_id');
+			$this->db->from('encuesta');		
+			$this->db->where('encuesta.filial_empresa_id',$idfilempresa);
+			//$this->db->select('encuesta_id from filial_empresa where($idfilempresa = filial_empresa.empresa_id)');
+			$query = $this->db->get();
+			//$data = $query->result_array();	
+			return $query->result_array();			
+		}
+			
+			
+			
 
 }

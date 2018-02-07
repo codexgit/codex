@@ -140,8 +140,24 @@ class Encuesta_model extends CI_Model {
 		public function actualizar_encuesta_vivienda($encuesta_vivienda){
 			return $this->db->update('encuesta_vivienda',$encuesta_vivienda);
 		}
-	
+		public function get_familia($idencuesta) {
+			$this->db->select('*');
+			$this->db->from('encuesta_familia');
+			$this->db->join('encuesta', 'encuesta_familia.encuesta_id = encuesta_encuesta_id', 'left');
+			$this->db->join('encuesta_trabajador', 'encuesta_familia.encuesta_id = encuesta_trabajador.encuesta_id', 'left');
+			
+			$this->db->where('encuesta_id', $idencuesta);
+			$query = $this->db->get();
+			return $query->result_array();
+			/* if($query->num_rows()==1){
 
+			  return $query->row();
+			  }else{
+			  return false;
+			  }
+			 */
+		}
+	
 	
 		
 }

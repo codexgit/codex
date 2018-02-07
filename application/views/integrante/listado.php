@@ -31,7 +31,7 @@
                                             <i class="fa fa-circle"></i>
                                         </li>
                                         <li>
-                                            <span>Listado de encuestas</span>
+                                            <span>Integrantes Familiares</span>
                                         </li>
                                     </ul>
                                     <!-- END PAGE BREADCRUMBS -->
@@ -71,50 +71,40 @@
                                                                     <a href="javascript:;" class="remove"> </a>-->
                                                                 </div>
                                                             </div>
-                                                            <div class="portlet-body form">
-                                                                <!-- BEGIN FORM-->
-                                                                <form action="#" class="horizontal-form">
-                                                                    <div class="form-body">
-
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="control-label">RUT Filial </label>
-                                                                                    <span class="help-block"> <?php echo $detfilempresa->fil_rut.'-'.$detfilempresa->fil_dv; ?> </span>
+                                                            <div class="portlet-body form">                                                     
+																   
+                                                                   
+                                                                        
+                                                                            <div class="row">
+																			
+																				
+                                                                                <div class="col-md-4"> <!-- RUN Trabajador -->
+                                                                                    <div class="form-group ">
+                                                                                        <label class="control-label">RUN </label>
+                                                                                        <span class="help-block"> <?php echo $detencuesta->enc_run.'-'.$detencuesta->enc_dv; ?> </span>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <!--/span-->
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="control-label">Nombre Filial </label>
-                                                                                    <span class="help-block"> <?php echo $detfilempresa->fil_nombre; ?> </span>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-4"> <!-- Nombres Trabajador -->
+                                                                                    <div class="form-group ">
+                                                                                        <label class="control-label">Nombres </label>
+                                                                                        <span class="help-block"> <?php echo $detencuesta->enc_nombres; ?> </span>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <!--/span-->
-                                                                        </div>
-                                                                        <!--/row-->
-                 
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="control-label">RUT Empresa Colaboradora  </label>
-                                                                                    <span class="help-block"> <?php echo $detfilempresa->emp_rut.'-'.$detfilempresa->emp_dv; ?> </span>
+                                                                                <!--/span-->
+                                                                                <div class="col-md-4"> <!-- Apellidos Trabajador -->
+                                                                                    <div class="form-group ">
+                                                                                        <label class="control-label">Apellidos </label>
+                                                                                        <span class="help-block"> <?php echo $detencuesta->enc_apellido_p.' '.$detencuesta->enc_apellido_m; ?> </span>
+                                                                                    </div>
                                                                                 </div>
+                                                                                <!--/span-->
                                                                             </div>
-                                                                            <!--/span-->
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="control-label">Nombre Empresa Colaboradora </label>
-                                                                                    <span class="help-block"> <?php echo $detfilempresa->emp_nombre; ?> </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!--/span-->
-                                                                        </div>
+																			<!--/span-->
                                                                         <!--/row-->
                  
 
-                                                                     
-                                                                    </div>
+                                                                 
                                                                     
                                                                     
                                                                     
@@ -136,11 +126,11 @@
                                                 <div class="portlet box blue">
                                                     <div class="portlet-title">
                                                         <div class="caption">
-                                                            <i class="fa fa-th-large"></i>Listado de encuestas
+                                                            <i class="fa fa-th-large"></i> Listado de Familiares
                                                         </div>
                                                         <div class="actions">
-                                                            <a href="<?php echo site_url('encuesta/nueva/'.$idfilempresa); ?>" class="btn btn-default btn-sm">
-                                                                <i class="fa fa-plus"></i> Nueva 
+                                                            <a href="<?php echo site_url('integrante/nueva/'.$idencuesta); ?>" class="btn btn-default btn-sm">
+                                                                <i class="fa fa-plus"></i> Agregar 
                                                             </a>
                                                         </div>
                                                     </div>
@@ -148,7 +138,7 @@
                                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_6">
                                                             <thead>
                                                                 <tr>
-                                                                    <th> RUN Trabajador</th>
+                                                                    <th> RUN </th>
                                                                     <th> Apellidos </th>
                                                                     <th> Nombres </th>
                                                                     <th> Comuna </th>
@@ -196,7 +186,7 @@
                                                                                 </li>
 																				
 																				<li>
-                                                                                    <a href="<?php echo site_url('integrante/listado/'.$encuesta['encuesta_id']); ?>">
+                                                                                    <a href="<?php echo site_url('integrante/nueva/'.$encuesta['encuesta_id']); ?>">
                                                                                        <i class="icon-user"></i> Agregar Integrante Familiar </a>
                                                                                 </li>
                                                                                 <?php 

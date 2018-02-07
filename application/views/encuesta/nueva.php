@@ -73,34 +73,7 @@
 
                                             <?php
                                             }
-                                            ?>
-
-
-                                            <!--<div class="col-md-12">
-                                                <div class="portlet light portlet-fit ">
-                                                    <div class="portlet-body">
-                                                        <div class="mt-element-step">
-                                                            <div class="row step-thin">
-                                                                <div class="col-md-4 bg-grey mt-step-col active">
-                                                                    <div class="mt-step-number bg-white font-grey">1</div>
-                                                                    <div class="mt-step-title uppercase font-grey-cascade">Trabajador</div>
-                                                                    <div class="mt-step-content font-grey-cascade">Antecedentes personales</div>
-                                                                </div>
-                                                                <div class="col-md-4 bg-grey mt-step-col">
-                                                                    <div class="mt-step-number bg-white font-grey">2</div>
-                                                                    <div class="mt-step-title uppercase font-grey-cascade">Vivienda</div>
-                                                                    <div class="mt-step-content font-grey-cascade">Servicios y subsidios</div>
-                                                                </div>
-                                                                <div class="col-md-4 bg-grey mt-step-col">
-                                                                    <div class="mt-step-number bg-white font-grey">3</div>
-                                                                    <div class="mt-step-title uppercase font-grey-cascade">Familia</div>
-                                                                    <div class="mt-step-content font-grey-cascade">Salud y educación</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>-->
+                                            ?>                                       
 
 
 
