@@ -331,7 +331,8 @@
                                                                             </div>
                                                                             <!--/row-->                    
                                                                             <div class="row">
-                                                                                <div class="col-md-4">
+																				<!--/span-->
+                                                                                <div class="col-md-4"> <!-- Ascendencia Indígena -->
                                                                                     <div class="form-group <?php if (form_error('rbt_antind') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">¿Usted o sus ascendientes tiene origen indígena? <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>
@@ -358,7 +359,8 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
-                                                                                <div class="col-md-4">
+																				
+                                                                                <div class="col-md-4"> <!-- Estado Civil -->
                                                                                     <div class="form-group <?php if (form_error('rbt_estcivil') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">¿Cuál es su estado civil o conyugal actual? <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>

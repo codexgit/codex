@@ -111,9 +111,8 @@
                                                                 </form>
                                                                 <!-- END FORM-->
                                                             </div>
-                                                        </div>                                                  
-                                                
-                                                
+                                                        </div>                                          
+         
                                             </div>
                                         </div>
 
@@ -140,36 +139,21 @@
                                                                 <tr>
                                                                     <th> RUN </th>
                                                                     <th> Apellidos </th>
-                                                                    <th> Nombres </th>
-                                                                    <th> Comuna </th>
-                                                                    <th> Estado </th>
+                                                                    <th> Nombres </th>                                                                    
                                                                     <th> Acciones </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
 
-                                                                <?php foreach ($lstencuestas as $encuesta): ?>
+                                                                <?php foreach ($lstintegrantes as $familia): ?>
 
 
                                                                 <tr class="odd gradeX">
-                                                                    <td> <?php echo $encuesta['enc_run'].'-'.$encuesta['enc_dv']; ?> </td>
-                                                                    <td> <?php echo $encuesta['enc_apellido_p'].' '.$encuesta['enc_apellido_m']; ?> </td>
-                                                                    <td> <?php echo $encuesta['enc_nombres']; ?> </td>
-                                                                    <td> <?php echo $encuesta['nombre_comuna']; ?> </td>
-                                                                    <td> 
-                                                                        <?php 
-
-                                                                            if ($encuesta['enc_estado'] == 1){
-                                                                                echo '<span class="label label-sm label-warning"> Ingresada </span>';
-                                                                            }
-                                                                            else if ($encuesta['enc_estado'] == 2){
-                                                                                echo '<span class="label label-sm label-success"> Revisada </span>';
-                                                                            }
-                                                                            else{
-                                                                                echo '<span class="label label-sm label-success"> Procesada </span>';
-                                                                            }
-                                                                        ?>
-                                                                    </td>
+                                                                    <td> <?php echo $familia['fam_run'].'-'.$familia['fam_dv']; ?> </td>
+                                                                    <td> <?php echo $familia['fam_apellido_p'].' '.$familia['fam_apellido_m']; ?> </td>
+                                                                    <td> <?php echo $familia['fam_nombres']; ?> </td>
+                                                                    
+                                                                    
                                                                     <td>
                                                                         <div class="btn-group">
                                                                             <button class="btn btn-xs default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> 
@@ -177,29 +161,22 @@
                                                                                 <i class="fa fa-angle-down"></i>
                                                                             </button>
                                                                             <ul class="dropdown-menu pull-left" role="menu">
-                                                                                <?php 
-                                                                                    if ($encuesta['enc_estado'] == 1){
-                                                                                ?>
-                                                                                <li>
-                                                                                    <a href="<?php echo site_url('encuesta/trabajador/'.$encuesta['encuesta_id']); ?>">
+                                                                                
+                                                                               <!-- <li>
+                                                                                    <a href="<?php echo site_url('encuesta/trabajador/'); ?>">
                                                                                         <i class="icon-note"></i> Continuar </a>
                                                                                 </li>
-																				
+																				-->
 																				<li>
-                                                                                    <a href="<?php echo site_url('integrante/nueva/'.$encuesta['encuesta_id']); ?>">
-                                                                                       <i class="icon-user"></i> Agregar Integrante Familiar </a>
+                                                                                    <a href="<?php echo site_url('integrante/nueva/'); ?>">
+                                                                                       <i class="icon-user"></i> Editar </a>
                                                                                 </li>
-                                                                                <?php 
-                                                                                    }
-                                                                                    else{
-                                                                                ?>
+                                                                                
                                                                                 <li>
-                                                                                    <a href="<?php echo site_url('encuesta/detalle/'.$encuesta['encuesta_id']); ?>">
+                                                                                    <a href="<?php echo site_url('encuesta/detalle/'); ?>">
                                                                                         <i class="icon-note"></i> Continuar </a>
                                                                                 </li>
-                                                                                <?php        
-                                                                                    }
-                                                                                ?>
+                                                                                
                                                                             </ul>
                                                                         </div>
                                                                     </td>                                                                    

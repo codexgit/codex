@@ -23,11 +23,10 @@ class Encuesta_model extends CI_Model {
             return $query->first_row();
         }
 		
-		
-		
 		public function agregar_encuesta($encuesta){
             return $this->db->insert('encuesta',$encuesta);
         }	
+		
 ////////////////////////////////////TRABAJADOR//////////////////////////////////////
 		
 	
@@ -65,15 +64,13 @@ class Encuesta_model extends CI_Model {
 	
 		
 ///////////////////////////////////EDUCACION//////////////////////////////////////////////		
+
 		public function verificar_registro_educacion($idencuesta){
 			$query = $this->db->get_where('encuesta_educacion',array('encuesta_id' => $idencuesta));
 			//return $query->first_row();
 			return $query->num_rows();
 		}
 		
-		/*public function verificar_registro_educacion(){
-			return $this->db->count_all_results('encuesta_educacion');
-		} */
 		
 		public function get_educacion_by_id($idencuesta){
 			
@@ -116,9 +113,7 @@ class Encuesta_model extends CI_Model {
 		
 		
 ///////////////////////////////////////VIVIENDA////////////////////////////////////		
-		/*public function verificar_registro_vivienda(){
-			return $this->db->count_all_results('encuesta_vivienda');
-		} */
+		
 		public function verificar_registro_vivienda($idencuesta){
 			$query = $this->db->get_where('encuesta_vivienda',array('encuesta_id' => $idencuesta));
 			//return $query->first_row();
@@ -140,6 +135,7 @@ class Encuesta_model extends CI_Model {
 		public function actualizar_encuesta_vivienda($encuesta_vivienda){
 			return $this->db->update('encuesta_vivienda',$encuesta_vivienda);
 		}
+		
 		public function get_familia($idencuesta) {
 			$this->db->select('*');
 			$this->db->from('encuesta_familia');
