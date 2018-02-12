@@ -158,6 +158,13 @@
 				language: 'es'
 			});
 			
+			
+			$("#grupo_ult_curso1").hide();
+			$("#grupo_ult_curso2").hide();
+			$("#grupo_ult_curso3").hide();
+			$("#grupo_ult_curso4").hide();
+			$("#grupo_ult_curso5").hide();
+			
             $(document).ready(function() {
             // Region change
 				$('#sel_region').change(function(){
@@ -183,16 +190,89 @@
 				}); 
 				// HIDE / SHOW Options
 				
-				//Estudiando->Becas
+				
+				//Estudiando->Becas (Encuesta/Educación)
 				$("#estudiando2").click(function(){
 					$("#grupo_becas").hide();
 					
 				});
+									
 
 				$("#estudiando1").click(function(){
 					$("#grupo_becas").show();
 				});
-				// Edad menor (si es que hay)
+				
+				//Nivel de Educación
+				$("#nivel_esc3").click(function(){
+					$("#grupo_ult_curso1").show();
+					$("#grupo_ult_curso2").hide();
+					$("#grupo_ult_curso3").hide();
+					$("#grupo_ult_curso4").hide();
+					$("#grupo_ult_curso5").hide();
+					
+					
+				});
+				
+				$("#nivel_esc13").click(function(){
+					$("#grupo_ult_curso1").show();
+					$("#grupo_ult_curso2").hide();
+					$("#grupo_ult_curso3").hide();
+					$("#grupo_ult_curso4").hide();
+					$("#grupo_ult_curso5").hide();
+					
+				});
+				///
+				
+				$("#nivel_esc5").click(function(){
+					$("#grupo_ult_curso2").show();
+					$("#grupo_ult_curso1").hide();
+					$("#grupo_ult_curso3").hide();
+					$("#grupo_ult_curso4").hide();
+					$("#grupo_ult_curso5").hide();
+					
+				});
+				
+				$("#nivel_esc7").click(function(){
+					$("#grupo_ult_curso2").show();
+					$("#grupo_ult_curso1").hide();
+					$("#grupo_ult_curso3").hide();
+					$("#grupo_ult_curso4").hide();
+					$("#grupo_ult_curso5").hide();
+					
+				});
+				
+				//
+				
+				$("#nivel_esc11").click(function(){
+					$("#grupo_ult_curso3").show();
+					$("#grupo_ult_curso2").hide();
+					$("#grupo_ult_curso1").hide();
+					$("#grupo_ult_curso4").hide();
+					$("#grupo_ult_curso5").hide();
+					
+				});
+				
+				//
+				$("#nivel_esc9").click(function(){
+					$("#grupo_ult_curso4").show();
+					$("#grupo_ult_curso2").hide();
+					$("#grupo_ult_curso3").hide();
+					$("#grupo_ult_curso1").hide();
+					$("#grupo_ult_curso5").hide();
+					
+				});
+				//
+				
+				$("#nivel_esc15").click(function(){
+					$("#grupo_ult_curso5").show();
+					$("#grupo_ult_curso2").hide();
+					$("#grupo_ult_curso3").hide();
+					$("#grupo_ult_curso4").hide();
+					$("#grupo_ult_curso1").hide();
+					
+				});
+				
+				// Edad menor (si es que hay) (Encuesta/Salud)
 				$("#cons_drogas2").click(function(){
 					$("#edad_persona").hide();
 					
@@ -201,6 +281,19 @@
 				$("#cons_drogas1").click(function(){
 					$("#edad_persona").show();
 				});
+				
+				//Libreta (Encuesta/Vivienda)
+				$("#libreta2").click(function(){
+					$("#libreta_anio").hide();
+					$("#monto_ahorro").hide();
+					
+				});
+
+				$("#libreta1").click(function(){
+					$("#libreta_anio").show();
+					$("#monto_ahorro").show();
+				});
+				
 				
         });     
 

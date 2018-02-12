@@ -236,56 +236,156 @@
 																				<!--/span-->
                                                                                 <div class="col-md-4"> <!-- Ultimo curso aprobado -->
                                                                                     <div class="form-group <?php if (form_error('sel_ult_curso') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
-                                                                                        <br/><br/>
-                                                                                        <?php
-                                                                                        echo form_radio(array('name' => 'sel_ult_curso', 'value' => '1', 'checked' => ('1' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso1'));
+																					
+																						<div id="grupo_ult_curso1"> <!-- 1 - 7 -->
+																							<label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
+																							<br/><br/>
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '1', 'checked' => ('1' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso1'));
 
-                                                                                        ?>
+																							?>
 
-                                                                                        1 &nbsp;
+																							1 &nbsp;
 
-                                                                                        <?php
-                                                                                        echo form_radio(array('name' => 'sel_ult_curso', 'value' => '2', 'checked' => ('2' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso2'));
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '2', 'checked' => ('2' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso2'));
 
-                                                                                        ?>
+																							?>
 
-                                                                                        2 &nbsp; 
+																							2 &nbsp; 
+																							
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '3', 'checked' => ('3' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso3'));
+
+																							?>
+
+																							3 &nbsp;
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '4', 'checked' => ('4' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso4'));
+
+																							?>
+
+																							4 &nbsp;
+
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '5', 'checked' => ('5' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso5'));
+
+																							?>
+
+																							5 &nbsp; 
+																							
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '6', 'checked' => ('6' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso6'));
+
+																							?>
+
+																							6 &nbsp;
+																							
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '7', 'checked' => ('7' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso7'));
+
+																							?>
+
+																							7 &nbsp;
+																							
+																						</div>	
+																						
+																						
+																					<div id="grupo_ult_curso2"> <!-- 1 - 4 -->
+																					
+																							<label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
+																							<br/><br/>
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '1', 'checked' => ('1' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso1'));
+
+																							?>
+
+																							1 &nbsp;
+
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '2', 'checked' => ('2' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso2'));
+
+																							?>
+
+																							2 &nbsp; 
+																							
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '3', 'checked' => ('3' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso3'));
+
+																							?>
+
+																							3 &nbsp;
+																							<?php
+																							echo form_radio(array('name' => 'sel_ult_curso', 'value' => '4', 'checked' => ('4' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso4'));
+
+																							?>
+
+																							4 &nbsp;	
+																						
+																					</div>	
+																					
+																					<div id="grupo_ult_curso3"> <!-- 1 - 3 -->
+																						<label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
+																						<br/><br/>
+																						<?php
+																						echo form_radio(array('name' => 'sel_ult_curso', 'value' => '1', 'checked' => ('1' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso1'));
+
+																						?>
+
+																						1 &nbsp;
+
+																						<?php
+																						echo form_radio(array('name' => 'sel_ult_curso', 'value' => '2', 'checked' => ('2' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso2'));
+
+																						?>
+
+																						2 &nbsp; 
 																						
 																						<?php
-                                                                                        echo form_radio(array('name' => 'sel_ult_curso', 'value' => '3', 'checked' => ('3' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso3'));
+																						echo form_radio(array('name' => 'sel_ult_curso', 'value' => '3', 'checked' => ('3' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso3'));
 
-                                                                                        ?>
+																						?>
 
-                                                                                        3 &nbsp;
-																						<?php
-                                                                                        echo form_radio(array('name' => 'sel_ult_curso', 'value' => '4', 'checked' => ('4' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso4'));
-
-                                                                                        ?>
-
-                                                                                        4 &nbsp;
-
-                                                                                        <?php
-                                                                                        echo form_radio(array('name' => 'sel_ult_curso', 'value' => '5', 'checked' => ('5' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso5'));
-
-                                                                                        ?>
-
-                                                                                        5 &nbsp; 
+																						3 &nbsp;
 																						
-																						<?php
-                                                                                        echo form_radio(array('name' => 'sel_ult_curso', 'value' => '6', 'checked' => ('6' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso6'));
 
-                                                                                        ?>
-
-                                                                                        6 &nbsp;
 																						
+																							
+																					</div>	
+
+																					<div id="grupo_ult_curso4"> <!-- 1 - 2 -->
+																						<label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
+																						<br/><br/>
 																						<?php
-                                                                                        echo form_radio(array('name' => 'sel_ult_curso', 'value' => '7', 'checked' => ('7' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso7'));
+																						echo form_radio(array('name' => 'sel_ult_curso', 'value' => '1', 'checked' => ('1' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso1'));
 
-                                                                                        ?>
+																						?>
 
-                                                                                        7 &nbsp;
+																						1 &nbsp;
 
+																						<?php
+																						echo form_radio(array('name' => 'sel_ult_curso', 'value' => '2', 'checked' => ('2' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso2'));
+
+																						?>
+
+																						2 &nbsp; 
+																						
+																						
+																					</div>	
+																					
+																					<div id="grupo_ult_curso5"> <!-- 1  -->
+																						<label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
+																						<br/><br/>
+																						<?php
+																						echo form_radio(array('name' => 'sel_ult_curso', 'value' => '1', 'checked' => ('1' == $ult_curso) ? TRUE : FALSE, 'id' => 'ult_curso1'));
+
+																						?>
+
+																						1 &nbsp;
+																						
+																						
+																					</div>	
+																						
                                                                                         <?php
 
 
@@ -300,6 +400,8 @@
                                                                                 <!--/span-->
 																				<div class="col-md-4">
                                                                                     <div class="form-group <?php if (form_error('txt_anio_egreso') != ""){echo "has-error";} ?>">
+																						
+																					
                                                                                         <label class="control-label">Año de egreso <span class="required" aria-required="true"> * </span></label>
                                                                                         <input type="text" name="txt_anio_egreso" id="txt_anio_egreso" class="form-control" placeholder="" value="<?php echo $anio_egreso; ?>">
                                                                                         <?php

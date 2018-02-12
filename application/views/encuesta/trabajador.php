@@ -472,8 +472,10 @@
                                                                         <div class="form-actions right">
                                                                             <!--<button type="button" class="btn default">Volver</button>-->
                                                                             <a href="<?php echo site_url('encuesta/listado/'); ?>" class="btn default" role="button">Volver</a>
-                                                                            <button type="submit" class="btn blue">
+                                                                            <div id="cargar_educacion">
+																			<button type="submit" class="btn blue">
                                                                                 <i class="fa fa-check"></i> Siguiente</button>
+
                                                                         </div>
                                                                         <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
                                                                     <?php echo form_close(); ?>

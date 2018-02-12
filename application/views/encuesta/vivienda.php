@@ -297,11 +297,14 @@
                                                                                 <!--/span-->
 																				
 																				<!--/span-->
-                                                                                <div class="col-md-3"> <!-- Año -->
+                                                                                <div class="col-md-3"> <!-- Año (opcional)-->
                                                                                     <div class="form-group <?php if (form_error('txt_libreta_anio') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Señale año de apertura <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" name="txt_libreta_anio" id="txt_libreta_anio" class="form-control" placeholder="" value="<?php echo $libreta_anio; ?>">
-                                                                                        <?php
+																						<div id="libreta_anio">
+																							<label class="control-label">Señale año de apertura <span class="required" aria-required="true"> * </span></label>
+																							<input type="text" name="txt_libreta_anio" id="txt_libreta_anio" class="form-control" placeholder="" value="<?php echo $libreta_anio; ?>">
+																						</div>   
+
+																					   <?php
                                                                                         if (form_error('txt_libreta_anio') != NULL){
                                                                                         ?>
                                                                                         <span class="help-block"> <?php echo form_error('txt_libreta_anio'); ?> </span>
@@ -313,11 +316,13 @@
                                                                                 <!--/span-->
 																				
                                                                                 <!--/span-->
-                                                                                <div class="col-md-3"> <!-- Monto ahorro -->
+                                                                                <div class="col-md-3"> <!-- Monto ahorro (opcional) -->
                                                                                     <div class="form-group <?php if (form_error('txt_monto_ahorro') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Monto Ahorro <span class="required" aria-required="true"> * </span> </label>
-                                                                                        <input type="text" name="txt_monto_ahorro" id="txt_monto_ahorro" class="form-control" placeholder="" value="<?php echo $monto_ahorro; ?>">
-                                                                                        <?php
+																						<div id="monto_ahorro">
+																							<label class="control-label">Monto Ahorro <span class="required" aria-required="true"> * </span> </label>
+																							<input type="text" name="txt_monto_ahorro" id="txt_monto_ahorro" class="form-control" placeholder="" value="<?php echo $monto_ahorro; ?>">
+																						</div>
+																						<?php
                                                                                         if (form_error('txt_monto_ahorro') != NULL){
                                                                                         ?>
                                                                                         <span class="help-block"> <?php echo form_error('txt_monto_ahorro'); ?> </span>
