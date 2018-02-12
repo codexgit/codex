@@ -1,12 +1,15 @@
 <?php
 
     if (validation_errors() == ""){
+		
+		$fecnacimiento = ($trabajador['trab_fec_nacimiento'] != 0) ? mdate('%d-%m-%Y', $trabajador['trab_fec_nacimiento']) : ""; 
         $direccion = $trabajador['trab_dir_calle'];
 		$numero = $trabajador['trab_dir_numero'];
         $sector = $trabajador['trab_dir_sector'];
         $tfijo = $trabajador['trab_tel_fijo'];
         $tmovil = $trabajador['trab_tel_movil'];
-        $fecnacimiento = $trabajador['trab_fec_nacimiento'];
+       
+		
         $genero = $trabajador['trab_genero'];
         $jfamilia = $trabajador['trab_jefe_familia'];
         $antind = $trabajador['trab_ant_indigenas'];
@@ -250,8 +253,8 @@
                                                                                     <div class="form-group <?php if (form_error('txt_fecnacimiento') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Fecha de Nacimiento <span class="required" aria-required="true"> * </span></label>
 																						<div class='input-group date datepicker' >
-																						<span class="help-block"> <?php echo mdate('%d-%m-%Y ', $fecnacimiento); ?> </span> 
-																							<input type='text' name="txt_fecnacimiento" id="txt_fecnacimiento" class="form-control" value="<?php echo $fecnacimiento; ?>" readonly/>
+																						
+																							<input type='text' name="txt_fecnacimiento" id="txt_fecnacimiento" class="form-control" value=" <?php echo $fecnacimiento; ?>" readonly/>
 																								<span class="input-group-addon">
 																							<span class="glyphicon glyphicon-calendar"></span>
 																						</span>

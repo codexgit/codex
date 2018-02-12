@@ -317,14 +317,14 @@
                                                                                         <label class="control-label">¿Actualmente está estudiando? <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>
                                                                                         <?php
-                                                                                        echo form_radio(array('name' => 'sel_estudiando', 'value' => '1', 'checked' => ('1' == $estudiando) ? TRUE : FALSE, 'id' => 's'));
+                                                                                        echo form_radio(array('name' => 'sel_estudiando', 'value' => '1', 'checked' => ('1' == $estudiando) ? TRUE : FALSE, 'id' => 'estudiando1'));
 
                                                                                         ?>
 
                                                                                         Sí &nbsp;
 
                                                                                         <?php
-                                                                                        echo form_radio(array('name' => 'sel_estudiando', 'value' => '2', 'checked' => ('2' == $estudiando) ? TRUE : FALSE, 'id' => 'n'));
+                                                                                        echo form_radio(array('name' => 'sel_estudiando', 'value' => '2', 'checked' => ('2' == $estudiando) ? TRUE : FALSE, 'id' => 'estudiando2'));
 
                                                                                         ?>
 
@@ -348,33 +348,38 @@
 																				<!--/span-->
                                                                                 <div class="col-md-4"> <!-- Becas -->
                                                                                     <div class="form-group <?php if (form_error('sel_becas') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">De estar estudiando, ¿tiene alguna de estas becas? <span class="required" aria-required="true"> * </span></label>
-                                                                                        <br/><br/>
-                                                                                        <?php
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '1', 'checked' => ('1' == $becas) ? TRUE : FALSE, 'id' => 'becas1'))." Beca indígena <br/>";
-                                                                                        echo form_radio(array('name' => 'sel_becas', 'value' => '2', 'checked' => ('2' == $becas) ? TRUE : FALSE, 'id' => 'becas2'))." Programa de Residencia Familiar <br/>";
-                                                                                        echo form_radio(array('name' => 'sel_becas', 'value' => '3', 'checked' => ('3' == $becas) ? TRUE : FALSE, 'id' => 'becas3'))." Beca Mejores Puntajes PSU <br/>";
-                                                                                        echo form_radio(array('name' => 'sel_becas', 'value' => '4', 'checked' => ('4' == $becas) ? TRUE : FALSE, 'id' => 'becas4'))." Beca excelencia académica <br/>";
-                                                                                        echo form_radio(array('name' => 'sel_becas', 'value' => '5', 'checked' => ('5' == $becas) ? TRUE : FALSE, 'id' => 'becas5'))." Beca Nuevo Milenio <br/>";
-                                                                                        echo form_radio(array('name' => 'sel_becas', 'value' => '6', 'checked' => ('6' == $becas) ? TRUE : FALSE, 'id' => 'becas6'))." Beca Nuevo Milenio cursos superiores <br/>";																						
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '7', 'checked' => ('7' == $becas) ? TRUE : FALSE, 'id' => 'becas7'))." Beca Juan Gómez Millas <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '8', 'checked' => ('8' == $becas) ? TRUE : FALSE, 'id' => 'becas8'))." Beca Juan Gómez Millas cursos superiores <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '9', 'checked' => ('9' == $becas) ? TRUE : FALSE, 'id' => 'becas9'))." Beca para Hijos Profesionales de la Educación <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '10', 'checked' => ('10' == $becas) ? TRUE : FALSE, 'id' => 'becas10'))." Beca de excelencia técnica <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '11', 'checked' => ('11' == $becas) ? TRUE : FALSE, 'id' => 'becas11'))." Beca de Articulación <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '12', 'checked' => ('12' == $becas) ? TRUE : FALSE, 'id' => 'becas12'))." Crédito con garantía estatal <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '13', 'checked' => ('13' == $becas) ? TRUE : FALSE, 'id' => 'becas13'))." Beca Mantención Educación Superior <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '14', 'checked' => ('14' == $becas) ? TRUE : FALSE, 'id' => 'becas14'))." Beca Indígena Educación Superior <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '15', 'checked' => ('15' == $becas) ? TRUE : FALSE, 'id' => 'becas15'))." Beca de Residencia Familiar Estudiantil <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '16', 'checked' => ('16' == $becas) ? TRUE : FALSE, 'id' => 'becas16'))." Beca Bicentenario <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '17', 'checked' => ('17' == $becas) ? TRUE : FALSE, 'id' => 'becas17'))." Beca Bicentenario cursos superiores <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '18', 'checked' => ('18' == $becas) ? TRUE : FALSE, 'id' => 'becas18'))." Fondo Solidario de Crédito Universitario <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '19', 'checked' => ('19' == $becas) ? TRUE : FALSE, 'id' => 'becas19'))." Beca Interna de la Institución <br/>";
-																						echo form_radio(array('name' => 'sel_becas', 'value' => '20', 'checked' => ('20' == $becas) ? TRUE : FALSE, 'id' => 'becas20'))." Gratuidad en la Educación <br/>";																
+																					
+                                                                                        
+																						<div id="grupo_becas">
+																							<label class="control-label">De estar estudiando, ¿tiene alguna de estas becas? <span class="required" aria-required="true"> * </span></label>
+																								<br/><br/>
+																						
+																							<?php
+																							
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '1', 'checked' => ('1' == $becas) ? TRUE : FALSE, 'id' => 'becas1'))." Beca indígena <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '2', 'checked' => ('2' == $becas) ? TRUE : FALSE, 'id' => 'becas2'))." Programa de Residencia Familiar <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '3', 'checked' => ('3' == $becas) ? TRUE : FALSE, 'id' => 'becas3'))." Beca Mejores Puntajes PSU <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '4', 'checked' => ('4' == $becas) ? TRUE : FALSE, 'id' => 'becas4'))." Beca excelencia académica <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '5', 'checked' => ('5' == $becas) ? TRUE : FALSE, 'id' => 'becas5'))." Beca Nuevo Milenio <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '6', 'checked' => ('6' == $becas) ? TRUE : FALSE, 'id' => 'becas6'))." Beca Nuevo Milenio cursos superiores <br/>";																						
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '7', 'checked' => ('7' == $becas) ? TRUE : FALSE, 'id' => 'becas7'))." Beca Juan Gómez Millas <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '8', 'checked' => ('8' == $becas) ? TRUE : FALSE, 'id' => 'becas8'))." Beca Juan Gómez Millas cursos superiores <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '9', 'checked' => ('9' == $becas) ? TRUE : FALSE, 'id' => 'becas9'))." Beca para Hijos Profesionales de la Educación <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '10', 'checked' => ('10' == $becas) ? TRUE : FALSE, 'id' => 'becas10'))." Beca de excelencia técnica <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '11', 'checked' => ('11' == $becas) ? TRUE : FALSE, 'id' => 'becas11'))." Beca de Articulación <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '12', 'checked' => ('12' == $becas) ? TRUE : FALSE, 'id' => 'becas12'))." Crédito con garantía estatal <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '13', 'checked' => ('13' == $becas) ? TRUE : FALSE, 'id' => 'becas13'))." Beca Mantención Educación Superior <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '14', 'checked' => ('14' == $becas) ? TRUE : FALSE, 'id' => 'becas14'))." Beca Indígena Educación Superior <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '15', 'checked' => ('15' == $becas) ? TRUE : FALSE, 'id' => 'becas15'))." Beca de Residencia Familiar Estudiantil <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '16', 'checked' => ('16' == $becas) ? TRUE : FALSE, 'id' => 'becas16'))." Beca Bicentenario <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '17', 'checked' => ('17' == $becas) ? TRUE : FALSE, 'id' => 'becas17'))." Beca Bicentenario cursos superiores <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '18', 'checked' => ('18' == $becas) ? TRUE : FALSE, 'id' => 'becas18'))." Fondo Solidario de Crédito Universitario <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '19', 'checked' => ('19' == $becas) ? TRUE : FALSE, 'id' => 'becas19'))." Beca Interna de la Institución <br/>";
+																							echo form_radio(array('name' => 'sel_becas', 'value' => '20', 'checked' => ('20' == $becas) ? TRUE : FALSE, 'id' => 'becas20'))." Gratuidad en la Educación <br/>";																
 
-                                                                                        ?>                                                                 
+																							?>                                                                 
                                                  
-
+																						</div>
                                                                                         <?php
 
 

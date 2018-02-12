@@ -92,8 +92,10 @@ class Integrante extends CI_Controller {
 		$this->load->model('integrante_model');
 		$this->load->helper('date');
 
-		$sesionusuario = $this->session->userdata('usrsesion');		
-
+		$sesionusuario = $this->session->userdata('usrsesion');	
+		$id_fam = $this->integrante_model->get_idfamilia_datos_by_id($idencuesta);
+		//echo $idfamilia_datos['encuesta_familia_id']."acaaaaaaaaaaaaaaaaa";
+		
 		$data['sesionusuario'] = $sesionusuario;
 		$data['lstregiones'] = $this->param_model->get_regiones();
 	
@@ -113,7 +115,7 @@ class Integrante extends CI_Controller {
 			
 			else{
 				
-				$encuesta_familia = array(				
+				$familiar = array(				
 				
 				'fam_run'  => "",
 				'fam_dv' => "",
@@ -126,7 +128,7 @@ class Integrante extends CI_Controller {
 				);							
 			}
 			
-			$data['encuesta_familia']= $encuesta_familia;			
+			$data['familiar']= $familiar;			
 			$data['mensaje'] = "";
 			$data['divtipo'] = "alert alert-success alert-dismissable";
 		
@@ -183,7 +185,7 @@ class Integrante extends CI_Controller {
 						'fam_nombres' => $nombres,
 						'fam_apellido_p' => $apellido_p,
 						'fam_apellido_m' => $apellido_m,						
-						'fam_fec_nacimiento' => $fec_nacimiento,
+						'fam_fec_nacimiento' =>$this->fecha_a_unix($fec_nacimiento),
 						'fam_genero' => $genero,
 						'fam_nac_chilena' => $nac_chilena
 						
@@ -195,13 +197,13 @@ class Integrante extends CI_Controller {
 
 						$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
 						$data['divtipo'] = "alert alert-success alert-dismissable";						
-						
+						$idfamilia_datos = $id_fam['encuesta_familia_id'];
 						redirect('integrante/datos/'.$idfamilia_datos,'refresh');
 					}
 					else{
 						$this->integrante_model->crear_encuesta_familia($encuesta_familia);
 						//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
-
+						$idfamilia_datos = $id_fam['encuesta_familia_id'];
 						$data['mensaje'] = "La encuesta ha sido creada exitosamente";
 						$data['divtipo'] = "alert alert-success alert-dismissable";			
 						
@@ -247,7 +249,7 @@ class Integrante extends CI_Controller {
 
 		$data['sesionusuario'] = $sesionusuario;
 		$data['lstregiones'] = $this->param_model->get_regiones();
-	
+		echo $idfamilia_datos."acaaaaaaa";
 		
 		if (isset($idfamilia_datos) && $idfamilia_datos > 0){
 			

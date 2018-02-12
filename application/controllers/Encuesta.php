@@ -309,7 +309,7 @@ class Encuesta extends CI_Controller {
 						'trab_dir_sector' => $poblacion,
 						'trab_tel_fijo' => $telef,
 						'trab_tel_movil' => $celular,						
-						'trab_fec_nacimiento' => $f_nac,
+						'trab_fec_nacimiento' => $this->fecha_a_unix($f_nac),
 						'trab_genero' => $genero,
 						'trab_jefe_familia' => $jefe_fam,
 						'trab_ant_indigenas' => $f_indigena,

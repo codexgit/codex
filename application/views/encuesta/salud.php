@@ -206,9 +206,11 @@
 																				<!--/span-->
                                                                                 <div class="col-md-4"> <!-- Edad de dicha persona -->
                                                                                     <div class="form-group <?php if (form_error('txt_cons_drogas_d') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">¿Qué edad tiene?<span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" name="txt_cons_drogas_d" id="txt_cons_drogas_d" class="form-control" placeholder="" value="<?php echo $cons_drogas_d; ?>">
-                                                                                        <?php
+																						<div id="edad_persona">
+																							<label class="control-label">¿Qué edad tiene?<span class="required" aria-required="true"> * </span></label>
+																							<input type="text" name="txt_cons_drogas_d" id="txt_cons_drogas_d" class="form-control" placeholder="" value="<?php echo $cons_drogas_d; ?>">
+																							</div>
+																						<?php
                                                                                         if (form_error('txt_cons_drogas_d') != NULL){
                                                                                         ?>
                                                                                         <span class="help-block"> <?php echo form_error('txt_cons_drogas_d'); ?> </span>

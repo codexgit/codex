@@ -18,6 +18,33 @@
                 
     }
 ?>
+<ul class="nav nav-tabs" id="supernav">
+    <li class="active"><a href="/page1.html" data-toggle="tab"><i class="icon-home" style="margin-top:4px;"></i> Page 1</a></li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page 2 <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="/page2.html" data-toggle="tab">Home</a></li>
+            <li class="divider"></li>
+            <li><a href="/page2.2.html" data-toggle="tab">Page 2.2</a></li>
+            <li><a href="/page2.3.html" data-toggle="tab">Page 2.3</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page 3 <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="/page3.html" data-toggle="tab">Home</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-submenu">
+                <a href="/page3.2.html" data-toggle="tab">Page 3.2</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/page3.2.1.html" data-toggle="tab">Page 3.2.1</a></li>
+                    <li><a href="/page3.2.2.html" data-toggle="tab">Page 3.2.2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><a href="/page4.html" data-toggle="tab">Page 4</a></li>
+</ul>
 
                     <!-- BEGIN CONTAINER -->
                     <div class="page-container">
@@ -157,7 +184,162 @@
                                                                             </div>
 																			<!--/span-->
 																			
+																			 <!-- BEGIN TAB PORTLET-->
+                 <!--               <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="icon-anchor font-green-sharp"></i>
+                                            <span class="caption-subject font-green-sharp bold uppercase">Tab drop</span>
+                                        </div>
+                                        <div class="actions">
+                                            <div class="btn-group">
+                                                <a class="btn green-haze btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
+                                                    <i class="fa fa-angle-down"></i>
+                                                </a>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li>
+                                                        <a href="javascript:;"> Option 1</a>
+                                                    </li>
+                                                    <li class="divider"> </li>
+                                                    <li>
+                                                        <a href="javascript:;">Option 2</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:;">Option 3</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:;">Option 4</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <p> Basic exemple. Resize the window to see how the tabs are moved into the dropdown </p>
+                                        <div class="tabbable tabbable-tabdrop">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active">
+                                                    <a href="#tab1" data-toggle="tab">Section 1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab2" data-toggle="tab">Section 2</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab3" data-toggle="tab">Section 3</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab4" data-toggle="tab">Section 4</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab5" data-toggle="tab">Section 5</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab6" data-toggle="tab">Section 6</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab7" data-toggle="tab">Section 7</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab8" data-toggle="tab">Section 8</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <p> I'm in Section 1. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab2">
+                                                    <p> Howdy, I'm in Section 2. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab3">
+                                                    <p> Howdy, I'm in Section 3. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab4">
+                                                    <p> Howdy, I'm in Section 4. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab5">
+                                                    <p> Howdy, I'm in Section 5. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab6">
+                                                    <p> Howdy, I'm in Section 6. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab7">
+                                                    <p> Howdy, I'm in Section 7. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab8">
+                                                    <p> Howdy, I'm in Section 8. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab9">
+                                                    <p> Howdy, I'm in Section 9. </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p> &nbsp; </p>
+                                        <p> &nbsp; </p>
+                                        <div class="tabbable tabbable-tabdrop">
+                                            <ul class="nav nav-pills">
+                                                <li class="active">
+                                                    <a href="#tab11" data-toggle="tab">Section 1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab12" data-toggle="tab">Section 2</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab13" data-toggle="tab">Section 3</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab14" data-toggle="tab">Section 4</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab15" data-toggle="tab">Section 5</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab16" data-toggle="tab">Section 6</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab17" data-toggle="tab">Section 7</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#tab18" data-toggle="tab">Section 8</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab11">
+                                                    <p> I'm in Section 1. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab12">
+                                                    <p> Howdy, I'm in Section 2. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab13">
+                                                    <p> Howdy, I'm in Section 3. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab14">
+                                                    <p> Howdy, I'm in Section 4. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab15">
+                                                    <p> Howdy, I'm in Section 5. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab16">
+                                                    <p> Howdy, I'm in Section 6. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab17">
+                                                    <p> Howdy, I'm in Section 7. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab18">
+                                                    <p> Howdy, I'm in Section 8. </p>
+                                                </div>
+                                                <div class="tab-pane" id="tab19">
+                                                    <p> Howdy, I'm in Section 9. </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                  -->              </div>
+                                <!-- END TAB PORTLET-->
+																			
                                                                             <!--/row-->
+																			<div class="portlet-body">
+																					<div class="tabbable tabbable-tabdrop">
+																						<ul class="nav nav-tabs">
                                                                             <h4 class="form-section">3.1.- Antecedentes Personales</h4>
                                                                             <!--/row-->
                                                                             <div class="row">
@@ -346,5 +528,10 @@
                     </div>
                     <!-- END CONTAINER -->
 
-
+<script>
+window.onload=function (e) {
+    e.preventDefault();
+    $('#supernav a[href="<?=$_SERVER["REQUEST_URI"];?>"]').tab('show');
+};
+</script>
 
