@@ -197,21 +197,22 @@
 																				
                                                                                 <div class="col-md-4"> <!-- Tipo de Establecimiento -->
                                                                                     <div class="form-group <?php if (form_error('sel_tipo_est') != ""){echo "has-error";} ?>">
-                                                                                        <label class="control-label">Tipo de Establecimiento <span class="required" aria-required="true"> * </span></label>
-                                                                                        <br/><br/>
-                                                                                        <?php
-                                                                                        echo form_radio(array('name' => 'sel_tipo_est', 'value' => '1', 'checked' => ('1' == $tipo_est) ? TRUE : FALSE, 'id' => 'tipo_est1'));
-
-                                                                                        ?>
-
-                                                                                        Público &nbsp;
-
-                                                                                        <?php
-                                                                                        echo form_radio(array('name' => 'sel_tipo_est', 'value' => '2', 'checked' => ('2' == $tipo_est) ? TRUE : FALSE, 'id' => 'tipo_est2'));
-
-                                                                                        ?>
-
-                                                                                        Particular &nbsp; 
+																						<div id="tipo_est">
+																							<label class="control-label">Tipo de Establecimiento <span class="required" aria-required="true"> * </span></label>
+																							<br/><br/>
+																							<?php
+																							echo form_radio(array('name' => 'sel_tipo_est', 'value' => '1', 'checked' => ('1' == $tipo_est) ? TRUE : FALSE, 'id' => 'tipo_est1'));
+	
+																							?>
+	
+																							Público &nbsp;
+	
+																							<?php
+																							echo form_radio(array('name' => 'sel_tipo_est', 'value' => '2', 'checked' => ('2' == $tipo_est) ? TRUE : FALSE, 'id' => 'tipo_est2'));
+	
+																							?>
+	
+																							Particular &nbsp; 
 																						
 																						<?php
                                                                                         echo form_radio(array('name' => 'sel_tipo_est', 'value' => '3', 'checked' => ('3' == $tipo_est) ? TRUE : FALSE, 'id' => 'tipo_est3'));
@@ -219,7 +220,7 @@
                                                                                         ?>
 
                                                                                         Subvencionado &nbsp;
-
+																						</div>
                                                                                         <?php
 
 
@@ -398,13 +399,15 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
-																				<div class="col-md-4">
-                                                                                    <div class="form-group <?php if (form_error('txt_anio_egreso') != ""){echo "has-error";} ?>">
+																				<div class="col-md-4"> <!-- Año egreso -->
+																					<div id="anio_egreso">
+																						<div class="form-group <?php if (form_error('txt_anio_egreso') != ""){echo "has-error";} ?>">
+																							
 																						
-																					
-                                                                                        <label class="control-label">Año de egreso <span class="required" aria-required="true"> * </span></label>
-                                                                                        <input type="text" name="txt_anio_egreso" id="txt_anio_egreso" class="form-control" placeholder="" value="<?php echo $anio_egreso; ?>">
-                                                                                        <?php
+																							<label class="control-label">Año de egreso <span class="required" aria-required="true"> * </span></label>
+																							<input type="text" name="txt_anio_egreso" id="txt_anio_egreso" class="form-control" placeholder="" value="<?php echo $anio_egreso; ?>">
+                                                                                    </div>    
+																						<?php
                                                                                         if (form_error('txt_anio_egreso') != NULL){
                                                                                         ?>
                                                                                         <span class="help-block"> <?php echo form_error('txt_anio_egreso'); ?> </span>
@@ -449,38 +452,74 @@
 																																																												
 																				<!--/span-->
                                                                                 <div class="col-md-4"> <!-- Becas -->
-                                                                                    <div class="form-group <?php if (form_error('sel_becas') != ""){echo "has-error";} ?>">
+                                                                                    <div class="form-multi-select <?php if (form_error('sel_becas') != ""){echo "has-error";} ?>">
 																					
                                                                                         
 																						<div id="grupo_becas">
 																							<label class="control-label">De estar estudiando, ¿tiene alguna de estas becas? <span class="required" aria-required="true"> * </span></label>
 																								<br/><br/>
-																						
-																							<?php
+<!--
+																						<?php
 																							
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '1', 'checked' => ('1' == $becas) ? TRUE : FALSE, 'id' => 'becas1'))." Beca indígena <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '2', 'checked' => ('2' == $becas) ? TRUE : FALSE, 'id' => 'becas2'))." Programa de Residencia Familiar <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '3', 'checked' => ('3' == $becas) ? TRUE : FALSE, 'id' => 'becas3'))." Beca Mejores Puntajes PSU <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '4', 'checked' => ('4' == $becas) ? TRUE : FALSE, 'id' => 'becas4'))." Beca excelencia académica <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '5', 'checked' => ('5' == $becas) ? TRUE : FALSE, 'id' => 'becas5'))." Beca Nuevo Milenio <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '6', 'checked' => ('6' == $becas) ? TRUE : FALSE, 'id' => 'becas6'))." Beca Nuevo Milenio cursos superiores <br/>";																						
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '7', 'checked' => ('7' == $becas) ? TRUE : FALSE, 'id' => 'becas7'))." Beca Juan Gómez Millas <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '8', 'checked' => ('8' == $becas) ? TRUE : FALSE, 'id' => 'becas8'))." Beca Juan Gómez Millas cursos superiores <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '9', 'checked' => ('9' == $becas) ? TRUE : FALSE, 'id' => 'becas9'))." Beca para Hijos Profesionales de la Educación <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '10', 'checked' => ('10' == $becas) ? TRUE : FALSE, 'id' => 'becas10'))." Beca de excelencia técnica <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '11', 'checked' => ('11' == $becas) ? TRUE : FALSE, 'id' => 'becas11'))." Beca de Articulación <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '12', 'checked' => ('12' == $becas) ? TRUE : FALSE, 'id' => 'becas12'))." Crédito con garantía estatal <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '13', 'checked' => ('13' == $becas) ? TRUE : FALSE, 'id' => 'becas13'))." Beca Mantención Educación Superior <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '14', 'checked' => ('14' == $becas) ? TRUE : FALSE, 'id' => 'becas14'))." Beca Indígena Educación Superior <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '15', 'checked' => ('15' == $becas) ? TRUE : FALSE, 'id' => 'becas15'))." Beca de Residencia Familiar Estudiantil <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '16', 'checked' => ('16' == $becas) ? TRUE : FALSE, 'id' => 'becas16'))." Beca Bicentenario <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '17', 'checked' => ('17' == $becas) ? TRUE : FALSE, 'id' => 'becas17'))." Beca Bicentenario cursos superiores <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '18', 'checked' => ('18' == $becas) ? TRUE : FALSE, 'id' => 'becas18'))." Fondo Solidario de Crédito Universitario <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '19', 'checked' => ('19' == $becas) ? TRUE : FALSE, 'id' => 'becas19'))." Beca Interna de la Institución <br/>";
-																							echo form_radio(array('name' => 'sel_becas', 'value' => '20', 'checked' => ('20' == $becas) ? TRUE : FALSE, 'id' => 'becas20'))." Gratuidad en la Educación <br/>";																
-
-																							?>                                                                 
-                                                 
+																							$becas = array(
+																							  'Beca indígena'  									=> 'Beca indígena/',
+																							  'Programa de Residencia Familiar'    				=> 'Programa de Residencia Familiar/',
+																							  'Beca Mejores Puntajes PSU'  						=> 'Beca Mejores Puntajes PSU/',
+																							  'Beca excelencia académica'					    => 'Beca excelencia académica/',
+																							  'Beca Nuevo Milenio ' 							=> 'Beca Nuevo Milenio/',
+																							  'Beca Nuevo Milenio cursos superiores'			=>'Beca Nuevo Milenio cursos superiores/'	,
+																							  'Beca Juan Gómez Millas'						    =>'Beca Juan Gómez Millas/'						    	,
+																							  'Beca Juan Gómez Millas cursos superiores' 		=>'Beca Juan Gómez Millas cursos superiores/' 			,
+																							  'Beca para Hijos Profesionales de la Educación'	=>'Beca para Hijos Profesionales de la Educación/'		, 																	
+																							  'Beca de excelencia técnica'						=>'Beca de excelencia técnica/'							,
+																							  'Beca de Articulación'							=>'Beca de Articulación/'								,
+																							  'Crédito con garantía estatal'					=>'Crédito con garantía estatal/'						,
+																							  'Beca Mantención Educación Superior'				=>'Beca Mantención Educación Superior/'					,
+																							  'Beca Indígena Educación Superior'				=>'Beca Indígena Educación Superior/'					,
+																							  'Beca de Residencia Familiar Estudiantil'			=>'Beca de Residencia Familiar Estudiantil/'				,
+																							  'Beca Bicentenario'								=>'Beca Bicentenario/'									,
+																							  'Beca Bicentenario cursos superiores'				=>'Beca Bicentenario cursos superiores/'					,
+																							  'Fondo Solidario de Crédito Universitario'		=>'Fondo Solidario de Crédito Universitario/'			,
+																							  'Beca Interna de la Institución '					=>'Beca Interna de la Institución/'						,
+																							  'Gratuidad en la Educación'                   	=>'Gratuidad en la Educación/'                   	
+																							);
+																						?>
+																						
+																						-->
+																						<?php
+																							
+																							$becas = array(
+																							  "Beca indígena",
+																							  "Programa de Residencia Familiar",
+																							  "Beca Mejores Puntajes PSU",
+																							  "Beca excelencia académica",
+																							  "Beca Nuevo Milenio",
+																							  "Beca Nuevo Milenio cursos superiores",
+																							  "Beca Juan Gómez Millas",
+																							  "Beca Juan Gómez Millas cursos superiores",
+																							  "Beca para Hijos Profesionales de la Educación",
+																							  "Beca de excelencia técnica",
+																							  "Beca de Articulación",
+																							  "Crédito con garantía estatal",
+																							  "Beca Mantención Educación Superior",
+																							  "Beca Indígena Educación Superior",
+																							  "Beca de Residencia Familiar Estudiantil",
+																							  "Beca Bicentenario",
+																							  "Beca Bicentenario cursos superiores",
+																							  "Fondo Solidario de Crédito Universitario",
+																							  "Beca Interna de la Institución",
+																							  "Gratuidad en la Educación"
+																							);
+																							
+																							for($i=0;$i< count($becas); $i++){
+																								echo "<input type='checkbox' name='sel_becas[]' value='".$becas[$i]."' />".$becas[$i]."<br>";
+																							}
+																							
+																						?>																					
+																						
+																					
+																						                                                           
+																						
 																						</div>
                                                                                         <?php
 

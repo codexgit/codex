@@ -419,16 +419,29 @@ class Encuesta extends CI_Controller {
 				$ult_curso = $this->input->post('sel_ult_curso');
 				$anio_egreso = $this->input->post('txt_anio_egreso');
 				$estudiando = $this->input->post('sel_estudiando');
-				$becas = $this->input->post('sel_becas');		
+				 
+				$sel_becas=$_POST["sel_becas"];
+				$count = count($sel_becas);
+				$becas ="";
+				echo $count;
+				for ($i = 0; $i < $count; $i++) {
+					$becas= $becas.$sel_becas[$i]."/";
+					//echo $becas[$i];
+				}
+				
+				
+
+				//$becas = $this->input->post('sel_becas');
+				//$becas = $this->input->	
 				
 					
 				
 				$this->form_validation->set_rules('sel_nivel_esc', 'Nivel de Educación', 'required');
-				$this->form_validation->set_rules('txt_anio_egreso', 'Año de egreso|numeric', 'required');
-				$this->form_validation->set_rules('sel_tipo_est','Tipo de estudios','required');				
-				$this->form_validation->set_rules('sel_ult_curso','Último curso','required');						
+			//	$this->form_validation->set_rules('txt_anio_egreso', 'Año de egreso|numeric', 'required');
+			//	$this->form_validation->set_rules('sel_tipo_est','Tipo de estudios','required');				
+			//	$this->form_validation->set_rules('sel_ult_curso','Último curso','required');						
 				$this->form_validation->set_rules('sel_estudiando','Estudiando','required');
-				$this->form_validation->set_rules('sel_becas','Becas','required');				
+			//	$this->form_validation->set_rules('sel_becas','Becas','required');				
 				
 				
 				$this->form_validation->set_message('required','El campo {field} es requerido');
