@@ -44,8 +44,8 @@ class LoginM extends CI_Controller {
                     }
                     
                     if($row->perfil_id == 1 || $row->perfil_id == 2) {
-                        $data['mensaje'] = "No tiene acceso al sistema";
-                        $data['col'] = 0;
+                        $data['mensaje'] = "No tiene autorizacion para acceder al sistema";
+                        $data['col'] = 0;   //COL: VERIFICAR QUE SE Logro la peticion 0->ERROR; 1-> BIEN
                     } else {
                         $this->session->set_userdata('usrsesion', $sesionusuario);
                         
@@ -53,7 +53,10 @@ class LoginM extends CI_Controller {
                         //$data['mensaje'] = $row->usr_nombre . ", peerfil: " . $row->perfil_id;
                         $mensaje = $row->usr_nombre . ", perfil: " . $row->perfil_id;
                         $data['col'] = 1;
-                        $data['userperfil'] = $row->perfil_id;
+                        $data['usrlogin'] = $row->usr_login;
+                        $data['usrnombre'] = $row->usr_nombre;
+                        $data['usrapellido'] = $row->usr_apellido;
+                        $data['usrid'] = $row->usuario_id;  
                     }
 
 
