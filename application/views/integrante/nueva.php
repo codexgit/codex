@@ -330,11 +330,12 @@
 																		
                                                                         <div class="form-actions right">
                                                                             <!--<button type="button" class="btn default">Volver</button>-->
-                                                                            <a href="<?php echo site_url('integrante/listado/'); ?>" class="btn default" role="button">Volver</a>
+                                                                            <a href="<?php echo site_url('integrante/datos/'.$idfamilia_datos.'/'.$idencuesta); ?>" class="btn default" role="button">Volver</a>
                                                                             <button type="submit" class="btn blue">
                                                                                 <i class="fa fa-check"></i> Siguiente</button>
                                                                         </div>
                                                                         <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
+																		<!--<input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idfamilia_datos; ?>"> -->
                                                                     <?php echo form_close(); ?>
                                                                     <!-- END FORM-->
                                                                 </div>

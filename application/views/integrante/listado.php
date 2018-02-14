@@ -162,13 +162,9 @@
                                                                             </button>
                                                                             <ul class="dropdown-menu pull-left" role="menu">
                                                                                 
-                                                                               <!-- <li>
-                                                                                    <a href="<?php echo site_url('encuesta/trabajador/'); ?>">
-                                                                                        <i class="icon-note"></i> Continuar </a>
-                                                                                </li>
-																				-->
+                                                                               
 																				<li>
-                                                                                    <a href="<?php echo site_url('integrante/nueva/'); ?>">
+                                                                                    <a href="<?php echo site_url('integrante/nueva/'.$idencuesta); ?>">
                                                                                        <i class="icon-user"></i> Editar </a>
                                                                                 </li>
                                                                                 

@@ -91,9 +91,12 @@ class Integrante extends CI_Controller {
 		$this->load->model('encuesta_model');
 		$this->load->model('integrante_model');
 		$this->load->helper('date');
-
+		
+		
 		$sesionusuario = $this->session->userdata('usrsesion');	
 		$id_fam = $this->integrante_model->get_idfamilia_datos_by_id($idencuesta);
+		
+		$data['idfamilia_datos']="";
 		//echo $idfamilia_datos['encuesta_familia_id']."acaaaaaaaaaaaaaaaaa";
 		
 		$data['sesionusuario'] = $sesionusuario;
@@ -104,6 +107,7 @@ class Integrante extends CI_Controller {
 			
 			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+			
 			
 			$verificador = $this->integrante_model->verificar_registro_familia($idencuesta);
 			
@@ -194,20 +198,22 @@ class Integrante extends CI_Controller {
 					if($verificador!=0){
 						$this->integrante_model->actualizar_encuesta_familia($encuesta_familia);
 						//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
-
-						$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+						
+						$data['mensaje'] = "El integrante ha sido modificada exitosamente";
 						$data['divtipo'] = "alert alert-success alert-dismissable";						
 						$idfamilia_datos = $id_fam['encuesta_familia_id'];
-						redirect('integrante/datos/'.$idfamilia_datos,'refresh');
+						$data['idfamilia_datos'] = $idfamilia_datos;
+						redirect('integrante/datos/'.$idencuesta.'/'.$idfamilia_datos,'refresh');
 					}
 					else{
 						$this->integrante_model->crear_encuesta_familia($encuesta_familia);
 						//$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
 						$idfamilia_datos = $id_fam['encuesta_familia_id'];
-						$data['mensaje'] = "La encuesta ha sido creada exitosamente";
+						$data['idfamilia_datos'] = $idfamilia_datos;
+						$data['mensaje'] = "El integrante ha sido creado exitosamente";
 						$data['divtipo'] = "alert alert-success alert-dismissable";			
 						
-						redirect('integrante/datos/'.$idfamilia_datos,'refresh');
+						redirect('integrante/datos/'.$idencuesta.'/'.$idfamilia_datos,'refresh');
 					}
 					
 				}
@@ -236,7 +242,7 @@ class Integrante extends CI_Controller {
 		}	
 	}				
 	
-	public function datos($idfamilia_datos){
+	public function datos($idencuesta,$idfamilia_datos){
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->model('param_model');
@@ -249,11 +255,12 @@ class Integrante extends CI_Controller {
 
 		$data['sesionusuario'] = $sesionusuario;
 		$data['lstregiones'] = $this->param_model->get_regiones();
-		echo $idfamilia_datos."acaaaaaaa";
+		
 		
 		if (isset($idfamilia_datos) && $idfamilia_datos > 0){
 			
 			$data['idfamilia_datos'] = $idfamilia_datos;
+			$data['idencuesta'] = $idencuesta;
 			$data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idfamilia_datos);
 			
 			$verificador = $this->integrante_model->verificar_registro_familia_datos($idfamilia_datos);
@@ -335,7 +342,7 @@ class Integrante extends CI_Controller {
 						$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
 						$data['divtipo'] = "alert alert-success alert-dismissable";						
 						
-						redirect('integrante/salud/'.$idfamilia_datos,'refresh');
+						redirect('integrante/salud/'.$idfamilia_datos.'/'.$idencuesta,'refresh');
 					}
 					else{
 						$this->integrante_model->crear_familia_datos($familia_datos);
@@ -344,7 +351,7 @@ class Integrante extends CI_Controller {
 						$data['mensaje'] = "La encuesta ha sido creada exitosamente";
 						$data['divtipo'] = "alert alert-success alert-dismissable";			
 						
-						redirect('integrante/salud/'.$idfamilia_datos,'refresh');
+						redirect('integrante/salud/'.$idfamilia_datos.'/'.$idencuesta,'refresh');
 					}
 					
 				}
@@ -354,7 +361,7 @@ class Integrante extends CI_Controller {
 				$data['divtipo'] = "alert alert-success alert-dismissable";	
 					
 				$this->load->view('recopilador/header',$data);
-				$this->load->view('integrante/nueva',$data);
+				$this->load->view('integrante/datos',$data);
 				$this->load->view('recopilador/footer',$data);
 			}
 		}
