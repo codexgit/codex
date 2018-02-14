@@ -2,11 +2,11 @@
 
     if (validation_errors() == ""){
        
-		$jefe_familia 			 => "";
-		$ant_indigena 			 => "";
-		$parentesco 			 => "";
-		$padre_profesor 		 => "";	
-		$es_carga				 => "";	
+		$jefe_familia 			 = "";
+		$ant_indigena 			 = "";
+		$parentesco 			 = "";
+		$padre_profesor 		 = "";	
+		$es_carga				 = "";	
 	   	
     }
     else{
@@ -127,7 +127,7 @@
                                                                     <?php
                                                                         $attributes = array('class' => 'horizontal-form');
 																		
-                                                                        echo form_open('integrante/datos/'.$idfamilia_datos, $attributes);
+                                                                        echo form_open('integrante/datos/'.$idencuesta.'/'.$idfamilia_datos, $attributes);
                                                                     ?>
                                                                         <div class="form-body">
                                                                             <div class="row">
@@ -202,8 +202,8 @@
                                                                                         <label class="control-label">¿Es carga familiar del trabajador? <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>
                                                                                         <?php
-                                                                                        echo form_radio(array('name' => 'sel_es_carga, 'value' => '1', 'checked' => ('1' == $es_carga) ? TRUE : FALSE, 'id' => 'es_carga1'));
-
+                                                                                        echo form_radio(array('name' => 'sel_es_carga', 'value' => '1', 'checked' => ('1' == $es_carga) ? TRUE : FALSE, 'id' => 'es_carga1'));
+																						
                                                                                         ?>
 
                                                                                         Sí &nbsp;
@@ -283,7 +283,7 @@
                                                                                         <label class="control-label">¿Su madre o padre trabaja en algún establecimiento educacional, municipal, particular subvencionado o de aadministración delegada? <span class="required" aria-required="true"> * </span></label>
                                                                                         <br/><br/>
                                                                                         <?php
-                                                                                        echo form_radio(array('name' => 'sel_padre_profesor, 'value' => '1', 'checked' => ('1' == $padre_profesor) ? TRUE : FALSE, 'id' => 'padre_profesor1'));
+                                                                                        echo form_radio(array('name' => 'sel_padre_profesor', 'value' => '1', 'checked' => ('1' == $padre_profesor) ? TRUE : FALSE, 'id' => 'padre_profesor1'));
 
                                                                                         ?>
 
