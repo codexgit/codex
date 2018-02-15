@@ -419,6 +419,7 @@
                                                                             <!--/row-->
 
                                                                             <div class="row">
+																				<!--span-->
                                                                                 <div class="col-md-4">
                                                                                     <div class="form-group <?php if (form_error('sel_prevsalud') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Previsión de salud <span class="required" aria-required="true"> * </span></label>
