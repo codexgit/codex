@@ -140,17 +140,8 @@
 <script src="<?php echo base_url(); ?>/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
-        <!--<script>
-            $(document).ready(function()
-            {
-                $('#clickmewow').click(function()
-                {
-                    $('#radio1003').attr('checked', 'checked');
-                });
-            })
-        </script>-->
 
-        <script type="text/javascript">
+<script type="text/javascript">
 		
 	
 			$(".datepicker").datepicker({
@@ -166,6 +157,8 @@
 			$("#grupo_ult_curso5").hide();
 			$("#tipo_est").hide();
 			$("#anio_egreso").hide();
+			
+			
 			
 			
             $(document).ready(function() {
@@ -192,7 +185,14 @@
 					});
 				}); 
 				// HIDE / SHOW Options
+
+				//FAMILIA_DATOS 
+			
+				//Trabajo
+				$("#fam_sit_contrato").hide();
 				
+				
+				$("#fam_grupo_pension").hide();
 				
 				//Estudiando->Becas (Encuesta/Educación)
 				$("#estudiando2").click(function(){
@@ -226,9 +226,7 @@
 					$("#grupo_ult_curso5").hide();
 					$("#tipo_est").show();
 					$("#anio_egreso").show();
-					
-					
-					
+			
 				});
 				
 				//
@@ -372,6 +370,39 @@
 				});
 				
 				
+				
+				//FAMILIA_DATOS ENCUESTA/TRABAJO
+				
+				$("#trabajando1").click(function(){
+					$("#fam_sit_contrato").show();
+					$("#fam_sit_nolaboral").hide();
+					$("#fam_grupo_pension").hide();
+					
+				});
+				
+				$("#trabajando2").click(function(){
+					$("#fam_sit_contrato").hide();
+					$("#fam_sit_nolaboral").show();
+					$("#fam_grupo_pension").show();
+					
+				});
+				$("#sit_nolaboral1").click(function(){
+					$('#fam_grupo_pension1').show();
+					$('#fam_grupo_pension2').hide();
+					$('#fam_grupo_pension3').hide();
+				});
+
+				$("#sit_nolaboral2").click(function(){
+					$('#fam_grupo_pension1').hide();
+					$('#fam_grupo_pension2').show();
+					$('#fam_grupo_pension3').hide();
+				});
+				
+				$("#sit_nolaboral3").click(function(){
+					$("#fam_grupo_pension1").hide();
+					$("#fam_grupo_pension2").hide();
+					$("#fam_grupo_pension3").show();
+				});
         });     
 
 				

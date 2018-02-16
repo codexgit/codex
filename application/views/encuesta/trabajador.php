@@ -249,6 +249,7 @@
                                                                             </div>
                                                                             <!--/row-->                                                       
                                                                             <div class="row">
+																				<!--span-->
                                                                                 <div class="col-md-4">
                                                                                     <div class="form-group <?php if (form_error('txt_fecnacimiento') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Fecha de Nacimiento <span class="required" aria-required="true"> * </span></label>

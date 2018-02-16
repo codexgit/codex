@@ -237,7 +237,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 
-                                                                                
+                                                                                <!-- span-->
                                                                                 <div class="col-md-4"> <!-- Previsión -->
                                                                                     <div class="form-group <?php if (form_error('sel_usa_prevision') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Hace uso de las garantías de atención que ofrece su sistema previsional de salud [FONASA/ISAPRE]?<span class="required" aria-required="true"> * </span></label>

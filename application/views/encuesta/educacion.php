@@ -150,11 +150,13 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <!--/span-->
-                                                                            </div>
+                                                                            </div>																			
                                                                             <!--/row-->
+																			
                                                                             <h4 class="form-section">1.2.- Educacion</h4>
                                                                             <!--/row-->
                                                                             <div class="row">
+																				<!--span-->
                                                                                 <div class="col-md-4"> <!-- Nivel -->
                                                                                     <div class="form-group <?php if (form_error('sel_nivel_esc') != ""){echo "has-error";} ?>">
                                                                                         <label class="control-label">Nivel <span class="required" aria-required="true"> * </span></label>
@@ -459,33 +461,7 @@
 																							<label class="control-label">De estar estudiando, ¿tiene alguna de estas becas? <span class="required" aria-required="true"> * </span></label>
 																								<br/><br/>
 <!--
-																						<?php
-																							
-																							$becas = array(
-																							  'Beca indígena'  									=> 'Beca indígena/',
-																							  'Programa de Residencia Familiar'    				=> 'Programa de Residencia Familiar/',
-																							  'Beca Mejores Puntajes PSU'  						=> 'Beca Mejores Puntajes PSU/',
-																							  'Beca excelencia académica'					    => 'Beca excelencia académica/',
-																							  'Beca Nuevo Milenio ' 							=> 'Beca Nuevo Milenio/',
-																							  'Beca Nuevo Milenio cursos superiores'			=>'Beca Nuevo Milenio cursos superiores/'	,
-																							  'Beca Juan Gómez Millas'						    =>'Beca Juan Gómez Millas/'						    	,
-																							  'Beca Juan Gómez Millas cursos superiores' 		=>'Beca Juan Gómez Millas cursos superiores/' 			,
-																							  'Beca para Hijos Profesionales de la Educación'	=>'Beca para Hijos Profesionales de la Educación/'		, 																	
-																							  'Beca de excelencia técnica'						=>'Beca de excelencia técnica/'							,
-																							  'Beca de Articulación'							=>'Beca de Articulación/'								,
-																							  'Crédito con garantía estatal'					=>'Crédito con garantía estatal/'						,
-																							  'Beca Mantención Educación Superior'				=>'Beca Mantención Educación Superior/'					,
-																							  'Beca Indígena Educación Superior'				=>'Beca Indígena Educación Superior/'					,
-																							  'Beca de Residencia Familiar Estudiantil'			=>'Beca de Residencia Familiar Estudiantil/'				,
-																							  'Beca Bicentenario'								=>'Beca Bicentenario/'									,
-																							  'Beca Bicentenario cursos superiores'				=>'Beca Bicentenario cursos superiores/'					,
-																							  'Fondo Solidario de Crédito Universitario'		=>'Fondo Solidario de Crédito Universitario/'			,
-																							  'Beca Interna de la Institución '					=>'Beca Interna de la Institución/'						,
-																							  'Gratuidad en la Educación'                   	=>'Gratuidad en la Educación/'                   	
-																							);
-																						?>
 																						
-																						-->
 																						<?php
 																							
 																							$becas = array(
@@ -534,9 +510,10 @@
                                                                                 </div>
                                                                                 <!--/span-->
                                                                                     
-                                                                                </div>
+                                                                            </div>
+																			<!-- row-->
                                                                                 
-                                                                            </div>                                                                            
+                                                                        </div>                                                                            
                                                         
 
                                                                                                                                                         
