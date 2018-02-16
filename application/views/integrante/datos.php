@@ -1295,7 +1295,7 @@ if (validation_errors() == "") {
                                             <?php
                                             if (form_error('sel_fin_educsup') != NULL) {
                                                 ?>
-                                                                                                                                                                                                        <span class="help-block"> <?php echo form_error('sel_fin_educsup'); ?> </span>
+                                                                                                                                                                                                            <span class="help-block"> <?php echo form_error('sel_fin_educsup'); ?> </span>
                                                 <?php
                                             }
                                             ?>
@@ -1512,6 +1512,32 @@ if (validation_errors() == "") {
 
                                 <!--span container-->
                                 <div class ="container-fluid"> <!-- Pensiones -->
+                                    
+                                    <!--/span-->
+                                    <div class="col-md-4"> <!-- Booleano Pensiones -->
+                                        <div class="form-group <?php
+                                        if (form_error('sel_rec_pension') != "") {
+                                            echo "has-error";
+                                        }
+                                        ?>">
+                                            <label class="control-label">¿Recibe usted Pensiones o Jubilaciones? <span class="required" aria-required="true"> * </span></label>
+                                            <br/><br/>
+                                            <?php
+                                            echo form_radio(array('name' => 'sel_rec_pension', 'value' => '1', 'checked' => ('1' == $rec_pension) ? TRUE : FALSE, 'id' => 'rec_pension1')) . " Sí <br/>";
+                                            echo form_radio(array('name' => 'sel_rec_pension', 'value' => '2', 'checked' => ('2' == $rec_pension) ? TRUE : FALSE, 'id' => 'rec_pension2')) . " No<br/>";
+                                            ?>                                                                                        
+
+                                            <?php
+                                            if (form_error('sel_rec_pension') != NULL) {
+                                                ?>
+                                                <span class="help-block"> <?php echo form_error('sel_rec_pension'); ?> </span>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    
                                     <h3> Si la respuesta es sí, ¿A cuánto asciende al mes? </h3>
                                     <!--span-->
                                     <div class="col-md-4"> <!-- Pensión Mes 3 -->
@@ -1579,6 +1605,30 @@ if (validation_errors() == "") {
 
                                 <!--span container-->
                                 <div class ="container-fluid"> <!-- Otros (Pensión de Alimentos) -->
+                                    <!--/span-->
+                                    <div class="col-md-4"> <!-- Booleano Pensiones -->
+                                        <div class="form-group <?php
+                                        if (form_error('sel_rec_otros') != "") {
+                                            echo "has-error";
+                                        }
+                                        ?>">
+                                            <label class="control-label">¿Tiene algún otro ingreso económico por concepto de SUF, Pensión de Alimentos o por trabajo independiente? <span class="required" aria-required="true"> * </span></label>
+                                            <br/><br/>
+                                            <?php
+                                            echo form_radio(array('name' => 'sel_rec_otros', 'value' => '1', 'checked' => ('1' == $rec_otros) ? TRUE : FALSE, 'id' => 'rec_otros1')) . " Sí <br/>";
+                                            echo form_radio(array('name' => 'sel_rec_otros', 'value' => '2', 'checked' => ('2' == $rec_otros) ? TRUE : FALSE, 'id' => 'rec_otros2')) . " No<br/>";
+                                            ?>                                                                                        
+
+                                            <?php
+                                            if (form_error('sel_rec_otros') != NULL) {
+                                                ?>
+                                                <span class="help-block"> <?php echo form_error('sel_rec_otros'); ?> </span>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
                                     <h3> Si la respuesta es sí, ¿A cuánto asciende al mes? </h3>
                                     <!--span-->
                                     <div class="col-md-4"> <!-- Ingreso Otro Mes 3 -->
