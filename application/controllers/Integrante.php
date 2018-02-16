@@ -313,18 +313,18 @@ class Integrante extends CI_Controller {
                         $this->integrante_model->actualizar_familia_datos($familia_datos);
                         //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
 
-                        $data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+                        $data['mensaje'] = "El integrante familiar ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
 
-                        redirect('integrante/salud/' . $idfamilia_datos . '/' . $idencuesta, 'refresh');
+                        redirect('integrante/listado/'. $idencuesta, 'refresh');
                     } else {
                         $this->integrante_model->crear_familia_datos($familia_datos);
                         //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
 
-                        $data['mensaje'] = "La encuesta ha sido creada exitosamente";
+                        $data['mensaje'] = "El integrante ha sido agregado con exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
 
-                        redirect('integrante/salud/' . $idfamilia_datos . '/' . $idencuesta, 'refresh');
+                        redirect('integrante/listado/'. $idencuesta, 'refresh');
                     }
                 }
             } else {
