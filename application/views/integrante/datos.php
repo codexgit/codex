@@ -1157,7 +1157,7 @@ if (validation_errors() == "") {
                                             "Crédito con garantía estatal",
                                             "Recursos Propios",
                                             "Gratuidad en la Educación",
-                                            "Otros",
+                                            "Otros"
                                         );
 
                                         for ($i = 0; $i < count($financiamiento); $i++) {
@@ -1170,7 +1170,7 @@ if (validation_errors() == "") {
                                         <?php
                                         if (form_error('sel_fin_educsup') != NULL) {
                                             ?>
-                                                                                                                                                                                                                <span class="help-block"> <?php echo form_error('sel_fin_educsup'); ?> </span>
+                                                                                                                                                                                                                    <span class="help-block"> <?php echo form_error('sel_fin_educsup'); ?> </span>
                                             <?php
                                         }
                                         ?>
