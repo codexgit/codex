@@ -58,19 +58,19 @@ if (validation_errors() == "") {
 
 
                         <div class="row">
-<?php
-if ($mensaje != NULL && $mensaje != "") {
-    ?>
+                            <?php
+                            if ($mensaje != NULL && $mensaje != "") {
+                                ?>
                                 <div class="col-md-12">
                                     <div class="<?php echo $divtipo; ?>">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                <?php echo $mensaje; ?>
+                                        <?php echo $mensaje; ?>
                                     </div>                                                
                                 </div>
 
-                                        <?php
-                                    }
-                                    ?>
+                                <?php
+                            }
+                            ?>
 
 
                             <div class="col-md-12">
@@ -120,11 +120,11 @@ if ($mensaje != NULL && $mensaje != "") {
 
                                         <!-- BEGIN FORM-->
 
-<?php
-$attributes = array('class' => 'horizontal-form');
+                                        <?php
+                                        $attributes = array('class' => 'horizontal-form');
 
-echo form_open('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, $attributes);
-?>
+                                        echo form_open('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, $attributes);
+                                        ?>
                                         <div class="form-body">
                                             <div class="row">
 
@@ -162,20 +162,22 @@ echo form_open('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, $attr
 
                                                 <!--/span-->
                                                 <div class="col-md-4"> <!-- Jefe de Familia -->
-                                                    <div class="form-group <?php if (form_error('sel_jefe_familia') != "") {
-                                            echo "has-error";
-                                        } ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('sel_jefe_familia') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">¿Es Jefe(a) de Familia? <span class="required" aria-required="true"> * </span></label>
                                                         <br/><br/>
-<?php
-echo form_radio(array('name' => 'sel_jefe_familia', 'value' => '1', 'checked' => ('1' == $jefe_familia) ? TRUE : FALSE, 'id' => 'jefe_familia1'));
-?>
+                                                        <?php
+                                                        echo form_radio(array('name' => 'sel_jefe_familia', 'value' => '1', 'checked' => ('1' == $jefe_familia) ? TRUE : FALSE, 'id' => 'jefe_familia1'));
+                                                        ?>
 
                                                         Sí &nbsp;
 
-<?php
-echo form_radio(array('name' => 'sel_jefe_familia', 'value' => '2', 'checked' => ('2' == $jefe_familia) ? TRUE : FALSE, 'id' => 'jefe_familia2'));
-?>
+                                                        <?php
+                                                        echo form_radio(array('name' => 'sel_jefe_familia', 'value' => '2', 'checked' => ('2' == $jefe_familia) ? TRUE : FALSE, 'id' => 'jefe_familia2'));
+                                                        ?>
 
                                                         No 
 
@@ -192,9 +194,11 @@ echo form_radio(array('name' => 'sel_jefe_familia', 'value' => '2', 'checked' =>
 
                                                 <!--/span-->
                                                 <div class="col-md-4"> <!-- Es Carga -->
-                                                    <div class="form-group <?php if (form_error('sel_es_carga') != "") {
+                                                    <div class="form-group <?php
+                                                        if (form_error('sel_es_carga') != "") {
                                                             echo "has-error";
-                                                        } ?>">
+                                                        }
+                                                        ?>">
                                                         <label class="control-label">¿Es carga familiar del trabajador? <span class="required" aria-required="true"> * </span></label>
                                                         <br/><br/>
 <?php
@@ -203,9 +207,9 @@ echo form_radio(array('name' => 'sel_es_carga', 'value' => '1', 'checked' => ('1
 
                                                         Sí &nbsp;
 
-                                                        <?php
-                                                        echo form_radio(array('name' => 'sel_es_carga', 'value' => '2', 'checked' => ('2' == $es_carga) ? TRUE : FALSE, 'id' => 'es_carga2'));
-                                                        ?>
+<?php
+echo form_radio(array('name' => 'sel_es_carga', 'value' => '2', 'checked' => ('2' == $es_carga) ? TRUE : FALSE, 'id' => 'es_carga2'));
+?>
 
                                                         No 
 
@@ -223,61 +227,67 @@ echo form_radio(array('name' => 'sel_es_carga', 'value' => '1', 'checked' => ('1
 
                                                 <!--/span-->
                                                 <div class="col-md-4"> <!-- Parentesco -->
-                                                    <div class="form-group <?php if (form_error('sel_parentesco') != "") {
+                                                    <div class="form-group <?php
+                                                        if (form_error('sel_parentesco') != "") {
                                                             echo "has-error";
-                                                        } ?>">
+                                                        }
+                                                        ?>">
                                                         <label class="control-label">¿Cuál es el Parentesco con el Trabajador? <span class="required" aria-required="true"> * </span></label>
                                                         <br/><br/>
-<?php
-echo form_radio(array('name' => 'sel_parentesco', 'value' => '1', 'checked' => ('1' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco1')) . " No <br/>";
-echo form_radio(array('name' => 'sel_parentesco', 'value' => '2', 'checked' => ('2' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco2')) . " Sí, yo <br/>";
-echo form_radio(array('name' => 'sel_parentesco', 'value' => '3', 'checked' => ('3' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco3')) . " Sí, uno de mis padres <br/>";
-echo form_radio(array('name' => 'sel_parentesco', 'value' => '4', 'checked' => ('4' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco4')) . " Sí, uno de mis abuelos <br/>";
-echo form_radio(array('name' => 'sel_parentesco', 'value' => '5', 'checked' => ('5' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco5')) . " Sí, uno de mis bisabuelos <br/>";
-echo form_radio(array('name' => 'sel_parentesco', 'value' => '6', 'checked' => ('6' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco6')) . " No se <br/>";
+                                                        <?php
+                                                        echo form_radio(array('name' => 'sel_parentesco', 'value' => '1', 'checked' => ('1' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco1')) . " No <br/>";
+                                                        echo form_radio(array('name' => 'sel_parentesco', 'value' => '2', 'checked' => ('2' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco2')) . " Sí, yo <br/>";
+                                                        echo form_radio(array('name' => 'sel_parentesco', 'value' => '3', 'checked' => ('3' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco3')) . " Sí, uno de mis padres <br/>";
+                                                        echo form_radio(array('name' => 'sel_parentesco', 'value' => '4', 'checked' => ('4' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco4')) . " Sí, uno de mis abuelos <br/>";
+                                                        echo form_radio(array('name' => 'sel_parentesco', 'value' => '5', 'checked' => ('5' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco5')) . " Sí, uno de mis bisabuelos <br/>";
+                                                        echo form_radio(array('name' => 'sel_parentesco', 'value' => '6', 'checked' => ('6' == $parentesco) ? TRUE : FALSE, 'id' => 'parentesco6')) . " No se <br/>";
 
 
-if (form_error('sel_parentesco') != NULL) {
-    ?>
+                                                        if (form_error('sel_parentesco') != NULL) {
+                                                            ?>
                                                             <span class="help-block"> <?php echo form_error('sel_parentesco'); ?> </span>
-                                                            <?php
-                                                        }
-                                                        ?>
+    <?php
+}
+?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->
 
                                                 <!--/span-->
                                                 <div class="col-md-4"> <!-- Ascendencia índígena --> 
-                                                    <div class="form-group <?php if (form_error('sel_ant_indigena') != "") {
+                                                    <div class="form-group <?php
+                                                        if (form_error('sel_ant_indigena') != "") {
                                                             echo "has-error";
-                                                        } ?>">
+                                                        }
+                                                        ?>">
                                                         <label class="control-label">¿Usted o sus ascendientes tiene origen indígena? <span class="required" aria-required="true"> * </span></label>
                                                         <br/><br/>
-<?php
-echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '1', 'checked' => ('1' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena1')) . " No <br/>";
-echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '2', 'checked' => ('2' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena2')) . " Sí, yo <br/>";
-echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '3', 'checked' => ('3' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena3')) . " Sí, uno de mis padres <br/>";
-echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '4', 'checked' => ('4' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena4')) . " Sí, uno de mis abuelos <br/>";
-echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '5', 'checked' => ('5' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena5')) . " Sí, uno de mis bisabuelos <br/>";
-echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '6', 'checked' => ('6' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena6')) . " No se <br/>";
+                                                        <?php
+                                                        echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '1', 'checked' => ('1' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena1')) . " No <br/>";
+                                                        echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '2', 'checked' => ('2' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena2')) . " Sí, yo <br/>";
+                                                        echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '3', 'checked' => ('3' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena3')) . " Sí, uno de mis padres <br/>";
+                                                        echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '4', 'checked' => ('4' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena4')) . " Sí, uno de mis abuelos <br/>";
+                                                        echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '5', 'checked' => ('5' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena5')) . " Sí, uno de mis bisabuelos <br/>";
+                                                        echo form_radio(array('name' => 'sel_ant_indigena', 'value' => '6', 'checked' => ('6' == $ant_indigena) ? TRUE : FALSE, 'id' => 'ant_indigena6')) . " No se <br/>";
 
 
-if (form_error('sel_ant_indigena') != NULL) {
-    ?>
+                                                        if (form_error('sel_ant_indigena') != NULL) {
+                                                            ?>
                                                             <span class="help-block"> <?php echo form_error('sel_ant_indigena'); ?> </span>
-                                                            <?php
-                                                        }
-                                                        ?>
+    <?php
+}
+?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->
 
                                                 <!--/span-->
                                                 <div class="col-md-4"> <!-- Padre/Madre trabaja en establecimientos educacionales -->
-                                                    <div class="form-group <?php if (form_error('sel_padre_profesor') != "") {
-                                                            echo "has-error";
-                                                        } ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('sel_padre_profesor') != "") {
+                                                        echo "has-error";
+                                                    }
+?>">
                                                         <label class="control-label">¿Su madre o padre trabaja en algún establecimiento educacional, municipal, particular subvencionado o de aadministración delegada? <span class="required" aria-required="true"> * </span></label>
                                                         <br/><br/>
 <?php
@@ -286,19 +296,19 @@ echo form_radio(array('name' => 'sel_padre_profesor', 'value' => '1', 'checked' 
 
                                                         Sí &nbsp;
 
-<?php
-echo form_radio(array('name' => 'sel_padre_profesor', 'value' => '2', 'checked' => ('2' == $padre_profesor) ? TRUE : FALSE, 'id' => 'padre_profesor2'));
-?>
+                                                        <?php
+                                                        echo form_radio(array('name' => 'sel_padre_profesor', 'value' => '2', 'checked' => ('2' == $padre_profesor) ? TRUE : FALSE, 'id' => 'padre_profesor2'));
+                                                        ?>
 
                                                         No 
 
-                                                        <?php
-                                                        if (form_error('sel_padre_profesor') != NULL) {
-                                                            ?>
+<?php
+if (form_error('sel_padre_profesor') != NULL) {
+    ?>
                                                             <span class="help-block"> <?php echo form_error('sel_padre_profesor'); ?> </span>
-                                                            <?php
-                                                        }
-                                                        ?>
+    <?php
+}
+?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->	
