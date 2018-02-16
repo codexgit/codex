@@ -23,6 +23,7 @@ if (validation_errors() == "") {
     $fam_tipo_est = "";
     $fam_ult_curso = "";
     $fin_estudios = "";
+	
     $rindio_psu = "";
     $anio_psu = "";
     $puntaje_psu = "";
@@ -1156,7 +1157,7 @@ if (validation_errors() == "") {
 													"Crédito con garantía estatal",
 													"Recursos Propios",
 													"Gratuidad en la Educación",
-													"Otros"
+													"Otros",
 												);
 
 												for ($i = 0; $i < count($financiamiento); $i++) {
@@ -1179,8 +1180,11 @@ if (validation_errors() == "") {
 
 												<!-- row-->
 
-											</div>                                                                          
+											</div>   
+											
 
+											
+											
 											<!-- row becas -->
 
 
