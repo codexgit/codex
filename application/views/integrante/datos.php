@@ -2,10 +2,10 @@
 if (validation_errors() == "") {
 
     $jefe_familia = "";
+    $es_carga = "";
     $ant_indigena = "";
     $parentesco = "";
     $padre_profesor = "";
-    $es_carga = "";
 
     $cond_permanente = "";
     $ges = "";
@@ -80,11 +80,11 @@ if (validation_errors() == "") {
     $iliquido_mes1 = set_value('txt_iliquido_mes1');
     $iliquido_mes2 = set_value('txt_iliquido_mes2');
     $iliquido_mes3 = set_value('txt_iliquido_mes3');
-    $rec_pension = set_value('txt_rec_pension');
+    $rec_pension = set_value('sel_rec_pension');
     $pension_mes1 = set_value('txt_pension_mes1');
     $pension_mes2 = set_value('txt_pension_mes2');
     $pension_mes3 = set_value('txt_pension_mes3');
-    $rec_otros = set_value('txt_rec_otros');
+    $rec_otros = set_value('sel_rec_otros');
     $otros_mes1 = set_value('txt_otros_mes1');
     $otros_mes2 = set_value('txt_otros_mes2');
     $otros_mes3 = set_value('txt_otros_mes3');
@@ -153,6 +153,11 @@ if (validation_errors() == "") {
         </div>
     </div>
     <div class="portlet-body">
+        <!-- BEGIN FORM-->
+        <?php
+        $attributes = array('class' => 'horizontal-form');
+        echo form_open('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, $attributes);
+        ?>
         <div class="form-body">
             <div class="row">
 
@@ -352,7 +357,7 @@ if (validation_errors() == "") {
                                     echo "has-error";
                                 }
                                 ?>">
-                                    <label class="control-label">¿Su madre o padre trabaja en algún establecimiento educacional, municipal, particular subvencionado o de aadministración delegada? <span class="required" aria-required="true"> * </span></label>
+                                    <label class="control-label">¿Su madre o padre trabaja en algún establecimiento educacional, municipal, particular subvencionado o de administración delegada? <span class="required" aria-required="true"> * </span></label>
                                     <br/><br/>
                                     <?php
                                     echo form_radio(array('name' => 'sel_padre_profesor', 'value' => '1', 'checked' => ('1' == $padre_profesor) ? TRUE : FALSE, 'id' => 'padre_profesor1'));
@@ -879,7 +884,7 @@ if (validation_errors() == "") {
                                 }
                                 ?>">
 
-                                    <div id="grupo_ult_curso1"> <!-- 1 - 7 -->
+                                    <div id="grupo_fam_ult_curso1"> <!-- 1 - 7 -->
                                         <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
@@ -926,7 +931,7 @@ if (validation_errors() == "") {
                                     </div>	
 
 
-                                    <div id="grupo_ult_curso2"> <!-- 1 - 4 -->
+                                    <div id="grupo_fam_ult_curso2"> <!-- 1 - 4 -->
 
                                         <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
@@ -955,7 +960,7 @@ if (validation_errors() == "") {
 
                                     </div>	
 
-                                    <div id="grupo_ult_curso3"> <!-- 1 - 3 -->
+                                    <div id="grupo_fam_ult_curso3"> <!-- 1 - 3 -->
                                         <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
@@ -981,7 +986,7 @@ if (validation_errors() == "") {
 
                                     </div>	
 
-                                    <div id="grupo_ult_curso4"> <!-- 1 - 2 -->
+                                    <div id="grupo_fam_ult_curso4"> <!-- 1 - 2 -->
                                         <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
@@ -999,7 +1004,7 @@ if (validation_errors() == "") {
 
                                     </div>	
 
-                                    <div id="grupo_ult_curso5"> <!-- 1  -->
+                                    <div id="grupo_fam_ult_curso5"> <!-- 1  -->
                                         <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
@@ -1075,7 +1080,7 @@ if (validation_errors() == "") {
                                 }
                                 ?>">
                                     <label class="control-label">¿En qué año?<span class="required" aria-required="true"> * </span></label>
-                                    <input type="text" name="v" id="txt_anio_psu" class="form-control" placeholder="" value="<?php echo $anio_psu; ?>">
+                                    <input type="text" name="txt_anio_psu" id="txt_anio_psu" class="form-control" placeholder="" value="<?php echo $anio_psu; ?>">
                                     <?php
                                     if (form_error('txt_anio_psu') != NULL) {
                                         ?>
@@ -1148,7 +1153,7 @@ if (validation_errors() == "") {
                                     <div id= "grupo_financiamiento">
                                         <label class="control-label">Si actualmente está estudiando Educación Superior, ¿Cómo financia su carrera? <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
-                                        <!--
+                                        <!-->
                                                                                                                                                                                                         
                                         <?php
                                         $financiamiento = array(
@@ -1170,7 +1175,7 @@ if (validation_errors() == "") {
                                         <?php
                                         if (form_error('sel_fin_educsup') != NULL) {
                                             ?>
-                                                                                                                                                                                                                    <span class="help-block"> <?php echo form_error('sel_fin_educsup'); ?> </span>
+                                                                                                                                                                                                                                <span class="help-block"> <?php echo form_error('sel_fin_educsup'); ?> </span>
                                             <?php
                                         }
                                         ?>
@@ -1358,9 +1363,16 @@ if (validation_errors() == "") {
                                         <label class="control-label">¿Recibe usted Pensiones o Jubilaciones? <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
-                                        echo form_radio(array('name' => 'sel_rec_pension', 'value' => '1', 'checked' => ('1' == $rec_pension) ? TRUE : FALSE, 'id' => 'rec_pension1')) . " Sí <br/>";
-                                        echo form_radio(array('name' => 'sel_rec_pension', 'value' => '2', 'checked' => ('2' == $rec_pension) ? TRUE : FALSE, 'id' => 'rec_pension2')) . " No<br/>";
-                                        ?>                                                                                        
+                                        echo form_radio(array('name' => 'sel_rec_pension', 'value' => '1', 'checked' => ('1' == $rec_pension) ? TRUE : FALSE, 'id' => 'rec_pension1'));
+                                        ?>
+
+                                        Sí &nbsp;
+
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_rec_pension', 'value' => '2', 'checked' => ('2' == $rec_pension) ? TRUE : FALSE, 'id' => 'rec_pension2'));
+                                        ?>
+
+                                        NO &nbsp; 
 
                                         <?php
                                         if (form_error('sel_rec_pension') != NULL) {
@@ -1450,9 +1462,17 @@ if (validation_errors() == "") {
                                         <label class="control-label">¿Tiene algún otro ingreso económico por concepto de SUF, Pensión de Alimentos o por trabajo independiente? <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
-                                        echo form_radio(array('name' => 'sel_rec_otros', 'value' => '1', 'checked' => ('1' == $rec_otros) ? TRUE : FALSE, 'id' => 'rec_otros1')) . " Sí <br/>";
-                                        echo form_radio(array('name' => 'sel_rec_otros', 'value' => '2', 'checked' => ('2' == $rec_otros) ? TRUE : FALSE, 'id' => 'rec_otros2')) . " No<br/>";
-                                        ?>                                                                                        
+                                        echo form_radio(array('name' => 'sel_rec_otros', 'value' => '1', 'checked' => ('1' == $rec_otros) ? TRUE : FALSE, 'id' => 'rec_otros1'));
+                                        ?>
+
+                                        Sí &nbsp;
+
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_rec_otros', 'value' => '2', 'checked' => ('2' == $rec_otros) ? TRUE : FALSE, 'id' => 'rec_otros2'));
+                                        ?>
+
+                                        NO &nbsp; 
+
 
                                         <?php
                                         if (form_error('sel_rec_otros') != NULL) {
@@ -1553,6 +1573,7 @@ if (validation_errors() == "") {
                     <i class="fa fa-check"></i> Siguiente</button>
             </div>
             <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
+            <!--<input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idfamilia_datos; ?>"> -->
             <?php echo form_close(); ?>
         </div>	
     </div>

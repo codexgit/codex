@@ -449,7 +449,7 @@ if (validation_errors() == "") {
                                                         <div id="grupo_becas">
                                                             <label class="control-label">De estar estudiando, ¿tiene alguna de estas becas? <span class="required" aria-required="true"> * </span></label>
                                                             <br/><br/>
-                                                            <!--
+                                                            <!-->
                                                                                                                                                                                                         
                                                             <?php
                                                             $becas = array(

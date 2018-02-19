@@ -221,7 +221,7 @@ class Integrante extends CI_Controller {
         }
     }
 
-    public function datos($idencuesta, $idfamilia_datos) {
+    public function datos($idencuesta, $idfamilia_datos ) {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('param_model');
@@ -255,7 +255,40 @@ class Integrante extends CI_Controller {
                     'fam_ant_indigena' => "",
                     'fam_parentesco' => "",
                     'fam_es_carga' => "",
-                    'fam_padre_profesor' => ""
+                    'fam_padre_profesor' => "",
+                    'fam_cond_perm' => "",
+                    'fam_ges' => "",
+                    'fam_usa_prevsalud' => "",
+                    'fam_trabajando' => "",
+                    'fam_sit_contrato' => "",
+                    'fam_sit_nolaboral' => "",
+                    'fam_det_pension' => "",
+                    'fam_meses_cesante' => "",
+                    'fam_inicio_activ' => "",
+                    'fam_matriculado' => "",
+                    'fam_nivel_educ' => "",
+                    'fam_tipo_est' => "",
+                    'fam_ult_curso' => "",
+                    'fam_fin_estudios' => "",
+                    'fam_rindio_psu' => "",
+                    'fam_anio_psu' => "",
+                    'fam_puntaje_psu' => "",
+                    'fam_ult_promedio' => "",
+                    'fam_fin_educsup' => "",
+                    'fam_ibruto_mes1' => "",
+                    'fam_ibruto_mes2' => "",
+                    'fam_ibruto_mes3' => "",
+                    'fam_iliquido_mes1' => "",
+                    'fam_iliquido_mes2' => "",
+                    'fam_iliquido_mes3' => "",
+                    'fam_rec_pension' => "",
+                    'fam_pension_mes1' => "",
+                    'fam_pension_mes2' => "",
+                    'fam_pension_mes3' => "",
+                    'fam_rec_otros' => "",
+                    'fam_otros_mes1' => "",
+                    'fam_otros_mes2' => "",
+                    'fam_otros_mes3' => ""
                 );
             }
 
@@ -271,6 +304,60 @@ class Integrante extends CI_Controller {
                 $padre_profesor = $this->input->post('sel_padre_profesor');
                 $parentesco = $this->input->post('sel_parentesco');
                 $es_carga = $this->input->post('sel_es_carga');
+
+                $cond_permanente = $this->input->post('txt_cond_permanente');
+                $ges = $this->input->post('txt_ges');
+                $usa_prevsalud = $this->input->post('sel_usa_prevsalud');
+
+                $trabajando = $this->input->post('sel_trabajando');
+                $sit_contrato = $this->input->post('sel_sit_contrato');
+                $sit_nolaboral = $this->input->post('sel_sit_nolaboral');
+                $sel_pension=$_POST["sel_pension"];
+				$count = count($sel_pension);
+				$det_pension ="";
+				echo $count;
+				for ($i = 0; $i < $count; $i++) {
+					$det_pension= $det_pension.$sel_pension[$i]."/";					
+				}
+                
+                
+                $meses_cesante = $this->input->post('txt_meses_cesante');
+                $inicio_activ = $this->input->post('sel_inicio_activ');
+
+                $matriculado = $this->input->post('sel_matriculado');
+                $nivel_educ = $this->input->post('sel_nivel_educ');
+                $fam_tipo_est = $this->input->post('sel_fam_tipo_est');
+                $fam_ult_curso = $this->input->post('sel_fam_ult_curso');
+                $fin_estudios = $this->input->post('txt_fin_estudios');
+                $rindio_psu = $this->input->post('txt_rindio_psu');
+                $anio_psu = $this->input->post('txt_anio_psu');
+                $puntaje_psu = $this->input->post('txt_puntaje_psu');
+                $ult_promedio = $this->input->post('txt_ult_promedio');
+                
+                $sel_fin_educsup=$_POST["sel_fin_educsup"];
+				$count = count($sel_fin_educsup);
+				$fin_educsup ="";
+				echo $count;
+				for ($i = 0; $i < $count; $i++) {
+					$fin_educsup= $fin_educsup.$sel_fin_educsup[$i]."/";					
+				}
+               
+
+
+                $ibruto_mes1 = $this->input->post('txt_ibruto_mes1');
+                $ibruto_mes2 = $this->input->post('txt_ibruto_mes2');
+                $ibruto_mes3 = $this->input->post('txt_ibruto_mes3');
+                $iliquido_mes1 = $this->input->post('txt_iliquido_mes1');
+                $iliquido_mes2 = $this->input->post('txt_iliquido_mes2');
+                $iliquido_mes3 = $this->input->post('txt_iliquido_mes3');
+                $rec_pension = $this->input->post('sel_rec_pension');
+                $pension_mes1 = $this->input->post('txt_pension_mes1');
+                $pension_mes2 = $this->input->post('txt_pension_mes2');
+                $pension_mes3 = $this->input->post('txt_pension_mes3');
+                $rec_otros = $this->input->post('sel_rec_otros');
+                $otros_mes1 = $this->input->post('txt_otros_mes1');
+                $otros_mes2 = $this->input->post('txt_otros_mes2');
+                $otros_mes3 = $this->input->post('txt_otros_mes3');
 
 
 
@@ -305,8 +392,44 @@ class Integrante extends CI_Controller {
                         'fam_ant_indigena' => $ant_indigena,
                         'fam_parentesco' => $parentesco,
                         'fam_es_carga' => $es_carga,
-                        'fam_padre_profesor' => $padre_profesor
+                        'fam_padre_profesor' => $padre_profesor,
+                        'fam_cond_perm' => $cond_permanente,
+                        'fam_ges' => $ges,
+                        'fam_usa_prevsalud' => $usa_prevsalud,
+                        'fam_trabajando' => $trabajando,
+                        'fam_sit_contrato' => $sit_contrato,
+                        'fam_sit_nolaboral' => $sit_nolaboral,
+                        'fam_det_pension' => $det_pension,
+                        'fam_meses_cesante' => $meses_cesante,
+                        'fam_inicio_activ' => $inicio_activ,
+                        'fam_matriculado' => $matriculado,
+                        'fam_nivel_educ' => $nivel_educ,
+                        'fam_tipo_est' => $fam_tipo_est,
+                        'fam_ult_curso' => $fam_ult_curso,
+                        'fam_fin_estudios' => $fin_estudios,
+                        'fam_rindio_psu' => $rindio_psu,
+                        'fam_anio_psu' => $anio_psu,
+                        'fam_puntaje_psu' => $puntaje_psu,
+                        'fam_ult_promedio' => $ult_promedio,                       
+                        
+                        
+                        'fam_fin_educsup' => $fin_educsup,
+                        'fam_ibruto_mes1' => $ibruto_mes1,
+                        'fam_ibruto_mes2' => $ibruto_mes2,
+                        'fam_ibruto_mes3' => $ibruto_mes3,
+                        'fam_iliquido_mes1' => $iliquido_mes1,
+                        'fam_iliquido_mes2' => $iliquido_mes2,
+                        'fam_iliquido_mes3' => $iliquido_mes3,
+                        'fam_rec_pension' => $rec_pension,
+                        'fam_pension_mes1' => $pension_mes1,
+                        'fam_pension_mes2' => $pension_mes2,
+                        'fam_pension_mes3' => $pension_mes3,
+                        'fam_rec_otros' => $rec_otros,
+                        'fam_otros_mes1' => $otros_mes1,
+                        'fam_otros_mes2' => $otros_mes2,
+                        'fam_otros_mes3' => $otros_mes3
                     );
+
 
 
                     if ($verificador != 0) {
@@ -316,7 +439,7 @@ class Integrante extends CI_Controller {
                         $data['mensaje'] = "El integrante familiar ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
 
-                        redirect('integrante/listado/'. $idencuesta, 'refresh');
+                        redirect('integrante/listado/' . $idencuesta, 'refresh');
                     } else {
                         $this->integrante_model->crear_familia_datos($familia_datos);
                         //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
@@ -324,7 +447,7 @@ class Integrante extends CI_Controller {
                         $data['mensaje'] = "El integrante ha sido agregado con exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
 
-                        redirect('integrante/listado/'. $idencuesta, 'refresh');
+                        redirect('integrante/listado/' . $idencuesta, 'refresh');
                     }
                 }
             } else {
