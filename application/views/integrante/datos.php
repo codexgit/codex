@@ -789,15 +789,15 @@ if (validation_errors() == "") {
                                     <br/><br/>
                                     <?php
                                     echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '1', 'checked' => ('1' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ1')) . " Educación Parvularia <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '4', 'checked' => ('4' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ2')) . " Educación Básica <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '5', 'checked' => ('5' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ3')) . " Educación Media(Científico Humanista) <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '6', 'checked' => ('6' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ4')) . " Educación Media Técnico Profesional <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '7', 'checked' => ('7' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ5')) . " Educación Especial - Diferencial <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '8', 'checked' => ('8' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ6')) . " Centro de formación Técnica <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '9', 'checked' => ('9' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ7')) . " Instituto Profesional <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '10', 'checked' => ('10' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ8')) . " Universitaria <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '11', 'checked' => ('11' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ9')) . " Post Grado <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '12', 'checked' => ('12' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ10')) . " Especialidades Fuerzas Armadas <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '2', 'checked' => ('2' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ2')) . " Educación Básica <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '3', 'checked' => ('3' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ3')) . " Educación Media(Científico Humanista) <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '4', 'checked' => ('4' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ4')) . " Educación Media Técnico Profesional <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '5', 'checked' => ('5' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ5')) . " Educación Especial - Diferencial <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '6', 'checked' => ('6' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ6')) . " Centro de formación Técnica <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '7', 'checked' => ('7' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ7')) . " Instituto Profesional <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '8', 'checked' => ('8' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ8')) . " Universitaria <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '9', 'checked' => ('9' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ9')) . " Post Grado <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '10', 'checked' => ('10' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ10')) . " Especialidades Fuerzas Armadas <br/>";
                                     ?>
 
 

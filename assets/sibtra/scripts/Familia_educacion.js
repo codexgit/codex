@@ -112,8 +112,8 @@ $(document).ready(function () {
         $("#grupo_fam_ult_curso5").hide();
         $("#grupo_fam_ult_curso6").hide();
         $("#grupo_fam_tipo_est1").hide();
-        $("#grupo_fam_tipo_est2").hide();
-        $("#grupo_fam_tipo_est3").show();
+        $("#grupo_fam_tipo_est2").show();
+        $("#grupo_fam_tipo_est3").hide();
     });
     
     //IP
@@ -128,8 +128,8 @@ $(document).ready(function () {
         $("#grupo_fam_ult_curso5").hide();
         $("#grupo_fam_ult_curso6").hide();
         $("#grupo_fam_tipo_est1").hide();
-        $("#grupo_fam_tipo_est2").hide();
-        $("#grupo_fam_tipo_est3").show();
+        $("#grupo_fam_tipo_est2").show();
+        $("#grupo_fam_tipo_est3").hide();
     });
     
     //Universidad
@@ -144,8 +144,8 @@ $(document).ready(function () {
         $("#grupo_fam_ult_curso5").hide();
         $("#grupo_fam_ult_curso6").hide();
         $("#grupo_fam_tipo_est1").hide();
-        $("#grupo_fam_tipo_est2").show();
-        $("#grupo_fam_tipo_est3").hide();
+        $("#grupo_fam_tipo_est2").hide();
+        $("#grupo_fam_tipo_est3").show();
     });
     
     //Post Grado
@@ -160,8 +160,8 @@ $(document).ready(function () {
         $("#grupo_fam_ult_curso5").show();
         $("#grupo_fam_ult_curso6").hide();
         $("#grupo_fam_tipo_est1").hide();
-        $("#grupo_fam_tipo_est2").hide();
-        $("#grupo_fam_tipo_est3").show();
+        $("#grupo_fam_tipo_est2").show();
+        $("#grupo_fam_tipo_est3").hide();
     });
     
     //Especial FA
@@ -177,6 +177,6 @@ $(document).ready(function () {
         $("#grupo_fam_ult_curso6").hide();
         $("#grupo_fam_tipo_est1").hide();
         $("#grupo_fam_tipo_est2").hide();
-        $("#grupo_fam_tipo_est3").show();
+        $("#grupo_fam_tipo_est3").hide();
     });
 });
