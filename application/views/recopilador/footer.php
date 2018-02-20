@@ -143,115 +143,59 @@
 
 <!-- Funciones Encuesta JSS -->
 <script src="<?php echo base_url(); ?>/assets/sibtra/scripts/Encuesta_educacion.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>/assets/sibtra/scripts/Encuesta_vivienda.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>/assets/sibtra/scripts/Encuesta_salud.js" type="text/javascript"></script>
 
+
+<!--Funciones Encuesta Familia_Datos JSS -->
+<script src="<?php echo base_url(); ?>/assets/sibtra/scripts/Familia_trabajo.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>/assets/sibtra/scripts/Familia_educacion.js" type="text/javascript"></script>
 <script type="text/javascript">
-		
-	
-			$(".datepicker").datepicker({
-				format: 'dd-mm-yyyy',
-				language: 'es'
-			});	
-		
-			
-            $(document).ready(function() {
-            // Region change
-				$('#sel_region').change(function(){
-					var region = $(this).val();
 
-				  // AJAX request
-					$.ajax({
-						url:'<?php echo base_url(); ?>/encuesta/getComunas',
-						method: 'post',
-						data: {region: region},
-						dataType: 'json',
-						success: function(response){
 
-						// Remove options 
-						$('#sel_comuna').find('option').not(':first').remove();
+    $(".datepicker").datepicker({
+        format: 'dd-mm-yyyy',
+        language: 'es'
+    });
 
-						// Add options
-							$.each(response,function(index,data){
-								$('#sel_comuna').append('<option value="'+data['comuna_id']+'">'+data['nombre_comuna']+'</option>');
-							});
-						}
-					});
-				}); 
-				// HIDE / SHOW Options
 
-				//FAMILIA_DATOS 
-			
-				//Trabajo
-				$("#fam_sit_contrato").hide();
-				
-				
-				$("#fam_grupo_pension").hide();				
-					
-				
-				// Edad menor (si es que hay) (Encuesta/Salud)
-				$("#cons_drogas2").click(function(){
-					$("#edad_persona").hide();
-					
-				});
+    $(document).ready(function () {
+        // Region change
+        $('#sel_region').change(function () {
+            var region = $(this).val();
 
-				$("#cons_drogas1").click(function(){
-					$("#edad_persona").show();
-				});
-				
-				//Libreta (Encuesta/Vivienda)
-				$("#libreta2").click(function(){
-					$("#libreta_anio").hide();
-					$("#monto_ahorro").hide();
-					
-				});
+            // AJAX request
+            $.ajax({
+                url: '<?php echo base_url(); ?>/encuesta/getComunas',
+                method: 'post',
+                data: {region: region},
+                dataType: 'json',
+                success: function (response) {
 
-				$("#libreta1").click(function(){
-					$("#libreta_anio").show();
-					$("#monto_ahorro").show();
-				});
-				
-				
-				
-				//FAMILIA_DATOS ENCUESTA/TRABAJO
-				
-				$("#trabajando1").click(function(){
-					$("#fam_sit_contrato").show();
-					$("#fam_sit_nolaboral").hide();
-					$("#fam_grupo_pension").hide();
-					
-				});
-				
-				$("#trabajando2").click(function(){
-					$("#fam_sit_contrato").hide();
-					$("#fam_sit_nolaboral").show();
-					$("#fam_grupo_pension").show();
-					
-				});
-				$("#sit_nolaboral1").click(function(){
-					$('#fam_grupo_pension1').show();
-					$('#fam_grupo_pension2').hide();
-					$('#fam_grupo_pension3').hide();
-				});
+                    // Remove options 
+                    $('#sel_comuna').find('option').not(':first').remove();
 
-				$("#sit_nolaboral2").click(function(){
-					$('#fam_grupo_pension1').hide();
-					$('#fam_grupo_pension2').show();
-					$('#fam_grupo_pension3').hide();
-				});
-				
-				$("#sit_nolaboral3").click(function(){
-					$("#fam_grupo_pension1").hide();
-					$("#fam_grupo_pension2").hide();
-					$("#fam_grupo_pension3").show();
-				});
-        });     
+                    // Add options
+                    $.each(response, function (index, data) {
+                        $('#sel_comuna').append('<option value="' + data['comuna_id'] + '">' + data['nombre_comuna'] + '</option>');
+                    });
+                }
+            });
+        });
+        // HIDE / SHOW Options      
 
-				
-				
-				
-			
-                        
-        </script>
 
-    </body>
+
+       
+    });
+
+
+
+
+
+
+</script>
+
+</body>
 
 </html>

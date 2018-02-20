@@ -221,7 +221,7 @@ class Integrante extends CI_Controller {
         }
     }
 
-    public function datos($idencuesta, $idfamilia_datos ) {
+    public function datos($idencuesta, $idfamilia_datos) {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('param_model');
@@ -312,15 +312,15 @@ class Integrante extends CI_Controller {
                 $trabajando = $this->input->post('sel_trabajando');
                 $sit_contrato = $this->input->post('sel_sit_contrato');
                 $sit_nolaboral = $this->input->post('sel_sit_nolaboral');
-                $sel_pension=$_POST["sel_pension"];
-				$count = count($sel_pension);
-				$det_pension ="";
-				echo $count;
-				for ($i = 0; $i < $count; $i++) {
-					$det_pension= $det_pension.$sel_pension[$i]."/";					
-				}
-                
-                
+                $sel_pension = $this->input->post("sel_pension");
+                $count = count($sel_pension);
+                $det_pension = "";
+                echo $count;
+                for ($i = 0; $i < $count; $i++) {
+                    $det_pension = $det_pension . $sel_pension[$i] . "/";
+                }
+
+
                 $meses_cesante = $this->input->post('txt_meses_cesante');
                 $inicio_activ = $this->input->post('sel_inicio_activ');
 
@@ -333,15 +333,15 @@ class Integrante extends CI_Controller {
                 $anio_psu = $this->input->post('txt_anio_psu');
                 $puntaje_psu = $this->input->post('txt_puntaje_psu');
                 $ult_promedio = $this->input->post('txt_ult_promedio');
-                
-                $sel_fin_educsup=$_POST["sel_fin_educsup"];
-				$count = count($sel_fin_educsup);
-				$fin_educsup ="";
-				echo $count;
-				for ($i = 0; $i < $count; $i++) {
-					$fin_educsup= $fin_educsup.$sel_fin_educsup[$i]."/";					
-				}
-               
+
+                $sel_fin_educsup = $this->input->post("sel_fin_educsup");
+                $count = count($sel_fin_educsup);
+                $fin_educsup = "";
+                echo $count;
+                for ($i = 0; $i < $count; $i++) {
+                    $fin_educsup = $fin_educsup . $sel_fin_educsup[$i] . "/";
+                }
+
 
 
                 $ibruto_mes1 = $this->input->post('txt_ibruto_mes1');
@@ -410,9 +410,7 @@ class Integrante extends CI_Controller {
                         'fam_rindio_psu' => $rindio_psu,
                         'fam_anio_psu' => $anio_psu,
                         'fam_puntaje_psu' => $puntaje_psu,
-                        'fam_ult_promedio' => $ult_promedio,                       
-                        
-                        
+                        'fam_ult_promedio' => $ult_promedio,
                         'fam_fin_educsup' => $fin_educsup,
                         'fam_ibruto_mes1' => $ibruto_mes1,
                         'fam_ibruto_mes2' => $ibruto_mes2,

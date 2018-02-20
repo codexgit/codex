@@ -42,14 +42,12 @@ class Encuesta extends CI_Controller {
 
 
         $sesionusuario = $this->session->userdata('usrsesion');
-        $data['sesionusuario'] = $sesionusuario;
-        echo $idfilempresa."acaaaaaaaaaaaaaaaaaaa";
+        $data['sesionusuario'] = $sesionusuario;        
 
 
         if (isset($idfilempresa) && $idfilempresa > 0) {
 
             $data['idfilempresa'] = $idfilempresa;
-
             $this->load->model('filialempresa_model');
             //$idencuesta = $this->filialempresa_model->get_id_encuesta_by_filialempresa_id($idfilempresa);			
             $data['detfilempresa'] = $this->filialempresa_model->get_filialempresa_by_id($idfilempresa);
@@ -387,7 +385,7 @@ class Encuesta extends CI_Controller {
                 $anio_egreso = $this->input->post('txt_anio_egreso');
                 $estudiando = $this->input->post('sel_estudiando');
 
-                $sel_becas = $_POST["sel_becas"];
+                $sel_becas = $this->input->post("sel_becas");
                 $count = count($sel_becas);
                 $becas = "";
                 echo $count;
@@ -528,9 +526,9 @@ class Encuesta extends CI_Controller {
 
 
 
-                $this->form_validation->set_rules('sel_cont_menores', 'Cantidad de Menores|numeric', 'required');
+                $this->form_validation->set_rules('sel_cont_menores', 'Cantidad de Menores', 'required|numeric');
                 $this->form_validation->set_rules('sel_cons_drogas', 'Problemas de Alcohol/Drogas', 'required');
-                $this->form_validation->set_rules('txt_cons_drogas_d', 'Edad|numeric', 'required');
+                $this->form_validation->set_rules('txt_cons_drogas_d', 'Edad', 'numeric');
                 $this->form_validation->set_rules('txt_pat_ges', 'Patologia GES', 'required');
                 $this->form_validation->set_rules('sel_usa_prevision', 'Previsión', 'required');
                 $this->form_validation->set_rules('txt_cond_permanente', 'Condicion Permanente', 'required');
@@ -676,7 +674,7 @@ class Encuesta extends CI_Controller {
                 $this->form_validation->set_rules('sel_tenencia', 'Tenencia de Vivienda', 'required');
                 $this->form_validation->set_rules('sel_sitio', 'Tenencia de Sitio', 'required');
                 $this->form_validation->set_rules('sel_post_subsidio', 'Postulación Subsidio', 'required');                
-                $this->form_validation->set_rules('txt_monto_ahorro', 'Monto ahorro', 'required|numeric');
+                $this->form_validation->set_rules('txt_monto_ahorro', 'Monto ahorro', 'numeric');
                 $this->form_validation->set_rules('sel_fam_ocupante', 'Principal Ocupante', 'required');
                 $this->form_validation->set_rules('txt_num_personas', 'Numero de personas', 'required|numeric');
                 $this->form_validation->set_rules('txt_dormitorios', 'Cantidad de dormitorios', 'required|numeric');

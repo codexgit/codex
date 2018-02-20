@@ -677,36 +677,38 @@ if (validation_errors() == "") {
                             <!--/span-->
 
                             <!--span-->
-                            <div class="col-md-4"> <!-- Tiempo Cesante en meses -->
-                                <div class="form-group <?php
-                                if (form_error('txt_meses_cesante') != "") {
-                                    echo "has-error";
-                                }
-                                ?>">
-                                    <label class="control-label">Tiempo cesantía en meses <span class="required" aria-required="true"> * </span></label>
-
-
-                                    <input type='text' name="txt_meses_cesante" id="txt_meses_cesante" class="form-control" value=" <?php echo $meses_cesante; ?>" />
-
-
-                                    </span>
-
-
-
-                                    <?php
-                                    if (form_error('txt_meses_cesante') != NULL) {
-                                        ?>
-                                        <span class="help-block"> <?php echo form_error('txt_meses_cesante'); ?> </span>
-                                        <?php
+                            <div class="col-md-4"> <!-- Tiempo Cesantía en meses -->
+                                <div id="meses_cesante">
+                                    <div class="form-group <?php
+                                    if (form_error('txt_meses_cesante') != "") {
+                                        echo "has-error";
                                     }
-                                    ?>
+                                    ?>">
+                                        <label class="control-label">Tiempo cesantía en meses <span class="required" aria-required="true"> * </span></label>
+
+
+                                        <input type='text' name="txt_meses_cesante" id="txt_meses_cesante" class="form-control" value=" <?php echo $meses_cesante; ?>" />
+
+
+                                        </span>
+
+
+
+                                        <?php
+                                        if (form_error('txt_meses_cesante') != NULL) {
+                                            ?>
+                                            <span class="help-block"> <?php echo form_error('txt_meses_cesante'); ?> </span>
+                                            <?php
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                             <!--/span-->
 
                             <!--/span-->
                             <div class="col-md-4"> <!-- Tiene Iniciación de Actividades en el SII -->
-                                <div id="fam_sit_nolaboral">
+                                <div id="fam_inicio_activ">
                                     <div class="form-group <?php
                                     if (form_error('sel_inicio_activ') != "") {
                                         echo "has-error";
@@ -787,17 +789,15 @@ if (validation_errors() == "") {
                                     <br/><br/>
                                     <?php
                                     echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '1', 'checked' => ('1' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ1')) . " Educación Parvularia <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '2', 'checked' => ('2' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ2')) . " Alfabetismo informal <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '3', 'checked' => ('3' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ3')) . " Básica Incompleta <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '4', 'checked' => ('4' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ4')) . " Educación Básica <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '5', 'checked' => ('5' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ5')) . " Educación Media(Científico Humanista) <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '6', 'checked' => ('6' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ6')) . " Educación Media Técnico Profesional <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '7', 'checked' => ('7' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ7')) . " Educación Especial - Diferencial <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '8', 'checked' => ('8' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ8')) . " Centro de formación Técnica <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '9', 'checked' => ('9' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ9')) . " Instituto Profesional <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '10', 'checked' => ('10' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ10')) . " Universitaria <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '11', 'checked' => ('11' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ11')) . " Post Grado <br/>";
-                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '12', 'checked' => ('12' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ12')) . " Especialidades Fuerzas Armadas <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '4', 'checked' => ('4' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ2')) . " Educación Básica <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '5', 'checked' => ('5' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ3')) . " Educación Media(Científico Humanista) <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '6', 'checked' => ('6' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ4')) . " Educación Media Técnico Profesional <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '7', 'checked' => ('7' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ5')) . " Educación Especial - Diferencial <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '8', 'checked' => ('8' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ6')) . " Centro de formación Técnica <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '9', 'checked' => ('9' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ7')) . " Instituto Profesional <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '10', 'checked' => ('10' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ8')) . " Universitaria <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '11', 'checked' => ('11' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ9')) . " Post Grado <br/>";
+                                    echo form_radio(array('name' => 'sel_nivel_educ', 'value' => '12', 'checked' => ('12' == $nivel_educ) ? TRUE : FALSE, 'id' => 'nivel_educ10')) . " Especialidades Fuerzas Armadas <br/>";
                                     ?>
 
 
@@ -818,7 +818,7 @@ if (validation_errors() == "") {
                                     echo "has-error";
                                 }
                                 ?>">
-                                    <div id="fam_tipo_est1">
+                                    <div id="grupo_fam_tipo_est1">
                                         <label class="control-label">Tipo de Establecimiento <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
@@ -846,7 +846,18 @@ if (validation_errors() == "") {
                                         Educación de Adultos &nbsp;
                                     </div>
 
-                                    <div id="fam_tipo_est2">
+                                    <div id="grupo_fam_tipo_est2">
+                                        <label class="control-label">Tipo de Establecimiento <span class="required" aria-required="true"> * </span></label>
+                                        <br/><br/>
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_fam_tipo_est', 'value' => '1', 'checked' => ('1' == $fam_tipo_est) ? TRUE : FALSE, 'id' => 'fam_tipo_est1'));
+                                        ?>
+
+                                        Educación de Adultos &nbsp;                                        
+
+                                    </div>
+
+                                    <div id="grupo_fam_tipo_est3">
                                         <label class="control-label">Tipo de Establecimiento <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
@@ -859,9 +870,7 @@ if (validation_errors() == "") {
                                         echo form_radio(array('name' => 'sel_fam_tipo_est', 'value' => '2', 'checked' => ('2' == $fam_tipo_est) ? TRUE : FALSE, 'id' => 'fam_tipo_est2'));
                                         ?>
 
-                                        Crunch &nbsp; 																							
-
-
+                                        Crunch &nbsp; 	
                                     </div>
 
 
@@ -883,8 +892,58 @@ if (validation_errors() == "") {
                                     echo "has-error";
                                 }
                                 ?>">
+                                    <div id="grupo_fam_ult_curso1"> <!-- 1 - 8 -->
+                                        <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
+                                        <br/><br/>
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_fam_ult_curso', 'value' => '1', 'checked' => ('1' == $fam_ult_curso) ? TRUE : FALSE, 'id' => 'fam_ult_curso1'));
+                                        ?>
 
-                                    <div id="grupo_fam_ult_curso1"> <!-- 1 - 7 -->
+                                        1 &nbsp;
+
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_fam_ult_curso', 'value' => '2', 'checked' => ('2' == $fam_ult_curso) ? TRUE : FALSE, 'id' => 'fam_ult_curso2'));
+                                        ?>
+
+                                        2 &nbsp; 
+
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_fam_ult_curso', 'value' => '3', 'checked' => ('3' == $fam_ult_curso) ? TRUE : FALSE, 'id' => 'fam_ult_curso3'));
+                                        ?>
+
+                                        3 &nbsp;
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_fam_ult_curso', 'value' => '4', 'checked' => ('4' == $fam_ult_curso) ? TRUE : FALSE, 'id' => 'fam_ult_curso4'));
+                                        ?>
+
+                                        4 &nbsp;
+
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_fam_ult_curso', 'value' => '5', 'checked' => ('5' == $fam_ult_curso) ? TRUE : FALSE, 'id' => 'fam_ult_curso5'));
+                                        ?>
+
+                                        5 &nbsp; 
+
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_fam_ult_curso', 'value' => '6', 'checked' => ('6' == $fam_ult_curso) ? TRUE : FALSE, 'id' => 'fam_ult_curso6'));
+                                        ?>
+
+                                        6 &nbsp;
+
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_fam_ult_curso', 'value' => '7', 'checked' => ('7' == $fam_ult_curso) ? TRUE : FALSE, 'id' => 'fam_ult_curso7'));
+                                        ?>
+
+                                        7 &nbsp;
+
+                                        <?php
+                                        echo form_radio(array('name' => 'sel_fam_ult_curso', 'value' => '8', 'checked' => ('8' == $fam_ult_curso) ? TRUE : FALSE, 'id' => 'fam_ult_curso8'));
+                                        ?>
+
+                                        8 &nbsp;
+
+                                    </div>
+                                    <div id="grupo_fam_ult_curso2"> <!-- 1 - 7 -->
                                         <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
@@ -931,7 +990,7 @@ if (validation_errors() == "") {
                                     </div>	
 
 
-                                    <div id="grupo_fam_ult_curso2"> <!-- 1 - 4 -->
+                                    <div id="grupo_fam_ult_curso3"> <!-- 1 - 4 -->
 
                                         <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
@@ -960,7 +1019,7 @@ if (validation_errors() == "") {
 
                                     </div>	
 
-                                    <div id="grupo_fam_ult_curso3"> <!-- 1 - 3 -->
+                                    <div id="grupo_fam_ult_curso4"> <!-- 1 - 3 -->
                                         <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
@@ -986,7 +1045,7 @@ if (validation_errors() == "") {
 
                                     </div>	
 
-                                    <div id="grupo_fam_ult_curso4"> <!-- 1 - 2 -->
+                                    <div id="grupo_fam_ult_curso5"> <!-- 1 - 2 -->
                                         <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
@@ -1004,7 +1063,7 @@ if (validation_errors() == "") {
 
                                     </div>	
 
-                                    <div id="grupo_fam_ult_curso5"> <!-- 1  -->
+                                    <div id="grupo_fam_ult_curso6"> <!-- 1  -->
                                         <label class="control-label">Último Curso Aprobado <span class="required" aria-required="true"> * </span></label>
                                         <br/><br/>
                                         <?php
@@ -1074,21 +1133,23 @@ if (validation_errors() == "") {
                             <!-- span-->
 
                             <div class="col-md-4"> <!-- Año PSU -->
-                                <div class="form-group <?php
-                                if (form_error('txt_anio_psu') != "") {
-                                    echo "has-error";
-                                }
-                                ?>">
-                                    <label class="control-label">¿En qué año?<span class="required" aria-required="true"> * </span></label>
-                                    <input type="text" name="txt_anio_psu" id="txt_anio_psu" class="form-control" placeholder="" value="<?php echo $anio_psu; ?>">
-                                    <?php
-                                    if (form_error('txt_anio_psu') != NULL) {
-                                        ?>
-                                        <span class="help-block"> <?php echo form_error('txt_anio_psu'); ?> </span>
-                                        <?php
+                                <div id="anio_psu">
+                                    <div class="form-group <?php
+                                    if (form_error('txt_anio_psu') != "") {
+                                        echo "has-error";
                                     }
-                                    ?>
+                                    ?>">
+                                        <label class="control-label">¿En qué año?<span class="required" aria-required="true"> * </span></label>
+                                        <input type="text" name="txt_anio_psu" id="txt_anio_psu" class="form-control" placeholder="" value="<?php echo $anio_psu; ?>">
+                                        <?php
+                                        if (form_error('txt_anio_psu') != NULL) {
+                                            ?>
+                                            <span class="help-block"> <?php echo form_error('txt_anio_psu'); ?> </span>
+                                            <?php
+                                        }
+                                        ?>
 
+                                    </div>
                                 </div>
                             </div>
 
@@ -1097,21 +1158,23 @@ if (validation_errors() == "") {
                             <!-- span-->
 
                             <div class="col-md-4"> <!-- Puntaje PSU -->
-                                <div class="form-group <?php
-                                if (form_error('txt_puntaje_psu') != "") {
-                                    echo "has-error";
-                                }
-                                ?>">
-                                    <label class="control-label">¿Qué Puntaje obtuvo?<span class="required" aria-required="true"> * </span></label>
-                                    <input type="text" name="txt_puntaje_psu" id="txt_puntaje_psu" class="form-control" placeholder="" value="<?php echo $puntaje_psu; ?>">
-                                    <?php
-                                    if (form_error('txt_puntaje_psu') != NULL) {
-                                        ?>
-                                        <span class="help-block"> <?php echo form_error('txt_puntaje_psu'); ?> </span>
-                                        <?php
+                                <div id="puntaje_psu">
+                                    <div class="form-group <?php
+                                    if (form_error('txt_puntaje_psu') != "") {
+                                        echo "has-error";
                                     }
-                                    ?>
+                                    ?>">
+                                        <label class="control-label">¿Qué Puntaje obtuvo?<span class="required" aria-required="true"> * </span></label>
+                                        <input type="text" name="txt_puntaje_psu" id="txt_puntaje_psu" class="form-control" placeholder="" value="<?php echo $puntaje_psu; ?>">
+                                        <?php
+                                        if (form_error('txt_puntaje_psu') != NULL) {
+                                            ?>
+                                            <span class="help-block"> <?php echo form_error('txt_puntaje_psu'); ?> </span>
+                                            <?php
+                                        }
+                                        ?>
 
+                                    </div>
                                 </div>
                             </div>
 
@@ -1175,7 +1238,7 @@ if (validation_errors() == "") {
                                         <?php
                                         if (form_error('sel_fin_educsup') != NULL) {
                                             ?>
-                                                                                                                                                                                                                                <span class="help-block"> <?php echo form_error('sel_fin_educsup'); ?> </span>
+                                                                                                                                                                                                                                                    <span class="help-block"> <?php echo form_error('sel_fin_educsup'); ?> </span>
                                             <?php
                                         }
                                         ?>

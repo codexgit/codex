@@ -501,7 +501,7 @@ if (validation_errors() == "") {
                                                         echo "has-error";
                                                     }
                                                     ?>">
-                                                        <label class="control-label">¿Cuál es el Sistema de Energía eléctrica de la vivienda? <span class="required" aria-required="true"> * </span></label>
+                                                        <label class="control-label">¿Cuál es el Sistema de Eliminación de excretas de la vivienda? <span class="required" aria-required="true"> * </span></label>
                                                         <br/><br/>
                                                         <?php
                                                         echo form_radio(array('name' => 'sel_elim_excretas', 'value' => '1', 'checked' => ('1' == $elim_excretas) ? TRUE : FALSE, 'id' => 'elim_excretas1')) . " Alcantarillado <br/>";
@@ -531,12 +531,12 @@ if (validation_errors() == "") {
                                                         echo "has-error";
                                                     }
                                                     ?>">
-                                                        <label class="control-label">¿Tiene Subsidio de Agua Potable? <span class="required" aria-required="true"> * </span></label>
+                                                        <label class="control-label">¿Se encuentra incorporado en el Registro Social de Hogares? <span class="required" aria-required="true"> * </span></label>
                                                         <br/><br/>
                                                         <?php
                                                         echo form_radio(array('name' => 'sel_reg_hogares', 'value' => '1', 'checked' => ('1' == $reg_hogares) ? TRUE : FALSE, 'id' => 'reg_hogares1')) . " Sí <br/>";
                                                         echo form_radio(array('name' => 'sel_reg_hogares', 'value' => '2', 'checked' => ('2' == $reg_hogares) ? TRUE : FALSE, 'id' => 'reg_hogares2')) . " No <br/>";
-                                                        echo form_radio(array('name' => 'sel_reg_hogares', 'value' => '3', 'checked' => ('3' == $reg_hogares) ? TRUE : FALSE, 'id' => 'reg_hogares3')) . " No <br/>"
+                                                        echo form_radio(array('name' => 'sel_reg_hogares', 'value' => '3', 'checked' => ('3' == $reg_hogares) ? TRUE : FALSE, 'id' => 'reg_hogares3')) . " No sabe <br/>"
                                                         ?>                                                             
 
                                                         <?php
@@ -557,7 +557,7 @@ if (validation_errors() == "") {
                                                         echo "has-error";
                                                     }
                                                     ?>">
-                                                        <label class="control-label">¿Cuál es el Sistema de Energía eléctrica de la vivienda? <span class="required" aria-required="true"> * </span></label>
+                                                        <label class="control-label">¿Cuál es el tramo en el que se encuentra su grupo familiar? <span class="required" aria-required="true"> * </span></label>
                                                         <br/><br/>
                                                         <?php
                                                         echo form_radio(array('name' => 'sel_tramo_grupo', 'value' => '1', 'checked' => ('1' == $tramo_grupo) ? TRUE : FALSE, 'id' => 'tramo_grupo1')) . " Tramo del 40	0%-40%  <Ingresos o> vulnerabilidad  <br/>";
