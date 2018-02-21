@@ -1259,15 +1259,9 @@ if (validation_errors() == "") {
                     </div>	
                     <div class="tab-pane" id="tab5"> <!-- INGRESOS -->                    	   
 
-
-
-
-
                         <h4 class="form-section">3.5.- Ingresos Familiar</h4>
                         <!--/row-->
                         <div class="row">
-
-
 
                             <!--span container-->
                             <div class ="container-fluid">  <!-- Ingreso Bruto-->
@@ -1425,7 +1419,7 @@ if (validation_errors() == "") {
                                         echo form_radio(array('name' => 'sel_rec_pension', 'value' => '2', 'checked' => ('2' == $rec_pension) ? TRUE : FALSE, 'id' => 'rec_pension2'));
                                         ?>
 
-                                        NO &nbsp; 
+                                        No &nbsp; 
 
                                         <?php
                                         if (form_error('sel_rec_pension') != NULL) {
@@ -1488,7 +1482,7 @@ if (validation_errors() == "") {
                                     <div class="col-md-4"> <!-- Pensión Mes 1 -->
                                         <div id="ingresos_pension1">
                                             <div class="form-group <?php
-                                            if (form_error('txt_ibruto_mes1') != "") {
+                                            if (form_error('txt_pension_mes1') != "") {
                                                 echo "has-error";
                                             }
                                             ?>">
@@ -1531,7 +1525,7 @@ if (validation_errors() == "") {
                                         echo form_radio(array('name' => 'sel_rec_otros', 'value' => '2', 'checked' => ('2' == $rec_otros) ? TRUE : FALSE, 'id' => 'rec_otros2'));
                                         ?>
 
-                                        NO &nbsp; 
+                                        No &nbsp; 
 
 
                                         <?php

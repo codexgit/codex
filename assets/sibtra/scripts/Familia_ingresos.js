@@ -7,25 +7,26 @@
 ("#grupo_ingresos_pension").hide();
 ("#grupo_ingresos_otros").hide();
 
-
-
 $(document).ready(function () {
 
-//FAMILIA_DATOS ENCUESTA/TRABAJO
+//FAMILIA_DATOS ENCUESTA/INGRESOS
 
-    $("#rec_otros1").click(function () {        
+    $("#rec_otros1").click(function () {
         ("#grupo_ingresos_pension").show();
-        
+
     });
+
     $("#rec_otros2").click(function () {
         $("#txt_pension_mes3").val("");
         $("#txt_pension_mes2").val("");
         $("#txt_pension_mes1").val("");
         ("#grupo_ingresos_pension").hide();
     });
-    $("#rec_pension1").click(function () {        
+
+    $("#rec_pension1").click(function () {
         ("#grupo_ingresos_otros").show();
     });
+
     $("#rec_pension2").click(function () {
         $("#txt_otros_mes3").val("");
         $("#txt_otros_mes2").val("");
