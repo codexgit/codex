@@ -1183,21 +1183,22 @@ if (validation_errors() == "") {
                             <!-- span-->
 
                             <div class="col-md-4"> <!-- Promedio Notas Último año -->
-                                <div class="form-group <?php
-                                if (form_error('txt_ult_promedio') != "") {
-                                    echo "has-error";
-                                }
-                                ?>">
-                                    <label class="control-label">¿Cuál fué su promedio de Notas último año cursado?<span class="required" aria-required="true"> * </span></label>
-                                    <input type="text" name="txt_ult_promedio" id="txt_ult_promedio" class="form-control" placeholder="" value="<?php echo $ult_promedio; ?>">
-                                    <?php
-                                    if (form_error('txt_ult_promedio') != NULL) {
-                                        ?>
-                                        <span class="help-block"> <?php echo form_error('txt_ult_promedio'); ?> </span>
-                                        <?php
+                                <div id="ult_promedio">
+                                    <div class="form-group <?php
+                                    if (form_error('txt_ult_promedio') != "") {
+                                        echo "has-error";
                                     }
-                                    ?>
-
+                                    ?>">
+                                        <label class="control-label">¿Cuál fué su promedio de Notas último año cursado?<span class="required" aria-required="true"> * </span></label>
+                                        <input type="text" name="txt_ult_promedio" id="txt_ult_promedio" class="form-control" placeholder="" value="<?php echo $ult_promedio; ?>">
+                                        <?php
+                                        if (form_error('txt_ult_promedio') != NULL) {
+                                            ?>
+                                            <span class="help-block"> <?php echo form_error('txt_ult_promedio'); ?> </span>
+                                            <?php
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1206,18 +1207,19 @@ if (validation_errors() == "") {
 
                             <!--/span-->
                             <div class="col-md-4"> <!-- Financiamiento -->
-                                <div class="form-multi-select <?php
-                                if (form_error('sel_fin_educsup') != "") {
-                                    echo "has-error";
-                                }
-                                ?>">
+                                <div id="grupo_financiamiento"  >
+                                    <div class="form-multi-select <?php
+                                    if (form_error('sel_fin_educsup') != "") {
+                                        echo "has-error";
+                                    }
+                                    ?>">
 
 
-                                    <div id= "grupo_financiamiento">
+
                                         <label class="control-label">Si actualmente está estudiando Educación Superior, ¿Cómo financia su carrera? <span class="required" aria-required="true"> * </span></label>
-                                        <br/><br/>
-                                        <!-->
-                                                                                                                                                                                                        
+                                        
+                                        <!---->
+
                                         <?php
                                         $financiamiento = array(
                                             "Becas",
@@ -1229,43 +1231,31 @@ if (validation_errors() == "") {
                                         );
 
                                         for ($i = 0; $i < count($financiamiento); $i++) {
-                                            echo "<input type='checkbox' name='sel_fin_educsup[]' value='" . $financiamiento[$i] . "' />" . $financiamiento[$i] . "<br>";
+                                            echo "<input type='checkbox' name='sel_fin_educsup[]' value='" . $financiamiento[$i] . "' />" . $financiamiento[$i] ;
                                         }
                                         ?>	
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
+
+
+
                                         <?php
                                         if (form_error('sel_fin_educsup') != NULL) {
                                             ?>
-                                                                                                                                                                                                                                                    <span class="help-block"> <?php echo form_error('sel_fin_educsup'); ?> </span>
+                                            <span class="help-block"> <?php echo form_error('sel_fin_educsup'); ?> </span>
                                             <?php
                                         }
                                         ?>
-                                                                                                                                                                                                        
+
                                         <!--/span-->
 
 
                                         <!-- row-->
 
                                     </div>   
-
-
-
-
                                     <!-- row becas -->
-
-
                                 </div>
                             </div>	
                             <!--span-->
-
-
-
                         </div>
-
-
-
                     </div>	
                     <div class="tab-pane" id="tab5"> <!-- INGRESOS -->                    	   
 
@@ -1614,16 +1604,8 @@ if (validation_errors() == "") {
                             <!--span container-->
 
                         </div>	
-                        <!-- END ROW -->                            
-
-
-
-
-
+                        <!-- END ROW -->      
                     </div>
-
-
-
 
 
                 </div>

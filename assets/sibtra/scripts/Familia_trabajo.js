@@ -20,7 +20,9 @@ $(document).ready(function () {
 
     $("#trabajando1").click(function () {
         $("#txt_meses_cesante").val("");
-        $('input:checkbox').removeAttr('checked');
+        $('fam_grupo_pension input:checkbox').removeAttr('checked');
+        
+        
         $("#fam_sit_nolaboral input:radio").removeAttr('checked');
         $("#fam_sit_contrato").show();
         $("#fam_sit_nolaboral").hide();
@@ -54,7 +56,7 @@ $(document).ready(function () {
 
     //Estudiante
     $("#sit_nolaboral2").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#fam_grupo_pension input:checkbox').removeAttr('checked');
         $("#txt_meses_cesante").val("");
         $('#fam_grupo_pension1').hide();
         $('#fam_grupo_pension2').hide();
@@ -83,7 +85,7 @@ $(document).ready(function () {
     });
     //Otro
     $("#sit_nolaboral5").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#fam_grupo_pension input:checkbox').removeAttr('checked');
         $("#txt_meses_cesante").val("");
         $("#fam_grupo_pension1").hide();
         $("#fam_grupo_pension2").hide();

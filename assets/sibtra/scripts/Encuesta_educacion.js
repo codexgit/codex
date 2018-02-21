@@ -48,7 +48,7 @@ $(document).ready(function () {
 
 
     $("#estudiando1").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -67,7 +67,7 @@ $(document).ready(function () {
     
     //Analfabeto
     $("#nivel_esc1").click(function () { 
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -84,7 +84,7 @@ $(document).ready(function () {
     });
     // Alfabetismo Informal
     $("#nivel_esc2").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -101,7 +101,7 @@ $(document).ready(function () {
 
     // Básica Incompleta
     $("#nivel_esc3").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -119,7 +119,7 @@ $(document).ready(function () {
 
     //Básica Completa
     $("#nivel_esc4").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -136,7 +136,7 @@ $(document).ready(function () {
 
     //Media Incompleta
     $("#nivel_esc5").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -154,7 +154,7 @@ $(document).ready(function () {
 
     //Media Completa
     $("#nivel_esc6").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -173,7 +173,7 @@ $(document).ready(function () {
     //Liceo Técnico Incompleto
 
     $("#nivel_esc7").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -192,7 +192,7 @@ $(document).ready(function () {
 
     //Liceo Técnico Completo
     $("#nivel_esc8").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -212,7 +212,7 @@ $(document).ready(function () {
     //CFT Incompleto
 
     $("#nivel_esc9").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -231,7 +231,7 @@ $(document).ready(function () {
     
     //CFT Completo
     $("#nivel_esc10").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -249,7 +249,7 @@ $(document).ready(function () {
     
     //Instituto Profesional Incompleto
     $("#nivel_esc11").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -268,7 +268,7 @@ $(document).ready(function () {
 
     //Instituto Profesional Completo
     $("#nivel_esc12").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -286,7 +286,7 @@ $(document).ready(function () {
     
     //Universidad Incompleta
     $("#nivel_esc13").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -305,7 +305,7 @@ $(document).ready(function () {
     
     //Universidad Completa
     $("#nivel_esc14").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -323,7 +323,7 @@ $(document).ready(function () {
     
     ///Post Grado Incompleto
     $("#nivel_esc15").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -342,7 +342,7 @@ $(document).ready(function () {
     
     //Post Grado Completo
     $("#nivel_esc16").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
@@ -360,7 +360,7 @@ $(document).ready(function () {
 
     //Especialidades Fuerzas Armadas
     $("#nivel_esc17").click(function () {
-        $('input:checkbox').removeAttr('checked');
+        $('#grupo_becas input:checkbox').removeAttr('checked');
         $("#grupo_ult_curso1 input:radio").removeAttr('checked');
         $("#grupo_ult_curso2 input:radio").removeAttr('checked');
         $("#grupo_ult_curso3 input:radio").removeAttr('checked');
