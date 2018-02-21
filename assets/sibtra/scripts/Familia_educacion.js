@@ -19,12 +19,12 @@ $("#grupo_fam_ult_curso6").hide();
 
 $("#fam_inicio_activ").hide();
 $("#ult_promedio").hide();
-
+$("#grupo_financiamiento").hide();
 
 
 
 $(document).ready(function () {
-$("div#grupo_financiamiento").hide();
+
     //Parvularia
     $("#nivel_educ1").click(function () {
         //$("#txt_meses_cesante").val("");

@@ -1217,7 +1217,7 @@ if (validation_errors() == "") {
 
 
                                         <label class="control-label">Si actualmente está estudiando Educación Superior, ¿Cómo financia su carrera? <span class="required" aria-required="true"> * </span></label>
-                                        
+
                                         <!---->
 
                                         <?php
@@ -1231,7 +1231,7 @@ if (validation_errors() == "") {
                                         );
 
                                         for ($i = 0; $i < count($financiamiento); $i++) {
-                                            echo "<input type='checkbox' name='sel_fin_educsup[]' value='" . $financiamiento[$i] . "' />" . $financiamiento[$i] ;
+                                            echo "<input type='checkbox' name='sel_fin_educsup[]' value='" . $financiamiento[$i] . "' />" . $financiamiento[$i] . "<br>";
                                         }
                                         ?>	
 
@@ -1437,65 +1437,72 @@ if (validation_errors() == "") {
                                     </div>
                                 </div>
                                 <!--/span-->
+                                <div id="grupo_ingresos_pension">
+                                    <h3> Si la respuesta es sí, ¿A cuánto asciende al mes? </h3>
+                                    <!--span-->
+                                    <div class="col-md-4"> <!-- Pensión Mes 3 -->
+                                        <div id="ingresos_pension3">
+                                            <div class="form-group <?php
+                                            if (form_error('txt_pension_mes3') != "") {
+                                                echo "has-error";
+                                            }
+                                            ?>">
+                                                <label class="control-label">Mes 3<span class="required" aria-required="true"> * </span></label>
+                                                <input type="text" name="txt_pension_mes3" id="txt_pension_mes3" class="form-control" placeholder="" value="<?php echo $pension_mes3; ?>">
+                                                <?php
+                                                if (form_error('txt_pension_mes3') != NULL) {
+                                                    ?>
+                                                    <span class="help-block"> <?php echo form_error('txt_pension_mes3'); ?> </span>
+                                                    <?php
+                                                }
+                                                ?>
 
-                                <h3> Si la respuesta es sí, ¿A cuánto asciende al mes? </h3>
-                                <!--span-->
-                                <div class="col-md-4"> <!-- Pensión Mes 3 -->
-                                    <div class="form-group <?php
-                                    if (form_error('txt_pension_mes3') != "") {
-                                        echo "has-error";
-                                    }
-                                    ?>">
-                                        <label class="control-label">Mes 3<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" name="txt_pension_mes3" id="txt_pension_mes3" class="form-control" placeholder="" value="<?php echo $pension_mes3; ?>">
-                                        <?php
-                                        if (form_error('txt_pension_mes3') != NULL) {
-                                            ?>
-                                            <span class="help-block"> <?php echo form_error('txt_pension_mes3'); ?> </span>
-                                            <?php
-                                        }
-                                        ?>
-
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <!--span-->
-                                <!--span-->
-                                <div class="col-md-4"> <!-- Pensión Mes 2 -->
-                                    <div class="form-group <?php
-                                    if (form_error('txt_pension_mes2') != "") {
-                                        echo "has-error";
-                                    }
-                                    ?>">
-                                        <label class="control-label">Mes 2<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" name="txt_pension_mes2" id="txt_pension_mes2" class="form-control" placeholder="" value="<?php echo $pension_mes2; ?>">
-                                        <?php
-                                        if (form_error('txt_pension_mes2') != NULL) {
-                                            ?>
-                                            <span class="help-block"> <?php echo form_error('txt_pension_mes2'); ?> </span>
-                                            <?php
-                                        }
-                                        ?>
+                                    <!--span-->
 
+                                    <!--span-->
+                                    <div class="col-md-4"> <!-- Pensión Mes 2 -->
+                                        <div id="ingresos_pension2">
+                                            <div class="form-group <?php
+                                            if (form_error('txt_pension_mes2') != "") {
+                                                echo "has-error";
+                                            }
+                                            ?>">
+                                                <label class="control-label">Mes 2<span class="required" aria-required="true"> * </span></label>
+                                                <input type="text" name="txt_pension_mes2" id="txt_pension_mes2" class="form-control" placeholder="" value="<?php echo $pension_mes2; ?>">
+                                                <?php
+                                                if (form_error('txt_pension_mes2') != NULL) {
+                                                    ?>
+                                                    <span class="help-block"> <?php echo form_error('txt_pension_mes2'); ?> </span>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <!--span-->
-                                <!--span-->
-                                <div class="col-md-4"> <!-- Pensión Mes 1 -->
-                                    <div class="form-group <?php
-                                    if (form_error('txt_ibruto_mes1') != "") {
-                                        echo "has-error";
-                                    }
-                                    ?>">
-                                        <label class="control-label">Mes 1<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" name="txt_pension_mes1" id="txt_pension_mes1" class="form-control" placeholder="" value="<?php echo $pension_mes1; ?>">
-                                        <?php
-                                        if (form_error('txt_pension_mes1') != NULL) {
-                                            ?>
-                                            <span class="help-block"> <?php echo form_error('txt_pension_mes1'); ?> </span>
-                                            <?php
-                                        }
-                                        ?>
+                                    <!--span-->
 
+                                    <!--span-->
+                                    <div class="col-md-4"> <!-- Pensión Mes 1 -->
+                                        <div id="ingresos_pension1">
+                                            <div class="form-group <?php
+                                            if (form_error('txt_ibruto_mes1') != "") {
+                                                echo "has-error";
+                                            }
+                                            ?>">
+                                                <label class="control-label">Mes 1<span class="required" aria-required="true"> * </span></label>
+                                                <input type="text" name="txt_pension_mes1" id="txt_pension_mes1" class="form-control" placeholder="" value="<?php echo $pension_mes1; ?>">
+                                                <?php
+                                                if (form_error('txt_pension_mes1') != NULL) {
+                                                    ?>
+                                                    <span class="help-block"> <?php echo form_error('txt_pension_mes1'); ?> </span>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <!--span-->
@@ -1537,70 +1544,76 @@ if (validation_errors() == "") {
                                     </div>
                                 </div>
                                 <!--/span-->
-                                <h3> Si la respuesta es sí, ¿A cuánto asciende al mes? </h3>
-                                <!--span-->
-                                <div class="col-md-4"> <!-- Ingreso Otro Mes 3 -->
-                                    <div class="form-group <?php
-                                    if (form_error('txt_otros_mes3') != "") {
-                                        echo "has-error";
-                                    }
-                                    ?>">
-                                        <label class="control-label">Mes 3<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" name="txt_otros_mes3" id="txt_otros_mes3" class="form-control" placeholder="" value="<?php echo $otros_mes3; ?>">
-                                        <?php
-                                        if (form_error('txt_otros_mes3') != NULL) {
-                                            ?>
-                                            <span class="help-block"> <?php echo form_error('txt_otros_mes3'); ?> </span>
-                                            <?php
-                                        }
-                                        ?>
-
+                                <div id="grupo_ingresos_otros">
+                                    <h3> Si la respuesta es sí, ¿A cuánto asciende al mes? </h3>
+                                    <!--span-->
+                                    <div id="ingresos_otros3">
+                                        <div class="col-md-4"> <!-- Ingreso Otro Mes 3 -->
+                                            <div class="form-group <?php
+                                            if (form_error('txt_otros_mes3') != "") {
+                                                echo "has-error";
+                                            }
+                                            ?>">
+                                                <label class="control-label">Mes 3<span class="required" aria-required="true"> * </span></label>
+                                                <input type="text" name="txt_otros_mes3" id="txt_otros_mes3" class="form-control" placeholder="" value="<?php echo $otros_mes3; ?>">
+                                                <?php
+                                                if (form_error('txt_otros_mes3') != NULL) {
+                                                    ?>
+                                                    <span class="help-block"> <?php echo form_error('txt_otros_mes3'); ?> </span>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <!--span-->
-                                <!--span-->
-                                <div class="col-md-4"> <!-- Ingreso Otro Mes 2 -->
-                                    <div class="form-group <?php
-                                    if (form_error('txt_otros_mes2') != "") {
-                                        echo "has-error";
-                                    }
-                                    ?>">
-                                        <label class="control-label">Mes 2<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" name="txt_otros_mes2" id="txt_otros_mes2" class="form-control" placeholder="" value="<?php echo $otros_mes2; ?>">
-                                        <?php
-                                        if (form_error('txt_otros_mes2') != NULL) {
-                                            ?>
-                                            <span class="help-block"> <?php echo form_error('txt_otros_mes2'); ?> </span>
-                                            <?php
-                                        }
-                                        ?>
+                                    <!--span-->
 
+                                    <!--span-->
+                                    <div class="col-md-4"> <!-- Ingreso Otro Mes 2 -->
+                                        <div id="ingresos_otros2">
+                                            <div class="form-group <?php
+                                            if (form_error('txt_otros_mes2') != "") {
+                                                echo "has-error";
+                                            }
+                                            ?>">
+                                                <label class="control-label">Mes 2<span class="required" aria-required="true"> * </span></label>
+                                                <input type="text" name="txt_otros_mes2" id="txt_otros_mes2" class="form-control" placeholder="" value="<?php echo $otros_mes2; ?>">
+                                                <?php
+                                                if (form_error('txt_otros_mes2') != NULL) {
+                                                    ?>
+                                                    <span class="help-block"> <?php echo form_error('txt_otros_mes2'); ?> </span>
+                                                    <?php
+                                                }
+                                                ?>
 
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <!--span-->
-                                <!--span-->
-                                <div class="col-md-4"> <!-- Ingreso Otro Mes 1 -->
-                                    <div class="form-group <?php
-                                    if (form_error('txt_otros_mes1') != "") {
-                                        echo "has-error";
-                                    }
-                                    ?>">
-                                        <label class="control-label">Mes 1<span class="required" aria-required="true"> * </span></label>
-                                        <input type="text" name="txt_otros_mes1" id="txt_otros_mes1" class="form-control" placeholder="" value="<?php echo $otros_mes1; ?>">
-                                        <?php
-                                        if (form_error('txt_otros_mes1') != NULL) {
-                                            ?>
-                                            <span class="help-block"> <?php echo form_error('txt_otros_mes1'); ?> </span>
-                                            <?php
-                                        }
-                                        ?>
+                                    <!--span-->
+                                    <!--span-->
+                                    <div class="col-md-4"> <!-- Ingreso Otro Mes 1 -->
+                                        <div id="ingresos_otros1">
+                                            <div class="form-group <?php
+                                            if (form_error('txt_otros_mes1') != "") {
+                                                echo "has-error";
+                                            }
+                                            ?>">
+                                                <label class="control-label">Mes 1<span class="required" aria-required="true"> * </span></label>
+                                                <input type="text" name="txt_otros_mes1" id="txt_otros_mes1" class="form-control" placeholder="" value="<?php echo $otros_mes1; ?>">
+                                                <?php
+                                                if (form_error('txt_otros_mes1') != NULL) {
+                                                    ?>
+                                                    <span class="help-block"> <?php echo form_error('txt_otros_mes1'); ?> </span>
+                                                    <?php
+                                                }
+                                                ?>
 
+                                            </div>
+                                        </div>
+                                        <!--span-->
                                     </div>
-                                </div>
-                                <!--span-->
-
-                            </div>	
+                                </div>	
+                            </div>
                             <!--span container-->
 
                         </div>	

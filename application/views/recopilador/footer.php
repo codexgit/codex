@@ -150,6 +150,7 @@
 <!--Funciones Encuesta Familia_Datos JSS -->
 <script src="<?php echo base_url(); ?>/assets/sibtra/scripts/Familia_trabajo.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>/assets/sibtra/scripts/Familia_educacion.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>/assets/sibtra/scripts/Familia_ingresos.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 
