@@ -1432,10 +1432,11 @@ if (validation_errors() == "") {
                                 </div>
                                 <!--/span-->
                                 <div id="grupo_ingresos_pension">
-                                    <h3> Si la respuesta es sí, ¿A cuánto asciende al mes? </h3>
+
                                     <!--span-->
                                     <div class="col-md-4"> <!-- Pensión Mes 3 -->
                                         <div id="ingresos_pension3">
+                                            <h3> ¿A cuánto asciende al mes? </h3>
                                             <div class="form-group <?php
                                             if (form_error('txt_pension_mes3') != "") {
                                                 echo "has-error";
@@ -1459,6 +1460,7 @@ if (validation_errors() == "") {
                                     <!--span-->
                                     <div class="col-md-4"> <!-- Pensión Mes 2 -->
                                         <div id="ingresos_pension2">
+                                            <h3> ¿A cuánto asciende al mes? </h3>
                                             <div class="form-group <?php
                                             if (form_error('txt_pension_mes2') != "") {
                                                 echo "has-error";
@@ -1481,6 +1483,7 @@ if (validation_errors() == "") {
                                     <!--span-->
                                     <div class="col-md-4"> <!-- Pensión Mes 1 -->
                                         <div id="ingresos_pension1">
+                                            <h3> ¿A cuánto asciende al mes? </h3>
                                             <div class="form-group <?php
                                             if (form_error('txt_pension_mes1') != "") {
                                                 echo "has-error";
@@ -1539,9 +1542,10 @@ if (validation_errors() == "") {
                                 </div>
                                 <!--/span-->
                                 <div id="grupo_ingresos_otros">
-                                    <h3> Si la respuesta es sí, ¿A cuánto asciende al mes? </h3>
+
                                     <!--span-->
                                     <div id="ingresos_otros3">
+                                        <h3> ¿A cuánto asciende al mes? </h3>
                                         <div class="col-md-4"> <!-- Ingreso Otro Mes 3 -->
                                             <div class="form-group <?php
                                             if (form_error('txt_otros_mes3') != "") {
@@ -1565,6 +1569,7 @@ if (validation_errors() == "") {
                                     <!--span-->
                                     <div class="col-md-4"> <!-- Ingreso Otro Mes 2 -->
                                         <div id="ingresos_otros2">
+                                            <h3> ¿A cuánto asciende al mes? </h3>
                                             <div class="form-group <?php
                                             if (form_error('txt_otros_mes2') != "") {
                                                 echo "has-error";
@@ -1587,6 +1592,7 @@ if (validation_errors() == "") {
                                     <!--span-->
                                     <div class="col-md-4"> <!-- Ingreso Otro Mes 1 -->
                                         <div id="ingresos_otros1">
+                                            <h3> ¿A cuánto asciende al mes? </h3>
                                             <div class="form-group <?php
                                             if (form_error('txt_otros_mes1') != "") {
                                                 echo "has-error";
