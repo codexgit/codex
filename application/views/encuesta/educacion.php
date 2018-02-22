@@ -487,7 +487,7 @@ if (validation_errors() == "") {
                                                             <?php
                                                             if (form_error('sel_becas') != NULL) {
                                                                 ?>
-                                                                                                                                                                        <span class="help-block"> <?php echo form_error('sel_becas'); ?> </span>
+                                                                                                                                                                                        <span class="help-block"> <?php echo form_error('sel_becas'); ?> </span>
                                                                 <?php
                                                             }
                                                             ?>

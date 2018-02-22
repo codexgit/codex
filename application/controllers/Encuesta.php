@@ -42,7 +42,7 @@ class Encuesta extends CI_Controller {
 
 
         $sesionusuario = $this->session->userdata('usrsesion');
-        $data['sesionusuario'] = $sesionusuario;        
+        $data['sesionusuario'] = $sesionusuario;
 
 
         if (isset($idfilempresa) && $idfilempresa > 0) {
@@ -68,6 +68,46 @@ class Encuesta extends CI_Controller {
             $data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
 
             $data['mensaje'] = "Ocurrió un error al procesar la solicitud listado";
+            $data['divtipo'] = "alert alert-danger alert-dismissable";
+
+            $this->load->view('recopilador/header', $data);
+            $this->load->view('encuesta/empresas', $data);
+            $this->load->view('recopilador/footer', $data);
+        }
+    }
+
+    public function detalle($idencuesta) {
+        $sesionusuario = $this->session->userdata('usrsesion');
+        $data['sesionusuario'] = $sesionusuario;
+        $this->load->model('encuesta_model');
+        
+        if (isset($idencuesta) && $idencuesta > 0) {
+            
+            $data['trabajador']=$this->encuesta_model->get_trabajador_by_id($idencuesta);
+            $data['educacion']=$this->encuesta_model->get_educacion_by_id($idencuesta);
+            $data['salud']=$this->encuesta_model->get_salud_by_id($idencuesta);
+            $data['vivienda']=$this->encuesta_model->get_vivienda_by_id($idencuesta);
+                    
+            $data['idencuesta'] = $idencuesta;
+            $this->load->model('encuesta_model');
+            $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+            //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idfilempresa);
+            $this->load->model('integrante_model');
+
+            $data['lstintegrantes'] = $this->integrante_model->get_familia_by_id($idencuesta);
+
+            $data['mensaje'] = "";
+            $data['divtipo'] = "alert alert-success alert-dismissable";
+
+            $this->load->view('recopilador/header', $data);
+            $this->load->view('integrante/listado', $data);
+            $this->load->view('recopilador/footer', $data);
+        } else {
+
+            $this->load->model('usuario_model');
+            $data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
+
+            $data['mensaje'] = "Ocurrió un error al procesar la solicitud";
             $data['divtipo'] = "alert alert-danger alert-dismissable";
 
             $this->load->view('recopilador/header', $data);
@@ -608,10 +648,10 @@ class Encuesta extends CI_Controller {
         $this->load->model('encuesta_model');
 
         $this->load->helper('date');
-        
+
         $sesionusuario = $this->session->userdata('usrsesion');
-        $data['sesionusuario'] = $sesionusuario;       
-        
+        $data['sesionusuario'] = $sesionusuario;
+
         $data['lstregiones'] = $this->param_model->get_regiones();
         if (isset($idencuesta) && $idencuesta > 0) {
 
@@ -673,7 +713,7 @@ class Encuesta extends CI_Controller {
 
                 $this->form_validation->set_rules('sel_tenencia', 'Tenencia de Vivienda', 'required');
                 $this->form_validation->set_rules('sel_sitio', 'Tenencia de Sitio', 'required');
-                $this->form_validation->set_rules('sel_post_subsidio', 'Postulación Subsidio', 'required');                
+                $this->form_validation->set_rules('sel_post_subsidio', 'Postulación Subsidio', 'required');
                 $this->form_validation->set_rules('txt_monto_ahorro', 'Monto ahorro', 'numeric');
                 $this->form_validation->set_rules('sel_fam_ocupante', 'Principal Ocupante', 'required');
                 $this->form_validation->set_rules('txt_num_personas', 'Numero de personas', 'required|numeric');
@@ -723,20 +763,20 @@ class Encuesta extends CI_Controller {
                     );
 
                     if ($verificador != 0) {
-                        
+
                         $this->encuesta_model->actualizar_encuesta_vivienda($encuesta_vivienda);
                         $data['mensaje'] = "La encuesta ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
                         //redirect('encuesta/listado/'.$lstfilusuario['filial_empresa_id']);
-                        redirect('encuesta/listado/'.$idencuesta);
-                        
+                        redirect('encuesta/listado/' . $idencuesta);
+
                         //redirect('encuesta/familia/'.$idencuesta.'/'.$integrante','refresh');
                     } else {
                         $this->encuesta_model->crear_encuesta_vivienda($encuesta_vivienda);
-                        
+
                         $data['mensaje'] = "La encuesta ha sido creada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
-                        redirect('encuesta/listado/'.$idencuesta);
+                        redirect('encuesta/listado/' . $idencuesta);
                         //redirect('encuesta/familia/'.$idencuesta.'/'.$integrante,'refresh');
                     }
                 }
@@ -753,7 +793,7 @@ class Encuesta extends CI_Controller {
 
             $data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
             $data['vivienda'] = "";
-            $data['mensaje'] = "Ocurrió un error al procesar la solicitud acaaaaaaaaaaa ";
+            $data['mensaje'] = "Ocurrió un error al procesar la solicitud";
             $data['divtipo'] = "alert alert-danger alert-dismissable";
 
             $this->load->view('recopilador/header', $data);

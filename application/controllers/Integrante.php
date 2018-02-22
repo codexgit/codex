@@ -475,6 +475,41 @@ class Integrante extends CI_Controller {
         $this->data['lstintegrantes'] = $this->encuesta_model->get_familia($this->idencuesta);
     }
 
+    /*public function detalle($idencuesta) {
+        $sesionusuario = $this->session->userdata('usrsesion');
+        $data['sesionusuario'] = $sesionusuario;
+        $this->load->model('integrante_model');
+
+        if (isset($idencuesta) && $idencuesta > 0) {
+
+            $data['idencuesta'] = $idencuesta;
+            $this->load->model('encuesta_model');
+            $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
+            //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idfilempresa);
+            $this->load->model('integrante_model');
+
+            $data['lstintegrantes'] = $this->integrante_model->get_familia_by_id($idencuesta);
+
+            $data['mensaje'] = "";
+            $data['divtipo'] = "alert alert-success alert-dismissable";
+
+            $this->load->view('recopilador/header', $data);
+            $this->load->view('integrante/listado', $data);
+            $this->load->view('recopilador/footer', $data);
+        } else {
+
+            $this->load->model('usuario_model');
+            $data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
+
+            $data['mensaje'] = "Ocurrió un error al procesar la solicitud";
+            $data['divtipo'] = "alert alert-danger alert-dismissable";
+
+            $this->load->view('recopilador/header', $data);
+            $this->load->view('encuesta/empresas', $data);
+            $this->load->view('recopilador/footer', $data);
+        }
+    }
+*/
     function validar_run($rut) {
 
         if (preg_match("/^[0-9]+-[0-9kK]{1}|\s/", $rut)) {

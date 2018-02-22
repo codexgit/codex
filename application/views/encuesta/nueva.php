@@ -59,19 +59,19 @@ if (validation_errors() == "") {
 
 
                         <div class="row">
-<?php
-if ($mensaje != NULL && $mensaje != "") {
-    ?>
+                            <?php
+                            if ($mensaje != NULL && $mensaje != "") {
+                                ?>
                                 <div class="col-md-12">
                                     <div class="<?php echo $divtipo; ?>">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-    <?php echo $mensaje; ?>
+                                        <?php echo $mensaje; ?>
                                     </div>                                                
                                 </div>
 
-    <?php
-}
-?>                                       
+                                <?php
+                            }
+                            ?>                                       
 
 
 
@@ -91,10 +91,10 @@ if ($mensaje != NULL && $mensaje != "") {
                                     </div>
                                     <div class="portlet-body form">
                                         <!-- BEGIN FORM-->
-<?php
-$attributes = array('class' => 'horizontal-form');
-echo form_open('encuesta/nueva/' . $idfilempresa, $attributes);
-?>
+                                        <?php
+                                        $attributes = array('class' => 'horizontal-form');
+                                        echo form_open('encuesta/nueva/' . $idfilempresa, $attributes);
+                                        ?>
                                         <div class="form-body">
                                             <h3 class="form-section">Datos de la empresa</h3>
                                             <div class="row">
@@ -133,9 +133,11 @@ echo form_open('encuesta/nueva/' . $idfilempresa, $attributes);
                                             <!--/row-->
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <div class="form-group <?php if (form_error('txt_run') != "") {
-                                            echo "has-error";
-                                        } ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('txt_run') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">RUN Trabajador <span class="required" aria-required="true"> * </span></label>
                                                         <input type="text" name="txt_run" id="txt_run" class="form-control" placeholder="Ej: 12345678-9" value="<?php echo $run; ?>">
                                                         <?php
@@ -149,9 +151,11 @@ echo form_open('encuesta/nueva/' . $idfilempresa, $attributes);
                                                 </div>
                                                 <!--/span-->
                                                 <div class="col-md-6">
-                                                    <div class="form-group <?php if (form_error('txt_nombres') != "") {
-                                                            echo "has-error";
-                                                        } ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('txt_nombres') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Nombres <span class="required" aria-required="true"> * </span></label>
                                                         <input type="text" name="txt_nombres" id="txt_nombres" class="form-control" placeholder="" value="<?php echo $nombres; ?>">
                                                         <?php
@@ -168,34 +172,38 @@ echo form_open('encuesta/nueva/' . $idfilempresa, $attributes);
                                             <!--/row-->
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <div class="form-group <?php if (form_error('txt_apellidop') != "") {
-                                                            echo "has-error";
-                                                        } ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('txt_apellidop') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Apellido Paterno <span class="required" aria-required="true"> * </span></label>
                                                         <input type="text" name="txt_apellidop" id="txt_apellidop" class="form-control" placeholder="" value="<?php echo $apellidop; ?>">
                                                         <?php
                                                         if (form_error('txt_apellidop') != NULL) {
                                                             ?>
                                                             <span class="help-block"> <?php echo form_error('txt_apellidop'); ?> </span>
-    <?php
-}
-?>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->
                                                 <div class="col-md-6">
-                                                    <div class="form-group <?php if (form_error('txt_apellidom') != "") {
-    echo "has-error";
-} ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('txt_apellidom') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Apellido Materno </label>
                                                         <input type="text" name="txt_apellidom" id="txt_apellidom" class="form-control" placeholder="" value="<?php echo $apellidom; ?>">
                                                         <?php
                                                         if (form_error('txt_apellidom') != NULL) {
                                                             ?>
                                                             <span class="help-block"> <?php echo form_error('txt_apellidom'); ?> </span>
-    <?php
-}
-?>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->
@@ -204,9 +212,11 @@ echo form_open('encuesta/nueva/' . $idfilempresa, $attributes);
                                             <!--/row-->                                                                            
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <div class="form-group <?php if (form_error('sel_region') != "") {
-    echo "has-error";
-} ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('sel_region') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Regi&oacute;n <span class="required" aria-required="true"> * </span></label>
                                                         <select class="form-control" name="sel_region" id="sel_region">
                                                             <option value="">Seleccione una opci&oacute;n</option>
@@ -220,20 +230,22 @@ echo form_open('encuesta/nueva/' . $idfilempresa, $attributes);
                                                             endforeach;
                                                             ?>
                                                         </select>
-<?php
-if (form_error('sel_region') != NULL) {
-    ?>
+                                                        <?php
+                                                        if (form_error('sel_region') != NULL) {
+                                                            ?>
                                                             <span class="help-block"> <?php echo form_error('sel_region'); ?> </span>
-    <?php
-}
-?>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->
                                                 <div class="col-md-6">
-                                                    <div class="form-group <?php if (form_error('sel_comuna') != "") {
-    echo "has-error";
-} ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('sel_comuna') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Comuna <span class="required" aria-required="true"> * </span></label>
                                                         <select class="form-control" name="sel_comuna" id="sel_comuna">
                                                             <option value="">Seleccione una opci&oacute;n</option>
@@ -247,13 +259,13 @@ if (form_error('sel_region') != NULL) {
                                                             endforeach;
                                                             ?>                                    
                                                         </select>
-<?php
-if (form_error('sel_comuna') != NULL) {
-    ?>
+                                                        <?php
+                                                        if (form_error('sel_comuna') != NULL) {
+                                                            ?>
                                                             <span class="help-block"> <?php echo form_error('sel_comuna'); ?> </span>
-    <?php
-}
-?>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->
@@ -267,7 +279,7 @@ if (form_error('sel_comuna') != NULL) {
                                                 <i class="fa fa-check"></i> Guardar</button>
                                         </div>
                                         <input type="hidden" name="hdn_filempresaid" id="hdn_filempresaid" value="<?php echo $idfilempresa; ?>">
-<?php echo form_close(); ?>
+                                        <?php echo form_close(); ?>
                                         <!-- END FORM-->
                                     </div>
                                 </div>													

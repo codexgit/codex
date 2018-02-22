@@ -212,9 +212,9 @@ if (validation_errors() == "") {
 
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="tab1"> <!-- DATOS PERSONALES -- >
+                    <div class="tab-pane active" id="tab1"> <!-- DATOS PERSONALES -->
 
-                <h4 class="form-section">3.1.- Antecedentes Personales</h4>
+                        <h4 class="form-section">3.1.- Antecedentes Personales</h4>
                         <!--/row-->
                         <div class="row">
 
@@ -389,10 +389,6 @@ if (validation_errors() == "") {
                     </div>
 
                     <div class="tab-pane" id="tab2"> <!-- SALUD -->
-
-
-
-
                         <h4 class="form-section">3.2.- Salud Familiar</h4>
                         <!--/row-->
                         <div class="row">
@@ -480,17 +476,9 @@ if (validation_errors() == "") {
 
                         </div>	
                         <!-- END ROW -->
-
-
-
-
-
-
-
+ 
                     </div>
                     <div class="tab-pane" id="tab3"> <!--TRABAJO -->
-
-
 
                         <h4 class="form-section">3.3.- Trabajo Familiar</h4>
                         <!--/row-->

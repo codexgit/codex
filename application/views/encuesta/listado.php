@@ -184,9 +184,9 @@
                                                                 <i class="fa fa-angle-down"></i>
                                                             </button>
                                                             <ul class="dropdown-menu pull-left" role="menu">
-    <?php
-    if ($encuesta['enc_estado'] == 1) {
-        ?>
+                                                                <?php
+                                                                if ($encuesta['enc_estado'] == 1) {
+                                                                    ?>
                                                                     <li>
                                                                         <a href="<?php echo site_url('encuesta/trabajador/' . $encuesta['encuesta_id']); ?>">
                                                                             <i class="icon-note"></i> Continuar </a>
@@ -196,23 +196,24 @@
                                                                         <a href="<?php echo site_url('integrante/listado/' . $encuesta['encuesta_id']); ?>">
                                                                             <i class="icon-user"></i> Agregar Integrante Familiar </a>
                                                                     </li>
-        <?php
-    } else {
-        ?>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
                                                                     <li>
                                                                         <a href="<?php echo site_url('encuesta/detalle/' . $encuesta['encuesta_id']); ?>">
-                                                                            <i class="icon-note"></i> Continuar </a>
+                                                                            <i class="
+                                                                               glyphicon glyphicon-search"></i> Detalle </a>
                                                                     </li>
-        <?php
-    }
-    ?>
+                                                                    <?php
+                                                                }
+                                                                ?>
                                                             </ul>
                                                         </div>
                                                     </td>                                                                    
                                                 </tr>
 
 
-<?php endforeach; ?>
+                                            <?php endforeach; ?>
 
 
                                         </tbody>
