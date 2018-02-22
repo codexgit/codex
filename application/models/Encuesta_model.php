@@ -25,15 +25,15 @@ class Encuesta_model extends CI_Model {
         return $this->db->insert('encuesta', $encuesta);
     }
 
-   /* public function mostrar_detalle($idencuesta) {
-        $this->db->select("*");
-        $this->db->from('encuesta_familia');
-        $this->db->where('encuesta_id', $idencuesta);
-        $query = $this->db->get();
-        return $query->row_array();
-    }
+    /* public function mostrar_detalle($idencuesta) {
+      $this->db->select("*");
+      $this->db->from('encuesta_familia');
+      $this->db->where('encuesta_id', $idencuesta);
+      $query = $this->db->get();
+      return $query->row_array();
+      }
      */
-    
+
 ////////////////////////////////////TRABAJADOR//////////////////////////////////////
 
 

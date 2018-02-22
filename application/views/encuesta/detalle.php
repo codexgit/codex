@@ -59,11 +59,7 @@
         </div>
     </div>
     <div class="portlet-body">
-        <!-- BEGIN FORM-->
-        <?php
-        $attributes = array('class' => 'horizontal-form');
-        echo form_open('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, $attributes);
-        ?>
+        
         <div class="form-body">   
 
             <div class="row"> <!-- TRABAJADOR DATOS-->
@@ -103,18 +99,16 @@
                         <a href="#tab1" data-toggle="tab">Datos Personales</a>													 
                     </li>
                     <li>
-                        <a href="#tab2" data-toggle="tab">Salud</a>													
+                        <a href="#tab2" data-toggle="tab">Educación</a>													
                     </li>
                     <li>
-                        <a href="#tab3" data-toggle="tab">Trabajo</a>
+                        <a href="#tab3" data-toggle="tab">Salud</a>
                     </li>
                     <li>
-                        <a href="#tab4" data-toggle="tab">Educación</a>
+                        <a href="#tab4" data-toggle="tab">Vivienda</a>
                     </li>
 
-                    <li>
-                        <a href="#tab5" data-toggle="tab">Ingresos</a>
-                    </li>
+                    
 
                 </ul>
                 <div class="tab-content">
