@@ -196,6 +196,11 @@
                                                                         <a href="<?php echo site_url('integrante/listado/' . $encuesta['encuesta_id']); ?>">
                                                                             <i class="icon-user"></i> Agregar Integrante Familiar </a>
                                                                     </li>
+                                                                    <li>
+                                                                        <a href="<?php echo site_url('encuesta/detalle/' . $encuesta['encuesta_id']); ?>">
+                                                                            <i class="
+                                                                               glyphicon glyphicon-search"></i> Detalle </a>
+                                                                    </li>
                                                                     <?php
                                                                 } else {
                                                                     ?>

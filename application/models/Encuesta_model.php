@@ -59,6 +59,11 @@ class Encuesta_model extends CI_Model {
           return $query->result_array(); */
     }
 
+
+    public function get_encuesta_trabajador_by_id($idencuesta) {
+        $query = $this->db->get_where('encuesta_trabajador', array('encuesta_id' => $idencuesta));
+        return $query->first_row();
+    }
     public function crear_encuesta_trabajador($encuesta_trabajador) {
 
         return $this->db->insert('encuesta_trabajador', $encuesta_trabajador);
@@ -70,6 +75,7 @@ class Encuesta_model extends CI_Model {
     }
 
 ///////////////////////////////////EDUCACION//////////////////////////////////////////////		
+
 
     public function verificar_registro_educacion($idencuesta) {
         $query = $this->db->get_where('encuesta_educacion', array('encuesta_id' => $idencuesta));
@@ -83,6 +89,11 @@ class Encuesta_model extends CI_Model {
         return $query->row_array();
     }
 
+    public function get_encuesta_educacion_by_id($idencuesta) {
+        $query = $this->db->get_where('encuesta_educacion', array('encuesta_id' => $idencuesta));
+        return $query->first_row();
+    }
+
     public function crear_encuesta_educacion($encuesta_educacion) {
 
         return $this->db->insert('encuesta_educacion', $encuesta_educacion);
@@ -93,6 +104,11 @@ class Encuesta_model extends CI_Model {
     }
 
 /////////////////////////////////////SALUD//////////////////////////////////////////		
+
+    public function get_encuesta_salud_by_id($idencuesta) {
+        $query = $this->db->get_where('encuesta_salud', array('encuesta_id' => $idencuesta));
+        return $query->first_row();
+    }
 
     public function verificar_registro_salud($idencuesta) {
         $query = $this->db->get_where('encuesta_salud', array('encuesta_id' => $idencuesta));
@@ -115,6 +131,11 @@ class Encuesta_model extends CI_Model {
     }
 
 ///////////////////////////////////////VIVIENDA////////////////////////////////////		
+
+    public function get_encuesta_vivienda_by_id($idencuesta) {
+        $query = $this->db->get_where('encuesta_vivienda', array('encuesta_id' => $idencuesta));
+        return $query->first_row();
+    }
 
     public function verificar_registro_vivienda($idencuesta) {
         $query = $this->db->get_where('encuesta_vivienda', array('encuesta_id' => $idencuesta));

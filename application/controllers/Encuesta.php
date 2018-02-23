@@ -80,14 +80,21 @@ class Encuesta extends CI_Controller {
         $sesionusuario = $this->session->userdata('usrsesion');
         $data['sesionusuario'] = $sesionusuario;
         $this->load->model('encuesta_model');
-        
+
         if (isset($idencuesta) && $idencuesta > 0) {
-            
-            $data['trabajador']=$this->encuesta_model->get_trabajador_by_id($idencuesta);
-            $data['educacion']=$this->encuesta_model->get_educacion_by_id($idencuesta);
-            $data['salud']=$this->encuesta_model->get_salud_by_id($idencuesta);
-            $data['vivienda']=$this->encuesta_model->get_vivienda_by_id($idencuesta);
-                    
+            $this->load->model('usuario_model');
+            $data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
+
+
+            //$data['trabajador']=$this->encuesta_model->get_trabajador_by_id($idencuesta);
+            $data['trabajador'] = $this->encuesta_model->get_encuesta_trabajador_by_id($idencuesta);
+            $data['educacion'] = $this->encuesta_model->get_encuesta_educacion_by_id($idencuesta);
+            $data['salud'] = $this->encuesta_model->get_encuesta_salud_by_id($idencuesta);
+            $data['vivienda'] = $this->encuesta_model->get_encuesta_vivienda_by_id($idencuesta);
+            /* $data['educacion'] = $this->encuesta_model->get_educacion_by_id($idencuesta);
+              $data['salud'] = $this->encuesta_model->get_salud_by_id($idencuesta);
+              $data['vivienda'] = $this->encuesta_model->get_vivienda_by_id($idencuesta);
+             */
             $data['idencuesta'] = $idencuesta;
             $this->load->model('encuesta_model');
             $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
@@ -100,7 +107,7 @@ class Encuesta extends CI_Controller {
             $data['divtipo'] = "alert alert-success alert-dismissable";
 
             $this->load->view('recopilador/header', $data);
-            $this->load->view('integrante/listado', $data);
+            $this->load->view('encuesta/detalle', $data);
             $this->load->view('recopilador/footer', $data);
         } else {
 

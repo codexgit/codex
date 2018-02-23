@@ -61,7 +61,6 @@
         <!--/span-->
 
 
-        <p> Favor ir rellenando los campos pestaña por pestaña </p>
 
         <div class="tabbable tabbable-tabdrop">
 
@@ -382,6 +381,7 @@
 
                         <div class="col-md-4"> <!-- Previsión -->
                             <div class="form-group">
+                                <label class="control-label">¿Usa previsión?</label>
 
                                 <span class="help-block"> <?php echo $salud->sad_usa_prevision; ?> </span>
 
@@ -407,7 +407,7 @@
                 <div class="tab-pane" id="tab4"> <!--VIVIENDA -->
 
 
-                    <h4 class="form-section">2.1.- De la Vivienda</h4>
+                    <h4 class="form-section">1.4.- De la Vivienda</h4>
                     <!--/row-->
 
                     <div class="row">
@@ -504,7 +504,7 @@
                             <div class="form-group">
                                 <label class="control-label">Número de piezas que usan como dormitorio</label>
 
-                                <span class="help-block"> <?php echo $vivienda->viv_dormitorios; ?> </span>
+                                <span class="help-block"> <?php echo $vivienda->viv_num_dormitorios; ?> </span>
 
                             </div>
                         </div>
@@ -606,13 +606,12 @@
 
         <div class="form-actions right">
             <!--<button type="button" class="btn default">Volver</button>-->
-            <a href="<?php echo site_url('integrante/listado/'); ?>" class="btn default" role="button">Volver</a>
-            <button type="submit" class="btn blue">
-                <i class="fa fa-check"></i> Siguiente</button>
+            <a href="<?php echo site_url('encuesta/listado/'); ?>" class="btn default" role="button">Volver</a>
+            
         </div>
         <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
         <!--<input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idfamilia_datos; ?>"> -->
-        <?php echo form_close(); ?>
+        
 
     </div>
 </div>	
