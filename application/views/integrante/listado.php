@@ -164,14 +164,10 @@
 
 
                                                                 <li>
-                                                                    <a href="<?php echo site_url('integrante/nueva/' . $idencuesta); ?>">
+                                                                    <a href="<?php echo site_url('integrante/editar/' . $idencuesta.'/'.$idfamilia_datos); ?>">
                                                                         <i class="icon-user"></i> Editar </a>
                                                                 </li>
-
-                                                                <li>
-                                                                    <a href="<?php echo site_url('encuesta/detalle/'); ?>">
-                                                                        <i class="icon-note"></i> Continuar </a>
-                                                                </li>
+                                                              
 
                                                             </ul>
                                                         </div>

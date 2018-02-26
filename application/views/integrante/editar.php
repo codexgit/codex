@@ -1,49 +1,50 @@
 <?php
+echo $familiar['fam_jefe_familia']."acaaaaaaaaaaaaaaaaaaaaa";
 if (validation_errors() == "") {
 
-    $jefe_familia = "";
-    $es_carga = "";
-    $ant_indigena = "";
-    $parentesco = "";
-    $padre_profesor = "";
+    $jefe_familia = $familiar['fam_jefe_familia'];
+    $es_carga = $familiar['fam_es_carga'];
+    $ant_indigena = $familiar['fam_ant_indigena'];
+    $parentesco = $familiar['fam_parentesco'];
+    $padre_profesor = $familiar['fam_padre_profesor'];
 
-    $cond_permanente = "";
-    $ges = "";
-    $usa_prevsalud = "";
+    $cond_permanente = $familiar['fam_cond_permanente'];
+    $ges = $familiar['fam_ges'];
+    $usa_prevsalud = $familiar['fam_usa_prevsalud'];
 
-    $trabajando = "";
-    $sit_contrato = "";
-    $sit_nolaboral = "";
-    $det_pension = "";
-    $meses_cesante = "";
-    $inicio_activ = "";
+    $trabajando = $familiar['fam_trabajando'];
+    $sit_contrato = $familiar['fam_sit_contrato'];
+    $sit_nolaboral = $familiar['fam_sit_nolaboral'];
+    $det_pension = $familiar['fam_det_pension'];
+    $meses_cesante = $familiar['fam_meses_cesante'];
+    $inicio_activ = $familiar['fam_inicio_activ'];
 
-    $matriculado = "";
-    $nivel_educ = "";
-    $fam_tipo_est = "";
-    $fam_ult_curso = "";
-    $fin_estudios = "";
+    $matriculado = $familiar['fam_matriculado'];
+    $nivel_educ = $familiar['fam_nivel_educ'];
+    $fam_tipo_est = $familiar['fam_tipo_est'];
+    $fam_ult_curso = $familiar['fam_ult_curso'];
+    $fin_estudios = $familiar['fam_fin_estudios'];
 
-    $rindio_psu = "";
-    $anio_psu = "";
-    $puntaje_psu = "";
-    $ult_promedio = "";
-    $fin_educsup = "";
+    $rindio_psu = $familiar['fam_rindio_psu'];
+    $anio_psu = $familiar['fam_anio_psu'];
+    $puntaje_psu = $familiar['fam_puntaje_psu'];
+    $ult_promedio = $familiar['fam_ult_promedio'];
+    $fin_educsup = $familiar['fam_fin_educsup'];
 
-    $ibruto_mes1 = "";
-    $ibruto_mes2 = "";
-    $ibruto_mes3 = "";
-    $iliquido_mes1 = "";
-    $iliquido_mes2 = "";
-    $iliquido_mes3 = "";
-    $rec_pension = "";
-    $pension_mes1 = "";
-    $pension_mes2 = "";
-    $pension_mes3 = "";
-    $rec_otros = "";
-    $otros_mes1 = "";
-    $otros_mes2 = "";
-    $otros_mes3 = "";
+    $ibruto_mes1 = $familiar['fam_ibruto_mes1'];
+    $ibruto_mes2 = $familiar['fam_ibruto_mes2'];
+    $ibruto_mes3 = $familiar['fam_ibruto_mes3'];
+    $iliquido_mes1 = $familiar['fam_iliquido_mes1'];
+    $iliquido_mes2 = $familiar['fam_iliquido_mes2'];
+    $iliquido_mes3 = $familiar['fam_iliquido_mes3'];
+    $rec_pension = $familiar['fam_rec_pension'];
+    $pension_mes1 = $familiar['fam_pension_mes1'];
+    $pension_mes2 = $familiar['fam_pension_mes2'];
+    $pension_mes3 = $familiar['fam_pension_mes3'];
+    $rec_otros = $familiar['fam_rec_otros'];
+    $otros_mes1 = $familiar['fam_otros_mes1'];
+    $otros_mes2 = $familiar['fam_otros_mes2'];
+    $otros_mes3 = $familiar['fam_otros_mes3'];
 } else {
     $jefe_familia = set_value('sel_jefe_familia');
     $ant_indigena = set_value('sel_ant_indigena');
@@ -129,7 +130,7 @@ if (validation_errors() == "") {
             <i class="icon-anchor font-green-sharp"></i>
             <span class="caption-subject font-green-sharp bold uppercase">Encuestas</span>
         </div>
-
+        
     </div>
     <div class="portlet-body">
         <!-- BEGIN FORM-->
@@ -455,7 +456,7 @@ if (validation_errors() == "") {
 
                         </div>	
                         <!-- END ROW -->
-
+ 
                     </div>
                     <div class="tab-pane" id="tab3"> <!--TRABAJO -->
 
@@ -1593,7 +1594,7 @@ if (validation_errors() == "") {
 
             <div class="form-actions right">
                 <!--<button type="button" class="btn default">Volver</button>-->
-                <a href="<?php echo site_url('integrante/listado/' . $idencuesta); ?>" class="btn default" role="button">Volver</a>
+                <a href="<?php echo site_url('integrante/listado/'.$idencuesta); ?>" class="btn default" role="button">Volver</a>
                 <button type="submit" class="btn blue">
                     <i class="fa fa-check"></i> Siguiente</button>
             </div>

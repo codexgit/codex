@@ -447,7 +447,7 @@ if (validation_errors() == "") {
 
 
                                                         <div id="grupo_becas">
-                                                            <label class="control-label">De estar estudiando, ¿tiene alguna de estas becas? <span class="required" aria-required="true"> * </span></label>
+                                                            <label class="control-label">¿tiene alguna de estas becas? <span class="required" aria-required="true"> * </span></label>
                                                             <br/><br/>
                                                             <!-->
                                                                                                                                                                                                         
@@ -474,20 +474,14 @@ if (validation_errors() == "") {
                                                                 "Beca Interna de la Institución" => "18",
                                                                 "Gratuidad en la Educación" => "19"
                                                             );
-                                                            /*
-                                                            echo "MIAU" . $becas['Beca indígena'];
-                                                            for ($i = 0; $i < count($becas); $i++) {
-                                                                echo "<input type='checkbox' name='sel_becas[][]' value='" . $becas[$i] . "' />" . $becas[$i] . "<br>";
-                                                            }
-*/
-                                                            foreach ($becas as $item => $value) {
-                                                                
-                                                                echo "<input type='checkbox' name='sel_becas[][]' value='" . $value . "' />" . $item . "<br>";
 
+                                                            foreach ($becas as $item => $value) {
+
+                                                                echo "<input type='checkbox' name='sel_becas[][]' value='" . $value . "' />" . $item . "<br>";
                                                             }
+                                                            ?>	
                                                             
-                                                            ?>																					
-                                                                                                                                                                                                        
+                                                                   &nbsp;                                                                                                                                     
                                                                                                                                                                                                         
                                                                                                                                                                                                         
                                                                                                                                                                                                         
@@ -495,7 +489,7 @@ if (validation_errors() == "") {
                                                             <?php
                                                             if (form_error('sel_becas') != NULL) {
                                                                 ?>
-                                                                                                                                                                                        <span class="help-block"> <?php echo form_error('sel_becas'); ?> </span>
+                                                                                                                                                                                                                                                                    <span class="help-block"> <?php echo form_error('sel_becas'); ?> </span>
                                                                 <?php
                                                             }
                                                             ?>
@@ -514,38 +508,38 @@ if (validation_errors() == "") {
                                                     <div class="form-actions right">
                                                         <!--<button type="button" class="btn default">Volver</button>-->
                                                         <a href="<?php echo site_url('encuesta/trabajador/' . $idencuesta);
-                                                                ?>" class="btn default" role="button">Volver</a>
-                                                                    <button type="submit" class="btn blue">
-                                                                        <i class="fa fa-check"></i> Siguiente</button>
-                                                                </div>
+                                                            ?>" class="btn default" role="button">Volver</a>
+                                                        <button type="submit" class="btn blue">
+                                                            <i class="fa fa-check"></i> Siguiente</button>
+                                                    </div>
 
-                                                                <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
-                                                                <?php echo form_close(); ?>
-                                                            <!-- END FORM-->
-                                                        </div>
-                                                    </div>													
-
-
+                                                    <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
+                                                    <?php echo form_close(); ?>
+                                                    <!-- END FORM-->
                                                 </div>
-                                            </div>
-
+                                            </div>													
 
 
                                         </div>
                                     </div>
-                                    <!-- END PAGE CONTENT INNER -->
+
+
+
                                 </div>
                             </div>
-                            <!-- END PAGE CONTENT BODY -->
-                            <!-- END CONTENT BODY -->
+                            <!-- END PAGE CONTENT INNER -->
                         </div>
-                        <!-- END CONTENT -->
-                        <!-- BEGIN QUICK SIDEBAR -->
-
-
-
-                        <!-- END QUICK SIDEBAR -->
                     </div>
-                    <!-- END CONTAINER -->
+                    <!-- END PAGE CONTENT BODY -->
+                    <!-- END CONTENT BODY -->
+                </div>
+                <!-- END CONTENT -->
+                <!-- BEGIN QUICK SIDEBAR -->
+
+
+
+                <!-- END QUICK SIDEBAR -->
+            </div>
+            <!-- END CONTAINER -->
 
 

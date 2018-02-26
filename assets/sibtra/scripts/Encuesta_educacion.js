@@ -113,7 +113,7 @@ $(document).ready(function () {
         $("#grupo_ult_curso4").hide();
         $("#grupo_ult_curso5").hide();
         $("#tipo_est").show();
-        $("#anio_egreso").show();
+        $("#anio_egreso").hide();
 
     });
 
@@ -149,7 +149,7 @@ $(document).ready(function () {
         $("#grupo_ult_curso4").hide();
         $("#grupo_ult_curso5").hide();
         $("#tipo_est").show();
-        $("#anio_egreso").show();
+        $("#anio_egreso").hide();
     });
 
     //Media Completa
@@ -186,7 +186,7 @@ $(document).ready(function () {
         $("#grupo_ult_curso4").hide();
         $("#grupo_ult_curso5").hide();
         $("#tipo_est").hide();
-        $("#anio_egreso").show();
+        $("#anio_egreso").hide();
 
     });
 
@@ -225,7 +225,7 @@ $(document).ready(function () {
         $("#grupo_ult_curso1").hide();
         $("#grupo_ult_curso5").hide();
         $("#tipo_est").hide();
-        $("#anio_egreso").show();
+        $("#anio_egreso").hide();
 
     });
     
@@ -262,7 +262,7 @@ $(document).ready(function () {
         $("#grupo_ult_curso4").hide();
         $("#grupo_ult_curso5").hide();
         $("#tipo_est").hide();
-        $("#anio_egreso").show();
+        $("#anio_egreso").hide();
 
     });
 
@@ -299,7 +299,7 @@ $(document).ready(function () {
         $("#grupo_ult_curso4").hide();
         $("#grupo_ult_curso5").hide();
         $("#tipo_est").hide();
-        $("#anio_egreso").show();
+        $("#anio_egreso").hide();
 
     });
     
@@ -336,7 +336,7 @@ $(document).ready(function () {
         $("#grupo_ult_curso4").hide();
         $("#grupo_ult_curso1").hide();
         $("#tipo_est").hide();
-        $("#anio_egreso").show();
+        $("#anio_egreso").hide();
 
     });
     

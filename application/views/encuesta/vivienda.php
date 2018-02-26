@@ -186,7 +186,7 @@ if (validation_errors() == "") {
                                                         <?php
                                                         echo form_radio(array('name' => 'sel_tenencia', 'value' => '1', 'checked' => ('1' == $tenencia) ? TRUE : FALSE, 'id' => 'tenencia1')) . " Propietario <br/>";
                                                         echo form_radio(array('name' => 'sel_tenencia', 'value' => '2', 'checked' => ('2' == $tenencia) ? TRUE : FALSE, 'id' => 'tenencia2')) . " Propietario Pagando Dividendo <br/>";
-                                                        echo form_radio(array('name' => 'sel_tenencia', 'value' => '3', 'checked' => ('3' == $tenencia) ? TRUE : FALSE, 'id' => 'tenencia3')) . " Arrandatario <br/>";
+                                                        echo form_radio(array('name' => 'sel_tenencia', 'value' => '3', 'checked' => ('3' == $tenencia) ? TRUE : FALSE, 'id' => 'tenencia3')) . " Arrendatario <br/>";
                                                         echo form_radio(array('name' => 'sel_tenencia', 'value' => '4', 'checked' => ('4' == $tenencia) ? TRUE : FALSE, 'id' => 'tenencia4')) . " Usufructuario <br/>";
                                                         echo form_radio(array('name' => 'sel_tenencia', 'value' => '5', 'checked' => ('5' == $tenencia) ? TRUE : FALSE, 'id' => 'tenencia5')) . " Allegado <br/>";
                                                         echo form_radio(array('name' => 'sel_tenencia', 'value' => '6', 'checked' => ('6' == $tenencia) ? TRUE : FALSE, 'id' => 'tenencia6')) . " Toma <br/>";
@@ -219,7 +219,7 @@ if (validation_errors() == "") {
                                                         <?php
                                                         echo form_radio(array('name' => 'sel_sitio', 'value' => '1', 'checked' => ('1' == $sitio) ? TRUE : FALSE, 'id' => 'sitio1')) . " Propietario <br/>";
                                                         echo form_radio(array('name' => 'sel_sitio', 'value' => '2', 'checked' => ('2' == $sitio) ? TRUE : FALSE, 'id' => 'sitio2')) . " Propietario Pagando Dividendo <br/>";
-                                                        echo form_radio(array('name' => 'sel_sitio', 'value' => '3', 'checked' => ('3' == $sitio) ? TRUE : FALSE, 'id' => 'sitio3')) . " Arrandatario <br/>";
+                                                        echo form_radio(array('name' => 'sel_sitio', 'value' => '3', 'checked' => ('3' == $sitio) ? TRUE : FALSE, 'id' => 'sitio3')) . " Arrendatario <br/>";
                                                         echo form_radio(array('name' => 'sel_sitio', 'value' => '4', 'checked' => ('4' == $sitio) ? TRUE : FALSE, 'id' => 'sitio4')) . " Usufructuario <br/>";
                                                         echo form_radio(array('name' => 'sel_sitio', 'value' => '5', 'checked' => ('5' == $sitio) ? TRUE : FALSE, 'id' => 'sitio5')) . " Allegado <br/>";
                                                         echo form_radio(array('name' => 'sel_sitio', 'value' => '6', 'checked' => ('6' == $sitio) ? TRUE : FALSE, 'id' => 'sitio6')) . " Toma <br/>";
@@ -252,7 +252,7 @@ if (validation_errors() == "") {
                                                         <?php
                                                         echo form_radio(array('name' => 'sel_post_subsidio', 'value' => '1', 'checked' => ('1' == $post_subsidio) ? TRUE : FALSE, 'id' => 'post_subsidio1')) . " Sí, Vivienda Nueva o Usada <br/>";
                                                         echo form_radio(array('name' => 'sel_post_subsidio', 'value' => '2', 'checked' => ('2' == $post_subsidio) ? TRUE : FALSE, 'id' => 'post_subsidio2')) . " Sí, Construcción en Sitio Propio <br/>";
-                                                        echo form_radio(array('name' => 'sel_post_subsidio', 'value' => '3', 'checked' => ('3' == $post_subsidio) ? TRUE : FALSE, 'id' => 'post_subsidio3')) . " Sí, Mejorando de la Vivienda <br/>";
+                                                        echo form_radio(array('name' => 'sel_post_subsidio', 'value' => '3', 'checked' => ('3' == $post_subsidio) ? TRUE : FALSE, 'id' => 'post_subsidio3')) . " Sí, Mejorando la Vivienda <br/>";
                                                         echo form_radio(array('name' => 'sel_post_subsidio', 'value' => '4', 'checked' => ('4' == $post_subsidio) ? TRUE : FALSE, 'id' => 'post_subsidio4')) . " Sí, Ampliación de la vivienda <br/>";
                                                         echo form_radio(array('name' => 'sel_post_subsidio', 'value' => '5', 'checked' => ('5' == $post_subsidio) ? TRUE : FALSE, 'id' => 'post_subsidio5')) . " Sí, Mejoramiento de Entorno <br/>";
                                                         echo form_radio(array('name' => 'sel_post_subsidio', 'value' => '6', 'checked' => ('6' == $post_subsidio) ? TRUE : FALSE, 'id' => 'post_subsidio6')) . " Sí, Subsidio de Arriendo <br/>";
@@ -655,7 +655,7 @@ if (validation_errors() == "") {
                                             </div>
                                             <div class="form-actions right">
                                                 <!--<button type="button" class="btn default">Volver</button>-->
-                                                <a href="<?php echo site_url('encuesta/salud/'); ?>" class="btn default" role="button">Volver</a>
+                                                <a href="<?php echo site_url('encuesta/salud/' . $idencuesta); ?>" class="btn default" role="button">Volver</a>
                                                 <button type="submit" class="btn blue">
                                                     <i class="fa fa-check"></i> Siguiente</button>
                                             </div>
@@ -685,7 +685,7 @@ if (validation_errors() == "") {
 
 
         <!-- END QUICK SIDEBAR -->
-    </div>
+  
     <!-- END CONTAINER -->
 
 

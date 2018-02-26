@@ -253,13 +253,17 @@ if (validation_errors() == "") {
                                                     }
                                                     ?>">
                                                         <label class="control-label">Fecha de Nacimiento <span class="required" aria-required="true"> * </span></label>
+
+                                                        <!-- INICIO DEL CALENDARIO -->
                                                         <div class='input-group date datepicker' >
-                                                            <span class="help-block"> <?php echo mdate('%d-%m-%Y ', $fec_nacimiento); ?> </span> 
+
                                                             <input type='text' name="txt_fec_nacimiento" id="txt_fec_nacimiento" class="form-control" value="<?php echo $fec_nacimiento; ?>" readonly/>
+
                                                             <span class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                             </span>
                                                         </div>
+                                                        <!-- FIN DEL CALENDARIO -->
 
 
                                                         <?php
@@ -272,6 +276,8 @@ if (validation_errors() == "") {
                                                     </div>
                                                 </div>
                                                 <!--/span-->
+
+
                                                 <div class="col-md-4"> <!-- Género -->
                                                     <div class="form-group <?php
                                                     if (form_error('sel_genero') != "") {
@@ -340,7 +346,7 @@ if (validation_errors() == "") {
 
                                             <div class="form-actions right">
                                                 <!--<button type="button" class="btn default">Volver</button>-->
-                                                <a href="<?php echo site_url('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos); ?>" class="btn default" role="button">Volver</a>
+                                                <a href="<?php echo site_url('integrante/listado/' . $idencuesta); ?>" class="btn default" role="button">Volver</a>
                                                 <button type="submit" class="btn blue">
                                                     <i class="fa fa-check"></i> Siguiente</button>
                                             </div>

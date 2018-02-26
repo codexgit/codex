@@ -241,7 +241,7 @@ class Encuesta extends CI_Controller {
         $this->load->model('filialempresa_model');
         //$filialempresa_id = $this->filialempresa_model->get_filialempresa_id_encuesta_by_id($idencuesta);
         $data['filialempresa_id'] = $filialempresa_id;
-        
+
         if (isset($idencuesta) && $idencuesta > 0) {
 
             $data['idencuesta'] = $idencuesta;
@@ -438,16 +438,13 @@ class Encuesta extends CI_Controller {
 
                 $sel_becas = $this->input->post("sel_becas");
                 $count = count($sel_becas);
-                $becas = "";                
+                $becas = "";
                 for ($i = 0; $i < $count; $i++) {
                     $becas = $becas . $sel_becas[$i][0] . "|";
-                    //echo $becas[$i];
                 }
 
 
 
-                //$becas = $this->input->post('sel_becas');
-                //$becas = $this->input->	
 
 
 
@@ -578,7 +575,7 @@ class Encuesta extends CI_Controller {
 
                 $this->form_validation->set_rules('sel_cont_menores', 'Cantidad de Menores', 'required|numeric');
                 $this->form_validation->set_rules('sel_cons_drogas', 'Problemas de Alcohol/Drogas', 'required');
-                $this->form_validation->set_rules('txt_cons_drogas_d', 'Edad', 'numeric');
+               // $this->form_validation->set_rules('txt_cons_drogas_d', 'Edad', 'numeric');
                 $this->form_validation->set_rules('txt_pat_ges', 'Patologia GES', 'required');
                 $this->form_validation->set_rules('sel_usa_prevision', 'Previsión', 'required');
                 $this->form_validation->set_rules('txt_cond_permanente', 'Condicion Permanente', 'required');
