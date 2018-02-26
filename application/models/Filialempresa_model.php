@@ -20,11 +20,16 @@ class Filialempresa_model extends CI_Model {
         $this->db->select('encuesta_id');
         $this->db->from('encuesta');
         $this->db->where('encuesta.filial_empresa_id', $idfilempresa);
-        //$this->db->select('encuesta_id from filial_empresa where($idfilempresa = filial_empresa.empresa_id)');
         $query = $this->db->get();
-        //$data = $query->result_array();	
         return $query->result_array();
     }
-    
+
+    public function get_filialempresa_id_encuesta_by_id($idencuesta) {
+        $this->db->select('filial_empresa_id');
+        $this->db->from('encuesta');
+        $this->db->where('encuesta.encuesta_id', $idencuesta);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
 }

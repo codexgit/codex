@@ -54,6 +54,11 @@ class Integrante_model extends CI_Model {
 
     /////////////////////// FAMILIA DATOS //////////////////////////
 
+    public function get_encuesta_familia_datos_by_id($encuesta_familia_id) {
+        $query = $this->db->get_where('familia_datos', array('encuesta_familia_id' => $encuesta_familia_id));
+        return $query->first_row();
+    }
+
     public function verificar_registro_familia_datos($encuesta_familia_id) {
         $query = $this->db->get_where('familia_datos', array('encuesta_familia_id' => $encuesta_familia_id));
         //return $query->first_row();
@@ -72,19 +77,6 @@ class Integrante_model extends CI_Model {
     public function actualizar_familia_datos($familia_datos) {
         return $this->db->update('familia_datos', $familia_datos);
     }
-
-    /* public function get_familia_by_encuesta_id($idencuesta){
-
-      $this->db->select('*');
-      $this->db->from('encuesta_familia');
-      $this->db->join('encuesta','encuesta_familia.encuesta_id = encuesta.encuesta_id','left');
-
-
-      $query = $this->db->get_where('encuesta_familia',array('encuesta_id' => $idencuesta));
-      ///return $query->row_array();
-      return $query->result_array();
-      }
-     */
 
     public function mostrar_familia($idencuesta) {
         $this->db->select("*");

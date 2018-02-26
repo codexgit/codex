@@ -59,11 +59,11 @@ class Encuesta_model extends CI_Model {
           return $query->result_array(); */
     }
 
-
     public function get_encuesta_trabajador_by_id($idencuesta) {
         $query = $this->db->get_where('encuesta_trabajador', array('encuesta_id' => $idencuesta));
         return $query->first_row();
     }
+
     public function crear_encuesta_trabajador($encuesta_trabajador) {
 
         return $this->db->insert('encuesta_trabajador', $encuesta_trabajador);
@@ -167,13 +167,6 @@ class Encuesta_model extends CI_Model {
         $this->db->where('encuesta_id', $idencuesta);
         $query = $this->db->get();
         return $query->result_array();
-        /* if($query->num_rows()==1){
-
-          return $query->row();
-          }else{
-          return false;
-          }
-         */
     }
 
 }

@@ -14,7 +14,7 @@ if (validation_errors() == "") {
     $antind = $trabajador['trab_ant_indigenas'];
     $estcivil = $trabajador['trab_est_civil'];
     $nacionalidad = $trabajador['trab_nacionalidad'];
-    $prevsalud = $trabajador['trab_prev_salud'];
+    $prev_salud = $trabajador['trab_prev_salud'];
     $tramo = $trabajador['trab_prev_salud_d'];
     $prevsocial = $trabajador['trab_prev_social'];
 } else {
@@ -29,7 +29,7 @@ if (validation_errors() == "") {
     $antind = set_value('rbt_antind');
     $estcivil = set_value('rbt_estcivil');
     $nacionalidad = set_value('rbt_nacionalidad');
-    $prevsalud = set_value('sel_prevsalud');
+    $prev_salud = set_value('sel_prev_salud');
     $tramo = set_value('txt_tramo');
     $prevsocial = set_value('txt_prevsocial');
 }
@@ -436,7 +436,7 @@ if (validation_errors() == "") {
 
                                                         echo form_radio(array('name' => 'rbt_nacionalidad', 'value' => '2', 'checked' => ('2' == $nacionalidad) ? TRUE : FALSE, 'id' => 'nacionalidad2')) . " No <br/>";
 
-                                                        echo form_radio(array('name' => 'rbt_nacionalidad', 'value' => '3', 'checked' => ('3' == $nacionalidad) ? TRUE : FALSE, 'id' => 'nacionalidad3')) . " Casado <br/>";
+                                                        echo form_radio(array('name' => 'rbt_nacionalidad', 'value' => '3', 'checked' => ('3' == $nacionalidad) ? TRUE : FALSE, 'id' => 'nacionalidad3')) . " TieneCédula de Identidad Chilena <br/>";
 
                                                         if (form_error('rbt_nacionalidad') != NULL) {
                                                             ?>
@@ -454,20 +454,20 @@ if (validation_errors() == "") {
                                                 <!--span-->
                                                 <div class="col-md-4">
                                                     <div class="form-group <?php
-                                                    if (form_error('sel_prevsalud') != "") {
+                                                    if (form_error('sel_prev_salud') != "") {
                                                         echo "has-error";
                                                     }
                                                     ?>">
                                                         <label class="control-label">Previsión de salud <span class="required" aria-required="true"> * </span></label>
-                                                        <select name="sel_prevsalud" id="sel_prevsalud" class="form-control">
+                                                        <select name="sel_prev_salud" id="sel_prev_salud" class="form-control" placeholder="" value="<?php echo $prev_salud; ?>">
                                                             <option value="">Seleccione una opción</option>
                                                             <option value="1">FONASA</option>
                                                             <option value="2">Isapre</option>
                                                         </select>
                                                         <?php
-                                                        if (form_error('sel_prevsalud') != NULL) {
+                                                        if (form_error('sel_prev_salud') != NULL) {
                                                             ?>
-                                                            <span class="help-block"> <?php echo form_error('sel_prevsalud'); ?> </span>
+                                                            <span class="help-block"> <?php echo form_error('sel_prev_salud'); ?> </span>
                                                             <?php
                                                         }
                                                         ?>
@@ -516,16 +516,16 @@ if (validation_errors() == "") {
                                         </div>
                                         <div class="form-actions right">
                                             <!--<button type="button" class="btn default">Volver</button>-->
-                                            <a href="<?php echo site_url('encuesta/listado/'); ?>" class="btn default" role="button">Volver</a>
-                                            <div id="cargar_educacion">
-                                                <button type="submit" class="btn blue">
-                                                    <i class="fa fa-check"></i> Siguiente</button>
+                                            <a href="<?php echo site_url('encuesta/listado/' . $filialempresa_id); ?>" class="btn default" role="button">Volver</a>
 
-                                            </div>
-                                            <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
-                                            <?php echo form_close(); ?>
-                                            <!-- END FORM-->
+                                            <button type="submit" class="btn blue">
+                                                <i class="fa fa-check"></i> Siguiente</button>
+
                                         </div>
+                                        <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
+                                        <?php echo form_close(); ?>
+                                        <!-- END FORM-->
+
                                     </div>													
 
 
@@ -548,7 +548,7 @@ if (validation_errors() == "") {
 
 
         <!-- END QUICK SIDEBAR -->
-    </div>
-    <!-- END CONTAINER -->
+
+        <!-- END CONTAINER -->
 
 

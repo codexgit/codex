@@ -233,11 +233,15 @@ class Encuesta extends CI_Controller {
         $this->load->model('encuesta_model');
         $this->load->helper('date');
 
+        $filialempresa_id = $this->uri->segment(3);
         $sesionusuario = $this->session->userdata('usrsesion');
 
         $data['sesionusuario'] = $sesionusuario;
         $data['lstregiones'] = $this->param_model->get_regiones();
-
+        $this->load->model('filialempresa_model');
+        //$filialempresa_id = $this->filialempresa_model->get_filialempresa_id_encuesta_by_id($idencuesta);
+        $data['filialempresa_id'] = $filialempresa_id;
+        
         if (isset($idencuesta) && $idencuesta > 0) {
 
             $data['idencuesta'] = $idencuesta;
@@ -288,7 +292,7 @@ class Encuesta extends CI_Controller {
                 $f_indigena = $this->input->post('rbt_antind');
                 $est_civil = $this->input->post('rbt_estcivil');
                 $nacionalidad = $this->input->post('rbt_nacionalidad');
-                $prev_salud = $this->input->post('sel_prevsalud');
+                $prev_salud = $this->input->post('sel_prev_salud');
                 $tramo_salud = $this->input->post('txt_tramo');
                 $prev_soc = $this->input->post('txt_prevsocial');
 
@@ -304,7 +308,7 @@ class Encuesta extends CI_Controller {
                 $this->form_validation->set_rules('rbt_antind', 'Ascendencia indigena', 'required');
                 $this->form_validation->set_rules('rbt_estcivil', 'Estado civil', 'required');
                 $this->form_validation->set_rules('rbt_nacionalidad', 'Nacionalidad', 'required');
-                $this->form_validation->set_rules('sel_prevsalud', 'Prevision de salud', 'required');
+                $this->form_validation->set_rules('sel_prev_salud', 'Prevision de salud', 'required');
                 $this->form_validation->set_rules('txt_tramo', 'Isapre/Tramo', 'required');
                 $this->form_validation->set_rules('txt_prevsocial', 'Prevision social', 'required');
 
