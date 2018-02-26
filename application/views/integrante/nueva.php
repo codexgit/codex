@@ -1,14 +1,5 @@
 <?php
 if (validation_errors() == "") {
-    /* $run 			= 	$familiar['fam_run'];
-      $dv 			= 	$familiar['fam_dv'];
-      $nombres		= 	$familiar['fam_nombres'];
-      $apellido_p		= 	$familiar['fam_apellido_p'];
-      $apellido_m 	= 	$familiar['fam_apellido_m'];
-      $fec_nacimiento = 	$familiar['fam_fec_nacimiento'];
-      $genero 		= 	$familiar['fam_genero'];
-      $nac_chilena 	= 	$familiar['fam_nac_chilena'];
-     */
 
     $run = "";
     $dv = "";
@@ -73,19 +64,19 @@ if (validation_errors() == "") {
 
 
                         <div class="row">
-<?php
-if ($mensaje != NULL && $mensaje != "") {
-    ?>
+                            <?php
+                            if ($mensaje != NULL && $mensaje != "") {
+                                ?>
                                 <div class="col-md-12">
                                     <div class="<?php echo $divtipo; ?>">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-    <?php echo $mensaje; ?>
+                                        <?php echo $mensaje; ?>
                                     </div>                                                
                                 </div>
 
-    <?php
-}
-?>
+                                <?php
+                            }
+                            ?>
 
 
                             <div class="col-md-12">
@@ -135,11 +126,11 @@ if ($mensaje != NULL && $mensaje != "") {
 
                                         <!-- BEGIN FORM-->
 
-<?php
-$attributes = array('class' => 'horizontal-form');
+                                        <?php
+                                        $attributes = array('class' => 'horizontal-form');
 
-echo form_open('integrante/nueva/' . $idencuesta, $attributes);
-?>
+                                        echo form_open('integrante/nueva/' . $idencuesta, $attributes);
+                                        ?>
                                         <div class="form-body">
                                             <div class="row">
 
@@ -176,9 +167,11 @@ echo form_open('integrante/nueva/' . $idencuesta, $attributes);
                                                 <!--/span-->
 
                                                 <div class="col-md-4"> <!-- Nombres -->
-                                                    <div class="form-group <?php if (form_error('txt_nombres') != "") {
-                                            echo "has-error";
-                                        } ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('txt_nombres') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Nombres  <span class="required" aria-required="true"> * </span> </label>
                                                         <input type="text" name="txt_nombres" id="txt_nombres" class="form-control" placeholder="" value="<?php echo $nombres; ?>">
 
@@ -193,9 +186,11 @@ echo form_open('integrante/nueva/' . $idencuesta, $attributes);
                                                 </div>
                                                 <!--/span-->
                                                 <div class="col-md-6"> <!-- Apellido Paterno -->
-                                                    <div class="form-group <?php if (form_error('txt_apellido_p') != "") {
-                                                            echo "has-error";
-                                                        } ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('txt_apellido_p') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Apellido Paterno <span class="required" aria-required="true"> * </span></label>
                                                         <input type="text" name="txt_apellido_p" id="txt_apellido_p" class="form-control" placeholder="" value="<?php echo $apellido_p; ?>">
                                                         <?php
@@ -209,36 +204,40 @@ echo form_open('integrante/nueva/' . $idencuesta, $attributes);
                                                 </div>
                                                 <!--/span-->
                                                 <div class="col-md-6"> <!-- Apellido Materno -->
-                                                    <div class="form-group <?php if (form_error('txt_apellido_m') != "") {
-                                                            echo "has-error";
-                                                        } ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('txt_apellido_m') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Apellido Materno </label>
                                                         <input type="text" name="txt_apellido_m" id="txt_apellido_m" class="form-control" placeholder="" value="<?php echo $apellido_m; ?>">
                                                         <?php
                                                         if (form_error('txt_apellido_m') != NULL) {
                                                             ?>
                                                             <span class="help-block"> <?php echo form_error('txt_apellido_m'); ?> </span>
-    <?php
-}
-?>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->
 
                                                 <!--/span-->	
                                                 <div class="col-md-6"> <!-- RUN --> 
-                                                    <div class="form-group <?php if (form_error('txt_run') != "") {
-    echo "has-error";
-} ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('txt_run') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">RUN <span class="required" aria-required="true"> * </span></label>
                                                         <input type="text" name="txt_run" id="txt_run" class="form-control" placeholder="Ej: 12345678-9" value="<?php echo $run; ?>">
                                                         <?php
                                                         if (form_error('txt_run') != NULL) {
                                                             ?>
                                                             <span class="help-block"> <?php echo form_error('txt_run'); ?> </span>
-    <?php
-}
-?>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
 
@@ -248,9 +247,11 @@ echo form_open('integrante/nueva/' . $idencuesta, $attributes);
                                             <!--/row-->                                                                                                                                 
                                             <div class="row">
                                                 <div class="col-md-4"> <!-- Fecha Nacimiento -->
-                                                    <div class="form-group <?php if (form_error('txt_fec_nacimiento') != "") {
-    echo "has-error";
-} ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('txt_fec_nacimiento') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Fecha de Nacimiento <span class="required" aria-required="true"> * </span></label>
                                                         <div class='input-group date datepicker' >
                                                             <span class="help-block"> <?php echo mdate('%d-%m-%Y ', $fec_nacimiento); ?> </span> 
@@ -261,20 +262,22 @@ echo form_open('integrante/nueva/' . $idencuesta, $attributes);
                                                         </div>
 
 
-<?php
-if (form_error('txt_fec_nacimiento') != NULL) {
-    ?>
+                                                        <?php
+                                                        if (form_error('txt_fec_nacimiento') != NULL) {
+                                                            ?>
                                                             <span class="help-block"> <?php echo form_error('txt_fec_nacimiento'); ?> </span>
-    <?php
-}
-?>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->
                                                 <div class="col-md-4"> <!-- Género -->
-                                                    <div class="form-group <?php if (form_error('sel_genero') != "") {
-                                                            echo "has-error";
-                                                        } ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('sel_genero') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Género <span class="required" aria-required="true"> * </span></label>
                                                         <br/><br/>
                                                         <?php
@@ -293,18 +296,20 @@ if (form_error('txt_fec_nacimiento') != NULL) {
                                                         if (form_error('sel_genero') != NULL) {
                                                             ?>
                                                             <span class="help-block"> <?php echo form_error('sel_genero'); ?> </span>
-    <?php
-}
-?>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->
 
                                                 <!--/span-->
                                                 <div class="col-md-4"> <!-- Nacionalidad -->
-                                                    <div class="form-group <?php if (form_error('sel_nac_chilena') != "") {
-    echo "has-error";
-} ?>">
+                                                    <div class="form-group <?php
+                                                    if (form_error('sel_nac_chilena') != "") {
+                                                        echo "has-error";
+                                                    }
+                                                    ?>">
                                                         <label class="control-label">Nacionalidad Chilena <span class="required" aria-required="true"> * </span></label>
                                                         <br/><br/>
                                                         <?php
@@ -323,9 +328,9 @@ if (form_error('txt_fec_nacimiento') != NULL) {
                                                         if (form_error('sel_nac_chilena') != NULL) {
                                                             ?>
                                                             <span class="help-block"> <?php echo form_error('sel_nac_chilena'); ?> </span>
-    <?php
-}
-?>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <!--/span-->	         
@@ -341,7 +346,7 @@ if (form_error('txt_fec_nacimiento') != NULL) {
                                             </div>
                                             <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
                                                                                                                     <!--<input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idfamilia_datos; ?>"> -->
-<?php echo form_close(); ?>
+                                            <?php echo form_close(); ?>
                                             <!-- END FORM-->
                                         </div>
                                     </div>	

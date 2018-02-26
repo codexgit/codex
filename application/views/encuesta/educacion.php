@@ -453,31 +453,39 @@ if (validation_errors() == "") {
                                                                                                                                                                                                         
                                                             <?php
                                                             $becas = array(
-                                                                "Beca indígena",
-                                                                "Programa de Residencia Familiar",
-                                                                "Beca Mejores Puntajes PSU",
-                                                                "Beca excelencia académica",
-                                                                "Beca Nuevo Milenio",
-                                                                "Beca Nuevo Milenio cursos superiores",
-                                                                "Beca Juan Gómez Millas",
-                                                                "Beca Juan Gómez Millas cursos superiores",
-                                                                "Beca para Hijos Profesionales de la Educación",
-                                                                "Beca de excelencia técnica",
-                                                                "Beca de Articulación",
-                                                                "Crédito con garantía estatal",
-                                                                "Beca Mantención Educación Superior",
-                                                                "Beca Indígena Educación Superior",
-                                                                "Beca de Residencia Familiar Estudiantil",
-                                                                "Beca Bicentenario",
-                                                                "Beca Bicentenario cursos superiores",
-                                                                "Fondo Solidario de Crédito Universitario",
-                                                                "Beca Interna de la Institución",
-                                                                "Gratuidad en la Educación"
+                                                                "Beca indígena" => "0",
+                                                                "Programa de Residencia Familiar" => "1",
+                                                                "Beca Mejores Puntajes PSU" => "2",
+                                                                "Beca excelencia académica" => "3",
+                                                                "Beca Nuevo Milenio" => "4",
+                                                                "Beca Nuevo Milenio cursos superiores" => "5",
+                                                                "Beca Juan Gómez Millas" => "6",
+                                                                "Beca Juan Gómez Millas cursos superiores" => "7",
+                                                                "Beca para Hijos Profesionales de la Educación" => "8",
+                                                                "Beca de excelencia técnica" => "9",
+                                                                "Beca de Articulación" => "10",
+                                                                "Crédito con garantía estatal" => "11",
+                                                                "Beca Mantención Educación Superior" => "12",
+                                                                "Beca Indígena Educación Superior" => "13",
+                                                                "Beca de Residencia Familiar Estudiantil" => "14",
+                                                                "Beca Bicentenario" => "15",
+                                                                "Beca Bicentenario cursos superiores" => "16",
+                                                                "Fondo Solidario de Crédito Universitario" => "17",
+                                                                "Beca Interna de la Institución" => "18",
+                                                                "Gratuidad en la Educación" => "19"
                                                             );
-
+                                                            /*
+                                                            echo "MIAU" . $becas['Beca indígena'];
                                                             for ($i = 0; $i < count($becas); $i++) {
-                                                                echo "<input type='checkbox' name='sel_becas[]' value='" . $becas[$i] . "' />" . $becas[$i] . "<br>";
+                                                                echo "<input type='checkbox' name='sel_becas[][]' value='" . $becas[$i] . "' />" . $becas[$i] . "<br>";
                                                             }
+*/
+                                                            foreach ($becas as $item => $value) {
+                                                                
+                                                                echo "<input type='checkbox' name='sel_becas[][]' value='" . $value . "' />" . $item . "<br>";
+
+                                                            }
+                                                            
                                                             ?>																					
                                                                                                                                                                                                         
                                                                                                                                                                                                         
@@ -505,38 +513,39 @@ if (validation_errors() == "") {
 
                                                     <div class="form-actions right">
                                                         <!--<button type="button" class="btn default">Volver</button>-->
-                                                        <a href="<?php echo site_url('encuesta/trabajador/' . $idencuesta); ?>" class="btn default" role="button">Volver</a>
-                                                        <button type="submit" class="btn blue">
-                                                            <i class="fa fa-check"></i> Siguiente</button>
-                                                    </div>
+                                                        <a href="<?php echo site_url('encuesta/trabajador/' . $idencuesta);
+                                                                ?>" class="btn default" role="button">Volver</a>
+                                                                    <button type="submit" class="btn blue">
+                                                                        <i class="fa fa-check"></i> Siguiente</button>
+                                                                </div>
 
-                                                    <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
-                                                    <?php echo form_close(); ?>
-                                                    <!-- END FORM-->
+                                                                <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
+                                                                <?php echo form_close(); ?>
+                                                            <!-- END FORM-->
+                                                        </div>
+                                                    </div>													
+
+
                                                 </div>
-                                            </div>													
+                                            </div>
+
 
 
                                         </div>
                                     </div>
-
-
-
+                                    <!-- END PAGE CONTENT INNER -->
                                 </div>
                             </div>
-                            <!-- END PAGE CONTENT INNER -->
+                            <!-- END PAGE CONTENT BODY -->
+                            <!-- END CONTENT BODY -->
                         </div>
+                        <!-- END CONTENT -->
+                        <!-- BEGIN QUICK SIDEBAR -->
+
+
+
+                        <!-- END QUICK SIDEBAR -->
                     </div>
-                    <!-- END PAGE CONTENT BODY -->
-                    <!-- END CONTENT BODY -->
-                </div>
-                <!-- END CONTENT -->
-                <!-- BEGIN QUICK SIDEBAR -->
-
-
-
-                <!-- END QUICK SIDEBAR -->
-            </div>
-            <!-- END CONTAINER -->
+                    <!-- END CONTAINER -->
 
 

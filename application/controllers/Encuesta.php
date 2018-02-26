@@ -438,10 +438,9 @@ class Encuesta extends CI_Controller {
 
                 $sel_becas = $this->input->post("sel_becas");
                 $count = count($sel_becas);
-                $becas = "";
-                echo $count;
+                $becas = "";                
                 for ($i = 0; $i < $count; $i++) {
-                    $becas = $becas . $sel_becas[$i] . "/";
+                    $becas = $becas . $sel_becas[$i][0] . "|";
                     //echo $becas[$i];
                 }
 
