@@ -1507,6 +1507,7 @@ if (validation_errors() == "") {
                                         ?>
                                     </div>
                                 </div>
+                                
                                 <!--/span-->
                                 <div id="grupo_ingresos_otros">
 

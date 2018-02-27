@@ -134,8 +134,9 @@ class Integrante extends CI_Controller {
 
             if ($this->input->post('hdn_encuestaid') != "" && $this->input->post('hdn_encuestaid') > 0) {
 
-                $run = $this->input->post('txt_run');
-                $dv = $this->input->post('txt_dv');
+               // $run = $this->input->post('txt_run');
+                $run_dv = explode("-", $this->input->post('txt_run'));
+                //$dv = $this->input->post('txt_dv');
                 $nombres = $this->input->post('txt_nombres');
                 $apellido_p = $this->input->post('txt_apellido_p');
                 $apellido_m = $this->input->post('txt_apellido_m');
@@ -175,8 +176,8 @@ class Integrante extends CI_Controller {
 
                     $encuesta_familia = array(
                         'encuesta_id' => $idencuesta,
-                        'fam_run' => $run[0],
-                        'fam_dv' => $run[1],
+                        'fam_run' => $run_dv[0],
+                        'fam_dv' => $run_dv[1],
                         'fam_nombres' => $nombres,
                         'fam_apellido_p' => $apellido_p,
                         'fam_apellido_m' => $apellido_m,
@@ -311,8 +312,7 @@ class Integrante extends CI_Controller {
                 $sit_nolaboral = $this->input->post('sel_sit_nolaboral');
                 $sel_pension = $this->input->post("sel_pension");
                 $count = count($sel_pension);
-                $det_pension = "";
-                echo $count;
+                $det_pension = "";                
                 for ($i = 0; $i < $count; $i++) {
                     $det_pension = $det_pension . $sel_pension[$i] . "/";
                 }
@@ -333,8 +333,7 @@ class Integrante extends CI_Controller {
 
                 $sel_fin_educsup = $this->input->post("sel_fin_educsup");
                 $count = count($sel_fin_educsup);
-                $fin_educsup = "";
-                echo $count;
+                $fin_educsup = "";                
                 for ($i = 0; $i < $count; $i++) {
                     $fin_educsup = $fin_educsup . $sel_fin_educsup[$i] . "/";
                 }
