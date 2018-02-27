@@ -97,7 +97,6 @@ class Integrante extends CI_Controller {
 
 
         $data['idfamilia_datos'] = "";
-        //echo $idfamilia_datos['encuesta_familia_id']."acaaaaaaaaaaaaaaaaa";
 
         $data['sesionusuario'] = $sesionusuario;
         $data['lstregiones'] = $this->param_model->get_regiones();
@@ -186,27 +185,16 @@ class Integrante extends CI_Controller {
                         'fam_nac_chilena' => $nac_chilena
                     );
 
-                    if ($verificador != 0) {
-                        $this->integrante_model->actualizar_encuesta_familia($encuesta_familia);
-                        //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
 
-                        $data['mensaje'] = "El integrante ha sido modificada exitosamente";
-                        $data['divtipo'] = "alert alert-success alert-dismissable";
-                        $id_fam = $this->integrante_model->get_idfamilia_datos_by_id($idencuesta);
-                        $idfamilia_datos = $id_fam['encuesta_familia_id'];
-                        $data['idfamilia_datos'] = $idfamilia_datos;
-                        redirect('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, 'refresh');
-                    } else {
-                        $this->integrante_model->crear_encuesta_familia($encuesta_familia);
-                        //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
-                        $id_fam = $this->integrante_model->get_idfamilia_datos_by_id($idencuesta);
-                        $idfamilia_datos = $id_fam['encuesta_familia_id'];
-                        $data['idfamilia_datos'] = $idfamilia_datos;
-                        $data['mensaje'] = "El integrante ha sido creado exitosamente";
-                        $data['divtipo'] = "alert alert-success alert-dismissable";
+                    $this->integrante_model->crear_encuesta_familia($encuesta_familia);
+                    //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
+                    $id_fam = $this->integrante_model->get_idfamilia_datos_by_id($idencuesta);
+                    $idfamilia_datos = $id_fam['encuesta_familia_id'];
+                    $data['idfamilia_datos'] = $idfamilia_datos;
+                    $data['mensaje'] = "El integrante ha sido creado exitosamente";
+                    $data['divtipo'] = "alert alert-success alert-dismissable";
 
-                        redirect('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, 'refresh');
-                    }
+                    redirect('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, 'refresh');
                 }
             } else {
                 $data['mensaje'] = "";
@@ -500,11 +488,10 @@ class Integrante extends CI_Controller {
             $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idfamilia_datos);
 
             $verificador = $this->integrante_model->verificar_registro_familia_datos($idfamilia_datos);
-         
+
             if ($verificador > 0) {
 
                 $familiar = $this->integrante_model->get_familia_datos_by_id($idfamilia_datos);
-                
             } else {
 
                 $familiar = array(
@@ -573,7 +560,7 @@ class Integrante extends CI_Controller {
                 $sel_pension = $this->input->post("sel_pension");
                 $count = count($sel_pension);
                 $det_pension = "";
-                echo $count;
+
                 for ($i = 0; $i < $count; $i++) {
                     $det_pension = $det_pension . $sel_pension[$i] . "/";
                 }
@@ -595,7 +582,7 @@ class Integrante extends CI_Controller {
                 $sel_fin_educsup = $this->input->post("sel_fin_educsup");
                 $count = count($sel_fin_educsup);
                 $fin_educsup = "";
-                echo $count;
+
                 for ($i = 0; $i < $count; $i++) {
                     $fin_educsup = $fin_educsup . $sel_fin_educsup[$i] . "/";
                 }
@@ -685,26 +672,17 @@ class Integrante extends CI_Controller {
                         'fam_otros_mes2' => $otros_mes2,
                         'fam_otros_mes3' => $otros_mes3
                     );
-                
 
 
-                    if ($verificador != 0) {
-                        $this->integrante_model->actualizar_familia_datos($familia_datos);
-                        //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
 
-                        $data['mensaje'] = "El integrante familiar ha sido modificada exitosamente";
-                        $data['divtipo'] = "alert alert-success alert-dismissable";
 
-                        redirect('integrante/listado/' . $idencuesta, 'refresh');
-                    } else {
-                        $this->integrante_model->crear_familia_datos($familia_datos);
-                        //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
+                    $this->integrante_model->actualizar_familia_datos($familia_datos);
+                    //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
 
-                        $data['mensaje'] = "El integrante ha sido agregado con exitosamente";
-                        $data['divtipo'] = "alert alert-success alert-dismissable";
+                    $data['mensaje'] = "El integrante familiar ha sido modificada exitosamente";
+                    $data['divtipo'] = "alert alert-success alert-dismissable";
 
-                        redirect('integrante/listado/' . $idencuesta, 'refresh');
-                    }
+                    redirect('integrante/listado/' . $idencuesta, 'refresh');
                 }
             } else {
                 $data['mensaje'] = "";
