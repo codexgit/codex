@@ -675,31 +675,31 @@ if (validation_errors() == "") {
 
                             <!--/span-->
                             <div class="col-md-4"> <!-- Tiene Iniciación de Actividades en el SII -->
-                                <div id="fam_inicio_activ">
-                                    <div class="form-group <?php
-                                    if (form_error('sel_inicio_activ') != "") {
-                                        echo "has-error";
-                                    }
-                                    ?>">
-                                        <label class="control-label">Tiene Iniciación de Actividades en el SII<span class="required" aria-required="true"> * </span></label>
-                                        <br/><br/>
+
+                                <div class="form-group <?php
+                                if (form_error('sel_inicio_activ') != "") {
+                                    echo "has-error";
+                                }
+                                ?>">
+                                    <label class="control-label">Tiene Iniciación de Actividades en el SII<span class="required" aria-required="true"> * </span></label>
+                                    <br/><br/>
 
 
 
-                                        <?php
-                                        echo form_radio(array('name' => 'sel_inicio_activ', 'value' => '1', 'checked' => ('1' == $inicio_activ) ? TRUE : FALSE, 'id' => 'inicio_activ1')) . " Sí<br/>";
-                                        echo form_radio(array('name' => 'sel_inicio_activ', 'value' => '2', 'checked' => ('2' == $inicio_activ) ? TRUE : FALSE, 'id' => 'inicio_activ2')) . " No<br/>";
-                                        ?>   
-                                        <?php
-                                        if (form_error('sel_inicio_activ') != NULL) {
-                                            ?>
-                                            <span class="help-block"> <?php echo form_error('sel_inicio_activ'); ?> </span>
-                                            <?php
-                                        }
+                                    <?php
+                                    echo form_radio(array('name' => 'sel_inicio_activ', 'value' => '1', 'checked' => ('1' == $inicio_activ) ? TRUE : FALSE, 'id' => 'inicio_activ1')) . " Sí<br/>";
+                                    echo form_radio(array('name' => 'sel_inicio_activ', 'value' => '2', 'checked' => ('2' == $inicio_activ) ? TRUE : FALSE, 'id' => 'inicio_activ2')) . " No<br/>";
+                                    ?>   
+                                    <?php
+                                    if (form_error('sel_inicio_activ') != NULL) {
                                         ?>
+                                        <span class="help-block"> <?php echo form_error('sel_inicio_activ'); ?> </span>
+                                        <?php
+                                    }
+                                    ?>
 
-                                    </div>
-                                </div>	
+                                </div>
+
                             </div>
                             <!-- span-->
 

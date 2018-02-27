@@ -349,16 +349,14 @@ class Encuesta extends CI_Controller {
 
                     if ($verificador != 0) {
                         $this->encuesta_model->actualizar_encuesta_trabajador($encuesta_trabajador);
-                        //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
-
+                      
                         $data['mensaje'] = "La encuesta ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
 
                         redirect('encuesta/educacion/' . $idencuesta, 'refresh');
                     } else {
                         $this->encuesta_model->crear_encuesta_trabajador($encuesta_trabajador);
-                        //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
-
+                       
                         $data['mensaje'] = "La encuesta ha sido creada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
 

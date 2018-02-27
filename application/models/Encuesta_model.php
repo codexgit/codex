@@ -50,13 +50,7 @@ class Encuesta_model extends CI_Model {
         $this->db->from('encuesta_trabajador');
         $this->db->where('encuesta_id', $idencuesta);
         $query = $this->db->get();
-        return $query->row_array();
-
-
-        /*
-          $query = $this->db->get_where('encuesta_trabajador',array('encuesta_id' => $idencuesta));
-          //return $query->first_row();
-          return $query->result_array(); */
+        return $query->row_array();       
     }
 
     public function get_encuesta_trabajador_by_id($idencuesta) {

@@ -64,12 +64,20 @@ class Integrante_model extends CI_Model {
         //return $query->first_row();
         return $query->num_rows();
     }
+    public function get_familia_datos_by_id($idfamilia_datos) {
 
-    public function get_familia_datos_by_id($encuesta_familia_id) {
+        $this->db->select('*');
+        $this->db->from('familia_datos');
+        $this->db->where('encuesta_familia_id', $idfamilia_datos);
+        $query = $this->db->get();
+        return $query->row_array();       
+    }
+
+   /* public function get_familia_by_id($encuesta_familia_id) {
         $query = $this->db->get_where('familia_datos', array('encuesta_familia_id' => $encuesta_familia_id));
         return $query->row_array();
     }
-
+*/
     public function crear_familia_datos($familia_datos) {
         return $this->db->insert('familia_datos', $familia_datos);
     }

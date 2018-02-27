@@ -94,7 +94,7 @@ class Integrante extends CI_Controller {
 
 
         $sesionusuario = $this->session->userdata('usrsesion');
-        $id_fam = $this->integrante_model->get_idfamilia_datos_by_id($idencuesta);
+
 
         $data['idfamilia_datos'] = "";
         //echo $idfamilia_datos['encuesta_familia_id']."acaaaaaaaaaaaaaaaaa";
@@ -192,12 +192,14 @@ class Integrante extends CI_Controller {
 
                         $data['mensaje'] = "El integrante ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
+                        $id_fam = $this->integrante_model->get_idfamilia_datos_by_id($idencuesta);
                         $idfamilia_datos = $id_fam['encuesta_familia_id'];
                         $data['idfamilia_datos'] = $idfamilia_datos;
                         redirect('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, 'refresh');
                     } else {
                         $this->integrante_model->crear_encuesta_familia($encuesta_familia);
                         //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
+                        $id_fam = $this->integrante_model->get_idfamilia_datos_by_id($idencuesta);
                         $idfamilia_datos = $id_fam['encuesta_familia_id'];
                         $data['idfamilia_datos'] = $idfamilia_datos;
                         $data['mensaje'] = "El integrante ha sido creado exitosamente";
@@ -249,6 +251,7 @@ class Integrante extends CI_Controller {
             $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idfamilia_datos);
 
             $verificador = $this->integrante_model->verificar_registro_familia_datos($idfamilia_datos);
+
 
             if ($verificador > 0) {
 
@@ -497,10 +500,11 @@ class Integrante extends CI_Controller {
             $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idfamilia_datos);
 
             $verificador = $this->integrante_model->verificar_registro_familia_datos($idfamilia_datos);
-
+         
             if ($verificador > 0) {
 
                 $familiar = $this->integrante_model->get_familia_datos_by_id($idfamilia_datos);
+                
             } else {
 
                 $familiar = array(
@@ -636,7 +640,7 @@ class Integrante extends CI_Controller {
                     $data['mensaje'] = "El formulario presenta errores de validación ";
                     $data['divtipo'] = "alert alert-danger alert-dismissable";
                     $this->load->view('recopilador/header', $data);
-                    $this->load->view('integrante/datos', $data);
+                    $this->load->view('integrante/editar', $data);
                     $this->load->view('recopilador/footer', $data);
                 } else {
 
@@ -681,8 +685,7 @@ class Integrante extends CI_Controller {
                         'fam_otros_mes2' => $otros_mes2,
                         'fam_otros_mes3' => $otros_mes3
                     );
-                    
-                    echo $familia_datos['fam_jefe_familia'];
+                
 
 
                     if ($verificador != 0) {
@@ -708,7 +711,7 @@ class Integrante extends CI_Controller {
                 $data['divtipo'] = "alert alert-success alert-dismissable";
 
                 $this->load->view('recopilador/header', $data);
-                $this->load->view('integrante/datos', $data);
+                $this->load->view('integrante/editar', $data);
                 $this->load->view('recopilador/footer', $data);
             }
         } else {

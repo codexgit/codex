@@ -1,5 +1,5 @@
 <?php
-echo $familiar['fam_jefe_familia']."acaaaaaaaaaaaaaaaaaaaaa";
+
 if (validation_errors() == "") {
 
     $jefe_familia = $familiar['fam_jefe_familia'];
@@ -8,7 +8,7 @@ if (validation_errors() == "") {
     $parentesco = $familiar['fam_parentesco'];
     $padre_profesor = $familiar['fam_padre_profesor'];
 
-    $cond_permanente = $familiar['fam_cond_permanente'];
+    $cond_permanente = $familiar['fam_cond_perm'];
     $ges = $familiar['fam_ges'];
     $usa_prevsalud = $familiar['fam_usa_prevsalud'];
 
@@ -90,6 +90,7 @@ if (validation_errors() == "") {
     $otros_mes2 = set_value('txt_otros_mes2');
     $otros_mes3 = set_value('txt_otros_mes3');
 }
+echo $jefe_familia."datroooooo";
 ?>
 
 
@@ -132,11 +133,12 @@ if (validation_errors() == "") {
         </div>
         
     </div>
-    <div class="portlet-body">
+    <div class="portlet-body form">
         <!-- BEGIN FORM-->
         <?php
         $attributes = array('class' => 'horizontal-form');
-        echo form_open('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, $attributes);
+        echo form_open('integrante/editar/' . $idencuesta . '/' . $idfamilia_datos, $attributes);
+        
         ?>
         <div class="form-body">
             <div class="row">
@@ -167,8 +169,8 @@ if (validation_errors() == "") {
             <!--/span-->
 
             <!--/row-->
-
-            <p> Favor ir rellenando los campos pestaña por pestaña </p>
+            
+            <p> Favor ir rellenando los campos pestaña por pestaña  </p>
 
             <div class="tabbable tabbable-tabdrop">
 
@@ -194,7 +196,7 @@ if (validation_errors() == "") {
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1"> <!-- DATOS PERSONALES -->
 
-                        <h4 class="form-section">3.1.- Antecedentes Personales</h4>
+                        <h4 class="form-section">3.1.- Antecedentes Personales </h4>
                         <!--/row-->
                         <div class="row">
 
@@ -1599,7 +1601,7 @@ if (validation_errors() == "") {
                     <i class="fa fa-check"></i> Siguiente</button>
             </div>
             <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idencuesta; ?>">
-            <!--<input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idfamilia_datos; ?>"> -->
+            <input type="hidden" name="hdn_encuestaid" id="hdn_encuestaid" value="<?php echo $idfamilia_datos; ?>"> 
             <?php echo form_close(); ?>
         </div>	
     </div>
