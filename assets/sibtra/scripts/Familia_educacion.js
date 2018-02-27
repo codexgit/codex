@@ -17,7 +17,7 @@ $("#grupo_fam_ult_curso4").hide();
 $("#grupo_fam_ult_curso5").hide();
 $("#grupo_fam_ult_curso6").hide();
 
-$("#fam_inicio_activ").hide();
+
 $("#ult_promedio").hide();
 $("#grupo_financiamiento").hide();
 

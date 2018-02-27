@@ -90,7 +90,7 @@ if (validation_errors() == "") {
     $otros_mes2 = set_value('txt_otros_mes2');
     $otros_mes3 = set_value('txt_otros_mes3');
 }
-echo $jefe_familia."datroooooo";
+
 ?>
 
 
@@ -709,11 +709,8 @@ echo $jefe_familia."datroooooo";
 
                         </div>	
                         <!-- END ROW -->
-
-
-
-
                     </div>
+                    
                     <div class="tab-pane" id="tab4"> <!-- EDUCACIÓN -->
 
 

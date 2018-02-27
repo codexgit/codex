@@ -14,6 +14,7 @@ $('#fam_grupo_pension2').hide();
 $('#fam_grupo_pension3').hide();
 $("#meses_cesante").hide();
 
+
 $(document).ready(function () {
 
     //FAMILIA_DATOS ENCUESTA/TRABAJO
