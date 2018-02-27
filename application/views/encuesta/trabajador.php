@@ -459,11 +459,15 @@ if (validation_errors() == "") {
                                                     }
                                                     ?>">
                                                         <label class="control-label">Previsión de salud <span class="required" aria-required="true"> * </span></label>
-                                                        <select name="sel_prev_salud" id="sel_prev_salud" class="form-control" placeholder="" value="<?php echo $prev_salud; ?>">
+                                                        <select name="sel_prev_salud" id="sel_prev_salud" class="form-control">
                                                             <option value="">Seleccione una opción</option>
                                                             <option value="1">FONASA</option>
                                                             <option value="2">Isapre</option>
+                                                            <?php
+                                                            echo "<option value'" . $sel_prev_salud . "'selected></option>";
+                                                            ?>
                                                         </select>
+
                                                         <?php
                                                         if (form_error('sel_prev_salud') != NULL) {
                                                             ?>

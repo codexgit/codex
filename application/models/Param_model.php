@@ -10,6 +10,11 @@ class Param_model extends CI_Model {
         $query = $this->db->get('region');
         return $query->result_array();
     }
+    
+    public function get_opciones_prevision(){
+        $query = $this->db->get('prevision');
+        return $query->result_array();
+    }
 
     public function get_categorias() {
         $query = $this->db->get('cat_beneficio');

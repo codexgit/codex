@@ -320,7 +320,7 @@ class Encuesta extends CI_Controller {
 
 
                 if ($this->form_validation->run() == FALSE) {
-
+                    $data['lst_prev_salud'] = $this->param_model->get_opciones_prevision();
                     $data['lstcomunas'] = $this->param_model->get_comunas_by_regionid($region);
                     $data['mensaje'] = "El formulario presenta errores de validación ";
                     $data['divtipo'] = "alert alert-danger alert-dismissable";
@@ -349,14 +349,14 @@ class Encuesta extends CI_Controller {
 
                     if ($verificador != 0) {
                         $this->encuesta_model->actualizar_encuesta_trabajador($encuesta_trabajador);
-                      
+
                         $data['mensaje'] = "La encuesta ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
 
                         redirect('encuesta/educacion/' . $idencuesta, 'refresh');
                     } else {
                         $this->encuesta_model->crear_encuesta_trabajador($encuesta_trabajador);
-                       
+
                         $data['mensaje'] = "La encuesta ha sido creada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
 
@@ -372,7 +372,7 @@ class Encuesta extends CI_Controller {
                 $this->load->view('recopilador/footer', $data);
             }
         } else {
-
+            $data['lst_prev_salud'] = $this->param_model->get_opciones_prevision();
             $data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
 
             $data['mensaje'] = "Ocurrió un error al procesar la solicitud";
@@ -573,7 +573,7 @@ class Encuesta extends CI_Controller {
 
                 $this->form_validation->set_rules('sel_cont_menores', 'Cantidad de Menores', 'required|numeric');
                 $this->form_validation->set_rules('sel_cons_drogas', 'Problemas de Alcohol/Drogas', 'required');
-               // $this->form_validation->set_rules('txt_cons_drogas_d', 'Edad', 'numeric');
+                // $this->form_validation->set_rules('txt_cons_drogas_d', 'Edad', 'numeric');
                 $this->form_validation->set_rules('txt_pat_ges', 'Patologia GES', 'required');
                 $this->form_validation->set_rules('sel_usa_prevision', 'Previsión', 'required');
                 $this->form_validation->set_rules('txt_cond_permanente', 'Condicion Permanente', 'required');

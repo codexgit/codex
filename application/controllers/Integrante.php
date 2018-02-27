@@ -237,7 +237,8 @@ class Integrante extends CI_Controller {
 
             $data['idfamilia_datos'] = $idfamilia_datos;
             $data['idencuesta'] = $idencuesta;
-            $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idfamilia_datos);
+            
+            $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
 
             $verificador = $this->integrante_model->verificar_registro_familia_datos($idfamilia_datos);
 
@@ -719,8 +720,6 @@ class Integrante extends CI_Controller {
             $this->load->model('usuario_model');
             $data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
 
-
-            
             $data['datos'] = $this->integrante_model->get_encuesta_familia_datos_by_id($idfamilia_datos);
 
             $data['idencuesta'] = $idencuesta;
