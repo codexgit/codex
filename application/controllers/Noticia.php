@@ -90,7 +90,7 @@ class Noticia extends CI_Controller {
                 );
                 $res = $this->noticia_model->set_noticia($noticia);
                 if ($res == 1) {
-                    $this->data['mensaje'] = "El beneficio ha sido agregado exitosamente";
+                    $this->data['mensaje'] = "La noticia ha sido agregado exitosamente";
                     $this->data['divtipo'] = "alert alert-success alert-dismissable";
                 } else {
                     $this->data['mensaje'] = "Ocurrió un error al realizar la operación";

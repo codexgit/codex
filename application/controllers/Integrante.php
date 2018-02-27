@@ -134,7 +134,7 @@ class Integrante extends CI_Controller {
 
             if ($this->input->post('hdn_encuestaid') != "" && $this->input->post('hdn_encuestaid') > 0) {
 
-               // $run = $this->input->post('txt_run');
+                // $run = $this->input->post('txt_run');
                 $run_dv = explode("-", $this->input->post('txt_run'));
                 //$dv = $this->input->post('txt_dv');
                 $nombres = $this->input->post('txt_nombres');
@@ -192,9 +192,9 @@ class Integrante extends CI_Controller {
                     $id_fam = $this->integrante_model->get_idfamilia_datos_by_id($idencuesta);
                     $idfamilia_datos = $id_fam['encuesta_familia_id'];
                     $data['idfamilia_datos'] = $idfamilia_datos;
-                    $data['mensaje'] = "El integrante ha sido creado exitosamente";
+                    // $data['mensaje'] = "El integrante ha sido creado exitosamente";
                     $data['divtipo'] = "alert alert-success alert-dismissable";
-
+                    echo "<script>alert('El integrante ha sido creado exitosamente, ¡Gracias!.');</script>";
                     redirect('integrante/datos/' . $idencuesta . '/' . $idfamilia_datos, 'refresh');
                 }
             } else {
@@ -237,7 +237,7 @@ class Integrante extends CI_Controller {
 
             $data['idfamilia_datos'] = $idfamilia_datos;
             $data['idencuesta'] = $idencuesta;
-            
+
             $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
 
             $verificador = $this->integrante_model->verificar_registro_familia_datos($idfamilia_datos);
@@ -313,7 +313,7 @@ class Integrante extends CI_Controller {
                 $sit_nolaboral = $this->input->post('sel_sit_nolaboral');
                 $sel_pension = $this->input->post("sel_pension");
                 $count = count($sel_pension);
-                $det_pension = "";                
+                $det_pension = "";
                 for ($i = 0; $i < $count; $i++) {
                     $det_pension = $det_pension . $sel_pension[$i] . "/";
                 }
@@ -334,7 +334,7 @@ class Integrante extends CI_Controller {
 
                 $sel_fin_educsup = $this->input->post("sel_fin_educsup");
                 $count = count($sel_fin_educsup);
-                $fin_educsup = "";                
+                $fin_educsup = "";
                 for ($i = 0; $i < $count; $i++) {
                     $fin_educsup = $fin_educsup . $sel_fin_educsup[$i] . "/";
                 }
@@ -430,18 +430,16 @@ class Integrante extends CI_Controller {
                     if ($verificador != 0) {
                         $this->integrante_model->actualizar_familia_datos($familia_datos);
                         //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
-
-                        $data['mensaje'] = "El integrante familiar ha sido modificada exitosamente";
+                        //$data['mensaje'] = "El integrante familiar ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
-
+                        echo "<script>alert('El integrante ha sido modificado exitosamente, ¡Gracias!.');</script>";
                         redirect('integrante/listado/' . $idencuesta, 'refresh');
                     } else {
                         $this->integrante_model->crear_familia_datos($familia_datos);
                         //$data['lstencuestas'] = $this->encuesta_model->get_encuestas_by_usuario_filialempresa($sesionusuario['usrid'],$idencuesta);
-
-                        $data['mensaje'] = "El integrante ha sido agregado con exitosamente";
+                        //$data['mensaje'] = "El integrante ha sido agregado con exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
-
+                        echo "<script>alert('El integrante ha sido agregado exitosamente, ¡Gracias!.');</script>";
                         redirect('integrante/listado/' . $idencuesta, 'refresh');
                     }
                 }

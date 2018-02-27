@@ -350,16 +350,16 @@ class Encuesta extends CI_Controller {
                     if ($verificador != 0) {
                         $this->encuesta_model->actualizar_encuesta_trabajador($encuesta_trabajador);
 
-                        $data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+                        // $data['mensaje'] = "La encuesta ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
-
+                        echo "<script>alert('La encuesta trabajador ha sido modificada exitosamente, ¡Gracias!.');</script>";
                         redirect('encuesta/educacion/' . $idencuesta, 'refresh');
                     } else {
                         $this->encuesta_model->crear_encuesta_trabajador($encuesta_trabajador);
 
-                        $data['mensaje'] = "La encuesta ha sido creada exitosamente";
+                        //$data['mensaje'] = "La encuesta ha sido creada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
-
+                        echo "<script>alert('La encuesta trabajador ha sido creada exitosamente, ¡Gracias!.');</script>";
                         redirect('encuesta/educacion/' . $idencuesta, 'refresh');
                     }
                 }
@@ -484,9 +484,9 @@ class Encuesta extends CI_Controller {
                     if ($verificador != 0) {
                         $this->encuesta_model->actualizar_encuesta_educacion($encuesta_educacion);
 
-                        $data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+                        //  $data['mensaje'] = "La encuesta ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
-
+                        echo "<script>alert('La encuesta educación ha sido modificada exitosamente, ¡Gracias!.');</script>";
                         redirect('encuesta/salud/' . $idencuesta, 'refresh');
                     } else {
                         $this->encuesta_model->crear_encuesta_educacion($encuesta_educacion);
@@ -494,7 +494,7 @@ class Encuesta extends CI_Controller {
 
                         $data['mensaje'] = "La encuesta ha sido creada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
-
+                        echo "<script>alert('La encuesta educación ha sido creada exitosamente, ¡Gracias!.');</script>";
                         redirect('encuesta/salud/' . $idencuesta, 'refresh');
                     }
                 }
@@ -609,17 +609,17 @@ class Encuesta extends CI_Controller {
                     if ($verificador != 0) {
                         $this->encuesta_model->actualizar_encuesta_salud($encuesta_salud);
 
-                        $data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+                        //$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
-
+                        echo "<script>alert('La encuesta salud ha sido modificada exitosamente, ¡Gracias!.');</script>";
                         redirect('encuesta/vivienda/' . $idencuesta, 'refresh');
                     } else {
                         $this->encuesta_model->crear_encuesta_salud($encuesta_salud);
 
 
-                        $data['mensaje'] = "La encuesta ha sido creada exitosamente";
+                        //$data['mensaje'] = "La encuesta ha sido creada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
-
+                        echo "<script>alert('La encuesta salud ha sido creada exitosamente, ¡Gracias!.');</script>";
                         redirect('encuesta/vivienda/' . $idencuesta, 'refresh');
                     }
                 }
@@ -770,19 +770,17 @@ class Encuesta extends CI_Controller {
                     if ($verificador != 0) {
 
                         $this->encuesta_model->actualizar_encuesta_vivienda($encuesta_vivienda);
-                        $data['mensaje'] = "La encuesta ha sido modificada exitosamente";
+                        //$data['mensaje'] = "La encuesta ha sido modificada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
-                        //redirect('encuesta/listado/'.$lstfilusuario['filial_empresa_id']);
+                        echo "<script>alert('La encuesta vivienda ha sido modificada exitosamente, ¡Gracias!.');</script>";
                         redirect('encuesta/listado/' . $idencuesta);
-
-                        //redirect('encuesta/familia/'.$idencuesta.'/'.$integrante','refresh');
                     } else {
                         $this->encuesta_model->crear_encuesta_vivienda($encuesta_vivienda);
 
-                        $data['mensaje'] = "La encuesta ha sido creada exitosamente";
+                        //$data['mensaje'] = "La encuesta ha sido creada exitosamente";
                         $data['divtipo'] = "alert alert-success alert-dismissable";
+                        echo "<script>alert('La encuesta vivienda ha sido creada exitosamente, ¡Gracias!.');</script>";
                         redirect('encuesta/listado/' . $idencuesta);
-                        //redirect('encuesta/familia/'.$idencuesta.'/'.$integrante,'refresh');
                     }
                 }
             } else {
