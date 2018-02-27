@@ -167,6 +167,11 @@
                                                                     <a href="<?php echo site_url('integrante/editar/' . $idencuesta.'/'.$idfamilia_datos); ?>">
                                                                         <i class="icon-user"></i> Editar </a>
                                                                 </li>
+                                                                
+                                                                <li>
+                                                                    <a href="<?php echo site_url('integrante/detalle/' . $idencuesta.'/'.$idfamilia_datos); ?>">
+                                                                        <i class="glyphicon glyphicon-search"></i> Detalle </a>
+                                                                </li>
                                                               
 
                                                             </ul>

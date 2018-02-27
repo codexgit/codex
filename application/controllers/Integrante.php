@@ -710,7 +710,7 @@ class Integrante extends CI_Controller {
         $this->data['lstintegrantes'] = $this->encuesta_model->get_familia($this->idencuesta);
     }
 
-    public function detalle($idencuesta) {
+    public function detalle($idencuesta, $idfamilia_datos) {
         $sesionusuario = $this->session->userdata('usrsesion');
         $data['sesionusuario'] = $sesionusuario;
         $this->load->model('integrante_model');
@@ -720,8 +720,8 @@ class Integrante extends CI_Controller {
             $data['lstfilusuario'] = $this->usuario_model->get_filial_empresa_by_usuario($sesionusuario['usrid']);
 
 
-
-            $data['datos'] = $this->integrante_model->get_encuesta_trabajador_by_id($encuesta_familia_id);
+            
+            $data['datos'] = $this->integrante_model->get_encuesta_familia_datos_by_id($idfamilia_datos);
 
             $data['idencuesta'] = $idencuesta;
             $this->load->model('encuesta_model');

@@ -113,7 +113,7 @@
                             <div class="form-group">
                                 <label class="control-label">¿Posee usted alguna de estas condiciones en forma permanente? </label>
 
-                                <span class="help-block"> <?php echo $datos->fam_cond_permanente; ?> </span>
+                                <span class="help-block"> <?php echo $datos->fam_cond_perm; ?> </span>
 
                             </div>
                         </div>
@@ -198,7 +198,7 @@
                             <div class="form-group">
                                 <label class="control-label">Cesante </label>
 
-                                <span class="help-block"> <?php echo $datos->fam_pension; ?> </span>
+                                <span class="help-block"> <?php echo $datos->fam_det_pension; ?> </span>
 
 
                             </div>	
