@@ -11,8 +11,8 @@ class Param_model extends CI_Model {
         return $query->result_array();
     }
     
-    public function get_opciones_prevision(){
-        $query = $this->db->get('prevision');
+    public function get_comunas() {
+        $query = $this->db->get('comuna');
         return $query->result_array();
     }
 
