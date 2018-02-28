@@ -483,7 +483,7 @@ class Integrante extends CI_Controller {
 
             $data['idfamilia_datos'] = $idfamilia_datos;
             $data['idencuesta'] = $idencuesta;
-            $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idfamilia_datos);
+            $data['detencuesta'] = $this->encuesta_model->get_encuesta_by_id($idencuesta);
 
             $verificador = $this->integrante_model->verificar_registro_familia_datos($idfamilia_datos);
 
